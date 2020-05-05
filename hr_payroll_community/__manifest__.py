@@ -33,9 +33,5 @@
         'views/report_payslip_templates.xml',
         'views/report_payslipdetails_templates.xml',
     ],
-     'installable': True,
-    'images': ['static/description/banner.png'],
-    'auto_install': False,
-    'application': False,
     'license': 'AGPL-3',
 }
