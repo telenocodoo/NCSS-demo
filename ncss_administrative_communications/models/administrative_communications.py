@@ -2,6 +2,7 @@
 from . import calverter
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import datetime
 
 
 class AdministrativeCommunicationCategory(models.Model):
@@ -29,7 +30,8 @@ class AdministrativeCommunicationSource(models.Model):
 class AdministrativeCommunicationManagement(models.Model):
     _name = 'administrative.communication.management'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    name = fields.Char()
+    name = fields.Char('Department')
+    user_id = fields.Many2one('res.users', 'Department Manager')
     contact_line_ids = fields.One2many('administrative.communication.contact.line', 'transfer_to_id')
 
 
@@ -54,6 +56,12 @@ class AdministrativeCommunicationContact(models.Model):
     name = fields.Char()
 
 
+class AdministrativeCommunicationProcedures(models.Model):
+    _name = 'administrative.communication.procedures'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    name = fields.Char()
+
+
 class AdministrativeCommunication(models.Model):
     _name = 'administrative.communication'
     _rec_name = 'sequence'
@@ -63,21 +71,30 @@ class AdministrativeCommunication(models.Model):
     treatment_type = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing'), ('internal', 'Internal')])
     administrative_communication_in_id = fields.Many2one('administrative.communication', 'Incoming')
     administrative_communication_out_id = fields.Many2one('administrative.communication', 'Outgoing')
+    # change to selection
+    post_type = fields.Selection([('paper', 'Paper'), ('fax', 'Fax'), ('electronic', 'Electronic')])
     Category = fields.Many2one('administrative.communication.category')
     category_name = fields.Char()
+    #post type
+    # new field
+    nature_of_transaction = fields.Selection([('personal', 'Personal'), ('public', 'Public'), ('secret', 'Secret')])
+    way_of_send = fields.Selection([('manual', 'manual'), ('email', 'email'), ('fax', 'Fax'), ('post', 'post')])
+    #
     transactions_number = fields.Char()
     years = fields.Many2one('administrative.communication.years')
     reference_number = fields.Char()
-    transaction_date = fields.Date('Date')
+    transaction_date = fields.Date('Transaction Date')
     hijri_date = fields.Char('Date', compute='_calculate_hijri_date', store=True)
     source_id = fields.Many2one('administrative.communication.source')
     destination_id = fields.Many2one('administrative.communication.source')
     transfer_to_id = fields.Many2one('administrative.communication.management')
+    user_id = fields.Many2one('res.users')
     contact_id = fields.Many2one('administrative.communication.contact')
-    transfer_date = fields.Date('Date')
+    transfer_date = fields.Date('Receipt Date', default=fields.Date.today())
+    allow_transfer_date = fields.Boolean()
     transfer_number = fields.Char()
     attachments = fields.Integer()
-    subject = fields.Char()
+    subject = fields.Text()
     file_number = fields.Char()
     notes = fields.Char()
     sender_type = fields.Many2one('administrative.communication.sender')
@@ -102,6 +119,10 @@ class AdministrativeCommunication(models.Model):
             values['sequence'] = self.env['ir.sequence'].next_by_code('administrative.communication.internal')
         return super(AdministrativeCommunication, self).create(values)
 
+    @api.onchange('transfer_to_id')
+    def onchange_transfer_to_id(self):
+        self.user_id = self.transfer_to_id.user_id.id
+
     @api.onchange('Category')
     def onchange_category(self):
         self.category_name = self.Category.name
@@ -121,10 +142,9 @@ class AdministrativeCommunication(models.Model):
             'type': 'ir.actions.act_window',
             'name': 'Assigned To My Department',
             'res_model': 'administrative.communication',
-            'domain': [('transfer_to_id', 'in', self.env.user.transfer_to_ids.ids)],
+            'domain': [('user_id', '=', self.env.user.id)],
             'view_type': 'form',
             'view_mode': 'tree,form',
-            # 'target': 'current',
         }
 
     def assign_to_department_action(self):
@@ -133,7 +153,7 @@ class AdministrativeCommunication(models.Model):
         self.state = 'reviewed'
 
     def assign_to_employee_action(self):
-        if not self.contact_id:
+        if not self.user_id:
             raise UserError(_('Please Add The Specialized Employee.'))
         self.state = 'assigned'
 
@@ -162,6 +182,21 @@ class AdministrativeCommunication(models.Model):
             'target': 'current',
         }
 
+    def action_assign_to(self):
+        department_id = self.env.user.department_id
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'administrative communication wizard',
+            'res_model': 'administrative.communication.wizard',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'context': {
+                'default_department_id': department_id.id if department_id else False,
+                'default_position': self.env.user.position,
+                        },
+            'target': 'new',
+        }
+
     def action_done(self):
         self.state = 'done'
 
@@ -169,17 +204,77 @@ class AdministrativeCommunication(models.Model):
         self.state = 'draft'
 
 
+class AdministrativeCommunicationWizard(models.TransientModel):
+    _name = 'administrative.communication.wizard'
+
+    user_id = fields.Many2one('res.users')
+    procedure_id = fields.Many2one('administrative.communication.procedures')
+    sender_notes = fields.Char()
+    # receipt_notes = fields.Char()
+    department_id = fields.Many2one('administrative.communication.management')
+    position = fields.Selection([('regular', 'Regular'),
+                                 ('center_manager', 'Center Manager'),
+                                 ('department_manager', 'Manager'),
+                                 ])
+
+    @api.onchange('position', 'department_id')
+    def onchange_position(self):
+        users = []
+        user_obj = self.env['res.users']
+        if self.position == 'regular':
+            user_ids = user_obj.search([('position', '=', 'regular'),
+                                        ('department_id', '=', self.department_id.id)])
+            for user in user_ids:
+                users.append(user.id)
+
+        elif self.position == 'center_manager':
+            user_ids = user_obj.search([('position', '=', 'department_manager')])
+            for user in user_ids:
+                users.append(user.id)
+
+        elif self.position == 'department_manager':
+            user_ids = user_obj.search([])
+            for user in user_ids:
+                users.append(user.id)
+        else:
+            users = []
+        domain = {'user_id': [('id', 'in', users)]}
+        return {'domain': domain}
+
+    def action_assign_to(self):
+        print(self.env.context.get('active_ids')[0])
+        communication_id = self.env['administrative.communication'].browse(self.env.context.get('active_ids')[0])
+        communication_lines = self.env['administrative.communication.line']
+        communication_lines.create({
+            'administrative_communication_id': self.env.context.get('active_ids')[0],
+            'user_attached_id': self.env.user.id,
+            'user_id': self.user_id.id,
+            'procedure_id': self.procedure_id.id,
+            'sender_notes': self.sender_notes,
+        })
+        if communication_id.state == 'reviewed':
+            communication_id.state = 'assigned'
+
+
 class AdministrativeCommunicationLine(models.Model):
     _name = 'administrative.communication.line'
+    _rec_name = "administrative_communication_id"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     administrative_communication_id = fields.Many2one('administrative.communication')
     attached_by_id = fields.Many2one('administrative.communication.contact')
     recipient_by_id = fields.Many2one('administrative.communication.contact')
+    user_attached_id = fields.Many2one('res.users')
+    user_id = fields.Many2one('res.users')
     source_id = fields.Many2one('administrative.communication.source')
     transfer_to_id = fields.Many2one('administrative.communication.management')
+    procedure_id = fields.Many2one('administrative.communication.procedures')
     sender_type = fields.Many2one('administrative.communication.sender')
-    date_and_time = fields.Datetime('Date And Time')
+    date_and_time = fields.Datetime('Date And Time', default=datetime.datetime.now())
     notes = fields.Char()
+    sender_notes = fields.Char()
+    receipt_notes = fields.Char()
+    subject = fields.Text(related="administrative_communication_id.subject")
 
     @api.onchange('source_id', 'transfer_to_id')
     def onchange_source_id(self):

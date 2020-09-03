@@ -8,7 +8,9 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Administrative Communication">
                     <group>
-                        <field name="transfer_to_ids" widget="many2many_tags"/>
+<!--                        <field name="transfer_to_ids" widget="many2many_tags"/>-->
+                        <field name="department_id"/>
+                        <field name="position"/>
                     </group>
                 </page>
 
