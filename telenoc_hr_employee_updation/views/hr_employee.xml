@@ -1,0 +1,28 @@
+<odoo>
+<data>
+
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='passport_id']" position="after">
+                    <field name="date_of_issue" />
+                    <field name="date_of_expiry" />
+                    <field name="bank_name" />
+                    <field name="account_number" />
+                    <field name="iban_number" />
+
+                </xpath>
+                <xpath expr="//field[@name='identification_id']" position="after">
+                    <field name="employee_code" />
+                    <field name="iqama_number" />
+                    <field name="iqama_date_of_issue" />
+                    <field name="iqama_date_of_expiry" />
+                </xpath>
+
+            </field>
+        </record>
+
+</data>
+</odoo>

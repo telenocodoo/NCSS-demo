@@ -9,7 +9,7 @@
                 <page string="Administrative Communication">
                     <group>
 <!--                        <field name="transfer_to_ids" widget="many2many_tags"/>-->
-                        <field name="department_id"/>
+                        <field name="ncss_department_id"/>
                         <field name="position"/>
                     </group>
                 </page>

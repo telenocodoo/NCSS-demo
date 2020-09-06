@@ -183,7 +183,7 @@ class AdministrativeCommunication(models.Model):
         }
 
     def action_assign_to(self):
-        department_id = self.env.user.department_id
+        ncss_department_id = self.env.user.ncss_department_id
         return {
             'type': 'ir.actions.act_window',
             'name': 'administrative communication wizard',
@@ -191,7 +191,7 @@ class AdministrativeCommunication(models.Model):
             'view_type': 'form',
             'view_mode': 'form',
             'context': {
-                'default_department_id': department_id.id if department_id else False,
+                'default_ncss_department_id': ncss_department_id.id if ncss_department_id else False,
                 'default_position': self.env.user.position,
                         },
             'target': 'new',
@@ -211,19 +211,19 @@ class AdministrativeCommunicationWizard(models.TransientModel):
     procedure_id = fields.Many2one('administrative.communication.procedures')
     sender_notes = fields.Char()
     # receipt_notes = fields.Char()
-    department_id = fields.Many2one('administrative.communication.management')
+    ncss_department_id = fields.Many2one('administrative.communication.management')
     position = fields.Selection([('regular', 'Regular'),
                                  ('center_manager', 'Center Manager'),
                                  ('department_manager', 'Manager'),
                                  ])
 
-    @api.onchange('position', 'department_id')
+    @api.onchange('position', 'ncss_department_id')
     def onchange_position(self):
         users = []
         user_obj = self.env['res.users']
         if self.position == 'regular':
             user_ids = user_obj.search([('position', '=', 'regular'),
-                                        ('department_id', '=', self.department_id.id)])
+                                        ('ncss_department_id', '=', self.ncss_department_id.id)])
             for user in user_ids:
                 users.append(user.id)
 

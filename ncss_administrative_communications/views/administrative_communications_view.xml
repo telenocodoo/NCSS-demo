@@ -312,7 +312,7 @@
 			<form>
 				<group>
 					<field name="position" invisible="1"/>
-					<field name="department_id" invisible="1"/>
+					<field name="ncss_department_id" invisible="1"/>
 					<field name="user_id" required="1"/>
 					<field name="procedure_id" required="1"/>
 					<field name="sender_notes" />
