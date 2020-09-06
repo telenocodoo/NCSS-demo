@@ -121,7 +121,14 @@ class ESSPortal(Controller):
                 'hr_payslip_correction': False,
             })
 
-
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_announcement')]).state == 'installed':
+            values.update({
+                'hr_announcement': True,
+            })
+        else:
+            values.update({
+                'hr_announcement': False,
+            })
         return values
 
     @route(['/attachment/download'], type='http', auth='public')
