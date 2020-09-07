@@ -560,18 +560,21 @@
     <menuitem id="administrative_communication_line_menu"
               name="Administrative Communication Line"
               parent="administrative_communication_root"
+              sequence="4"
     />
 
     <menuitem id="administrative_communication_line_child"
               name="Administrative Communication Line"
               action="administrative_communication_line_action"
               parent="administrative_communication_line_menu"
+              sequence="4"
     />
 
 
     <menuitem id="administrative_communication_menu"
               name="Administrative Communication"
               parent="administrative_communication_root"
+              sequence="2"
     />
 
     <menuitem id="administrative_communication_child"
@@ -605,6 +608,7 @@
     <menuitem id="administrative_communication_configuration"
               name="Configuration"
               parent="administrative_communication_root"
+              sequence="6"
     />
 <!--    <menuitem id="administrative_communication_config_category"-->
 <!--              name="Category"-->
