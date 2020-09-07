@@ -549,6 +549,13 @@
         <field name="domain">[('user_id','=',uid)]</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="all_administrative_communication_line_action" model="ir.actions.act_window">
+        <field name="name">Administrative Line</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">administrative.communication.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
     <!--    Administration line-->
 
 
@@ -568,6 +575,14 @@
               action="administrative_communication_line_action"
               parent="administrative_communication_line_menu"
               sequence="4"
+    />
+
+
+    <menuitem id="all_administrative_communication_line"
+              name="All Administrative Communication"
+              action="all_administrative_communication_line_action"
+              parent="administrative_communication_line_menu"
+              sequence="2"
     />
 
 
