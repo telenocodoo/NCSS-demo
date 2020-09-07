@@ -7,4 +7,7 @@ class Products(models.AbstractModel):
 
     @api.model
     def get_product_obj(self, data):
-        return self.env['product.product'].sudo().browse(int(data['id'])).list_price
+        # print(data)
+        # print(data['id'])
+        if data and data['id']:
+            return self.env['product.product'].sudo().browse(int(data['id'])).list_price
