@@ -96,6 +96,7 @@ odoo.define('ess.portals', function (require) {
                     'employee_id': document.getElementById("employee_id").value,
                 }]
             }).then(function (result) {
+            if (result){
                 $("#duration").val(result.duration);
                 $("#f_date").val(result.f_date);
                 $("#to_date").val(result.to_date);
@@ -107,6 +108,7 @@ odoo.define('ess.portals', function (require) {
                     $(".enrool_btn").hide();
                 }else{
                     $(".enrool_btn").show();
+                }
                 }
             });
 
@@ -131,6 +133,7 @@ odoo.define('ess.portals', function (require) {
                     'employee_id': document.getElementById("employee_id").value,
                 }]
             }).then(function (result) {
+                if (result){
                 $("#duration").val(result.duration);
                 $("#f_date").val(result.f_date);
                 $("#to_date").val(result.to_date);
@@ -142,6 +145,7 @@ odoo.define('ess.portals', function (require) {
                     $(".enrool_btn").hide();
                 }else{
                     $(".enrool_btn").show();
+                }
                 }
             });
         },
