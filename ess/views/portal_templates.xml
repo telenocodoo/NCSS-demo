@@ -229,7 +229,7 @@
                     </li>
 
                     <li><a href="/my/network"><i class="fa fa-th-large"></i> <span class="nav-label">Employees Network Directory</span></a></li>
-                    <li><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>
+                    <li t-if="announcement"><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>
                 </ul>
             </div>
      </form>

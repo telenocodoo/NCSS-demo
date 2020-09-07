@@ -123,11 +123,11 @@ class ESSPortal(Controller):
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_announcement')]).state == 'installed':
             values.update({
-                'hr_announcement': True,
+                'announcement': True,
             })
         else:
             values.update({
-                'hr_announcement': False,
+                'announcement': False,
             })
         return values
 
@@ -943,7 +943,7 @@ class ESSPortal(Controller):
     @route(['/my/announcement'], type='http', auth='user', website=True)
     def announcement(self, redirect=None, **post):
         values = {}
-        
+
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
         announcement_obj = request.env['hr.announcement'].sudo().search([('is_announcement', '=', True)])
@@ -952,7 +952,7 @@ class ESSPortal(Controller):
         announcement_by_job_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'job_position')]).filtered(lambda r: emb_obj.job_id in r.position_ids)
 
         values = self.check_modules()
-
+        print(":::::::::::::", values)
         values.update({
             'error': {},
             'error_message': [],
