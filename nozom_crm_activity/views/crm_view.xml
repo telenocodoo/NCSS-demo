@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+
+        <record id="mail_activity_view_form_popup_inherit" model="ir.ui.view">
+        <field name="name">mail.activity</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='summary']" position="after">
+                <button name="get_mail_activity" string="Related Document" type="object" class="oe_highlight"/>
+            </xpath>
+            </field>
+        </record>
+
+    <record id="mail_activity_view_tree_inherit" model="ir.ui.view">
+        <field name="name">mail.activity</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_deadline']" position="after">
+                <field name="state" />
+            </xpath>
+            </field>
+        </record>
+
+    <record id="crm_activity_report_inherit" model="ir.ui.view">
+        <field name="name">crm.activity.report</field>
+        <field name="model">crm.activity.report</field>
+        <field name="inherit_id" ref="crm.crm_activity_report_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='body']" position="after">
+<!--                <field name="won_status" />-->
+                <field name="stage_id" />
+            </xpath>
+            </field>
+        </record>
+
+<!--        <record id="mail_activity_view_tree_inherit" model="ir.ui.view">-->
+<!--        <field name="name">mail.activity</field>-->
+<!--        <field name="model">mail.activity</field>-->
+<!--        <field name="inherit_id" ref="mail.mail_activity_view_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//tree" position="attributes">-->
+<!--                <attribute name="create">1</attribute>-->
+<!--            </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="crm_activity_report_action" model="ir.actions.act_window">
+            <field name="name">Activities</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.activity.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="crm_mail_activity_action" model="ir.actions.act_window">
+            <field name="name">Mail Activities</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mail.activity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('res_model','in',['project.task','crm.lead'])]</field>
+<!--            <field name="context">{'default_res_model': 'crm.activity.report'}</field>-->
+        </record>
+
+<!--        <menuitem id="crm_activity_report_menu"-->
+<!--              name="All Activities"-->
+<!--              action="crm_activity_report_action"-->
+<!--              parent="crm.crm_menu_report"-->
+<!--        />-->
+        <menuitem id="crm_mail_activity_report_menu"
+              name="All Activities"
+              action="crm_mail_activity_action"
+              parent="crm.crm_menu_report"
+        />
+
+    </data>
+</odoo>
