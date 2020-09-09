@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend1" inherit_id="web_editor.assets_frontend">            
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/main.css"/>
+                <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/menu.scss"/>
+                <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style.css"/>
+            </xpath>
+
+            <xpath expr="//script[last()]" position="after">
+                <script type="text/javascript" src="/ess/static/src/js/resume_widget.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/statment.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/main.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/dashboard.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/inspinia.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/slimscroll/jquery.slimscroll.min.js"></script>
+                <script type="text/javascript" src="/ess/static/src/js/metisMenu/jquery.metisMenu.js"></script>
+            </xpath>
+    </template>
+
+    
+</odoo>

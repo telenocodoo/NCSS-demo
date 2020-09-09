@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+crm_project_owner,crm_project_owner,model_crm_project_owner,,1,1,1,1
+crm_project_position,crm_project_position,model_crm_project_position,,1,1,1,1
+crm_project_stages,crm_project_stages,model_crm_project_stages,,1,1,1,1
+crm_project_line,crm_project_line,model_crm_project_line,,1,1,1,1
+crm_project,crm_project,model_crm_project,,1,1,1,1
+bidder_lines,bidder_lines,model_bidder_lines,,1,1,1,1
+crm_project_bidders_role,crm_project_bidders_role,model_crm_project_bidders_role,,1,1,1,1
+winner_lines,winner_lines,model_winner_lines,,1,1,1,1
+involved_contact_role,involved_contact_role,model_involved_contact_role,,1,1,1,1
+involved_contact_lines,involved_contact_lines,model_involved_contact_lines,,1,1,1,1

@@ -10,6 +10,7 @@
     """,
     'depends': ['base', 'mail'],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/sequence.xml',
         'views/administrative_communications_view.xml',

@@ -10,10 +10,23 @@
                 <xpath expr="//page[@name='personal_information']" position="after">
                     <page string="Government Information">
                         <group>
+                            <group string="First Related Person">
+                                <field name="first_related_person_name" />
+                                <field name="first_related_person_relation" />
+                                <field name="first_related_person_phone" />
+                            </group>
+                            <group string="Second Related Person">
+                                <field name="second_related_person_name" />
+                                <field name="second_related_person_relation" />
+                                <field name="second_related_person_phone" />
+                            </group>
                             <group string="Employee Info">
                                 <field name="sub_agency_id" />
                                 <field name="employee_number" />
                                 <field name="personal_identifier" />
+                                <field name="personal_identifier_place" />
+                                <field name="personal_identifier_date" />
+                                <field name="passport_number" />
                                 <field name="national_id" />
                                 <field name="iqama_no" />
                             </group>

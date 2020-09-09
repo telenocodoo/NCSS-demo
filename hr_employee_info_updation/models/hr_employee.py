@@ -29,6 +29,9 @@ class HrEmployee(models.Model):
     sub_agency_id = fields.Char('Sub Agency Id')
     employee_number = fields.Char('Employee Id')
     personal_identifier = fields.Char('Personal Identifier')
+    personal_identifier_place = fields.Char()
+    personal_identifier_date = fields.Date()
+    passport_number = fields.Char()
     national_id = fields.Char('National Id')
     iqama_no = fields.Char('Iqama Number')
 
@@ -73,6 +76,14 @@ class HrEmployee(models.Model):
     termination_reason_code = fields.Char()
     termination_date = fields.Date()
     last_update_date = fields.Date()
+
+    first_related_person_name = fields.Char()
+    first_related_person_relation = fields.Char()
+    first_related_person_phone = fields.Char()
+
+    second_related_person_name = fields.Char()
+    second_related_person_relation = fields.Char()
+    second_related_person_phone = fields.Char()
 
     @api.constrains('national_id')
     def _check_national_id(self):
