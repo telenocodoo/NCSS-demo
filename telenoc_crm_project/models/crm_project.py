@@ -135,17 +135,17 @@ class WinnerLines(models.Model):
                 record.crm_id = crm_obj.id
             record.is_crm = True
 
-    @api.onchange('is_bidder')
-    def onchange_is_bidder(self):
-        bidders = []
-        for record in self:
-            bidder_id = self.env['bidder.lines'].search([('crm_project_id.id', '=', record.project_number)])
-                                                         # ('bidder_id', '=', self.company_id.id)
-            print(bidder_id)
-            for bidder in bidder_id:
-                bidders.append(bidder.bidder_id.id)
-        domain = {'company_id': [('id', 'in', bidders)]}
-        return {'domain': domain}
+    # @api.onchange('is_bidder')
+    # def onchange_is_bidder(self):
+    #     bidders = []
+    #     for record in self:
+    #         bidder_id = self.env['bidder.lines'].search([('crm_project_id.id', '=', record.project_number)])
+    #                                                      # ('bidder_id', '=', self.company_id.id)
+    #         print(bidder_id)
+    #         for bidder in bidder_id:
+    #             bidders.append(bidder.bidder_id.id)
+    #     domain = {'company_id': [('id', 'in', bidders)]}
+    #     return {'domain': domain}
 
     @api.onchange('company_id')
     def onchange_company_id(self):
