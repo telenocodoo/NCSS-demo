@@ -3,15 +3,16 @@ from . import calverter
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 import datetime
+from datetime import timedelta
 
 
 class AdministrativeCommunicationCategory(models.Model):
     _name = 'administrative.communication.category'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _rec_name = "code"
+    _rec_name = "name"
 
     name = fields.Char()
-    code = fields.Char()
+    parent_id = fields.Many2one('administrative.communication.category')
 
 
 class AdministrativeCommunicationYears(models.Model):
@@ -60,6 +61,7 @@ class AdministrativeCommunicationProcedures(models.Model):
     _name = 'administrative.communication.procedures'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     name = fields.Char()
+    no_of_days = fields.Integer()
 
 
 class AdministrativeCommunication(models.Model):
@@ -73,9 +75,13 @@ class AdministrativeCommunication(models.Model):
     administrative_communication_out_id = fields.Many2one('administrative.communication', 'Outgoing')
     # change to selection
     post_type = fields.Selection([('paper', 'Paper'), ('fax', 'Fax'), ('electronic', 'Electronic')])
-    Category = fields.Many2one('administrative.communication.category')
     category_name = fields.Char()
     #post type
+
+    assign_to_id = fields.Many2one('administrative.communication.category', 'Assign To')
+    assign_to_department_id = fields.Many2one('administrative.communication.category', 'Assign To Department')
+
+
     # new field
     nature_of_transaction = fields.Selection([('personal', 'Personal'), ('public', 'Public'), ('secret', 'Secret')])
     way_of_send = fields.Selection([('manual', 'manual'), ('email', 'email'), ('fax', 'Fax'), ('post', 'post')])
@@ -83,15 +89,17 @@ class AdministrativeCommunication(models.Model):
     transactions_number = fields.Char()
     years = fields.Many2one('administrative.communication.years')
     reference_number = fields.Char()
-    transaction_date = fields.Date('Transaction Date')
+    transaction_date = fields.Date('Transaction Date', default=fields.Date.today())
     hijri_date = fields.Char('Date', compute='_calculate_hijri_date', store=True)
-    source_id = fields.Many2one('administrative.communication.source')
+    # source_id = fields.Many2one('administrative.communication.source')
+    source_id = fields.Many2one('administrative.communication.category')
     destination_id = fields.Many2one('administrative.communication.source')
     transfer_to_id = fields.Many2one('administrative.communication.management')
     user_id = fields.Many2one('res.users')
     contact_id = fields.Many2one('administrative.communication.contact')
     transfer_date = fields.Date('Receipt Date', default=fields.Date.today())
     allow_transfer_date = fields.Boolean()
+    edit_transaction_date = fields.Boolean()
     transfer_number = fields.Char()
     attachments = fields.Integer()
     subject = fields.Text()
@@ -106,8 +114,12 @@ class AdministrativeCommunication(models.Model):
                               ('reviewed', 'sent to department'),
                               ('assigned', 'Sent To Employee'),
                               ('outgoing', 'Outgoing Sent'),
+                              ('barcode', 'Barcode'),
+                              ('instrument', 'Instrument'),
                               ('done', 'Done'),
                               ], default='draft')
+    state_in = fields.Selection(related='state')
+    state_out = fields.Selection(related='state')
 
     @api.model
     def create(self, values):
@@ -123,9 +135,9 @@ class AdministrativeCommunication(models.Model):
     def onchange_transfer_to_id(self):
         self.user_id = self.transfer_to_id.user_id.id
 
-    @api.onchange('Category')
-    def onchange_category(self):
-        self.category_name = self.Category.name
+    @api.onchange('assign_to_id')
+    def onchange_assign_to_id(self):
+        self.assign_to_department_id = self.assign_to_id.id
 
     @api.depends('transaction_date')
     def _calculate_hijri_date(self):
@@ -166,9 +178,11 @@ class AdministrativeCommunication(models.Model):
         self.state = 'outgoing'
         default={}
         default['treatment_type'] = 'out'
-        default['destination_id'] = self.source_id.id
+        # default['destination_id'] = self.source_id.id
         default['transfer_to_id'] = False
-        default['source_id'] = self.env.ref('ncss_administrative_communications.demo_contact_ncss').id
+        # default['source_id'] = self.env.ref('ncss_administrative_communications.demo_contact_ncss').id
+        default['source_id'] = self.env.ref('ncss_administrative_communications.demo_source_direction').id
+        default['assign_to_id'] = self.source_id.id
         y = self.copy(default)
         y.administrative_communication_in_id = self.id
         self.administrative_communication_out_id = y.id
@@ -197,6 +211,13 @@ class AdministrativeCommunication(models.Model):
             'target': 'new',
         }
 
+    def outgoing_barcode_action(self):
+        self.state = 'barcode'
+        return self.env.ref('ncss_administrative_communications.barcode_report').report_action(self)
+
+    def outgoing_instrument_action(self):
+        self.state = 'instrument'
+
     def action_done(self):
         self.state = 'done'
 
@@ -216,6 +237,16 @@ class AdministrativeCommunicationWizard(models.TransientModel):
                                  ('center_manager', 'Center Manager'),
                                  ('department_manager', 'Manager'),
                                  ])
+    no_of_days = fields.Integer()
+    due_date = fields.Date(default=fields.date.today())
+
+    @api.onchange('procedure_id')
+    def onchange_no_of_days(self):
+        self.no_of_days = self.procedure_id.no_of_days
+
+    @api.onchange('no_of_days')
+    def onchange_no_of_days(self):
+        self.due_date = self.due_date + timedelta(days=self.no_of_days)
 
     @api.onchange('position', 'ncss_department_id')
     def onchange_position(self):
@@ -250,6 +281,7 @@ class AdministrativeCommunicationWizard(models.TransientModel):
             'user_attached_id': self.env.user.id,
             'user_id': self.user_id.id,
             'procedure_id': self.procedure_id.id,
+            'due_date': self.due_date,
             'sender_notes': self.sender_notes,
         })
         if communication_id.state == 'reviewed':
@@ -274,6 +306,7 @@ class AdministrativeCommunicationLine(models.Model):
     notes = fields.Char()
     sender_notes = fields.Char()
     receipt_notes = fields.Char()
+    due_date = fields.Date()
     subject = fields.Text(related="administrative_communication_id.subject")
 
     @api.onchange('source_id', 'transfer_to_id')

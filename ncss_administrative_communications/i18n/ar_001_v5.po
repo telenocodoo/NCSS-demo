@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-13 07:52+0000\n"
-"PO-Revision-Date: 2020-09-13 07:52+0000\n"
+"POT-Creation-Date: 2020-09-03 07:06+0000\n"
+"PO-Revision-Date: 2020-09-03 07:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "تاريخ المعامله"
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
 msgid "<strong>Transactions Number:</strong>"
-msgstr "رقم المرجع"
+msgstr "رقم المعامله"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -206,7 +206,7 @@ msgstr "الاتصالات الاداريه"
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_category_action
 msgid "Administrative Communication Category"
-msgstr "الجهه المحال اليها"
+msgstr "تصنيفات الاتصالات الاداريه"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_contact_action
@@ -214,6 +214,7 @@ msgid "Administrative Communication Contact"
 msgstr "العملاء"
 
 #. module: ncss_administrative_communications
+#: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_line_child
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_line_menu
 msgid "Administrative Communication Line"
 msgstr "الاحالات"
@@ -245,19 +246,13 @@ msgstr "السنوات"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_line_action
-#: model:ir.actions.act_window,name:ncss_administrative_communications.all_administrative_communication_line_action
 msgid "Administrative Line"
-msgstr "الاحالات المسنده الى"
+msgstr "الاحالات"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.server,name:ncss_administrative_communications.administrative_communication_server_action
 msgid "Administrative Server Action"
 msgstr ""
-
-#. module: ncss_administrative_communications
-#: model:ir.ui.menu,name:ncss_administrative_communications.all_administrative_communication_line
-msgid "All Administrative Communication"
-msgstr "جميع الاحالات"
 
 #. module: ncss_administrative_communications
 #: model:res.groups,name:ncss_administrative_communications.ncss_allow_edit_transaction_date
@@ -275,13 +270,6 @@ msgid "Assign"
 msgstr "احاله"
 
 #. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__assign_to_id
-#: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_config_category
-msgid "Assign To"
-msgstr "الجهه المحال اليها"
-
-#. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__assign_to_department_id
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
 msgid "Assign To Department"
 msgstr "احاله الي قسم"
@@ -325,14 +313,14 @@ msgid "Attachments"
 msgstr "المرفقات"
 
 #. module: ncss_administrative_communications
-#: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__barcode
-msgid "Barcode"
-msgstr "باركود"
-
-#. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_wizard
 msgid "Cancel"
 msgstr "الغاء"
+
+#. module: ncss_administrative_communications
+#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__Category
+msgid "Category"
+msgstr "التصنيف"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__category_name
@@ -344,6 +332,11 @@ msgstr "اسم التصنيف"
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__res_users__position__center_manager
 msgid "Center Manager"
 msgstr "مدير المركز"
+
+#. module: ncss_administrative_communications
+#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_category__code
+msgid "Code"
+msgstr "رقم"
 
 #. module: ncss_administrative_communications
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_configuration
@@ -411,7 +404,8 @@ msgstr "وقت الحاله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_management__name
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_res_users__ncss_department_id
+#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__department_id
+#: model:ir.model.fields,field_description:ncss_administrative_communications.field_res_users__department_id
 msgid "Department"
 msgstr "القسم"
 
@@ -456,18 +450,6 @@ msgstr "تمت"
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__draft
 msgid "Draft"
 msgstr "جديده"
-
-#. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__due_date
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__due_date
-msgid "Due Date"
-msgstr "تاريخ الاستحقاق"
-
-#. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__edit_transaction_date
-#: model:res.groups,name:ncss_administrative_communications.edit_transaction_date
-msgid "Edit Transaction Date"
-msgstr "تعديل تاريخ المعامله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__post_type__electronic
@@ -622,11 +604,6 @@ msgid "Incoming"
 msgstr "الوارد"
 
 #. module: ncss_administrative_communications
-#: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__instrument
-msgid "Instrument"
-msgstr ""
-
-#. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_internal_action
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__treatment_type__internal
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_internal_child
@@ -759,17 +736,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_line_form
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_line_tree
 msgid "Name"
-msgstr "الاسم"
+msgstr "مسلسل المعامله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__nature_of_transaction
 msgid "Nature Of Transaction"
 msgstr "طبيعه المعامله"
-
-#. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__ncss_department_id
-msgid "Ncss Department"
-msgstr "اقسام المركز"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__activity_date_deadline
@@ -812,12 +784,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_years__activity_type_id
 msgid "Next Activity Type"
 msgstr ""
-
-#. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_procedures__no_of_days
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__no_of_days
-msgid "No Of Days"
-msgstr "عدد الايام"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__notes
@@ -927,11 +893,6 @@ msgid "Paper"
 msgstr "ورقي"
 
 #. module: ncss_administrative_communications
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_category__parent_id
-msgid "Parent"
-msgstr "مسؤل الجهه"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__nature_of_transaction__personal
 msgid "Personal"
 msgstr "شخصي"
@@ -961,14 +922,8 @@ msgstr "نوع البريد"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.report,name:ncss_administrative_communications.barcode_report
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
 msgid "Print Barcode"
 msgstr "طباعه باركود"
-
-#. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
-msgid "Print Instrument"
-msgstr "طباعه السند"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__procedure_id
@@ -1079,8 +1034,6 @@ msgstr "مصدرها"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__state
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__state_in
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__state_out
 msgid "State"
 msgstr "الحاله"
 
@@ -1115,14 +1068,8 @@ msgstr "مرفقات المعامله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__transaction_date
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
 msgid "Transaction Date"
 msgstr "تاريخ المعامله"
-
-#. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
-msgid "Transaction In Date"
-msgstr "تاريخ المعامله الوارده"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__transaction_line_ids
@@ -1130,24 +1077,14 @@ msgid "Transaction Line"
 msgstr "الاحالات"
 
 #. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
-msgid "Transaction Out Date"
-msgstr "تاريخ المعامله الصادره"
-
-#. module: ncss_administrative_communications
-#: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_line_child
-msgid "Transactions Assigned To Me"
-msgstr "الاحالات المسند الى"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__transactions_number
 msgid "Transactions Number"
-msgstr "رقم المرجع"
+msgstr "رقم المعامله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__transfer_number
 msgid "Transfer Number"
-msgstr "رقم المرجع"
+msgstr "رقم المعامله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__transfer_to_id

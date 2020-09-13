@@ -7,6 +7,12 @@
     </record>
     <!--    demo data-->
 
+    <!--    demo data-->
+    <record id="demo_source_direction" model="administrative.communication.category">
+        <field name="name">National center for social studies</field>
+    </record>
+    <!--    demo data-->
+
     <!--    category-->
     <record id="administrative_communication_category_form" model="ir.ui.view">
         <field name="name">administrative.communication.category.form</field>
@@ -19,7 +25,7 @@
                             <field name="name" required="1"/>
                         </group>
                         <group>
-                            <field name="code" required="1"/>
+                            <field name="parent_id"/>
                         </group>
                     </group>
                 </sheet>
@@ -38,7 +44,7 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name" />
-                <field name="code" />
+                <field name="parent_id" />
             </tree>
         </field>
     </record>
@@ -273,6 +279,7 @@
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="no_of_days" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -290,6 +297,7 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name" />
+                <field name="no_of_days" />
             </tree>
         </field>
     </record>
@@ -315,6 +323,8 @@
 					<field name="ncss_department_id" invisible="1"/>
 					<field name="user_id" required="1"/>
 					<field name="procedure_id" required="1"/>
+					<field name="no_of_days" />
+					<field name="due_date" />
 					<field name="sender_notes" />
 <!--					<field name="receipt_notes" />-->
 				</group>
@@ -337,13 +347,35 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="assign_to_department_action" states='draft' string="Assign To Department" type="object" class="oe_highlight"/>
+                    <button name="assign_to_department_action"
+                            attrs="{'invisible':['|',('treatment_type','!=','in'),('state','!=','draft')]}"
+                            string="Assign To Department" type="object" class="oe_highlight"/>
 <!--                    <button name="assign_to_employee_action" states='reviewed' string="Assign To Employee" type="object" class="oe_highlight"/>-->
-                    <button name="action_assign_to" states='reviewed,assigned,outgoing' string="Assign To Employee" type="object" class="oe_highlight"/>
-                    <button name="outgoing_treatment_action" states='assigned' string="Outgoing Treatment" type="object" class="oe_highlight"/>
-                    <button name="action_done" string="Done" states='reviewed,assigned,outgoing' type="object" class="oe_highlight"/>
+                    <button name="action_assign_to" states='reviewed,assigned,outgoing'
+                            attrs="{'invisible':['|',('treatment_type','=','out'),('state','not in',['reviewed','assigned','outgoing'])]}"
+                            string="Assign To Employee" type="object" class="oe_highlight"/>
+                    <button name="outgoing_treatment_action" states='assigned'
+                            attrs="{'invisible':['|',('treatment_type','=','out'),('state','!=','assigned')]}"
+                            string="Outgoing Treatment" type="object" class="oe_highlight"/>
+                    <button name="outgoing_barcode_action" string="Print Barcode"
+                            attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','draft')]}"
+                            type="object" class="oe_highlight"/>
+                    <button name="outgoing_instrument_action" string="Print Instrument"
+                            attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','barcode')]}"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_done" string="Done" states='reviewed,assigned,outgoing,instrument' type="object" class="oe_highlight"/>
                     <button name="set_to_draft" string="Set To Draft" states='done' type="object" class="oe_highlight"/>
-                    <field name="state" widget="statusbar"/>
+                    <field name="state" widget="statusbar" invisible="1"
+                           statusbar_visible="draft,reviewed,assigned,outgoing,done"
+                    />
+                    <field name="state_in" widget="statusbar"
+                           statusbar_visible="draft,reviewed,assigned,outgoing,done"
+                           attrs="{'invisible':[('treatment_type','not in',['in','internal'])]}"
+                    />
+                    <field name="state_out" widget="statusbar"
+                           statusbar_visible="draft,barcode,instrument,done"
+                           attrs="{'invisible':[('treatment_type','!=','out')]}"
+                    />
                 </header>
                 <sheet>
                     <group>
@@ -362,19 +394,62 @@
 <!--                            <field name="reference_number" />-->
                             <field name="nature_of_transaction" />
                             <field name="way_of_send" />
-                            <label for="transaction_date"/>
-                            <div name="transaction_date" class="o_row">
-                                <field name="transaction_date"/>
-                                <field name="hijri_date" />
+
+                            <field name="edit_transaction_date" groups="ncss_administrative_communications.edit_transaction_date"/>
+                            <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','in')]}">
+                                <label for="transaction_date" string="Transaction In Date"/>
                             </div>
+                            <div name="transaction_date" class="o_row">
+                                <field name="transaction_date" nolabel="1"
+                                       attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('edit_transaction_date','=',False)]}"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
+                            </div>
+
+                            <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','out')]}">
+                                <label for="transaction_date" string="Transaction Out Date"/>
+                            </div>
+                            <div name="transaction_date" class="o_row">
+                                <field name="transaction_date"
+                                       attrs="{'invisible':[('treatment_type','!=','out')],'readonly':[('edit_transaction_date','=',False)]}" nolabel="1"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+                            </div>
+
+                            <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','internal')]}">
+                                <label for="transaction_date" string="Transaction Date"/>
+                            </div>
+                            <div name="transaction_date" class="o_row">
+                                <field name="transaction_date"
+                                       attrs="{'invisible':[('treatment_type','!=','internal')],'readonly':[('edit_transaction_date','=',False)]}" nolabel="1"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','internal')]}"/>
+                            </div>
+
+<!--                            <label for="transaction_date"-->
+<!--                                    attrs="{'invisible':[('treatment_type','!=','in')]}"-->
+<!--                                   string="in transaction date"/>-->
+<!--                            <label for="transaction_date"-->
+<!--                                   attrs="{'invisible':[('treatment_type','!=','out')]}"-->
+<!--                                   string="out transaction date"/>-->
+<!--                            <div name="transaction_date" class="o_row">-->
+<!--                                <field name="transaction_date" />-->
+<!--                                <field name="hijri_date" />-->
+<!--                            </div>-->
                         </group>
                         <group>
-                            <field name="destination_id" attrs="{'invisible':[('treatment_type','=','in')]}"/>
-                            <field name="transfer_to_id" />
-                            <field name="user_id" />
+<!--                            <field name="destination_id" attrs="{'invisible':[('treatment_type','=','in')]}"/>-->
+                            <field name="transfer_to_id"
+                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])]}"/>
+                            <field name="user_id"
+                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])]}"/>
+
+                            <field name="assign_to_id"
+                                   attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+                            <field name="assign_to_department_id"
+                                   domain="['|',('parent_id','=',assign_to_id),('id','=',assign_to_id)]"
+                                   attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+
 <!--                            <field name="contact_id" attrs="{'invisible':[('state','=','draft')]}"/>-->
-                            <label for="transfer_date"/>
-                            <div name="transfer_date" class="o_row">
+                            <label for="transfer_date" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
+                            <div name="transfer_date" class="o_row" attrs="{'invisible':[('treatment_type','!=','in')]}">
                                 <field name="transfer_date" attrs="{'readonly':[('allow_transfer_date','=',False)]}"/>
                                 <field name="allow_transfer_date" groups="ncss_administrative_communications.ncss_allow_edit_transaction_date"/>
                             </div>
@@ -382,7 +457,7 @@
 <!--                            <field name="transfer_date" />-->
 <!--                            <field name="transfer_number" />-->
                             <field name="attachments" />
-                            <field name="file_number" />
+                            <field name="file_number" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
                             <field name="subject" />
 <!--                            <field name="sender_type" />-->
                         </group>
@@ -400,6 +475,7 @@
                                     <field name="procedure_id"/>
 <!--                                    <field name="sender_type"/>-->
                                     <field name="date_and_time"/>
+                                    <field name="due_date"/>
                                     <field name="sender_notes"/>
                                     <field name="receipt_notes"/>
                                 </tree>
@@ -464,6 +540,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">administrative.communication</field>
         <field name="domain">[('treatment_type','=','in')]</field>
+        <field name="context">{'default_treatment_type':'in'}</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="administrative_communication_out_action" model="ir.actions.act_window">
@@ -471,6 +548,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">administrative.communication</field>
         <field name="domain">[('treatment_type','=','out')]</field>
+        <field name="context">{'default_treatment_type':'out'}</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="administrative_communication_internal_action" model="ir.actions.act_window">
@@ -478,6 +556,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">administrative.communication</field>
         <field name="domain">[('treatment_type','=','internal')]</field>
+        <field name="context">{'default_treatment_type':'internal'}</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="administrative_communication_server_action" model="ir.actions.server">
@@ -571,7 +650,7 @@
     />
 
     <menuitem id="administrative_communication_line_child"
-              name="Administrative Communication Line"
+              name="Transactions Assigned To Me"
               action="administrative_communication_line_action"
               parent="administrative_communication_line_menu"
               sequence="4"
@@ -625,11 +704,11 @@
               parent="administrative_communication_root"
               sequence="6"
     />
-<!--    <menuitem id="administrative_communication_config_category"-->
-<!--              name="Category"-->
-<!--              action="administrative_communication_category_action"-->
-<!--              parent="administrative_communication_configuration"-->
-<!--    />-->
+    <menuitem id="administrative_communication_config_category"
+              name="Assign To"
+              action="administrative_communication_category_action"
+              parent="administrative_communication_configuration"
+    />
 <!--    <menuitem id="administrative_communication_config_years"-->
 <!--              name="years"-->
 <!--              action="administrative_communication_years_action"-->

@@ -11,7 +11,10 @@
     <template id="barcode_report_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
+<!--                <t t-call="web.external_layout">-->
+                <div class="header"></div>
+                <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-call="web.address_layout"/>
                     <div class="page">
                         <div class="oe_structure"/>
                         <div class="row">
@@ -19,8 +22,10 @@
                                 <div class="col-xs-8" style="margin:auto">
                                     <table class="table table-condensed" style="border: 3px solid black !important;">
                                         <tr>
-                                            <td width="100%">
-                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', 'o.sequence', 600, 100)" style="width:350px;height:60px"/>
+                                            <td class="text-center align-middle" style="height: 6rem">
+                                                <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.sequence, 600, 100)" style="width:350px;height:60px"/>
+                                                <br/>
+                                                <span t-field="o.transaction_date"/>-<span t-field="o.sequence"/>-<span t-field="o.attachments"/>
                                             </td>
                                         </tr>
                                     </table>
@@ -28,7 +33,9 @@
                             </center>
                         </div>
                     </div>
-                </t>
+                </div>
+                <div class="footer"></div>
+<!--                </t>-->
             </t>
         </t>
     </template>

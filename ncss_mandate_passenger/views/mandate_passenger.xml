@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    hr employee-->
+        <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+        <field name="name">Hr Employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="employee_degree_id"/>
+            </xpath>
+        </field>
+        </record>
+    <!--    hr employee-->
+
+
+
+    <!--    training_course  -->
+    <record id="training_course_form" model="ir.ui.view">
+        <field name="name">training.course.form</field>
+        <field name="model">training.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="type" />
+                            <field name="price" />
+                        </group>
+                        <group>
+                            <field name="number_of_days"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="training_course_tree" model="ir.ui.view">
+        <field name="name">training.course.tree</field>
+        <field name="model">training.course</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" required="1"/>
+                <field name="type" />
+                <field name="price" />
+                <field name="number_of_days"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="training_course_action" model="ir.actions.act_window">
+            <field name="name">Courses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.course</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+    <!--    training_course  -->
+
+<!--    training_course  -->
+    <record id="employee_degree_value_form" model="ir.ui.view">
+        <field name="name">employee.degree.value.form</field>
+        <field name="model">employee.degree.value</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="traveling_type" />
+                        </group>
+                        <group>
+                            <field name="internal_day_value" />
+                            <field name="external_day_value" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_degree_value_tree" model="ir.ui.view">
+        <field name="name">employee.degree.value.tree</field>
+        <field name="model">employee.degree.value</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="traveling_type" />
+                <field name="internal_day_value" />
+                <field name="external_day_value" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_degree_value_action" model="ir.actions.act_window">
+            <field name="name">Employee Value</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employee.degree.value</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+    <!--    training_course  -->
+
+
+
+
+    <!--    crm.project-->
+    <record id="mandate_passenger_form" model="ir.ui.view">
+        <field name="name">mandate.passenger.form</field>
+        <field name="model">mandate.passenger</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_direct_manager_approve" string="Direct Manager Approve"
+                            attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_department_manager_approve" string="Department Manager Approve"
+                            states='direct_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="action_accounting_approve" string="Accounting Approve"
+                            states='department_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft" states='accounting_approve'
+                            type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,direct_manager_approve,department_manager_approve,accounting_approve"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" required="1"/>
+                            <field name="employee_degree_id"/>
+                            <field name="type" />
+                            <field name="course_id" />
+                            <field name="course_type" />
+                            <field name="description" />
+                            <field name="price" />
+                            <field name="number_of_days" />
+                        </group>
+                        <group>
+                            <field name="total_value_without_ticket" />
+                            <field name="day_value" />
+                            <field name="housing_value" />
+                            <field name="transportation_value" />
+                            <field name="daily_expenses" />
+                            <field name="traveling_type" />
+                            <field name="Subsistence_rate" invisible="1"/>
+                            <field name="total" />
+                            <field name="is_direct_manager" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="mandate_passenger_tree" model="ir.ui.view">
+        <field name="name">mandate.passenger.tree</field>
+        <field name="model">mandate.passenger</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id"/>
+                <field name="employee_type"/>
+                <field name="type" />
+                <field name="course_id" />
+                <field name="description" />
+                <field name="course_type" />
+                <field name="number_of_days" />
+                <field name="price" />
+                <field name="total_value_without_ticket" />
+                <field name="total" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="mandate_passenger_action" model="ir.actions.act_window">
+        <field name="name">Mandate And Passenger</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mandate.passenger</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    crm.project Form-->
+
+
+    <menuitem id="mandate_passenger_root"
+              name="Mandate and Passenger"
+    />
+
+
+    <menuitem id="mandate_passenger_child_menu"
+              name="Mandate and Passenger"
+              parent="mandate_passenger_root"
+              sequence="2"
+    />
+
+    <menuitem id="mandate_passenger_setting_menu"
+              name="Setting"
+              parent="mandate_passenger_root"
+              sequence="4"
+    />
+
+    <menuitem id="mandate_passenger_action_menu"
+              name="Mandate and Passenger"
+              action="mandate_passenger_action"
+              parent="mandate_passenger_child_menu"
+              sequence="4"
+    />
+
+    <menuitem id="mandate_passenger_setting_child"
+              name="Courses"
+              action="training_course_action"
+              parent="mandate_passenger_setting_menu"
+              sequence="4"
+    />
+
+    <menuitem id="employee_degree_setting_child"
+              name="Employee Degree"
+              action="employee_degree_value_action"
+              parent="mandate_passenger_setting_menu"
+              sequence="4"
+    />
+
+
+
+</odoo>
