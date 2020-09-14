@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-13 07:59+0000\n"
-"PO-Revision-Date: 2020-09-13 07:59+0000\n"
+"POT-Creation-Date: 2020-09-14 06:20+0000\n"
+"PO-Revision-Date: 2020-09-14 06:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -396,10 +396,27 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: ncss_mandate_passenger
+#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
+#, python-format
+msgid "Please Add the reason of Refuse"
+msgstr "من فضلك اضف سبب الرفض"
+
+#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__price
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__price
 msgid "Price"
 msgstr "سعر الدوره"
+
+#. module: ncss_mandate_passenger
+#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__reason
+msgid "Reason"
+msgstr "السبب"
+
+#. module: ncss_mandate_passenger
+#: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__state__refuse
+#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_form
+msgid "Refuse"
+msgstr "رفض"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_user_id
@@ -449,12 +466,12 @@ msgstr ""
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__total
 msgid "Total"
-msgstr "اجمالي التكلفه"
+msgstr "اجمالي التكلفه بدون تذكره الطيران"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__total_value_without_ticket
 msgid "Total Value Without Ticket"
-msgstr "التكلفه بدون تزاكر الطيران"
+msgstr "التكلفه بدون تذكره الطيران"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__transportation_value

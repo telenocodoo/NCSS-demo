@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class EmployeeDegreeValue(models.Model):
@@ -64,12 +65,13 @@ class MandatePassenger(models.Model):
                                        ('first_class', 'First Class'),
                                        ('vip', 'VIP'),
                                        ])
-
+    reason = fields.Text()
     state = fields.Selection([('draft', 'Draft'),
-                                       ('direct_manager_approve', 'Direct Manager Approve'),
-                                       ('department_manager_approve', 'Department Manager Approve'),
-                                       ('accounting_approve', 'Accounting Approve'),
-                                       ], default='draft')
+                               ('direct_manager_approve', 'Direct Manager Approve'),
+                               ('department_manager_approve', 'Department Manager Approve'),
+                               ('accounting_approve', 'Accounting Approve'),
+                               ('refuse', 'Refuse'),
+                               ], default='draft')
 
     @api.onchange('employee_id')
     def onchange_employee_id(self):
@@ -143,6 +145,13 @@ class MandatePassenger(models.Model):
 
     def action_accounting_approve(self):
         self.state = 'accounting_approve'
+
+    def refuse_action(self):
+        for record in self:
+            if not record.reason:
+                raise UserError(_("Please Add the reason of Refuse"))
+            else:
+                self.state = 'refuse'
 
     def set_to_draft(self):
         self.state = 'draft'

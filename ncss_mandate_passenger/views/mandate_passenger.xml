@@ -133,7 +133,11 @@
                     <button name="action_accounting_approve" string="Accounting Approve"
                             states='department_manager_approve'
                             type="object" class="oe_highlight"/>
-                    <button name="set_to_draft" string="Set To Draft" states='accounting_approve'
+                    <button name="refuse_action" string="Refuse"
+                            states='draft,direct_manager_approve,department_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft"
+                            states='refuse,accounting_approve'
                             type="object" class="oe_highlight"/>
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,direct_manager_approve,department_manager_approve,accounting_approve"
@@ -142,25 +146,42 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="employee_id" required="1"/>
-                            <field name="employee_degree_id"/>
-                            <field name="type" />
-                            <field name="course_id" />
-                            <field name="course_type" />
-                            <field name="description" />
-                            <field name="price" />
-                            <field name="number_of_days" />
+                            <field name="employee_id" required="1"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="employee_degree_id"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="type"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="course_id"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="course_type"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="description"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="price"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="number_of_days"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                         </group>
                         <group>
-                            <field name="total_value_without_ticket" />
-                            <field name="day_value" />
-                            <field name="housing_value" />
-                            <field name="transportation_value" />
-                            <field name="daily_expenses" />
-                            <field name="traveling_type" />
+                            <field name="total_value_without_ticket"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="day_value"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="housing_value"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="transportation_value"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="daily_expenses"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="traveling_type"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="Subsistence_rate" invisible="1"/>
                             <field name="total" />
                             <field name="is_direct_manager" invisible="1"/>
+                            <field name="reason"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
+                            />
                         </group>
                     </group>
                 </sheet>
