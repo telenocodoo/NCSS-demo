@@ -241,12 +241,12 @@ class AdministrativeCommunicationWizard(models.TransientModel):
     due_date = fields.Date(default=fields.date.today())
 
     @api.onchange('procedure_id')
-    def onchange_no_of_days(self):
+    def onchange_procedure_id(self):
         self.no_of_days = self.procedure_id.no_of_days
 
     @api.onchange('no_of_days')
     def onchange_no_of_days(self):
-        self.due_date = self.due_date + timedelta(days=self.no_of_days)
+        self.due_date = fields.date.today() + timedelta(days=self.no_of_days)
 
     @api.onchange('position', 'ncss_department_id')
     def onchange_position(self):

@@ -381,28 +381,31 @@
                     <group>
                         <group>
                             <field name="sequence" readonly="1"/>
-                            <field name="treatment_type" required="1"/>
-                            <field name="source_id" />
+                            <field name="treatment_type" attrs="{'readonly':[('state','=','done')]}" required="1"/>
+                            <field name="source_id" attrs="{'readonly':[('state','=','done')]}"/>
 <!--                            <label for="Category"/>-->
 <!--                            <div name="Category" class="o_row">-->
 <!--                                <field name="Category"/>-->
 <!--                                <field name="category_name" />-->
 <!--                            </div>-->
-                            <field name="post_type" />
-                            <field name="transactions_number" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
+                            <field name="post_type" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="transactions_number"
+                                   attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('state','=','done')]}"/>
 <!--                            <field name="years" />-->
 <!--                            <field name="reference_number" />-->
-                            <field name="nature_of_transaction" />
-                            <field name="way_of_send" />
+                            <field name="nature_of_transaction" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="way_of_send" attrs="{'readonly':[('state','=','done')]}"/>
 
-                            <field name="edit_transaction_date" groups="ncss_administrative_communications.edit_transaction_date"/>
+                            <field name="edit_transaction_date"
+                                   attrs="{'invisible':[('state','=','done')]}"
+                                   groups="ncss_administrative_communications.edit_transaction_date"/>
                             <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','in')]}">
                                 <label for="transaction_date" string="Transaction In Date"/>
                             </div>
                             <div name="transaction_date" class="o_row">
                                 <field name="transaction_date" nolabel="1"
                                        attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('edit_transaction_date','=',False)]}"/>
-                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('state','=','done')]}"/>
                             </div>
 
                             <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','out')]}">
@@ -411,7 +414,7 @@
                             <div name="transaction_date" class="o_row">
                                 <field name="transaction_date"
                                        attrs="{'invisible':[('treatment_type','!=','out')],'readonly':[('edit_transaction_date','=',False)]}" nolabel="1"/>
-                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','out')],'readonly':[('state','=','done')]}"/>
                             </div>
 
                             <div class="o_td_label" attrs="{'invisible':[('treatment_type','!=','internal')]}">
@@ -420,7 +423,7 @@
                             <div name="transaction_date" class="o_row">
                                 <field name="transaction_date"
                                        attrs="{'invisible':[('treatment_type','!=','internal')],'readonly':[('edit_transaction_date','=',False)]}" nolabel="1"/>
-                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','internal')]}"/>
+                                <field name="hijri_date" attrs="{'invisible':[('treatment_type','!=','internal')],'readonly':[('state','=','done')]}"/>
                             </div>
 
 <!--                            <label for="transaction_date"-->
@@ -437,15 +440,15 @@
                         <group>
 <!--                            <field name="destination_id" attrs="{'invisible':[('treatment_type','=','in')]}"/>-->
                             <field name="transfer_to_id"
-                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])]}"/>
+                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])],'readonly':[('state','=','done')]}"/>
                             <field name="user_id"
-                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])]}"/>
+                                   attrs="{'invisible':[('treatment_type','not in',['in','internal'])],'readonly':[('state','=','done')]}"/>
 
                             <field name="assign_to_id"
-                                   attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+                                   attrs="{'invisible':[('treatment_type','!=','out')],'readonly':[('state','=','done')]}"/>
                             <field name="assign_to_department_id"
                                    domain="['|',('parent_id','=',assign_to_id),('id','=',assign_to_id)]"
-                                   attrs="{'invisible':[('treatment_type','!=','out')]}"/>
+                                   attrs="{'invisible':[('treatment_type','!=','out')],'readonly':[('state','=','done')]}"/>
 
 <!--                            <field name="contact_id" attrs="{'invisible':[('state','=','draft')]}"/>-->
                             <label for="transfer_date" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
@@ -456,15 +459,16 @@
 <!--                            <field name="allow_transfer_date" />-->
 <!--                            <field name="transfer_date" />-->
 <!--                            <field name="transfer_number" />-->
-                            <field name="attachments" />
-                            <field name="file_number" attrs="{'invisible':[('treatment_type','!=','in')]}"/>
-                            <field name="subject" />
+                            <field name="attachments" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="file_number"
+                                   attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('state','=','done')]}"/>
+                            <field name="subject" attrs="{'readonly':[('state','=','done')]}"/>
 <!--                            <field name="sender_type" />-->
                         </group>
                     </group>
                     <notebook>
                         <page string="Treatment Information" name="Treatment Information" >
-                            <field name="transaction_line_ids" >
+                            <field name="transaction_line_ids" readonly="1">
 <!--                                context="{'default_source_id': source_id,'default_transfer_to_id': transfer_to_id,}"-->
                                 <tree editable="bottom">
                                     <field name="user_attached_id"/>
@@ -482,7 +486,7 @@
                             </field>
                         </page>
                         <page string="Attachments" name="Attachments">
-                            <field name="transaction_attachment_line_ids">
+                            <field name="transaction_attachment_line_ids" attrs="{'readonly':[('state','=','done')]}">
                                 <tree editable="bottom">
                                     <field name="attachments"/>
                                     <field name="description"/>
@@ -495,7 +499,7 @@
                                        attrs="{'invisible':[('treatment_type','=','in')]}"/>
                                 <field name="administrative_communication_out_id" readonly="1"
                                        attrs="{'invisible':[('treatment_type','=','out')]}"/>
-                                <field name="notes" />
+                                <field name="notes" attrs="{'readonly':[('state','=','done')]}"/>
                             </group>
                         </page>
 
@@ -516,15 +520,22 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="sequence" />
-                <field name="source_id" />
-                <field name="transfer_to_id" />
-                <field name="user_id" />
-                <field name="transfer_date" />
-                <field name="transfer_number" />
-                <field name="transaction_date" />
+                 <field name="transaction_date" />
+                <field name="treatment_type" />
+                <field name="post_type" />
+                <field name="nature_of_transaction" />
                 <field name="way_of_send" />
+                <field name="source_id" />
+                <field name="transfer_to_id" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
+                <field name="user_id" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
+<!--                <field name="transfer_date" />-->
+                <field name="assign_to_id" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
+                <field name="assign_to_department_id" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
+                <field name="transfer_number" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
                 <field name="subject" />
-                <field name="attachments" />
+                <field name="state_in" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
+                <field name="state_out" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
+<!--                <field name="attachments" />-->
             </tree>
         </field>
     </record>
