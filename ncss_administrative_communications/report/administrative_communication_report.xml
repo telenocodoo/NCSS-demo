@@ -59,13 +59,6 @@
 <!--                                        <strong>Year:</strong>-->
 <!--                                        <p class="m-0" t-field="o.years"/>-->
 <!--                                    </div>-->
-                                </div>
-
-                                <div id="informations2" class="row mt32 mb32">
-                                    <div class="col-auto mw-100 mb-2" t-if="o.reference_number and o.treatment_type == 'in'" name="reference_number">
-                                        <strong>Reference Number:</strong>
-                                        <p class="m-0" t-field="o.reference_number"/>
-                                    </div>
                                     <div class="col-auto mw-100 mb-2" t-if="o.transaction_date" name="transaction_date">
                                         <strong>Transaction Date:</strong>
                                         <p class="m-0" t-field="o.transaction_date"/>
@@ -74,6 +67,14 @@
                                         <strong>Hijri Date:</strong>
                                         <p class="m-0" t-field="o.hijri_date"/>
                                     </div>
+                                </div>
+
+                                <div id="informations2" class="row mt32 mb32">
+                                    <div class="col-auto mw-100 mb-2" t-if="o.reference_number and o.treatment_type == 'in'" name="reference_number">
+                                        <strong>Reference Number:</strong>
+                                        <p class="m-0" t-field="o.reference_number"/>
+                                    </div>
+
                                     <div class="col-auto mw-100 mb-2" t-if="o.source_id" name="source_id">
                                         <strong>Source:</strong>
                                         <p class="m-0" t-field="o.source_id"/>
