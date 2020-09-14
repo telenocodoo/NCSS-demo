@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    account.move.line-->
+        <record id="view_move_line_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.line</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="custody_id" invisible="1"/>
+            </xpath>
+        </field>
+        </record>
+    <!--    account.move.line-->
+
+
+    <!--    custody.request-->
+    <record id="custody_request_form" model="ir.ui.view">
+        <field name="name">custody.request.form</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_direct_manager_approve" string="Direct Manager Approve"
+                            attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_department_manager_approve" string="Department Manager Approve"
+                            states='direct_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="center_manager_approve" string="Center Manager Approve"
+                            states='department_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="accounting_approve" string="Accounting Approve"
+                            states='center_manager_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="paid_action" string="Paid"
+                            states='accounting_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="in_progress_action" string="In progress"
+                            states='paid'
+                            type="object" class="oe_highlight"/>
+                    <button name="make_liquidated_action" string="liquidated"
+                            attrs="{'invisible':['|',('is_liquidated','=',False),('state','!=','in_progress')]}"
+                            type="object" class="oe_highlight"/>
+                    <button name="liquidated_action" string="Done"
+                            states='liquidated'
+                            type="object" class="oe_highlight"/>
+                    <button name="action_refuse" string="Refuse"
+                            states='draft,direct_manager_approve,department_manager_approve,center_manager_approve,accounting_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft" states='done'
+                            type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,direct_manager_approve,department_manager_approve,center_manager_approve"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" attrs="{'readonly':[('state','in',['refuse','done'])]}" required="1"/>
+                            <field name="date" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="amount" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="is_direct_manager" invisible="1"/>
+                            <field name="is_liquidated" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="remaining_amount" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="description" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="reason"
+                            attrs="{'readonly':[('state','in',['refuse','done'])]}"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Journal Items" name="Journal Items"
+                              attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
+                            <field name="move_line_ids" />
+                        </page>
+                        <page string="Exchange Items" name="Exchange Items"
+                        attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
+                            <field name="exchange_item_ids" attrs="{'readonly':[('state','in',['refuse','done'])]}">
+                                <tree editable="bottom">
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                    <field name="attach_invoice"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="custody_request_tree" model="ir.ui.view">
+        <field name="name">custody.request.tree</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id"/>
+                <field name="date" />
+                <field name="amount" />
+<!--                <field name="remaining_amount" />-->
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="custody_request_action" model="ir.actions.act_window">
+        <field name="name">Custody Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    custody.request Form-->
+
+    <menuitem id="custody_request_root"
+              name="Custody"
+    />
+
+    <menuitem id="custody_request_child_menu"
+              name="Custody Request"
+              parent="custody_request_root"
+              sequence="2"
+    />
+
+    <menuitem id="custody_request_setting_menu"
+              name="Setting"
+              parent="custody_request_root"
+              sequence="4"
+    />
+
+    <menuitem id="custody_request_action_menu"
+              name="Custody Request"
+              action="custody_request_action"
+              parent="custody_request_child_menu"
+              sequence="4"
+    />
+
+
+
+
+
+
+<!--    <menuitem id="mandate_passenger_setting_child"-->
+<!--              name="Courses"-->
+<!--              action="training_course_action"-->
+<!--              parent="mandate_passenger_setting_menu"-->
+<!--              sequence="4"-->
+<!--    />-->
+
+<!--    <menuitem id="employee_degree_setting_child"-->
+<!--              name="Employee Degree"-->
+<!--              action="employee_degree_value_action"-->
+<!--              parent="mandate_passenger_setting_menu"-->
+<!--              sequence="4"-->
+<!--    />-->
+
+
+
+</odoo>
