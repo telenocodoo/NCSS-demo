@@ -11,7 +11,7 @@
     'depends': ['base', 'mail', 'hr', 'account'],
     'data': [
         'security/ir.model.access.csv',
-        'views/custody_request_setting.xml',
         'views/custody_request.xml',
+        'views/custody_request_setting.xml',
     ]
 }
