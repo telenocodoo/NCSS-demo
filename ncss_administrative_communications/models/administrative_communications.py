@@ -217,6 +217,7 @@ class AdministrativeCommunication(models.Model):
 
     def outgoing_instrument_action(self):
         self.state = 'instrument'
+        return self.env.ref('ncss_administrative_communications.report_administrative_communication').report_action(self)
 
     def action_done(self):
         self.state = 'done'
