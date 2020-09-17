@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-14 07:48+0000\n"
-"PO-Revision-Date: 2020-09-14 07:48+0000\n"
+"POT-Creation-Date: 2020-09-13 07:52+0000\n"
+"PO-Revision-Date: 2020-09-13 07:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,17 +23,17 @@ msgstr "احيلت بواسطه"
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
 msgid "<span>Date And Time</span>"
-msgstr "وقت الاحاله"
+msgstr "وقت الحاله"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<span>Due Date</span>"
-msgstr "تاريخ الاستحقاق"
+msgid "<span>Destination</span>"
+msgstr "الجهه الاخري"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<span>Procedure</span>"
-msgstr "الاجراء اللازم"
+msgid "<span>Notes</span>"
+msgstr "ملاحظات"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -42,18 +42,33 @@ msgstr "احيلت الي"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<strong>Assign Department:</strong>"
-msgstr "القسم التابع للجهه"
+msgid "<span>Sender Type</span>"
+msgstr "نوع المرسل"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<strong>Assign To:</strong>"
-msgstr "الجهه المحال اليها"
+msgid "<span>Source</span>"
+msgstr "مصدرها"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
 msgid "<strong>Attachments:</strong>"
 msgstr "المرفقات"
+
+#. module: ncss_administrative_communications
+#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
+msgid "<strong>Category Name:</strong>"
+msgstr "اسم التصنيف"
+
+#. module: ncss_administrative_communications
+#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
+msgid "<strong>Category:</strong>"
+msgstr "التصنيف"
+
+#. module: ncss_administrative_communications
+#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
+msgid "<strong>File Number:</strong>"
+msgstr "رقم الملف"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -64,16 +79,6 @@ msgstr "التاريخ الهجري"
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
 msgid "<strong>Name:</strong>"
 msgstr "الاسم"
-
-#. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<strong>Nature of Transaction:</strong>"
-msgstr "طبيعه المعامله"
-
-#. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<strong>Post Type:</strong>"
-msgstr "نوع البريد"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -127,8 +132,8 @@ msgstr "نوع المعامله"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
-msgid "<strong>Way Of Send:</strong>"
-msgstr "طريقه الارسال"
+msgid "<strong>Year:</strong>"
+msgstr "السنه"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__message_needaction
@@ -402,7 +407,7 @@ msgstr "تاريخ"
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__date_and_time
 msgid "Date And Time"
-msgstr "وقت الاحاله"
+msgstr "وقت الحاله"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_management__name
