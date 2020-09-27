@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    res.partner-->
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="location_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+        </record>
+    <!--    res.partner-->
+
+
+    <!--    purchase.order-->
+        <record id="purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="context">{'default_partner_id': partner_id}</attribute>
+            </xpath>
+<!--            <xpath expr="//field[@name='order_line']/tree/field[@name='partner_id']" position="attributes">-->
+<!--                <attribute name="store">True</attribute>-->
+<!--            </xpath>-->
+            <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                <field name="goods_transit_id" invisible="1"/>
+                <field name="location_id" required="1"/>
+                <field name="qty_remaining" invisible="1"/>
+                <field name="partner_id" invisible="1"/>
+            </xpath>
+        </field>
+        </record>
+    <!--    purchase.order-->
+
+
+    <!--    stock.picking-->
+         <record id="view_picking_form_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.form.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="before">
+                    <field name="goods_in_transit_id" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    <!--    stock.picking-->
+
+
+    <!--    custody.request-->
+    <record id="goods_transit_form" model="ir.ui.view">
+        <field name="name">goods.transit.form</field>
+        <field name="model">goods.transit</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_stock_move" string="Stock Move"
+                            type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="get_stock_moves_related_to_gnt" class="oe_stat_button"
+                                icon="fa-arrows-v" type="object">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_text">Stock Moves</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="location_id" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Purchase Order Lines" >
+                            <field name="po_line_ids"
+                            context="{'default_partner_id': partner_id,'default_location_id': location_id,}">
+                                <tree string="Purchase Order Lines" editable="bottom">
+                                    <field name="po_line_id"
+                                           domain="[('partner_id','=',partner_id)]"/>
+                                    <field name="purchase_order_id" />
+                                    <field name="partner_id" />
+                                    <field name="location_id" />
+                                    <field name="destination_location_id" required="1"/>
+                                    <field name="remaining_qty" />
+                                    <field name="received_qty" />
+                                    <field name="container_id" />
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="goods_transit_tree" model="ir.ui.view">
+        <field name="name">goods.transit.tree</field>
+        <field name="model">goods.transit</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="location_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="goods_transit_action" model="ir.actions.act_window">
+        <field name="name">Goods In Transit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">goods.transit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    custody.request Form-->
+
+    <menuitem id="goods_transit_root"
+              name="Goods In Transit"
+    />
+
+    <menuitem id="goods_transit_child_menu"
+              name="Goods In Transit"
+              parent="goods_transit_root"
+              sequence="2"
+    />
+
+    <menuitem id="goods_transit_action_menu"
+              name="Goods In Transit"
+              action="goods_transit_action"
+              parent="goods_transit_child_menu"
+              sequence="4"
+    />
+
+</odoo>

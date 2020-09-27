@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+goods_transit,goods_transit,model_goods_transit,,1,1,1,1
+goods_transit_line,goods_transit_line,model_goods_transit_line,,1,1,1,1
+goods_container,goods_container,model_goods_container,,1,1,1,1
