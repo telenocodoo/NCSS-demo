@@ -225,6 +225,7 @@
 
     <menuitem id="mandate_passenger_root"
               name="Mandate and Passenger"
+              web_icon="ncss_mandate_passenger,static/src/img/mandate.png"
     />
 
 

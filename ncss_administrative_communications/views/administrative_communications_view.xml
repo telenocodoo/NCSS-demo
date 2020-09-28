@@ -651,6 +651,7 @@
 
     <menuitem id="administrative_communication_root"
               name="Administrative Communication"
+              web_icon="ncss_administrative_communications,static/src/img/communication.jpg"
     />
 
 

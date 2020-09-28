@@ -125,6 +125,7 @@
 
     <menuitem id="custody_request_root"
               name="Custody"
+              web_icon="ncss_custody_request,static/src/img/custody.png"
     />
 
     <menuitem id="custody_request_child_menu"
