@@ -11,8 +11,10 @@
                         <group>
                             <field name="debit_account_id"/>
                             <field name="credit_account_id"/>
+                            <field name="expense_account_id" domain="[('internal_group','=','expense')]"/>
                             <field name="custody_journal_id"/>
                             <field name="label"/>
+                            <field name="expense_label"/>
                         </group>
                     </page>
                 </xpath>
@@ -34,7 +36,9 @@
                                         <group>
                                             <field name="debit_account_id" />
                                             <field name="credit_account_id" />
+                                            <field name="expense_account_id" domain="[('internal_group','=','expense')]"/>
                                             <field name="custody_journal_id" />
+                                            <field name="expense_label" />
                                             <field name="label" />
                                         </group>
                                     </div>

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-29 12:50+0000\n"
-"PO-Revision-Date: 2020-09-29 12:50+0000\n"
+"POT-Creation-Date: 2020-09-14 05:32+0000\n"
+"PO-Revision-Date: 2020-09-14 05:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr "حساب البنك / الصندوق"
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__custody_id
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_root
 msgid "Custody"
-msgstr "العهد الماليه"
+msgstr "العهد"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_res_company__custody_journal_id
@@ -189,23 +189,6 @@ msgstr "بنود الصرف"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Exchange Items"
 msgstr "بنود الصرف"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_res_company__expense_account_id
-#: model:ir.model.fields,field_description:ncss_custody_request.field_res_config_settings__expense_account_id
-msgid "Expense Account"
-msgstr "حساب المصروف"
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
-msgid "Expense Journal Items"
-msgstr "بيانات قيد الصرف"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_res_company__expense_label
-#: model:ir.model.fields,field_description:ncss_custody_request.field_res_config_settings__expense_label
-msgid "Expense Label"
-msgstr "بيان قيد الصرف"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__message_follower_ids
@@ -286,19 +269,14 @@ msgid "Is Liquidated"
 msgstr "تسويه"
 
 #. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__expense_account_move_id
-msgid "Journal Expense"
-msgstr "قيد الصرف"
-
-#. module: ncss_custody_request
 #: model:ir.model,name:ncss_custody_request.model_account_move_line
 msgid "Journal Item"
 msgstr "قيود اليومية"
 
 #. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__liquidated_account_move_id
-msgid "Journal Liquidated"
-msgstr "قيد التصفيه"
+#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
+msgid "Journal Items"
+msgstr "قيود اليوميه"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_res_company__label
@@ -328,16 +306,6 @@ msgstr ""
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__liquidated
 msgid "Liquidated"
 msgstr "طلب تصفيه العهده"
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
-msgid "Liquidated Journal Items"
-msgstr "بيانات قيد التصفيه"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__liquidated_move_line_ids
-msgid "Liquidated Move Line"
-msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__message_main_attachment_id
@@ -420,7 +388,7 @@ msgstr "تم الصرف"
 #: code:addons/ncss_custody_request/models/custody_request.py:0
 #, python-format
 msgid "Please Add the reason of Refuse"
-msgstr "من فضلك اضف سبب الرفض"
+msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__reason

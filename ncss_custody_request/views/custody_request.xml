@@ -61,6 +61,8 @@
                             <field name="employee_id" attrs="{'readonly':[('state','in',['refuse','done'])]}" required="1"/>
                             <field name="date" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
                             <field name="amount" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="expense_account_move_id" readonly="1"/>
+                            <field name="liquidated_account_move_id" readonly="1"/>
                             <field name="is_direct_manager" invisible="1"/>
                             <field name="is_liquidated" invisible="1"/>
                         </group>
@@ -73,9 +75,13 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Journal Items" name="Journal Items"
+                        <page string="Expense Journal Items" name="Journal Items"
                               attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
                             <field name="move_line_ids" />
+                        </page>
+                        <page string="Liquidated Journal Items" name="Liquidated Journal Items"
+                              attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
+                            <field name="liquidated_move_line_ids" />
                         </page>
                         <page string="Exchange Items" name="Exchange Items"
                         attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
