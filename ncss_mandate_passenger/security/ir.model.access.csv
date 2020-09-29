@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 training_course,training_course,model_training_course,,1,1,1,1
 mandate_passenger,mandate_passenger,model_mandate_passenger,,1,1,1,1
 employee_degree_value,employee_degree_value,model_employee_degree_value,,1,1,1,1
+course_place,course_place,model_course_place,,1,1,1,1

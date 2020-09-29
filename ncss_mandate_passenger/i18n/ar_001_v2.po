@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-29 10:57+0000\n"
-"PO-Revision-Date: 2020-09-29 10:57+0000\n"
+"POT-Creation-Date: 2020-09-14 06:20+0000\n"
+"PO-Revision-Date: 2020-09-14 06:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,6 @@ msgid "Accounting Approve"
 msgstr "موافقه الماليه"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_needaction
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_needaction
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_needaction
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_needaction
@@ -30,7 +29,6 @@ msgid "Action Needed"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_ids
@@ -38,7 +36,6 @@ msgid "Activities"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_exception_decoration
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_exception_decoration
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_exception_decoration
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_exception_decoration
@@ -46,7 +43,6 @@ msgid "Activity Exception Decoration"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_state
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_state
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_state
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_state
@@ -54,7 +50,6 @@ msgid "Activity State"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_attachment_count
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_attachment_count
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_attachment_count
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_attachment_count
@@ -68,30 +63,9 @@ msgid "Course"
 msgstr "دوره"
 
 #. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.course_place_action
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__course_place_id
-msgid "Course Place"
-msgstr "مقر الدوره"
-
-#. module: ncss_mandate_passenger
-#: model:ir.ui.menu,name:ncss_mandate_passenger.course_place_menu
-msgid "Course Places"
-msgstr "مقر الدورات"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__course_type
 msgid "Course Type"
 msgstr "نوع الدوره"
-
-#. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Course Type :"
-msgstr "نوع الدوره"
-
-#. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Course:"
-msgstr "الدوره"
 
 #. module: ncss_mandate_passenger
 #: model:ir.actions.act_window,name:ncss_mandate_passenger.training_course_action
@@ -100,7 +74,6 @@ msgid "Courses"
 msgstr "الدورات"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__create_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__create_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__create_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__create_uid
@@ -108,7 +81,6 @@ msgid "Created by"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__create_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__create_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__create_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__create_date
@@ -149,7 +121,6 @@ msgid "Direct Manager Approve"
 msgstr "موافقه المدير المباشر"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__display_name
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__display_name
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__display_name
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__display_name
@@ -186,17 +157,6 @@ msgid "Employee Value"
 msgstr "قيمه الموظف"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__end_date
-msgid "End Date"
-msgstr "تاريخ الانتهاء"
-
-#. module: ncss_mandate_passenger
-#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
-#, python-format
-msgid "End Date Must Be Greater Than Start Date"
-msgstr "تاريخ نهايه الدوره يجب ان يكون اكبرمن تاريخ البدايه"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__course_type__external
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__training_course__type__external
 msgid "External"
@@ -214,7 +174,6 @@ msgid "First Class"
 msgstr "درجه اولي"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_follower_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_follower_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_follower_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_follower_ids
@@ -222,7 +181,6 @@ msgid "Followers"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_channel_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_channel_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_channel_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_channel_ids
@@ -230,7 +188,6 @@ msgid "Followers (Channels)"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_partner_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_partner_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_partner_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_partner_ids
@@ -243,7 +200,6 @@ msgid "Housing Value"
 msgstr "تكلفه السكن"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__id
@@ -251,7 +207,6 @@ msgid "ID"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_exception_icon
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_exception_icon
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_exception_icon
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_exception_icon
@@ -259,7 +214,6 @@ msgid "Icon"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__activity_exception_icon
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__activity_exception_icon
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__activity_exception_icon
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__activity_exception_icon
@@ -267,8 +221,6 @@ msgid "Icon to indicate an exception activity."
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_needaction
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_unread
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_needaction
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_unread
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__message_needaction
@@ -279,8 +231,6 @@ msgid "If checked, new messages require your attention."
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_has_error
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_has_sms_error
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_has_error
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_has_sms_error
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__message_has_error
@@ -307,7 +257,6 @@ msgid "Is Direct Manager"
 msgstr "مدير مباشر"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_is_follower
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_is_follower
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_is_follower
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_is_follower
@@ -315,7 +264,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course____last_update
@@ -323,7 +271,6 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__write_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__write_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__write_uid
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__write_uid
@@ -331,7 +278,6 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__write_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__write_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__write_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__write_date
@@ -339,7 +285,6 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_main_attachment_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_main_attachment_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_main_attachment_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_main_attachment_id
@@ -369,7 +314,6 @@ msgid "Mandate and Passenger"
 msgstr "الانتداب والاركاب"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_has_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_has_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_has_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_has_error
@@ -377,7 +321,6 @@ msgid "Message Delivery error"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_ids
@@ -385,19 +328,12 @@ msgid "Messages"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__name
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__name
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__name
 msgid "Name"
 msgstr "الاسم"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__need_ticket
-msgid "Need Ticket"
-msgstr "تحتاج تذكره طيران"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_date_deadline
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_date_deadline
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_date_deadline
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_date_deadline
@@ -405,7 +341,6 @@ msgid "Next Activity Deadline"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_summary
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_summary
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_summary
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_summary
@@ -413,7 +348,6 @@ msgid "Next Activity Summary"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_type_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_type_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_type_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_type_id
@@ -427,12 +361,6 @@ msgid "Number Of Days"
 msgstr "عدد الايام"
 
 #. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Number Of Days :"
-msgstr "عدد الايام"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_needaction_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_needaction_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_needaction_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_needaction_counter
@@ -440,7 +368,6 @@ msgid "Number of Actions"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_has_error_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_has_error_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_has_error_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_has_error_counter
@@ -448,7 +375,6 @@ msgid "Number of errors"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_needaction_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_needaction_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__message_needaction_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__message_needaction_counter
@@ -456,7 +382,6 @@ msgid "Number of messages which requires an action"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_has_error_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_has_error_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__message_has_error_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__message_has_error_counter
@@ -464,7 +389,6 @@ msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__message_unread_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__message_unread_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__message_unread_counter
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__message_unread_counter
@@ -484,25 +408,17 @@ msgid "Price"
 msgstr "سعر الدوره"
 
 #. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Price :"
-msgstr "سعر الدوره"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__reason
 msgid "Reason"
 msgstr "السبب"
 
 #. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.refuse_menu_action
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__state__refuse
-#: model:ir.ui.menu,name:ncss_mandate_passenger.refuse_menu
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_form
 msgid "Refuse"
 msgstr "رفض"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__activity_user_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__activity_user_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__activity_user_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_user_id
@@ -510,7 +426,6 @@ msgid "Responsible User"
 msgstr "الشخص المسؤل"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_has_sms_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_has_sms_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_has_sms_error
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_has_sms_error
@@ -528,17 +443,11 @@ msgid "Setting"
 msgstr "الاعدادات"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__start_date
-msgid "Start Date"
-msgstr "تاريخ البدايه"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__state
 msgid "State"
 msgstr "الحاله"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__activity_state
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__activity_state
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__activity_state
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__activity_state
@@ -560,30 +469,14 @@ msgid "Total"
 msgstr "اجمالي التكلفه بدون تذكره الطيران"
 
 #. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Total :"
-msgstr "اجمالي التكلفه بدون تذكره الطيران"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__total_value_without_ticket
 msgid "Total Value Without Ticket"
-msgstr "التكلفه بدون تذكره الطيران"
-
-#. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Total Value Without Ticket :"
 msgstr "التكلفه بدون تذكره الطيران"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__transportation_value
 msgid "Transportation Value"
 msgstr "تكلفه التنقل"
-
-#. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.travel_ticket_menu_action
-#: model:ir.ui.menu,name:ncss_mandate_passenger.travel_ticket_child
-msgid "Travel Ticket"
-msgstr "تذاكر الطيران"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__traveling_type
@@ -598,12 +491,6 @@ msgid "Type"
 msgstr "نوع الانتداب"
 
 #. module: ncss_mandate_passenger
-#: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
-msgid "Type :"
-msgstr "نوع الانتداب"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__activity_exception_decoration
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__activity_exception_decoration
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__activity_exception_decoration
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__activity_exception_decoration
@@ -611,7 +498,6 @@ msgid "Type of the exception activity on record."
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_unread
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_unread
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_unread
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_unread
@@ -619,7 +505,6 @@ msgid "Unread Messages"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_unread_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_unread_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__message_unread_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_unread_counter
@@ -633,25 +518,6 @@ msgid "VIP"
 msgstr "رجال اعمال"
 
 #. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.accounting_approve_action
-#: model:ir.ui.menu,name:ncss_mandate_passenger.accounting_approve_menu
-msgid "Waiting Accounting Approve"
-msgstr "في انتظار موافقه الماليه"
-
-#. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.department_manager_approve_action
-#: model:ir.ui.menu,name:ncss_mandate_passenger.department_manager_approve_menu
-msgid "Waiting Department Manager Approve"
-msgstr "في انتظار موافقه مديرالقسم"
-
-#. module: ncss_mandate_passenger
-#: model:ir.actions.act_window,name:ncss_mandate_passenger.direct_manager_approve_action
-#: model:ir.ui.menu,name:ncss_mandate_passenger.direct_manager_approve_menu
-msgid "Waiting Direct Manager Approve"
-msgstr "في انتظار موافقه المدير المباشر"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__website_message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__website_message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__website_message_ids
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__website_message_ids
@@ -659,16 +525,10 @@ msgid "Website Messages"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,help:ncss_mandate_passenger.field_course_place__website_message_ids
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_employee_degree_value__website_message_ids
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_mandate_passenger__website_message_ids
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__website_message_ids
 msgid "Website communication history"
-msgstr ""
-
-#. module: ncss_mandate_passenger
-#: model:ir.model,name:ncss_mandate_passenger.model_course_place
-msgid "course.place"
 msgstr ""
 
 #. module: ncss_mandate_passenger

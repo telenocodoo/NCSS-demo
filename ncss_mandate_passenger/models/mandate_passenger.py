@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+from datetime import date
+from datetime import datetime
+
+class CoursePlace(models.Model):
+    _name = 'course.place'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
+    name = fields.Char()
+    need_ticket = fields.Boolean(default=True)
 
 
 class EmployeeDegreeValue(models.Model):
@@ -30,7 +39,23 @@ class TrainingCourse(models.Model):
     description = fields.Text()
     type = fields.Selection([('internal', 'Internal'), ('external', 'External')])
     price = fields.Float()
-    number_of_days = fields.Integer()
+    number_of_days = fields.Float(compute='compute_number_of_days', store=True)
+    start_date = fields.Date()
+    end_date = fields.Date()
+
+    @api.constrains('start_date', 'end_date')
+    def constrains_start_end_date(self):
+        for record in self:
+            if record.end_date < record.start_date:
+                raise UserError(_("End Date Must Be Greater Than Start Date"))
+
+    @api.depends('start_date', 'end_date')
+    def compute_number_of_days(self):
+        if self.start_date and self.end_date:
+            date_format = "%Y-%m-%d"
+            start_date = datetime.strptime(str(self.start_date), date_format)
+            end_date = datetime.strptime(str(self.end_date), date_format)
+            self.number_of_days = float((end_date-start_date).days)
 
 
 class MandatePassenger(models.Model):
@@ -44,6 +69,7 @@ class MandatePassenger(models.Model):
                                       ('manager', 'Manager'),
                                       ])
     employee_degree_id = fields.Many2one('employee.degree.value')
+    course_place_id = fields.Many2one('course.place')
     type = fields.Selection([('course', 'Course'),
                               ('mandate', 'Mandate'),
                               ('work_shop', 'work shop'),
