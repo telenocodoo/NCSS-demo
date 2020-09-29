@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    asset.account.request-->
+    <record id="asset_account_request_form" model="ir.ui.view">
+        <field name="name">asset.account.request.form</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_assign_to_employee" string="Assign To Employee"
+                            states='draft'
+                            type="object" class="oe_highlight"/>
+                    <button name="action_clearance" string="Clearance"
+                            states='assigned'
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft"
+                            states='clearance'
+                            type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,assigned,clearance"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"  required="1"/>
+                            <field name="type" required="1"/>
+                            <field name="asset_id"
+                                   attrs="{'required':[('type','=','asset')],'invisible':[('type','!=','asset')]}"/>
+                            <field name="description"
+                                   attrs="{'required':[('type','=','non_asset')],'invisible':[('type','!=','non_asset')]}"/>
+                            <field name="type_of_disclaimer" />
+                        </group>
+                        <group>
+                            <field name="date" />
+                            <field name="date_of_disclaimer" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="asset_account_request_tree" model="ir.ui.view">
+        <field name="name">asset.account.request</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id" />
+                <field name="type" />
+                <field name="asset_id" />
+                <field name="description" />
+                <field name="date" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="asset_account_request_action" model="ir.actions.act_window">
+        <field name="name">Assets Assignation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">asset.account.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    asset.account.request-->
+
+    <!--    employee_assets-->
+    <record id="employee_assets_form" model="ir.ui.view">
+        <field name="name">employee.assets.form</field>
+        <field name="model">employee.assets</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_first_approve" string="Approve"
+                            states='draft'
+                            type="object" class="oe_highlight"/>
+                    <button name="action_clearance" string="Clearance"
+                            states='first_approve'
+                            type="object" class="oe_highlight"/>
+                    <button name="action_done" string="Done"
+                            states='clearance'
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft"
+                            states='done'
+                            type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,first_approve,clearance,done"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"  required="1"/>
+                            <field name="type_of_disclaimer" required="1"/>
+                        </group>
+                        <group>
+                            <field name="description" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Assets" name="assets">
+                            <field name="asset_account_ids">
+                                <tree editable="bottom" create="false">
+                                    <field name="employee_id" readonly="1" force_save="True"/>
+                                    <field name="custody_request_id" invisible="1"/>
+                                    <field name="type" readonly="1" force_save="True"/>
+                                    <field name="asset_id" readonly="1" force_save="True"/>
+                                    <field name="description" readonly="1" force_save="True"/>
+                                    <field name="date" readonly="1" force_save="True"/>
+                                    <field name="is_disclaimer" />
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_assets_tree" model="ir.ui.view">
+        <field name="name">employee.assets</field>
+        <field name="model">employee.assets</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id" />
+                <field name="type_of_disclaimer" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="employee_assets_action" model="ir.actions.act_window">
+        <field name="name">Employee Assets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.assets</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    asset.account.request-->
+
+    <menuitem id="asset_account_request_root"
+              name="Clearance"
+    />
+
+    <menuitem id="asset_account_request_child_menu"
+              name="Assets Assignation"
+              parent="asset_account_request_root"
+              sequence="2"
+    />
+
+    <menuitem id="asset_account_request_action_menu"
+              name="Assets Assignation"
+              action="asset_account_request_action"
+              parent="asset_account_request_child_menu"
+              sequence="2"
+    />
+
+    <menuitem id="employee_assets_menu"
+              name="Employee Assets Disclaimer"
+              parent="asset_account_request_root"
+              sequence="4"
+    />
+
+    <menuitem id="employee_assets_action_menu"
+              name="Employee Assets Disclaimer"
+              action="employee_assets_action"
+              parent="employee_assets_menu"
+              sequence="2"
+    />
+
+</odoo>
