@@ -87,6 +87,8 @@
                         attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
                             <field name="exchange_item_ids" attrs="{'readonly':[('state','in',['refuse','done'])]}">
                                 <tree editable="bottom">
+                                    <field name="custody_description_id"
+                                    options="{'no_create': True,'no_edit':True}"/>
                                     <field name="date"/>
                                     <field name="amount"/>
                                     <field name="attach_invoice"/>
@@ -129,6 +131,47 @@
     </record>
     <!--    custody.request Form-->
 
+   <!--    custody.description-->
+    <record id="custody_description_form" model="ir.ui.view">
+        <field name="name">custody.description.form</field>
+        <field name="model">custody.description</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="custody_description_tree" model="ir.ui.view">
+        <field name="name">custody.description.tree</field>
+        <field name="model">custody.description</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="custody_description_action" model="ir.actions.act_window">
+        <field name="name">Custody Description</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.description</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    custody.description Form-->
+
     <menuitem id="custody_request_root"
               name="Custody"
               web_icon="ncss_custody_request,static/src/img/custody.png"
@@ -151,6 +194,13 @@
               action="custody_request_action"
               parent="custody_request_child_menu"
               sequence="4"
+    />
+
+    <menuitem id="custody_description_action_menu"
+              name="Custody Description"
+              action="custody_description_action"
+              parent="custody_request_setting_menu"
+              sequence="6"
     />
 
 

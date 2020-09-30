@@ -3,6 +3,13 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 
+class CustodyDescription(models.Model):
+    _name = 'custody.description'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
+    name = fields.Char()
+
+
 class CustodyRequest(models.Model):
     _name = 'custody.request'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -151,6 +158,7 @@ class CustodyRequestLine(models.Model):
     date = fields.Date()
     description = fields.Text()
     attach_invoice = fields.Binary()
+    custody_description_id = fields.Many2one('custody.description')
     custody_id = fields.Many2one('custody.request')
 
 
