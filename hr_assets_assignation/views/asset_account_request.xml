@@ -11,7 +11,7 @@
                     <button name="action_assign_to_employee" string="Assign To Employee"
                             states='draft'
                             type="object" class="oe_highlight"/>
-                    <button name="action_clearance" string="Clearance"
+                    <button name="action_clearance" string="Clearance From Employee"
                             states='assigned'
                             type="object" class="oe_highlight"/>
                     <button name="set_to_draft" string="Set To Draft"
@@ -80,7 +80,7 @@
                     <button name="action_first_approve" string="Approve"
                             states='draft'
                             type="object" class="oe_highlight"/>
-                    <button name="action_clearance" string="Clearance"
+                    <button name="action_clearance" string="Clearance From Employee"
                             states='first_approve'
                             type="object" class="oe_highlight"/>
                     <button name="action_done" string="Done"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 07:49+0000\n"
-"PO-Revision-Date: 2020-09-30 07:49+0000\n"
+"POT-Creation-Date: 2020-09-29 13:15+0000\n"
+"PO-Revision-Date: 2020-09-29 13:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -117,14 +117,10 @@ msgstr "الاتنين"
 
 #. module: hr_assets_assignation
 #: model:ir.ui.menu,name:hr_assets_assignation.asset_account_request_root
-msgid "Clearance"
-msgstr "العهد العينيه"
-
-#. module: hr_assets_assignation
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.asset_account_request_form
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_form
-msgid "Clearance From Employee"
-msgstr "اخلاء الطرف"
+msgid "Clearance"
+msgstr "العهد العينيه"
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__is_disclaimer
