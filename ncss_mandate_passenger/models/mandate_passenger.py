@@ -4,6 +4,25 @@ from odoo.exceptions import UserError
 from datetime import date
 from datetime import datetime
 
+
+class BudgetAllocatedTraining(models.Model):
+    _name = 'budget.allocated.training'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _rec_name = "department_id"
+
+    department_id = fields.Many2one('hr.department')
+    budget = fields.Float()
+    expensed_from_budget = fields.Float()
+    remaining_from_budget = fields.Float(compute="compute_remaining_from_budget")
+    start_date = fields.Date()
+    end_date = fields.Date()
+
+    @api.depends('budget','expensed_from_budget')
+    def compute_remaining_from_budget(self):
+        for record in self:
+            record.remaining_from_budget = record.budget - record.expensed_from_budget
+
+
 class CoursePlace(models.Model):
     _name = 'course.place'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -39,7 +58,7 @@ class TrainingCourse(models.Model):
     description = fields.Text()
     type = fields.Selection([('internal', 'Internal'), ('external', 'External')])
     price = fields.Float()
-    number_of_days = fields.Float(compute='compute_number_of_days', store=True)
+    number_of_days = fields.Float()
     start_date = fields.Date()
     end_date = fields.Date()
 
@@ -49,8 +68,8 @@ class TrainingCourse(models.Model):
             if record.end_date < record.start_date:
                 raise UserError(_("End Date Must Be Greater Than Start Date"))
 
-    @api.depends('start_date', 'end_date')
-    def compute_number_of_days(self):
+    @api.onchange('start_date', 'end_date')
+    def onchange_start_end_date(self):
         if self.start_date and self.end_date:
             date_format = "%Y-%m-%d"
             start_date = datetime.strptime(str(self.start_date), date_format)
@@ -87,6 +106,7 @@ class MandatePassenger(models.Model):
     total = fields.Float(compute='get_total_expenses')
     Subsistence_rate = fields.Float()
     is_direct_manager = fields.Boolean(compute='get_direct_manager')
+    is_department_manager = fields.Boolean(compute='compute_department_manager')
     traveling_type = fields.Selection([('tourism', 'tourism'),
                                        ('first_class', 'First Class'),
                                        ('vip', 'VIP'),
@@ -150,24 +170,41 @@ class MandatePassenger(models.Model):
         for record in self:
             if record.employee_id and record.employee_id.parent_id:
                 if record.employee_id.parent_id.id == current_user_id:
-                    print(record.employee_id.parent_id.name)
-                    print(record.employee_id.parent_id.id)
-                    print(current_user_id)
                     self.is_direct_manager = True
                 else:
                     self.is_direct_manager = False
             else:
                 self.is_direct_manager = False
-            # employee_ids = self.env['hr.employee'].search([('parent_id.id', '=', current_user_id)])
-            # print(record.employee_id.name)
-            # print(record.employee_id.parent_id.name)
-            # self.is_direct_manager = True
+
+    def compute_department_manager(self):
+        current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+        for record in self:
+            if record.employee_id.department_id and record.employee_id.department_id.manager_id:
+                if record.employee_id.department_id.manager_id.id == current_user_id:
+                    budget_obj = self.env['budget.allocated.training'].search(
+                        [('department_id.id', '=', record.employee_id.department_id.id)], limit=1)
+                    if budget_obj:
+                        if budget_obj.remaining_from_budget > record.total:
+                            self.is_department_manager = True
+                        else:
+                            self.is_department_manager = False
+                    else:
+                        self.is_department_manager = False
+                else:
+                    self.is_department_manager = False
+            else:
+                self.is_department_manager = False
 
     def action_direct_manager_approve(self):
         self.state = 'direct_manager_approve'
 
     def action_department_manager_approve(self):
-        self.state = 'department_manager_approve'
+        for record in self:
+            budget_obj = self.env['budget.allocated.training'].search(
+                [('department_id.id', '=', record.employee_id.department_id.id)], limit=1)
+            if budget_obj:
+                budget_obj.expensed_from_budget += record.total
+            record.state = 'department_manager_approve'
 
     def action_accounting_approve(self):
         self.state = 'accounting_approve'

@@ -140,7 +140,6 @@
         </field>
     </record>
 
-
     <record id="employee_assets_action" model="ir.actions.act_window">
         <field name="name">Employee Assets</field>
         <field name="type">ir.actions.act_window</field>
@@ -151,6 +150,7 @@
 
     <menuitem id="asset_account_request_root"
               name="Clearance"
+              web_icon="hr_assets_assignation,static/src/img/asset.png"
     />
 
     <menuitem id="asset_account_request_child_menu"
