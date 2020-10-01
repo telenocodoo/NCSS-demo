@@ -116,18 +116,156 @@
                 <field name="employee_id"/>
                 <field name="date" />
                 <field name="amount" />
-<!--                <field name="remaining_amount" />-->
                 <field name="description"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
+
+    <record id="custody_request_graph" model="ir.ui.view">
+        <field name="name">custody.request.graph</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="employee_id"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="custody_request_pivot" model="ir.ui.view">
+        <field name="name">custody.request.pivot</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="employee_id" type="row"/>
+                <field name="amount" type="measure"/>
+                <field name="date" type="row"/>
+                <field name="state" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="custody_request_calendar" model="ir.ui.view">
+        <field name="name">custody.request.calendar</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date" color="state" hide_time="true" event_limit="5">
+                <field name="employee_id" avatar_field="image_128"/>
+                <field name="amount"/>
+<!--                <field name="payment_term_id"/>-->
+            </calendar>
+        </field>
+    </record>
+
+    <record id="custody_request_kanban" model="ir.ui.view">
+        <field name="name">custody.request.kanban</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="employee_id"/>
+                <field name="date" />
+                <field name="amount" />
+                <field name="description"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_crm_project_kanban">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="employee_id"/></strong>
+                                <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>Date : <field name="date"/></li>
+                                        <li>Amount: <field name="amount"/></li>
+                                        <li>Description : <field name="description"/></li>
+                                        <li>State : <field name="state"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 
 
     <record id="custody_request_action" model="ir.actions.act_window">
         <field name="name">Custody Request</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">custody.request</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form,graph,pivot,calendar</field>
+    </record>
+
+    <record id="custody_request_manager_action" model="ir.actions.act_window">
+        <field name="name">Waiting Direct Manager Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','draft')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_department_action" model="ir.actions.act_window">
+        <field name="name">Waiting Department Manager Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','direct_manager_approve')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_center_action" model="ir.actions.act_window">
+        <field name="name">Waiting Center Manager Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','department_manager_approve')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_accounting_action" model="ir.actions.act_window">
+        <field name="name">Waiting Accounting Manager Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','center_manager_approve')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_accounting_approve_action" model="ir.actions.act_window">
+        <field name="name">Accounting Manager Approved</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','accounting_approve')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_refuse_action" model="ir.actions.act_window">
+        <field name="name">Refused</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','refuse')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_paid_action" model="ir.actions.act_window">
+        <field name="name">Paid</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','paid')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_in_progress_action" model="ir.actions.act_window">
+        <field name="name">In Progress</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','in_progress')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_liquidated_action" model="ir.actions.act_window">
+        <field name="name">Liquidated</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','liquidated')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <record id="custody_request_done_action" model="ir.actions.act_window">
+        <field name="name">Done</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request</field>
+        <field name="domain">[('state','=','done')]</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
     <!--    custody.request Form-->
 
@@ -178,50 +316,89 @@
     />
 
     <menuitem id="custody_request_child_menu"
-              name="Custody Request"
+              name="Custody Request Orders"
               parent="custody_request_root"
               sequence="2"
-    />
-
-    <menuitem id="custody_request_setting_menu"
-              name="Setting"
-              parent="custody_request_root"
-              sequence="4"
     />
 
     <menuitem id="custody_request_action_menu"
               name="Custody Request"
               action="custody_request_action"
               parent="custody_request_child_menu"
+              sequence="2"
+    />
+    <menuitem id="custody_request_manager_action_menu"
+              name="Waiting Direct Manager Approve"
+              action="custody_request_manager_action"
+              parent="custody_request_child_menu"
               sequence="4"
+    />
+    <menuitem id="custody_request_department_action_menu"
+              name="Waiting Department Manager Approve"
+              action="custody_request_department_action"
+              parent="custody_request_child_menu"
+              sequence="6"
+    />
+    <menuitem id="custody_request_center_action_menu"
+              name="Waiting Center Manager Approve"
+              action="custody_request_center_action"
+              parent="custody_request_child_menu"
+              sequence="8"
+    />
+    <menuitem id="custody_request_accounting_action_menu"
+              name="Waiting Accounting Manager Approve"
+              action="custody_request_accounting_action"
+              parent="custody_request_child_menu"
+              sequence="10"
+    />
+    <menuitem id="custody_accounting_approve_action_menu"
+              name="Accounting Manager Approved"
+              action="custody_accounting_approve_action"
+              parent="custody_request_child_menu"
+              sequence="12"
+    />
+    <menuitem id="custody_request_paid_action_menu"
+              name="Paid"
+              action="custody_request_paid_action"
+              parent="custody_request_child_menu"
+              sequence="14"
+    />
+    <menuitem id="custody_request_in_progress_action_menu"
+              name="In Progress"
+              action="custody_request_in_progress_action"
+              parent="custody_request_child_menu"
+              sequence="16"
+    />
+    <menuitem id="custody_request_liquidated_action_menu"
+              name="Liquidated"
+              action="custody_request_liquidated_action"
+              parent="custody_request_child_menu"
+              sequence="18"
+    />
+    <menuitem id="custody_request_done_action_menu"
+              name="Done"
+              action="custody_request_done_action"
+              parent="custody_request_child_menu"
+              sequence="20"
+    />
+    <menuitem id="custody_request_refuse_action_menu"
+              name="Refused"
+              action="custody_request_refuse_action"
+              parent="custody_request_child_menu"
+              sequence="22"
     />
 
     <menuitem id="custody_description_action_menu"
               name="Custody Description"
               action="custody_description_action"
-              parent="custody_request_setting_menu"
-              sequence="6"
+              parent="custody_request_root"
+              sequence="4"
     />
 
-
-
-
-
-
-<!--    <menuitem id="mandate_passenger_setting_child"-->
-<!--              name="Courses"-->
-<!--              action="training_course_action"-->
-<!--              parent="mandate_passenger_setting_menu"-->
-<!--              sequence="4"-->
-<!--    />-->
-
-<!--    <menuitem id="employee_degree_setting_child"-->
-<!--              name="Employee Degree"-->
-<!--              action="employee_degree_value_action"-->
-<!--              parent="mandate_passenger_setting_menu"-->
-<!--              sequence="4"-->
-<!--    />-->
-
-
+    <menuitem id="custody_request_setting_menu"
+              name="Setting"
+              parent="custody_request_root"
+              sequence="6"
+    />
 
 </odoo>
