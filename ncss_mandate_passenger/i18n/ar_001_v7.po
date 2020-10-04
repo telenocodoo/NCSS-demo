@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-04 06:09+0000\n"
-"PO-Revision-Date: 2020-10-04 06:09+0000\n"
+"POT-Creation-Date: 2020-09-30 07:15+0000\n"
+"PO-Revision-Date: 2020-09-30 07:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -56,11 +56,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__activity_state
 msgid "Activity State"
 msgstr ""
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__allowed_period_between_courses
-msgid "Allowed Period Between Courses"
-msgstr "الفتره المسموحه بين الدورتين"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__message_attachment_count
@@ -366,11 +361,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__is_free
-msgid "Is Free"
-msgstr "مجاني"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value____last_update
@@ -497,16 +487,6 @@ msgid "Number Of Days :"
 msgstr "عدد الايام"
 
 #. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__number_of_free_courses_per_year
-msgid "Number Of Free Courses Per Year"
-msgstr "عدد الدورات المجانيه خلال العام"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__number_of_paid_courses_per_year
-msgid "Number Of Paid Courses Per Year"
-msgstr "عدد الدورات المدفوعه خلال العام"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__message_needaction_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_needaction_counter
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__message_needaction_counter
@@ -554,12 +534,6 @@ msgstr ""
 #. module: ncss_mandate_passenger
 #: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
 #, python-format
-msgid "Please Add Employee"
-msgstr "من فضلك اضف موظف !"
-
-#. module: ncss_mandate_passenger
-#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
-#, python-format
 msgid "Please Add the reason of Refuse"
 msgstr "من فضلك اضف سبب الرفض"
 
@@ -585,7 +559,7 @@ msgstr "السبب"
 #: model:ir.ui.menu,name:ncss_mandate_passenger.refuse_menu
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_form
 msgid "Refuse"
-msgstr "رفض"
+msgstr "مرفوض"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__remaining_from_budget
@@ -765,28 +739,6 @@ msgstr ""
 #: model:ir.model.fields,help:ncss_mandate_passenger.field_training_course__website_message_ids
 msgid "Website communication history"
 msgstr ""
-
-#. module: ncss_mandate_passenger
-#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
-#, python-format
-msgid "You aren't allowed to Request Extra Course last course you take at %s"
-msgstr "لايمكنك طلب دورات اضافيه اخر دوره تمت بتاريخ "
-
-#. module: ncss_mandate_passenger
-#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
-#, python-format
-msgid ""
-"You aren't allowed to Request Extra Free Courses The Number Of Courses "
-"Allowed For You Is %s"
-msgstr "لايمكنك طلب دورات مجانيه اضافيه. عدد الدورات المسموح لك هو "
-
-#. module: ncss_mandate_passenger
-#: code:addons/ncss_mandate_passenger/models/mandate_passenger.py:0
-#, python-format
-msgid ""
-"You aren't allowed to Request Extra Paid Courses The Number Of Courses "
-"Allowed For You Is %s"
-msgstr "لايمكنك طلب دورات مدفوعه اضافيه. عدد الدورات المسموح لك هو "
 
 #. module: ncss_mandate_passenger
 #: model:ir.model,name:ncss_mandate_passenger.model_budget_allocated_training

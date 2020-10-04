@@ -42,6 +42,9 @@ class EmployeeDegreeValue(models.Model):
                                        ('first_class', 'First Class'),
                                        ('vip', 'VIP'),
                                        ])
+    number_of_paid_courses_per_year = fields.Float()
+    number_of_free_courses_per_year = fields.Float()
+    allowed_period_between_courses = fields.Float()
 
 
 class HrEmployee(models.Model):
@@ -61,6 +64,7 @@ class TrainingCourse(models.Model):
     number_of_days = fields.Float()
     start_date = fields.Date()
     end_date = fields.Date()
+    is_free = fields.Boolean()
 
     @api.constrains('start_date', 'end_date')
     def constrains_start_end_date(self):
@@ -103,7 +107,7 @@ class MandatePassenger(models.Model):
     housing_value = fields.Float(compute='get_total_value')
     transportation_value = fields.Float(compute='get_total_value')
     daily_expenses = fields.Float(compute='get_total_value')
-    total = fields.Float(compute='get_total_expenses')
+    total = fields.Float(compute='get_total_expenses', store=True)
     Subsistence_rate = fields.Float()
     is_direct_manager = fields.Boolean(compute='get_direct_manager')
     is_department_manager = fields.Boolean(compute='compute_department_manager')
@@ -128,11 +132,59 @@ class MandatePassenger(models.Model):
     def onchange_company_id(self):
         for record in self:
             if record.course_id:
+                if not record.employee_id:
+                    raise UserError(_("Please Add Employee"))
                 record.description = record.course_id.description
                 record.course_type = record.course_id.type
                 record.price = record.course_id.price
                 record.number_of_days = record.course_id.number_of_days
                 record.description = record.course_id.description
+                course_obj = self.search(
+                    [('employee_id', '=', self.employee_id.id), ('state', '=', 'accounting_approve')])
+                if course_obj:
+                    print(">>>>>>>>>>>>>>>>.", course_obj[-1])
+                    print(">>>>>>>>>>>>>>>>.", course_obj)
+                    start_year = date(self.course_id.end_date.year, 1, 1)
+                    end_year = date(self.course_id.end_date.year, 12, 31)
+                    print("start_year", self.course_id.end_date)
+                    print("start_year", start_year)
+                    print("end_year", end_year)
+                    courses_approved_within_year = self.search_count([('employee_id', '=', self.employee_id.id),
+                                                                     ('state', '=', 'accounting_approve'),
+                                                                     ('course_id.end_date', '>=', start_year),
+                                                                     ('course_id.end_date', '<=', end_year),
+                                                                     ('course_id.is_free', '=', self.course_id.is_free),
+                                                                     ])
+                    print("self.course_id.is_free", self.course_id.is_free)
+                    print("courses_approved_within_year", courses_approved_within_year)
+                    if self.course_id.is_free:
+                        if courses_approved_within_year >= self.employee_degree_id.number_of_free_courses_per_year:
+                            print("111111111111111111111")
+                            raise UserError(_("You aren't allowed to Request Extra Free Courses "
+                                              "The Number Of Courses "
+                                              "Allowed For "
+                                              "You Is"
+                                              " %s" % self.employee_degree_id.number_of_free_courses_per_year))
+                    else:
+                        if courses_approved_within_year >= self.employee_degree_id.number_of_paid_courses_per_year:
+                            print("2222222222222222222")
+                            raise UserError(_("You aren't allowed to Request Extra Paid Courses "
+                                              "The Number Of Courses "
+                                              "Allowed For "
+                                              "You Is"
+                                              " %s" % self.employee_degree_id.number_of_paid_courses_per_year))
+                    date_format = "%Y-%m-%d"
+                    last_course_end_date = datetime.strptime(str(course_obj[-1].course_id.end_date), date_format)
+                    current_course_start_date = datetime.strptime(str(self.course_id.start_date), date_format)
+                    difference_between_last_two_courses = float((current_course_start_date - last_course_end_date).days)
+
+                    print("last_course_date", last_course_end_date)
+                    print("current_course_date", current_course_start_date)
+                    print("difference_between_last_two_courses", difference_between_last_two_courses)
+                    print("allowed_period_between_courses", self.employee_degree_id.allowed_period_between_courses)
+                    if difference_between_last_two_courses < self.employee_degree_id.allowed_period_between_courses:
+                        raise UserError(_("You aren't allowed to Request Extra Course "
+                                          "last course you take at %s" % course_obj[-1].course_id.end_date))
 
     @api.depends('employee_degree_id', 'course_type', 'number_of_days')
     def get_total_value_without_ticket(self):

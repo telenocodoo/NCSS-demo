@@ -62,11 +62,101 @@
         </field>
     </record>
 
+    <record id="asset_account_request_graph" model="ir.ui.view">
+        <field name="name">asset.account.request.graph</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="employee_id"/>
+                <field name="asset_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="asset_account_request_pivot" model="ir.ui.view">
+        <field name="name">asset.account.request.pivot</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="employee_id" type="row"/>
+                <field name="asset_id" type="measure"/>
+                <field name="type" type="row"/>
+                <field name="state" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="asset_account_request_calendar" model="ir.ui.view">
+        <field name="name">asset.account.request.calendar</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <calendar color="state" date_start='date' hide_time="true" event_limit="5">
+                <field name="employee_id" avatar_field="image_128"/>
+                <field name="asset_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="asset_account_request_kanban" model="ir.ui.view">
+        <field name="name">asset.account.request.kanban</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="employee_id" />
+                <field name="type" />
+                <field name="asset_id" />
+                <field name="description" />
+                <field name="date" />
+                <field name="state" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_crm_project_kanban">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="employee_id"/></strong>
+                                <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>Type : <field name="type"/></li>
+                                        <li>Asset : <field name="asset_id"/></li>
+                                        <li>Date : <field name="date"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
     <record id="asset_account_request_action" model="ir.actions.act_window">
         <field name="name">Assets Assignation</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">asset.account.request</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,calendar,pivot,graph,form</field>
+    </record>
+
+    <record id="waiting_assign_to_employee_action" model="ir.actions.act_window">
+        <field name="name">Waiting Assignation To Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">asset.account.request</field>
+        <field name="domain">[('state','=','draft')]</field>
+        <field name="view_mode">kanban,tree,calendar,pivot,graph,form</field>
+    </record>
+
+    <record id="waiting_employee_clearance_action" model="ir.actions.act_window">
+        <field name="name">Waiting For Clearance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">asset.account.request</field>
+        <field name="domain">[('state','=','assigned')]</field>
+        <field name="view_mode">kanban,tree,calendar,pivot,graph,form</field>
+    </record>
+
+    <record id="employee_clearance_done_action" model="ir.actions.act_window">
+        <field name="name">Clearance Done</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">asset.account.request</field>
+        <field name="domain">[('state','=','clearance')]</field>
+        <field name="view_mode">kanban,tree,calendar,pivot,graph,form</field>
     </record>
     <!--    asset.account.request-->
 
@@ -136,15 +226,106 @@
             <tree string="">
                 <field name="employee_id" />
                 <field name="type_of_disclaimer" />
+                <field name="state" />
             </tree>
         </field>
     </record>
+
+
+
+<!--    <record id="employee_assets_graph" model="ir.ui.view">-->
+<!--        <field name="name">employee.assets.graph</field>-->
+<!--        <field name="model">employee.assets</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <graph>-->
+<!--                <field name="employee_id"/>-->
+<!--                <field name="type_of_disclaimer" type="measure"/>-->
+<!--            </graph>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="employee_assets_pivot" model="ir.ui.view">-->
+<!--        <field name="name">employee.assets.pivot</field>-->
+<!--        <field name="model">employee.assets</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <pivot>-->
+<!--                <field name="employee_id" type="row"/>-->
+<!--                <field name="type_of_disclaimer" type="measure"/>-->
+<!--                <field name="state" type="row"/>-->
+<!--            </pivot>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="employee_assets_calendar" model="ir.ui.view">-->
+<!--        <field name="name">employee.assets.calendar</field>-->
+<!--        <field name="model">employee.assets</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <calendar color="state" date_start='date' hide_time="true" event_limit="5">-->
+<!--                <field name="employee_id" avatar_field="image_128"/>-->
+<!--                <field name="type_of_disclaimer"/>-->
+<!--            </calendar>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="employee_assets_kanban" model="ir.ui.view">
+        <field name="name">employee.assets.kanban</field>
+        <field name="model">employee.assets</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="employee_id" />
+                <field name="type_of_disclaimer" />
+                <field name="state" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_crm_project_kanban">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="employee_id"/></strong>
+                                <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>Type Of Disclaimer : <field name="type_of_disclaimer"/></li>
+                                        <li>State : <field name="state"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+
 
     <record id="employee_assets_action" model="ir.actions.act_window">
         <field name="name">Employee Assets</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">employee.assets</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record id="waiting_approve_action" model="ir.actions.act_window">
+        <field name="name">Employee Assets Waiting Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.assets</field>
+        <field name="domain">[('state','=','draft')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record id="waiting_approve_on_clearance_action" model="ir.actions.act_window">
+        <field name="name">Waiting Approve On Clearance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.assets</field>
+        <field name="domain">[('state','=','first_approve')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record id="clearance_employee_done_action" model="ir.actions.act_window">
+        <field name="name">Clearance Done</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.assets</field>
+        <field name="domain">[('state','=','clearance')]</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
     <!--    asset.account.request-->
 
@@ -160,11 +341,33 @@
     />
 
     <menuitem id="asset_account_request_action_menu"
-              name="Assets Assignation"
+              name="Assets Assignation Request"
               action="asset_account_request_action"
               parent="asset_account_request_child_menu"
               sequence="2"
     />
+
+    <menuitem id="waiting_assignation_action_menu"
+              name="Waiting Assignation To Employee"
+              action="waiting_assign_to_employee_action"
+              parent="asset_account_request_child_menu"
+              sequence="4"
+    />
+
+    <menuitem id="waiting_clearance_action_menu"
+              name="Waiting For Clearance"
+              action="waiting_employee_clearance_action"
+              parent="asset_account_request_child_menu"
+              sequence="6"
+    />
+
+    <menuitem id="clearance_done_action_menu"
+              name="Clearance Done"
+              action="employee_clearance_done_action"
+              parent="asset_account_request_child_menu"
+              sequence="8"
+    />
+
 
     <menuitem id="employee_assets_menu"
               name="Employee Assets Disclaimer"
@@ -178,5 +381,25 @@
               parent="employee_assets_menu"
               sequence="2"
     />
+
+    <menuitem id="employee_assets_waiting_approve_menu"
+              name="Employee Assets Waiting Approve"
+              action="waiting_approve_action"
+              parent="employee_assets_menu"
+              sequence="4"
+    />
+    <menuitem id="waiting_approve_on_clearance_menu"
+              name="Waiting Approve On Clearance"
+              action="waiting_approve_on_clearance_action"
+              parent="employee_assets_menu"
+              sequence="6"
+    />
+    <menuitem id="clearance_employee_done_menu"
+              name="Clearance Done"
+              action="clearance_employee_done_action"
+              parent="employee_assets_menu"
+              sequence="8"
+    />
+
 
 </odoo>

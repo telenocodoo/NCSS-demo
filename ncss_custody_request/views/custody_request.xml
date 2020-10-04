@@ -153,7 +153,6 @@
             <calendar date_start="date" color="state" hide_time="true" event_limit="5">
                 <field name="employee_id" avatar_field="image_128"/>
                 <field name="amount"/>
-<!--                <field name="payment_term_id"/>-->
             </calendar>
         </field>
     </record>

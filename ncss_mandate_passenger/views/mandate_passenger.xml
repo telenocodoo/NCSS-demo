@@ -14,8 +14,6 @@
         </record>
     <!--    hr employee-->
 
-
-
     <!--    training_course  -->
     <record id="training_course_form" model="ir.ui.view">
         <field name="name">training.course.form</field>
@@ -27,6 +25,7 @@
                         <group>
                             <field name="name" required="1"/>
                             <field name="type" />
+                            <field name="is_free" />
                             <field name="price" />
                         </group>
                         <group>
@@ -173,6 +172,9 @@
                         <group>
                             <field name="name" />
                             <field name="traveling_type" />
+                            <field name="number_of_paid_courses_per_year" />
+                            <field name="number_of_free_courses_per_year" />
+                            <field name="allowed_period_between_courses" />
                         </group>
                         <group>
                             <field name="internal_day_value" />
@@ -198,6 +200,9 @@
                 <field name="traveling_type" />
                 <field name="internal_day_value" />
                 <field name="external_day_value" />
+                <field name="number_of_paid_courses_per_year" />
+                <field name="number_of_free_courses_per_year" />
+                <field name="allowed_period_between_courses" />
             </tree>
         </field>
     </record>
@@ -314,6 +319,41 @@
         </field>
     </record>
 
+    <record id="mandate_passenger_graph" model="ir.ui.view">
+        <field name="name">mandate.passenger.graph</field>
+        <field name="model">mandate.passenger</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="employee_id"/>
+                <field name="total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="mandate_passenger_pivot" model="ir.ui.view">
+        <field name="name">mandate.passenger.pivot</field>
+        <field name="model">mandate.passenger</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="employee_id" type="row"/>
+                <field name="total" type="measure"/>
+                <field name="type" type="row"/>
+                <field name="state" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+<!--    <record id="mandate_passenger_calendar" model="ir.ui.view">-->
+<!--        <field name="name">mandate.passenger.calendar</field>-->
+<!--        <field name="model">mandate.passenger</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <calendar color="state" hide_time="true" event_limit="5">-->
+<!--                <field name="employee_id" avatar_field="image_128"/>-->
+<!--                <field name="total"/>-->
+<!--            </calendar>-->
+<!--        </field>-->
+<!--    </record>-->
+
     <record id="mandate_passenger_kanban" model="ir.ui.view">
         <field name="name">mandate.passenger.kanban</field>
         <field name="model">mandate.passenger</field>
@@ -359,7 +399,7 @@
         <field name="name">Mandate And Passenger</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mandate.passenger</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,tree,form,graph,pivot</field>
     </record>
     <record id="direct_manager_approve_action" model="ir.actions.act_window">
         <field name="name">Waiting Direct Manager Approve</field>
