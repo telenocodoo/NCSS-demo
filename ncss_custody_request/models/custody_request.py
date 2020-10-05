@@ -41,6 +41,31 @@ class CustodyRequest(models.Model):
                               ('refuse', 'Refuse'),
                               ('done', 'Done'),
                               ], default='draft', tracking=True,)
+    color = fields.Integer(compute="compute_color")
+
+    @api.depends('state')
+    def compute_color(self):
+        for record in self:
+            if record.state == 'draft':
+                record.color = 1
+            elif record.state == 'direct_manager_approve':
+                record.color = 2
+            elif record.state == 'department_manager_approve':
+                record.color = 3
+            elif record.state == 'center_manager_approve':
+                record.color = 4
+            elif record.state == 'accounting_approve':
+                record.color = 5
+            elif record.state == 'paid':
+                record.color = 6
+            elif record.state == 'in_progress':
+                record.color = 7
+            elif record.state == 'liquidated':
+                record.color = 8
+            elif record.state == 'refuse':
+                record.color = 9
+            else:
+                record.color = 10
 
     def get_direct_manager(self):
         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id

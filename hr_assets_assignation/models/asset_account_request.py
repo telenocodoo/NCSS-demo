@@ -31,6 +31,17 @@ class AssetAccountRequest(models.Model):
                               ('clearance', 'clearance'),
                               ], default='draft', tracking=True, )
     employee_asset_id = fields.Many2one('employee.assets')
+    color = fields.Integer(compute="compute_color")
+
+    @api.depends('state')
+    def compute_color(self):
+        for record in self:
+            if record.state == 'draft':
+                record.color = 2
+            elif record.state == 'assigned':
+                record.color = 4
+            else:
+                record.color = 6
 
     def action_assign_to_employee(self):
         self.state = 'assigned'
@@ -60,6 +71,19 @@ class CustodyRequestLine(models.Model):
                               ('clearance', 'clearance'),
                               ('done', 'Done'),
                               ], default='draft', tracking=True, )
+    color = fields.Integer(compute="compute_color")
+
+    @api.depends('state')
+    def compute_color(self):
+        for record in self:
+            if record.state == 'draft':
+                record.color = 2
+            elif record.state == 'first_approve':
+                record.color = 4
+            elif record.state == 'clearance':
+                record.color = 6
+            else:
+                record.color = 8
 
     def action_first_approve(self):
         self.state = 'first_approve'

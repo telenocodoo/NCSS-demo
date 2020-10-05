@@ -16,8 +16,8 @@ class Contract(models.Model):
                                         ], string='Contract Period', default='one_year')
     number_of_months = fields.Char('Number Of Months')
     contract_type = fields.Many2one('hr.contract.type')
-    home_allowance = fields.Float()
-    transportation_allowance = fields.Float()
+    home_allowance = fields.Float(compute='compute_total_allowance', store=True)
+    transportation_allowance = fields.Float(compute='compute_total_allowance', store=True)
     mobile_allowance = fields.Float()
     other_allowance = fields.Float()
     deduct_tamenat = fields.Boolean()
@@ -44,6 +44,14 @@ class Contract(models.Model):
         for record in self:
             record.net_contract_salary = record.total_salary - record.tameenat_deduction
 
+    @api.depends('wage')
+    def compute_total_allowance(self):
+        for record in self:
+            if record.wage:
+                if self.env.user.company_id.home_allowance:
+                    record.home_allowance = (self.env.user.company_id.home_allowance/100) * record.wage
+                if self.env.user.company_id.transportation_allowance:
+                    record.transportation_allowance = (self.env.user.company_id.transportation_allowance/100) * record.wage
 
 
 class HrEmployee(models.Model):

@@ -14,5 +14,6 @@
     'data': [
         'security/ir.model.access.csv',
         'views/hr_employee.xml',
+        'views/hr_employee_contract_setting.xml',
     ],
 }

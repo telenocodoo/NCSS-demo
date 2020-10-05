@@ -122,6 +122,21 @@ class MandatePassenger(models.Model):
                                ('accounting_approve', 'Accounting Approve'),
                                ('refuse', 'Refuse'),
                                ], default='draft')
+    color = fields.Integer(compute="compute_color")
+
+    @api.depends('state')
+    def compute_color(self):
+        for record in self:
+            if record.state == 'draft':
+                record.color = 2
+            elif record.state == 'direct_manager_approve':
+                record.color = 4
+            elif record.state == 'department_manager_approve':
+                record.color = 6
+            elif record.state == 'accounting_approve':
+                record.color = 8
+            else:
+                record.color = 10
 
     @api.onchange('employee_id')
     def onchange_employee_id(self):
