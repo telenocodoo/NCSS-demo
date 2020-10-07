@@ -101,6 +101,8 @@ class MandatePassenger(models.Model):
     course_type = fields.Selection([('internal', 'Internal'), ('external', 'External')])
     description = fields.Text()
     price = fields.Float()
+    start_date = fields.Date()
+    end_date = fields.Date()
     number_of_days = fields.Integer()
     total_value_without_ticket = fields.Float(compute='get_total_value_without_ticket')
     day_value = fields.Float(compute='get_total_value')
@@ -123,6 +125,45 @@ class MandatePassenger(models.Model):
                                ('refuse', 'Refuse'),
                                ], default='draft')
     color = fields.Integer(compute="compute_color")
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_employee')
+        direct_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_direct_manager')
+        department_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_department_manager')
+        accounting_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_accounting_manager')
+        center_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_center_manager')
+        if employee:
+            args += [('create_uid', '=', self.env.user.id)]
+        if direct_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            # passenger_mandate_obj = self.search(['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid', '=', current_user_id)])
+            # for mandate in passenger_mandate_obj:
+            #     lst.append(mandate.id)
+            # args += [('id', 'in', lst)]
+            args += ['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+
+        if department_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            # passenger_mandate_obj = self.search(['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+            #                                      ('create_uid', '=', current_user_id)])
+            # for mandate in passenger_mandate_obj:
+            #     lst.append(mandate.id)
+            args += ['|', ('employee_id.department_id.manager_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        if accounting_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            # passenger_mandate_obj = self.search([('state', '=', 'department_manager_approve')])
+            # for mandate in passenger_mandate_obj:
+            #     lst.append(mandate.id)
+            # print(self.create_uid)
+            args += ['|', ('create_uid.id', '=', self.env.user.id), ('state', '=', 'department_manager_approve')]
+        if center_manager:
+            # current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            # passenger_mandate_obj = self.search([])
+            # for mandate in passenger_mandate_obj:
+            #     lst.append(mandate.id)
+            args += []
+        return super(MandatePassenger, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
     def compute_color(self):
@@ -152,6 +193,8 @@ class MandatePassenger(models.Model):
                 record.description = record.course_id.description
                 record.course_type = record.course_id.type
                 record.price = record.course_id.price
+                record.start_date = record.course_id.start_date
+                record.end_date = record.course_id.end_date
                 record.number_of_days = record.course_id.number_of_days
                 record.description = record.course_id.description
                 course_obj = self.search(

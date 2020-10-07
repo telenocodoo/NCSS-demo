@@ -53,6 +53,8 @@
                 <field name="name" required="1"/>
                 <field name="type" />
                 <field name="price" />
+                <field name="start_date"/>
+                <field name="end_date"/>
                 <field name="number_of_days"/>
                 <field name="description"/>
             </tree>
@@ -227,19 +229,27 @@
                 <header>
                     <button name="action_direct_manager_approve" string="Direct Manager Approve"
                             attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_direct_manager"
+                    />
                     <button name="action_department_manager_approve" string="Department Manager Approve"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_department_manager"
+                    />
                     <button name="action_accounting_approve" string="Accounting Approve"
                             states='department_manager_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_accounting_manager"
+                    />
                     <button name="refuse_action" string="Refuse"
                             states='draft,direct_manager_approve,department_manager_approve'
                             type="object" class="oe_highlight"/>
                     <button name="set_to_draft" string="Set To Draft"
                             states='refuse,accounting_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_center_manager"
+                    />
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,direct_manager_approve,department_manager_approve,accounting_approve"
                     />
@@ -263,6 +273,8 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="price"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="start_date" readonly="1"/>
+                            <field name="end_date" readonly="1"/>
                             <field name="number_of_days"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                         </group>
@@ -464,6 +476,7 @@
               action="direct_manager_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="6"
+              groups="ncss_mandate_passenger.mandate_passenger_direct_manager"
     />
 
     <menuitem id="department_manager_approve_menu"
@@ -471,6 +484,7 @@
               action="department_manager_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="8"
+              groups="ncss_mandate_passenger.mandate_passenger_department_manager"
     />
 
     <menuitem id="accounting_approve_menu"
@@ -478,6 +492,7 @@
               action="accounting_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="10"
+              groups="ncss_mandate_passenger.mandate_passenger_accounting_manager"
     />
 
     <menuitem id="refuse_menu"
@@ -485,6 +500,7 @@
               action="refuse_menu_action"
               parent="mandate_passenger_child_menu"
               sequence="12"
+              groups="ncss_mandate_passenger.mandate_passenger_refuse_menu"
     />
 
 
@@ -493,6 +509,7 @@
               action="travel_ticket_menu_action"
               parent="mandate_passenger_root"
               sequence="4"
+              groups="ncss_mandate_passenger.mandate_passenger_travel_ticket"
     />
 
     <menuitem id="mandate_passenger_setting_child"
@@ -500,6 +517,7 @@
               action="training_course_action"
               parent="mandate_passenger_root"
               sequence="6"
+              groups="ncss_mandate_passenger.mandate_passenger_user,ncss_mandate_passenger.mandate_passenger_manager"
     />
 
     <menuitem id="course_place_menu"
@@ -507,6 +525,7 @@
               action="course_place_action"
               parent="mandate_passenger_root"
               sequence="8"
+              groups="ncss_mandate_passenger.mandate_passenger_course_place_user,ncss_mandate_passenger.mandate_passenger_course_place_manager"
     />
 
 
@@ -524,6 +543,7 @@
               action="employee_degree_value_action"
               parent="mandate_passenger_setting_menu"
               sequence="4"
+              groups="ncss_mandate_passenger.mandate_passenger_employee_degree_user,ncss_mandate_passenger.mandate_passenger_employee_degree_manager"
     />
 
     <menuitem id="budget_allocation_setting_child"
@@ -531,6 +551,7 @@
               action="budget_allocation_action"
               parent="mandate_passenger_setting_menu"
               sequence="6"
+              groups="ncss_mandate_passenger.mandate_passenger_budget_user,ncss_mandate_passenger.mandate_passenger_budget_manager"
     />
 
 

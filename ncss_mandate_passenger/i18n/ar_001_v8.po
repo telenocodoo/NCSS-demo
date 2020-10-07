@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-07 11:20+0000\n"
-"PO-Revision-Date: 2020-10-07 11:20+0000\n"
+"POT-Creation-Date: 2020-10-04 06:09+0000\n"
+"PO-Revision-Date: 2020-10-04 06:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_form
 msgid "Accounting Approve"
 msgstr "موافقه الماليه"
-
-#. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_accounting_manager
-msgid "Accounting Manager"
-msgstr "مدير الماليه"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__message_needaction
@@ -88,16 +83,6 @@ msgid "Budget Allocated For Training"
 msgstr "الميزانيه المرصوده للتدريب"
 
 #. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_center_manager
-msgid "Center Manager"
-msgstr "مدير المركز"
-
-#. module: ncss_mandate_passenger
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__color
-msgid "Color"
-msgstr ""
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__course_id
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__type__course
 msgid "Course"
@@ -123,11 +108,6 @@ msgstr "نوع الدوره"
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
 msgid "Course Type :"
 msgstr "نوع الدوره"
-
-#. module: ncss_mandate_passenger
-#: model:ir.module.category,name:ncss_mandate_passenger.mandate_passenger_courses_place_category
-msgid "Course place"
-msgstr "اماكن الدورات"
 
 #. module: ncss_mandate_passenger
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
@@ -175,7 +155,6 @@ msgstr "القسم"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__employee_type__department_manager
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_department_manager
 msgid "Department Manager"
 msgstr "مديرالقسم"
 
@@ -190,11 +169,6 @@ msgstr "موافقه مديرالقسم"
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__description
 msgid "Description"
 msgstr "الوصف"
-
-#. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_direct_manager
-msgid "Direct Manager"
-msgstr "المدير المباشر"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__state__direct_manager_approve
@@ -220,14 +194,12 @@ msgstr "جديده"
 #: model:ir.model,name:ncss_mandate_passenger.model_hr_employee
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__employee_id
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__employee_type__employee
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_employee
 msgid "Employee"
 msgstr "الموظف"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_hr_employee__employee_degree_id
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__employee_degree_id
-#: model:ir.module.category,name:ncss_mandate_passenger.mandate_passenger_employee_degree_category
 #: model:ir.ui.menu,name:ncss_mandate_passenger.employee_degree_setting_child
 msgid "Employee Degree"
 msgstr "درجه الموظف"
@@ -243,13 +215,7 @@ msgid "Employee Value"
 msgstr "قيمه الموظف"
 
 #. module: ncss_mandate_passenger
-#: model:res.groups,comment:ncss_mandate_passenger.mandate_passenger_employee
-msgid "Employee can read and create only"
-msgstr ""
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__end_date
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__end_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__end_date
 msgid "End Date"
 msgstr "تاريخ الانتهاء"
@@ -442,10 +408,6 @@ msgstr ""
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__employee_type__manager
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_budget_manager
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_course_place_manager
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_employee_degree_manager
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_manager
 msgid "Manager"
 msgstr "مدير"
 
@@ -460,22 +422,11 @@ msgid "Mandate And Passenger"
 msgstr "الانتداب والاركاب"
 
 #. module: ncss_mandate_passenger
-#: model:ir.module.category,name:ncss_mandate_passenger.mandate_passenger_security_category
 #: model:ir.ui.menu,name:ncss_mandate_passenger.mandate_passenger_action_menu
 #: model:ir.ui.menu,name:ncss_mandate_passenger.mandate_passenger_child_menu
 #: model:ir.ui.menu,name:ncss_mandate_passenger.mandate_passenger_root
 msgid "Mandate and Passenger"
 msgstr "الانتداب والاركاب"
-
-#. module: ncss_mandate_passenger
-#: model:ir.module.category,name:ncss_mandate_passenger.mandate_passenger_budget_category
-msgid "Mandate and Passenger Budget"
-msgstr "صلاحيات الميزانيه المرصوده"
-
-#. module: ncss_mandate_passenger
-#: model:ir.module.category,name:ncss_mandate_passenger.mandate_passenger_courses_category
-msgid "Mandate and Passenger Courses"
-msgstr "صلاحيات الدورات"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__message_has_error
@@ -637,11 +588,6 @@ msgid "Refuse"
 msgstr "رفض"
 
 #. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_refuse_menu
-msgid "Refuse Menu"
-msgstr "قائمه الانتداب والاركاب المرفوض"
-
-#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__remaining_from_budget
 msgid "Remaining From Budget"
 msgstr "المتبقى من الميزانيه"
@@ -676,7 +622,6 @@ msgstr "الاعدادات"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__start_date
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__start_date
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__start_date
 msgid "Start Date"
 msgstr "تاريخ البدايه"
@@ -732,7 +677,6 @@ msgstr "تكلفه التنقل"
 #. module: ncss_mandate_passenger
 #: model:ir.actions.act_window,name:ncss_mandate_passenger.travel_ticket_menu_action
 #: model:ir.ui.menu,name:ncss_mandate_passenger.travel_ticket_child
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_travel_ticket
 msgid "Travel Ticket"
 msgstr "تذاكر الطيران"
 
@@ -779,12 +723,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr ""
-
-#. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_budget_user
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_employee_degree_user
-msgid "User"
-msgstr "موظف"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__employee_degree_value__traveling_type__vip
@@ -880,12 +818,6 @@ msgstr "سياحيه"
 #: model:ir.model,name:ncss_mandate_passenger.model_training_course
 msgid "training.course"
 msgstr "الدورات"
-
-#. module: ncss_mandate_passenger
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_course_place_user
-#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_user
-msgid "user"
-msgstr "موظف"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__type__work_shop
