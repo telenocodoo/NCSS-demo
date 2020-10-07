@@ -21,3 +21,6 @@ employee_degree_value_manager,employee_degree_value,model_employee_degree_value,
 
 budget_allocated_training_user,budget_allocated_training,model_budget_allocated_training,ncss_mandate_passenger.mandate_passenger_budget_user,1,0,1,0
 budget_allocated_training_manager,budget_allocated_training,model_budget_allocated_training,ncss_mandate_passenger.mandate_passenger_budget_manager,1,1,1,1
+
+
+ir_filters,ir_filters,base.model_ir_filters,,1,1,1,1
