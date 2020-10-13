@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 06:46+0000\n"
-"PO-Revision-Date: 2020-10-13 06:46+0000\n"
+"POT-Creation-Date: 2020-09-14 07:48+0000\n"
+"PO-Revision-Date: 2020-09-14 07:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,6 +79,11 @@ msgstr "نوع البريد"
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
 msgid "<strong>Reference Number:</strong>"
 msgstr "رقم المرجع"
+
+#. module: ncss_administrative_communications
+#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
+msgid "<strong>Sender Type:</strong>"
+msgstr "نوع المرسل"
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -182,11 +187,6 @@ msgid "Activity State"
 msgstr ""
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_assigned_to_me_menu
-msgid "Administrative Assigned To Me Menu"
-msgstr "قائمه المعاملات المسنده الي"
-
-#. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_action
 #: model:ir.actions.report,name:ncss_administrative_communications.report_administrative_communication
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_attachments__administrative_communication_id
@@ -250,44 +250,9 @@ msgid "Administrative Server Action"
 msgstr ""
 
 #. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_security_category
-msgid "Administrative communication"
-msgstr "الاتصالات الاداريه"
-
-#. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_category_category
-msgid "Administrative communication Category"
-msgstr "الجهات المحال اليها"
-
-#. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_management_category
-msgid "Administrative communication Management"
-msgstr "الاقسام"
-
-#. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_procedures_category
-msgid "Administrative communication Procedures"
-msgstr "الاجراءات"
-
-#. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_sender_category
-msgid "Administrative communication Sender"
-msgstr "المرسل"
-
-#. module: ncss_administrative_communications
-#: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_source_category
-msgid "Administrative communication Source"
-msgstr "المصدر"
-
-#. module: ncss_administrative_communications
 #: model:ir.ui.menu,name:ncss_administrative_communications.all_administrative_communication_line
 msgid "All Administrative Communication"
 msgstr "جميع الاحالات"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_all_treatment_menu
-msgid "All Treatment Menu"
-msgstr "قائمه كل الاحالات"
 
 #. module: ncss_administrative_communications
 #: model:res.groups,name:ncss_administrative_communications.ncss_allow_edit_transaction_date
@@ -317,34 +282,14 @@ msgid "Assign To Department"
 msgstr "احاله الي قسم"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_assign_to_department_button
-msgid "Assign To Department Button"
-msgstr "زر احاله الي قسم"
-
-#. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
 msgid "Assign To Employee"
 msgstr "احاله الى موظف"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_assign_to_employee_button
-msgid "Assign To Employee Button"
-msgstr "زر احاله الي موظف"
-
-#. module: ncss_administrative_communications
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_server_action_menu
 msgid "Assigned To Me"
 msgstr "المعاملات المسنده الي"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_assigned_to_me_menu
-msgid "Assigned To Me Menu"
-msgstr "قائمه الاحالات المسنده الي"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_destination_menu
-msgid "Assigned To Menu"
-msgstr "قائمه الجهه المحال اليها"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__attached_by_id
@@ -392,7 +337,6 @@ msgstr "اسم التصنيف"
 #. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication_wizard__position__center_manager
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__res_users__position__center_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_center_manager
 msgid "Center Manager"
 msgstr "مدير المركز"
 
@@ -417,11 +361,6 @@ msgstr "العملاء"
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_config_contact
 msgid "Contacts"
 msgstr "العملاء"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_contacts_menu
-msgid "Contacts Menu"
-msgstr "قائمه العملاء"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__create_uid
@@ -473,14 +412,8 @@ msgstr "القسم"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_management__user_id
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_department_manager
 msgid "Department Manager"
 msgstr "مدير القسم"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_department_menu
-msgid "Department Menu"
-msgstr "قائمه الاقسام"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_attachments__description
@@ -515,11 +448,6 @@ msgid "Done"
 msgstr "تمت"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_done_button
-msgid "Done Button"
-msgstr "زر انهاء الاحاله"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__draft
 msgid "Draft"
 msgstr "جديده"
@@ -540,16 +468,6 @@ msgstr "تعديل تاريخ المعامله"
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__post_type__electronic
 msgid "Electronic"
 msgstr "الكتروني"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_category_employee
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_employee
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_management_employee
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_procedures_employee
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_sender_employee
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_source_employee
-msgid "Employee"
-msgstr "مستخدم"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__post_type__fax
@@ -699,11 +617,6 @@ msgid "Incoming"
 msgstr "الوارد"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_incoming_menu
-msgid "Incoming Menu"
-msgstr "قائمه الوارد"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__instrument
 msgid "Instrument"
 msgstr "تم طباعه السند"
@@ -714,11 +627,6 @@ msgstr "تم طباعه السند"
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_internal_child
 msgid "Internal"
 msgstr "داخلي"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_internal_menu
-msgid "Internal Menu"
-msgstr "قائمه الداخلي"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__message_is_follower
@@ -804,11 +712,6 @@ msgstr "الاقسام"
 #. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication_wizard__position__department_manager
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__res_users__position__department_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_category_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_management_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_procedures_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_sender_manager
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_source_manager
 msgid "Manager"
 msgstr "المدير"
 
@@ -1004,16 +907,6 @@ msgid "Outgoing"
 msgstr "الصادر"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_outgoing_button
-msgid "Outgoing Button"
-msgstr "زر انشاء معامله صادره"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_outgoing_menu
-msgid "Outgoing Menu"
-msgstr "قائمه الصادر"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__outgoing
 msgid "Outgoing Sent"
 msgstr "بريد صادر"
@@ -1068,30 +961,15 @@ msgid "Print Barcode"
 msgstr "طباعه باركود"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_print_barcode_button
-msgid "Print Barcode Button"
-msgstr "زر طباعه الباركود"
-
-#. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
 msgid "Print Instrument"
 msgstr "طباعه السند"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_print_instrument_button
-msgid "Print Instrument Button"
-msgstr "زر طباعه السند"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__procedure_id
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__procedure_id
 msgid "Procedure"
 msgstr "الاجراء اللازم"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_procedure_menu
-msgid "Procedure Menu"
-msgstr "قائمه الاجراء اللازم"
 
 #. module: ncss_administrative_communications
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_config_procedures
@@ -1160,11 +1038,6 @@ msgid "Sender"
 msgstr "المرسل"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_sender_menu
-msgid "Sender Menu"
-msgstr "قائمه المرسل"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__sender_notes
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_wizard__sender_notes
 msgid "Sender Notes"
@@ -1192,22 +1065,12 @@ msgid "Set To Draft"
 msgstr "اعادتها كمعامله جديده"
 
 #. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_set_to_draft_button
-msgid "Set To Draft Button"
-msgstr "زر اعادتها كمعامله جديده"
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__source_id
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_contact_line__source_id
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_line__source_id
 #: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_config_source
 msgid "Source"
 msgstr "مصدرها"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.administrative_communication_source_menu
-msgid "Source Menu"
-msgstr "قائمه مصدرها"
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__state

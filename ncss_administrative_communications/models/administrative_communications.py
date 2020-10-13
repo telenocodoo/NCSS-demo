@@ -122,6 +122,24 @@ class AdministrativeCommunication(models.Model):
     state_out = fields.Selection(related='state')
 
     @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
+        department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
+        center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
+
+        if employee:
+            args += ['|', ('user_id', '=', self.env.user.id), ('create_uid', '=', self.env.user.id)]
+        if department_manager:
+            args += ['|', '|', '|', ('user_id', '=', self.env.user.id),
+                     ('create_uid.id', '=', self.env.user.id),
+                     ('transfer_to_id.id', '=', self.env.user.ncss_department_id.id),
+                     ('transfer_to_id.user_id.id', '=', self.env.user.id),
+                     ]
+        if center_manager:
+            args += []
+        return super(AdministrativeCommunication, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+
+    @api.model
     def create(self, values):
         if values['treatment_type'] == 'in':
             values['sequence'] = self.env['ir.sequence'].next_by_code('administrative.communication.import')
@@ -309,6 +327,27 @@ class AdministrativeCommunicationLine(models.Model):
     receipt_notes = fields.Char()
     due_date = fields.Date()
     subject = fields.Text(related="administrative_communication_id.subject")
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
+        department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
+        center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
+
+        if employee:
+            args += ['|', '|', ('user_id', '=', self.env.user.id),
+                     ('create_uid', '=', self.env.user.id),
+                     ('user_attached_id', '=', self.env.user.id)
+                     ]
+        if department_manager:
+            args += ['|', '|', '|', ('user_id', '=', self.env.user.id),
+                     ('create_uid', '=', self.env.user.id),
+                     ('user_attached_id', '=', self.env.user.id),
+                     ('user_id.ncss_department_id.id', '=', self.env.user.ncss_department_id.id),
+                     ]
+        if center_manager:
+            args += []
+        return super(AdministrativeCommunicationLine, self).search(args=args, offset=offset, limit=limit, order=order,count=count)
 
     @api.onchange('source_id', 'transfer_to_id')
     def onchange_source_id(self):

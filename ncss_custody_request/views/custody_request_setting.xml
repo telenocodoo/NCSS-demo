@@ -63,6 +63,8 @@
                   name="Accounting Setting"
                   parent="ncss_custody_request.custody_request_setting_menu"
                   sequence="2"
-                  action="custody_request_configuration_action"/>
+                  action="custody_request_configuration_action"
+                  groups="ncss_custody_request.custody_request_setting_menu"
+        />
     </data>
 </odoo>

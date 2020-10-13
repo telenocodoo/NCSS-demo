@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 07:07+0000\n"
-"PO-Revision-Date: 2020-10-13 07:07+0000\n"
+"POT-Creation-Date: 2020-10-01 08:09+0000\n"
+"PO-Revision-Date: 2020-10-01 08:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,11 +25,6 @@ msgstr "اعدادات العهد"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Accounting Approve"
 msgstr "موافقه الماليه"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_accounting_manager
-msgid "Accounting Manager"
-msgstr "مدير الماليه"
 
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_accounting_approve_action
@@ -94,20 +89,10 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_center_manager
-msgid "Center Manager"
-msgstr "مدير المركز"
-
-#. module: ncss_custody_request
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__center_manager_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Center Manager Approve"
 msgstr "موافقه مدير المركز"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__color
-msgid "Color"
-msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model,name:ncss_custody_request.model_res_company
@@ -147,7 +132,6 @@ msgstr "حساب البنك / الصندوق"
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_account_move_line__custody_id
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__custody_id
-#: model:ir.module.category,name:ncss_custody_request.custody_security_category
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_root
 msgid "Custody"
 msgstr "العهد الماليه"
@@ -155,7 +139,6 @@ msgstr "العهد الماليه"
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_description_action
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__custody_description_id
-#: model:ir.module.category,name:ncss_custody_request.custody_description_category
 #: model:ir.ui.menu,name:ncss_custody_request.custody_description_action_menu
 msgid "Custody Description"
 msgstr "بنود العهد"
@@ -173,11 +156,6 @@ msgstr "يوميه العهد"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.res_company_form
 msgid "Custody Request"
 msgstr "طلب عهده"
-
-#. module: ncss_custody_request
-#: model:ir.module.category,name:ncss_custody_request.custody_request_line_category
-msgid "Custody Request Line"
-msgstr "بنود العهده"
 
 #. module: ncss_custody_request
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_child_menu
@@ -202,11 +180,6 @@ msgid "Debit Account"
 msgstr "حساب عهد الموظفين"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_department_manager
-msgid "Department Manager"
-msgstr "مدير قسم"
-
-#. module: ncss_custody_request
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__department_manager_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Department Manager Approve"
@@ -222,11 +195,6 @@ msgstr "الوصف"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_kanban
 msgid "Description :"
 msgstr "الوصف:"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_direct_manager
-msgid "Direct Manager"
-msgstr "مدير مباشر"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__direct_manager_approve
@@ -250,23 +218,12 @@ msgid "Done"
 msgstr "تمت"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_done_menu
-msgid "Done Menu"
-msgstr "قائمه العهد المنتهيه"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_done_button
-msgid "Done button"
-msgstr "زر انهاء العهده"
-
-#. module: ncss_custody_request
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__draft
 msgid "Draft"
 msgstr "جديده"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__employee_id
-#: model:res.groups,name:ncss_custody_request.custody_employee
 msgid "Employee"
 msgstr "الموظف"
 
@@ -367,16 +324,6 @@ msgid "In Progress"
 msgstr "جارى اهلاكها"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_in_progress_button
-msgid "In Progress Button"
-msgstr "زر جارى اهلاكها"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_in_progress_menu
-msgid "In Progress Menu"
-msgstr "قائمه جارى اهلاكها"
-
-#. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "In progress"
 msgstr "جارى اهلاكها"
@@ -448,19 +395,9 @@ msgid "Liquidated"
 msgstr "طلب تصفيه العهده"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_liquidated_button
-msgid "Liquidated Button"
-msgstr "زر طلب تصفيه العهده"
-
-#. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Liquidated Journal Items"
 msgstr "بيانات قيد التصفيه"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_liquidated_menu
-msgid "Liquidated Menu"
-msgstr "قائمه طلب تصفيه العهده"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__liquidated_move_line_ids
@@ -473,12 +410,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__message_main_attachment_id
 msgid "Main Attachment"
 msgstr ""
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_description_manager
-#: model:res.groups,name:ncss_custody_request.custody_request_line_manager
-msgid "Manager"
-msgstr "مدير"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__message_has_error
@@ -569,16 +500,6 @@ msgid "Paid"
 msgstr "تم الصرف"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_paid_button
-msgid "Paid Button"
-msgstr "زر تم الصرف"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_paid_menu
-msgid "Paid Menu"
-msgstr "قائمه تم الصرف"
-
-#. module: ncss_custody_request
 #: code:addons/ncss_custody_request/models/custody_request.py:0
 #, python-format
 msgid "Please Add the reason of Refuse"
@@ -594,16 +515,6 @@ msgstr "السبب"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Refuse"
 msgstr "رفض"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_refuse_menu
-msgid "Refuse Menu"
-msgstr "قائمه العهد المرفوضه"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_refuse_button
-msgid "Refuse button"
-msgstr "زر رفض طلب العهده"
 
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_refuse_action
@@ -642,9 +553,9 @@ msgid "Set To Draft"
 msgstr "اعاده كجديده"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_setting_menu
-msgid "Setting Menu"
-msgstr "قائمه الاعدادات"
+#: model:ir.ui.menu,name:ncss_custody_request.custody_request_setting_menu
+msgid "Setting"
+msgstr "الاعدادات"
 
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_configuration_action
@@ -750,9 +661,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "liquidated"
 msgstr "تصفيه العهده"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_description_user
-#: model:res.groups,name:ncss_custody_request.custody_request_line_user
-msgid "user"
-msgstr "مستخدم"

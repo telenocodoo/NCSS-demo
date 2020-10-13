@@ -349,22 +349,37 @@
                 <header>
                     <button name="assign_to_department_action"
                             attrs="{'invisible':['|',('treatment_type','!=','in'),('state','!=','draft')]}"
-                            string="Assign To Department" type="object" class="oe_highlight"/>
+                            string="Assign To Department" type="object" class="oe_highlight"
+                            groups="ncss_administrative_communications.administrative_communication_assign_to_department_button"
+                    />
 <!--                    <button name="assign_to_employee_action" states='reviewed' string="Assign To Employee" type="object" class="oe_highlight"/>-->
                     <button name="action_assign_to" states='reviewed,assigned,outgoing'
                             attrs="{'invisible':['|',('treatment_type','=','out'),('state','not in',['reviewed','assigned','outgoing'])]}"
-                            string="Assign To Employee" type="object" class="oe_highlight"/>
+                            string="Assign To Employee" type="object" class="oe_highlight"
+                            groups="ncss_administrative_communications.administrative_communication_assign_to_employee_button"
+                    />
                     <button name="outgoing_treatment_action" states='assigned'
                             attrs="{'invisible':['|',('treatment_type','=','out'),('state','!=','assigned')]}"
-                            string="Outgoing Treatment" type="object" class="oe_highlight"/>
+                            string="Outgoing Treatment" type="object" class="oe_highlight"
+                            groups="ncss_administrative_communications.administrative_communication_outgoing_button"
+                    />
                     <button name="outgoing_barcode_action" string="Print Barcode"
                             attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','draft')]}"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_administrative_communications.administrative_communication_print_barcode_button"
+                    />
                     <button name="outgoing_instrument_action" string="Print Instrument"
                             attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','barcode')]}"
+                            groups="ncss_administrative_communications.administrative_communication_print_instrument_button"
                             type="object" class="oe_highlight"/>
-                    <button name="action_done" string="Done" states='reviewed,assigned,outgoing,instrument' type="object" class="oe_highlight"/>
-                    <button name="set_to_draft" string="Set To Draft" states='done' type="object" class="oe_highlight"/>
+                    <button name="action_done" string="Done"
+                            states='reviewed,assigned,outgoing,instrument'
+                            groups="ncss_administrative_communications.administrative_communication_done_button"
+                            type="object" class="oe_highlight"/>
+                    <button name="set_to_draft" string="Set To Draft"
+                            states='done' type="object"
+                            groups="ncss_administrative_communications.administrative_communication_set_to_draft_button"
+                            class="oe_highlight"/>
                     <field name="state" widget="statusbar" invisible="1"
                            statusbar_visible="draft,reviewed,assigned,outgoing,done"
                     />
@@ -531,7 +546,7 @@
 <!--                <field name="transfer_date" />-->
                 <field name="assign_to_id" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
                 <field name="assign_to_department_id" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
-                <field name="transfer_number" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
+                <field name="transactions_number" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
                 <field name="subject" />
                 <field name="state_in" invisible="context.get('default_treatment_type') not in ('in', 'internal')"/>
                 <field name="state_out" invisible="context.get('default_treatment_type') in ('in', 'internal')"/>
@@ -666,6 +681,7 @@
               action="administrative_communication_line_action"
               parent="administrative_communication_line_menu"
               sequence="4"
+              groups="ncss_administrative_communications.administrative_communication_assigned_to_me_menu"
     />
 
 
@@ -674,6 +690,7 @@
               action="all_administrative_communication_line_action"
               parent="administrative_communication_line_menu"
               sequence="2"
+              groups="ncss_administrative_communications.administrative_communication_all_treatment_menu"
     />
 
 
@@ -693,22 +710,27 @@
               name="IN"
               action="administrative_communication_in_action"
               parent="administrative_communication_menu"
+              groups="ncss_administrative_communications.administrative_communication_incoming_menu"
     />
 
     <menuitem id="administrative_communication_out_child"
               name="OUT"
               action="administrative_communication_out_action"
               parent="administrative_communication_menu"
+              groups="ncss_administrative_communications.administrative_communication_outgoing_menu"
     />
     <menuitem id="administrative_communication_internal_child"
               name="Internal"
               action="administrative_communication_internal_action"
               parent="administrative_communication_menu"
+              groups="ncss_administrative_communications.administrative_communication_internal_menu"
     />
     <menuitem id="administrative_communication_server_action_menu"
               name="Assigned To Me"
               parent="administrative_communication_menu"
-              action="administrative_communication_server_action"/>
+              action="administrative_communication_server_action"
+              groups="ncss_administrative_communications.administrative_assigned_to_me_menu"
+    />
 
 
     <menuitem id="administrative_communication_configuration"
@@ -720,6 +742,7 @@
               name="Assign To"
               action="administrative_communication_category_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_destination_menu"
     />
 <!--    <menuitem id="administrative_communication_config_years"-->
 <!--              name="years"-->
@@ -731,30 +754,35 @@
               name="Source"
               action="administrative_communication_source_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_source_menu"
     />
 
     <menuitem id="administrative_communication_config_management"
               name="Management"
               action="administrative_communication_management_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_department_menu"
     />
 
     <menuitem id="administrative_communication_config_sender"
               name="Sender"
               action="administrative_communication_sender_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_sender_menu"
     />
 
     <menuitem id="administrative_communication_config_contact"
               name="Contacts"
               action="administrative_communication_contact_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_contacts_menu"
     />
 
     <menuitem id="administrative_communication_config_procedures"
               name="Procedures"
               action="administrative_communication_procedures_action"
               parent="administrative_communication_configuration"
+              groups="ncss_administrative_communications.administrative_communication_procedure_menu"
     />
 
 

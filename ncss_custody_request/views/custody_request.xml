@@ -24,33 +24,52 @@
                 <header>
                     <button name="action_direct_manager_approve" string="Direct Manager Approve"
                             attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_direct_manager"
+                    />
                     <button name="action_department_manager_approve" string="Department Manager Approve"
                             states='direct_manager_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_department_manager"
+                    />
                     <button name="center_manager_approve" string="Center Manager Approve"
                             states='department_manager_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_center_manager"/>
                     <button name="accounting_approve" string="Accounting Approve"
                             states='center_manager_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_accounting_manager"
+                    />
                     <button name="paid_action" string="Paid"
                             states='accounting_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_request_paid_button"
+                    />
                     <button name="in_progress_action" string="In progress"
                             states='paid'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_request_in_progress_button"
+                    />
                     <button name="make_liquidated_action" string="liquidated"
                             attrs="{'invisible':['|',('is_liquidated','=',False),('state','!=','in_progress')]}"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_request_liquidated_button"
+                    />
                     <button name="liquidated_action" string="Done"
                             states='liquidated'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_request_done_button"
+                    />
                     <button name="action_refuse" string="Refuse"
                             states='draft,direct_manager_approve,department_manager_approve,center_manager_approve,accounting_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_request_refuse_button"
+                    />
                     <button name="set_to_draft" string="Set To Draft" states='done'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_custody_request.custody_center_manager"
+                    />
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,direct_manager_approve,department_manager_approve,center_manager_approve"
                     />
@@ -87,12 +106,12 @@
                         attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
                             <field name="exchange_item_ids" attrs="{'readonly':[('state','in',['refuse','done'])]}">
                                 <tree editable="bottom">
-                                    <field name="custody_description_id"
+                                    <field name="description" required="1"/>
+                                    <field name="date" required="1"/>
+                                    <field name="attach_invoice" required="1"/>
+                                    <field name="custody_description_id" required="1"
                                     options="{'no_create': True,'no_edit':True}"/>
-                                    <field name="date"/>
-                                    <field name="amount"/>
-                                    <field name="attach_invoice"/>
-                                    <field name="description"/>
+                                    <field name="amount" required="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -332,60 +351,70 @@
               action="custody_request_manager_action"
               parent="custody_request_child_menu"
               sequence="4"
+              groups="ncss_custody_request.custody_direct_manager"
     />
     <menuitem id="custody_request_department_action_menu"
               name="Waiting Department Manager Approve"
               action="custody_request_department_action"
               parent="custody_request_child_menu"
               sequence="6"
+              groups="ncss_custody_request.custody_department_manager"
     />
     <menuitem id="custody_request_center_action_menu"
               name="Waiting Center Manager Approve"
               action="custody_request_center_action"
               parent="custody_request_child_menu"
               sequence="8"
+              groups="ncss_custody_request.custody_center_manager"
     />
     <menuitem id="custody_request_accounting_action_menu"
               name="Waiting Accounting Manager Approve"
               action="custody_request_accounting_action"
               parent="custody_request_child_menu"
               sequence="10"
+              groups="ncss_custody_request.custody_accounting_manager"
     />
     <menuitem id="custody_accounting_approve_action_menu"
               name="Accounting Manager Approved"
               action="custody_accounting_approve_action"
               parent="custody_request_child_menu"
               sequence="12"
+              groups="ncss_custody_request.custody_accounting_manager,ncss_custody_request.custody_center_manager"
     />
     <menuitem id="custody_request_paid_action_menu"
               name="Paid"
               action="custody_request_paid_action"
               parent="custody_request_child_menu"
               sequence="14"
+              groups="ncss_custody_request.custody_request_paid_menu"
     />
     <menuitem id="custody_request_in_progress_action_menu"
               name="In Progress"
               action="custody_request_in_progress_action"
               parent="custody_request_child_menu"
               sequence="16"
+              groups="ncss_custody_request.custody_request_in_progress_menu"
     />
     <menuitem id="custody_request_liquidated_action_menu"
               name="Liquidated"
               action="custody_request_liquidated_action"
               parent="custody_request_child_menu"
               sequence="18"
+              groups="ncss_custody_request.custody_request_liquidated_menu"
     />
     <menuitem id="custody_request_done_action_menu"
               name="Done"
               action="custody_request_done_action"
               parent="custody_request_child_menu"
               sequence="20"
+              groups="ncss_custody_request.custody_request_done_menu"
     />
     <menuitem id="custody_request_refuse_action_menu"
               name="Refused"
               action="custody_request_refuse_action"
               parent="custody_request_child_menu"
               sequence="22"
+              groups="ncss_custody_request.custody_request_refuse_menu"
     />
 
     <menuitem id="custody_description_action_menu"
@@ -393,12 +422,14 @@
               action="custody_description_action"
               parent="custody_request_root"
               sequence="4"
+              groups="ncss_custody_request.custody_description_user,ncss_custody_request.custody_description_manager"
     />
 
     <menuitem id="custody_request_setting_menu"
               name="Setting"
               parent="custody_request_root"
               sequence="6"
+              groups="ncss_custody_request.custody_request_setting_menu"
     />
 
 </odoo>

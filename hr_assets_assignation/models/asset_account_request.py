@@ -13,25 +13,59 @@ class AssetAccountRequest(models.Model):
         domain = [('state', '=', 'open'), ('id', 'not in', asset_request_ids)]
         return domain
 
-    employee_id = fields.Many2one('hr.employee', 'Employee')
+    def get_employee_id(self):
+        employee_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)])
+        if employee_id:
+            return employee_id.id
+        else:
+            return False
+
+    asset_request_description = fields.Char()
+    employee_id = fields.Many2one('hr.employee', 'Employee', default=get_employee_id)
     type = fields.Selection([('asset', 'Asset'),
                              ('non_asset', 'Non Asset'),
                              ], default='asset', tracking=True)
-    asset_id = fields.Many2one('account.asset', domain=get_account_asset_assignation)
+    asset_id = fields.Many2one('account.asset', string="Asset Name", domain=get_account_asset_assignation)
     description = fields.Char()
     type_of_disclaimer = fields.Selection([('vacation', 'Vacation'),
-                             ('final', 'Final'),
-                             ('both', 'Both'),
-                             ], default='vacation', tracking=True)
+                                         ('final', 'Final'),
+                                         ('both', 'Both'),
+                                         ('at_specific_date', 'At Specific Date'),
+                                         ], default='vacation', tracking=True)
+    date_of_asset_delivery = fields.Date()
     date = fields.Date(default=fields.date.today())
     date_of_disclaimer = fields.Date('Date Of Clearance')
     is_disclaimer = fields.Boolean('Cleared')
     state = fields.Selection([('draft', 'Draft'),
+                              ('submit', 'Submitted'),
+                              ('approve', 'In progress'),
                               ('assigned', 'Assigned'),
                               ('clearance', 'clearance'),
+                              ('refuse', 'Refused'),
                               ], default='draft', tracking=True, )
     employee_asset_id = fields.Many2one('employee.assets')
     color = fields.Integer(compute="compute_color")
+    state_of_asset_when_receive = fields.Char()
+    state_of_asset_when_delivery = fields.Char()
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        user = self.env.user.has_group('hr_assets_assignation.asset_assignation_user')
+        direct_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_direct_manager')
+        department_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_department_manager')
+        center_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_center_manager')
+        current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+
+        if user:
+            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
+        if direct_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id), ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        if department_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id), ('employee_id.department_id.manager_id.id', '=', current_user_id),
+                     ('create_uid.id', '=', self.env.user.id)]
+        if center_manager:
+            args += []
+        return super(AssetAccountRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
     def compute_color(self):
@@ -42,6 +76,15 @@ class AssetAccountRequest(models.Model):
                 record.color = 4
             else:
                 record.color = 6
+
+    def action_submit(self):
+        self.state = 'submit'
+
+    def action_approve(self):
+        self.state = 'approve'
+
+    def action_refuse(self):
+        self.state = 'refuse'
 
     def action_assign_to_employee(self):
         self.state = 'assigned'
@@ -72,6 +115,27 @@ class CustodyRequestLine(models.Model):
                               ('done', 'Done'),
                               ], default='draft', tracking=True, )
     color = fields.Integer(compute="compute_color")
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('hr_assets_assignation.employee_asset_user')
+        direct_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_direct_manager')
+        department_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_department_manager')
+        center_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_center_manager')
+        current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+
+        if employee:
+            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
+        if direct_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id),
+                     ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        if department_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id),
+                     ('employee_id.department_id.manager_id.id', '=', current_user_id),
+                     ('create_uid.id', '=', self.env.user.id)]
+        if center_manager:
+            args += []
+        return super(CustodyRequestLine, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
     def compute_color(self):

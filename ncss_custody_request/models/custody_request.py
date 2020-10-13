@@ -43,6 +43,29 @@ class CustodyRequest(models.Model):
                               ], default='draft', tracking=True,)
     color = fields.Integer(compute="compute_color")
 
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_custody_request.custody_employee')
+        direct_manager = self.env.user.has_group('ncss_custody_request.custody_direct_manager')
+        department_manager = self.env.user.has_group('ncss_custody_request.custody_department_manager')
+        accounting_manager = self.env.user.has_group('ncss_custody_request.custody_accounting_manager')
+        center_manager = self.env.user.has_group('ncss_custody_request.custody_center_manager')
+        if employee:
+            args += [('create_uid', '=', self.env.user.id)]
+        if direct_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            args += ['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        if department_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            args += ['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+                     ('create_uid.id', '=', self.env.user.id)]
+        if accounting_manager:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+            args += ['|', ('create_uid.id', '=', self.env.user.id), ('state', '=', 'center_manager_approve')]
+        if center_manager:
+            args += []
+        return super(CustodyRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+
     @api.depends('state')
     def compute_color(self):
         for record in self:

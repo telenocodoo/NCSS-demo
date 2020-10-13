@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 11:02+0000\n"
-"PO-Revision-Date: 2020-10-13 11:02+0000\n"
+"POT-Creation-Date: 2020-10-13 10:27+0000\n"
+"PO-Revision-Date: 2020-10-13 10:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -90,11 +90,6 @@ msgid "Asset Assignation"
 msgstr "العهد العينيه"
 
 #. module: hr_assets_assignation
-#: model:ir.ui.menu,name:hr_assets_assignation.waiting_asset_assignation_approve_action_menu1
-msgid "Asset Assignation Waiting Approve Menu"
-msgstr "قائمه انتظار الموافقه"
-
-#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_id
 msgid "Asset Name"
 msgstr "الاصول"
@@ -102,12 +97,7 @@ msgstr "الاصول"
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_request_description
 msgid "Asset Request Description"
-msgstr "وصف الاصل المطلوب"
-
-#. module: hr_assets_assignation
-#: model:res.groups,name:hr_assets_assignation.asset_submitted_action_menu
-msgid "Asset Submitted Menu"
-msgstr "قائمه ارسال الطلب"
+msgstr "وصف العهده المطلوب"
 
 #. module: hr_assets_assignation
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_form
@@ -682,10 +672,11 @@ msgid "Waiting Approve Action"
 msgstr "في انتظار الموافقه"
 
 #. module: hr_assets_assignation
+#: model:ir.ui.menu,name:hr_assets_assignation.waiting_asset_assignation_approve_action_menu1
 #: model:res.groups,name:hr_assets_assignation.employee_asset_waiting_approve_menu
 #: model:res.groups,name:hr_assets_assignation.waiting_asset_assignation_approve_action_menu
 msgid "Waiting Approve Menu"
-msgstr "قائمه انتظار الموافقه"
+msgstr "قائمه انتظار الموافقه المبدئيه علي اخلاء الطرف"
 
 #. module: hr_assets_assignation
 #: model:ir.actions.act_window,name:hr_assets_assignation.waiting_approve_on_clearance_action

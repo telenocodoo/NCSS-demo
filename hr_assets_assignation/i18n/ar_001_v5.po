@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 11:02+0000\n"
-"PO-Revision-Date: 2020-10-13 11:02+0000\n"
+"POT-Creation-Date: 2020-10-12 10:15+0000\n"
+"PO-Revision-Date: 2020-10-12 10:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -55,13 +55,11 @@ msgstr ""
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields.selection,name:hr_assets_assignation.selection__employee_assets__state__first_approve
-#: model_terms:ir.ui.view,arch_db:hr_assets_assignation.asset_account_request_form
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_form
 msgid "Approve"
 msgstr "موافقه"
 
 #. module: hr_assets_assignation
-#: model:res.groups,name:hr_assets_assignation.asset_assignation_approve_button
 #: model:res.groups,name:hr_assets_assignation.employee_asset_approve_button
 msgid "Approve Button"
 msgstr "زر الموافقه"
@@ -90,24 +88,9 @@ msgid "Asset Assignation"
 msgstr "العهد العينيه"
 
 #. module: hr_assets_assignation
-#: model:ir.ui.menu,name:hr_assets_assignation.waiting_asset_assignation_approve_action_menu1
-msgid "Asset Assignation Waiting Approve Menu"
-msgstr "قائمه انتظار الموافقه"
-
-#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_id
 msgid "Asset Name"
 msgstr "الاصول"
-
-#. module: hr_assets_assignation
-#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_request_description
-msgid "Asset Request Description"
-msgstr "وصف الاصل المطلوب"
-
-#. module: hr_assets_assignation
-#: model:res.groups,name:hr_assets_assignation.asset_submitted_action_menu
-msgid "Asset Submitted Menu"
-msgstr "قائمه ارسال الطلب"
 
 #. module: hr_assets_assignation
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_form
@@ -411,11 +394,6 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: hr_assets_assignation
-#: model:ir.model.fields.selection,name:hr_assets_assignation.selection__asset_account_request__state__approve
-msgid "In progress"
-msgstr "تم الموافقه علي الطلب"
-
-#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__message_is_follower
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_employee_asset_line__message_is_follower
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_employee_assets__message_is_follower
@@ -527,21 +505,6 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: hr_assets_assignation
-#: model_terms:ir.ui.view,arch_db:hr_assets_assignation.asset_account_request_form
-msgid "Refuse"
-msgstr "رفض"
-
-#. module: hr_assets_assignation
-#: model:res.groups,name:hr_assets_assignation.asset_assignation_refuse_button
-msgid "Refuse Button"
-msgstr "زر الرفض"
-
-#. module: hr_assets_assignation
-#: model:ir.model.fields.selection,name:hr_assets_assignation.selection__asset_account_request__state__refuse
-msgid "Refused"
-msgstr "مرفوض"
-
-#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__activity_user_id
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_employee_asset_line__activity_user_id
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_employee_assets__activity_user_id
@@ -605,26 +568,6 @@ msgid ""
 msgstr ""
 
 #. module: hr_assets_assignation
-#: model_terms:ir.ui.view,arch_db:hr_assets_assignation.asset_account_request_form
-msgid "Submit"
-msgstr "ارسال الطلب"
-
-#. module: hr_assets_assignation
-#: model:ir.model.fields.selection,name:hr_assets_assignation.selection__asset_account_request__state__submit
-msgid "Submitted"
-msgstr "تم ارسال الطلب"
-
-#. module: hr_assets_assignation
-#: model:ir.actions.act_window,name:hr_assets_assignation.asset_submitted_action
-msgid "Submitted Action"
-msgstr "تم ارسال الطلب"
-
-#. module: hr_assets_assignation
-#: model:ir.ui.menu,name:hr_assets_assignation.submitted_action_menu
-msgid "Submitted Menu"
-msgstr "قائمه ارسال الطلب"
-
-#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__type
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_employee_asset_line__type
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_report_template
@@ -677,15 +620,9 @@ msgid "Vacation"
 msgstr "اجازه"
 
 #. module: hr_assets_assignation
-#: model:ir.actions.act_window,name:hr_assets_assignation.waiting_asset_assignation_approve_action
-msgid "Waiting Approve Action"
-msgstr "في انتظار الموافقه"
-
-#. module: hr_assets_assignation
 #: model:res.groups,name:hr_assets_assignation.employee_asset_waiting_approve_menu
-#: model:res.groups,name:hr_assets_assignation.waiting_asset_assignation_approve_action_menu
 msgid "Waiting Approve Menu"
-msgstr "قائمه انتظار الموافقه"
+msgstr "قائمه انتظار الموافقه المبدئيه علي اخلاء الطرف"
 
 #. module: hr_assets_assignation
 #: model:ir.actions.act_window,name:hr_assets_assignation.waiting_approve_on_clearance_action

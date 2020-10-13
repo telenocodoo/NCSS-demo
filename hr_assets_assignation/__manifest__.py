@@ -10,6 +10,7 @@
     """,
     'depends': ['base', 'mail', 'hr', 'account_asset'],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/asset_account_request.xml',
         'report/employee_assets_report.xml',
