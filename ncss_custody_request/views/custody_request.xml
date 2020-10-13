@@ -25,21 +25,21 @@
                     <button name="action_direct_manager_approve" string="Direct Manager Approve"
                             attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
                             type="object" class="oe_highlight"
-                            groups="ncss_custody_request.custody_direct_manager"
+                            groups="ncss_custody_request.custody_request_direct_manager_button"
                     />
                     <button name="action_department_manager_approve" string="Department Manager Approve"
                             states='direct_manager_approve'
                             type="object" class="oe_highlight"
-                            groups="ncss_custody_request.custody_department_manager"
+                            groups="ncss_custody_request.custody_request_department_manager_button"
                     />
                     <button name="center_manager_approve" string="Center Manager Approve"
                             states='department_manager_approve'
                             type="object" class="oe_highlight"
-                            groups="ncss_custody_request.custody_center_manager"/>
+                            groups="ncss_custody_request.custody_request_center_manager_button"/>
                     <button name="accounting_approve" string="Accounting Approve"
                             states='center_manager_approve'
                             type="object" class="oe_highlight"
-                            groups="ncss_custody_request.custody_accounting_manager"
+                            groups="ncss_custody_request.custody_request_accounting_manager_button"
                     />
                     <button name="paid_action" string="Paid"
                             states='accounting_approve'
@@ -351,28 +351,28 @@
               action="custody_request_manager_action"
               parent="custody_request_child_menu"
               sequence="4"
-              groups="ncss_custody_request.custody_direct_manager"
+              groups="ncss_custody_request.custody_request_waiting_direct_manager_menu"
     />
     <menuitem id="custody_request_department_action_menu"
               name="Waiting Department Manager Approve"
               action="custody_request_department_action"
               parent="custody_request_child_menu"
               sequence="6"
-              groups="ncss_custody_request.custody_department_manager"
+              groups="ncss_custody_request.custody_request_waiting_department_manager_menu"
     />
     <menuitem id="custody_request_center_action_menu"
               name="Waiting Center Manager Approve"
               action="custody_request_center_action"
               parent="custody_request_child_menu"
               sequence="8"
-              groups="ncss_custody_request.custody_center_manager"
+              groups="ncss_custody_request.custody_request_waiting_center_manager_menu"
     />
     <menuitem id="custody_request_accounting_action_menu"
               name="Waiting Accounting Manager Approve"
               action="custody_request_accounting_action"
               parent="custody_request_child_menu"
               sequence="10"
-              groups="ncss_custody_request.custody_accounting_manager"
+              groups="ncss_custody_request.custody_request_waiting_accounting_manager_menu"
     />
     <menuitem id="custody_accounting_approve_action_menu"
               name="Accounting Manager Approved"

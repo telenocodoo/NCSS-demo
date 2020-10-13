@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 12:58+0000\n"
-"PO-Revision-Date: 2020-10-13 12:58+0000\n"
+"POT-Creation-Date: 2020-10-13 07:07+0000\n"
+"PO-Revision-Date: 2020-10-13 07:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,11 +36,6 @@ msgstr "مدير الماليه"
 #: model:ir.ui.menu,name:ncss_custody_request.custody_accounting_approve_action_menu
 msgid "Accounting Manager Approved"
 msgstr "تمت موافقه الماليه"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_accounting_manager_button
-msgid "Accounting Manager Button"
-msgstr "زر مدير الماليه"
 
 #. module: ncss_custody_request
 #: model:ir.ui.menu,name:ncss_custody_request.menu_custody_request_action_settings
@@ -108,11 +103,6 @@ msgstr "مدير المركز"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Center Manager Approve"
 msgstr "موافقه مدير المركز"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_center_manager_button
-msgid "Center Manager Button"
-msgstr "زر مدير المركز"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__color
@@ -223,11 +213,6 @@ msgid "Department Manager Approve"
 msgstr "موافقه مدير القسم"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_department_manager_button
-msgid "Department Manager Button"
-msgstr "زر مدير القسم"
-
-#. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__description
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__description
 msgid "Description"
@@ -248,11 +233,6 @@ msgstr "مدير مباشر"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Direct Manager Approve"
 msgstr "موافقه المدير المباشر"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_direct_manager_button
-msgid "Direct Manager Button"
-msgstr "زر المدير المباشر"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__display_name
@@ -720,20 +700,10 @@ msgid "Waiting Accounting Manager Approve"
 msgstr "في انتظار موافقه مدير الماليه"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_waiting_accounting_manager_menu
-msgid "Waiting Accounting Manager Approve Menu"
-msgstr "قائمه انتظار موافقه مدير الماليه"
-
-#. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_center_action
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_center_action_menu
 msgid "Waiting Center Manager Approve"
 msgstr "في انتظار موافقه مدير المركز"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_waiting_center_manager_menu
-msgid "Waiting Center Manager Approve Menu"
-msgstr "قائمه انتظار موافقه مدير المركز"
 
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_department_action
@@ -742,20 +712,10 @@ msgid "Waiting Department Manager Approve"
 msgstr "في انتظار موافقه مدير القسم"
 
 #. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_waiting_department_manager_menu
-msgid "Waiting Department Manager Approve Menu"
-msgstr "قائمه انتظار موافقه مدير القسم"
-
-#. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_manager_action
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_manager_action_menu
 msgid "Waiting Direct Manager Approve"
 msgstr "في انتظار موافقه المدير المباشر"
-
-#. module: ncss_custody_request
-#: model:res.groups,name:ncss_custody_request.custody_request_waiting_direct_manager_menu
-msgid "Waiting Direct manager Approve Menu"
-msgstr "قائمه انتظار موافقه المدير المباشر"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__website_message_ids

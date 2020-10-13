@@ -43,6 +43,30 @@
 
         <!--        custody request buttons-->
 
+        <record id="custody_request_direct_manager_button" model="res.groups">
+            <field name="name">Direct Manager Button</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="custody_request_department_manager_button" model="res.groups">
+            <field name="name">Department Manager Button</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="custody_request_center_manager_button" model="res.groups">
+            <field name="name">Center Manager Button</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="custody_request_accounting_manager_button" model="res.groups">
+            <field name="name">Accounting Manager Button</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
         <record id="custody_request_paid_button" model="res.groups">
             <field name="name">Paid Button</field>
             <field name="category_id" ref="custody_security_category"/>
@@ -78,6 +102,26 @@
 
 
         <!--        custody request menu-->
+        <record id="custody_request_waiting_direct_manager_menu" model="res.groups">
+            <field name="name">Waiting Direct manager Approve Menu</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="custody_request_waiting_department_manager_menu" model="res.groups">
+            <field name="name">Waiting Department Manager Approve Menu</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="custody_request_waiting_center_manager_menu" model="res.groups">
+            <field name="name">Waiting Center Manager Approve Menu</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="custody_request_waiting_accounting_manager_menu" model="res.groups">
+            <field name="name">Waiting Accounting Manager Approve Menu</field>
+            <field name="category_id" ref="custody_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
         <record id="custody_request_paid_menu" model="res.groups">
             <field name="name">Paid Menu</field>
             <field name="category_id" ref="custody_security_category"/>
