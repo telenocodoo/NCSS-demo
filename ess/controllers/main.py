@@ -149,11 +149,11 @@ class ESSPortal(Controller):
             })
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_mandate_passenger')]).state == 'installed':
             values.update({
-                'mandate': True,
+                'mandate1': True,
             })
         else:
             values.update({
-                'mandate': False,
+                'mandate1': False,
             })
         # magdy
         return values
