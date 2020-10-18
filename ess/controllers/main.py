@@ -129,6 +129,33 @@ class ESSPortal(Controller):
             values.update({
                 'announcement': False,
             })
+
+        # magdy
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_assets_assignation')]).state == 'installed':
+            values.update({
+                'assets_assignation': True,
+            })
+        else:
+            values.update({
+                'assets_assignation': False,
+            })
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_custody_request')]).state == 'installed':
+            values.update({
+                'custody': True,
+            })
+        else:
+            values.update({
+                'custody': False,
+            })
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_mandate_passenger')]).state == 'installed':
+            values.update({
+                'mandate': True,
+            })
+        else:
+            values.update({
+                'mandate': False,
+            })
+        # magdy
         return values
 
     @route(['/attachment/download'], type='http', auth='public')
@@ -838,20 +865,14 @@ class ESSPortal(Controller):
     @route(['/my/expense'], type='http', auth='user', website=True)
     def expense(self, redirect=None, **post):
         values = {}
-        
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-
         product_obj = request.env['product.product'].sudo().search([('can_be_expensed', '=', True)])
-        
-
-        values = self.check_modules() 
-
+        values = self.check_modules()
         values.update({
             'error': {},
             'error_message': [],
         })
-
         if post and request.httprequest.method == 'POST':
             post.update({
                 'employee_id': emb_obj.id,

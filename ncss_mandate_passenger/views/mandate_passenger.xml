@@ -230,25 +230,28 @@
                     <button name="action_direct_manager_approve" string="Direct Manager Approve"
                             attrs="{'invisible':['|',('is_direct_manager','=',False),('state','!=','draft')]}"
                             type="object" class="oe_highlight"
-                            groups="ncss_mandate_passenger.mandate_passenger_direct_manager"
+                            groups="ncss_mandate_passenger.mandate_passenger_direct_manager_button"
                     />
                     <button name="action_department_manager_approve" string="Department Manager Approve"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
                             type="object" class="oe_highlight"
-                            groups="ncss_mandate_passenger.mandate_passenger_department_manager"
+                            groups="ncss_mandate_passenger.mandate_passenger_department_manager_button"
                     />
                     <button name="action_accounting_approve" string="Accounting Approve"
                             states='department_manager_approve'
                             type="object" class="oe_highlight"
-                            groups="ncss_mandate_passenger.mandate_passenger_accounting_manager"
+                            groups="ncss_mandate_passenger.mandate_passenger_accounting_manager_button"
                     />
                     <button name="refuse_action" string="Refuse"
                             states='draft,direct_manager_approve,department_manager_approve'
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_refuse_button"
+
+                    />
                     <button name="set_to_draft" string="Set To Draft"
                             states='refuse,accounting_approve'
                             type="object" class="oe_highlight"
-                            groups="ncss_mandate_passenger.mandate_passenger_center_manager"
+                            groups="ncss_mandate_passenger.mandate_passenger_set_to_draft_button"
                     />
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,direct_manager_approve,department_manager_approve,accounting_approve"
@@ -476,7 +479,7 @@
               action="direct_manager_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="6"
-              groups="ncss_mandate_passenger.mandate_passenger_direct_manager"
+              groups="ncss_mandate_passenger.mandate_passenger_waiting_direct_manager_approve_menu"
     />
 
     <menuitem id="department_manager_approve_menu"
@@ -484,7 +487,7 @@
               action="department_manager_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="8"
-              groups="ncss_mandate_passenger.mandate_passenger_department_manager"
+              groups="ncss_mandate_passenger.mandate_passenger_waiting_department_manager_approve_menu"
     />
 
     <menuitem id="accounting_approve_menu"
@@ -492,7 +495,7 @@
               action="accounting_approve_action"
               parent="mandate_passenger_child_menu"
               sequence="10"
-              groups="ncss_mandate_passenger.mandate_passenger_accounting_manager"
+              groups="ncss_mandate_passenger.mandate_passenger_waiting_accounting_manager_approve_menu"
     />
 
     <menuitem id="refuse_menu"

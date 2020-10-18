@@ -38,8 +38,50 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
-        <record id="mandate_passenger_travel_ticket" model="res.groups">
-            <field name="name">Travel Ticket</field>
+<!--        Mandate and Passenger buttons-->
+        <record id="mandate_passenger_direct_manager_button" model="res.groups">
+            <field name="name">Direct Manager Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="mandate_passenger_department_manager_button" model="res.groups">
+            <field name="name">Department Manager Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="mandate_passenger_accounting_manager_button" model="res.groups">
+            <field name="name">accounting Manager Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="mandate_passenger_refuse_button" model="res.groups">
+            <field name="name">Refuse Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="mandate_passenger_set_to_draft_button" model="res.groups">
+            <field name="name">Set To Draft Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+<!--        Mandate and Passenger buttons-->
+
+<!--        Mandate and Passenger Menu-->
+        <record id="mandate_passenger_waiting_direct_manager_approve_menu" model="res.groups">
+            <field name="name">Waiting Direct Manager Approve Menu</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="mandate_passenger_waiting_department_manager_approve_menu" model="res.groups">
+            <field name="name">Waiting Department Manager Approve Menu</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="mandate_passenger_waiting_accounting_manager_approve_menu" model="res.groups">
+            <field name="name">Waiting Accounting Manager Approve Menu</field>
             <field name="category_id" ref="mandate_passenger_security_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
@@ -49,6 +91,15 @@
             <field name="category_id" ref="mandate_passenger_security_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+
+        <record id="mandate_passenger_travel_ticket" model="res.groups">
+            <field name="name">Travel Ticket</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+<!--        Mandate and Passenger Menu-->
+
 
 
 
@@ -126,40 +177,6 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
-
-
-
-
-
-
-
-
-
-
-<!--        <record model="ir.rule" id="mandate_passenger_employee_rule2">-->
-<!--            <field name="name">Employee Access Rules</field>-->
-<!--            <field name="model_id" ref="model_mandate_passenger"/>-->
-<!--            <field name="domain_force">[('employee_id','=',0)]</field>-->
-<!--            <field name="perm_read" eval="1"/>-->
-<!--            <field name="perm_write" eval="1"/>-->
-<!--            <field name="perm_unlink" eval="0"/>-->
-<!--&lt;!&ndash;            <field name="perm_create" eval="1"/>&ndash;&gt;-->
-<!--            <field name="groups" eval="[(4,ref('mandate_passenger_employee'))]"/>-->
-<!--        </record>-->
-
-<!--        <record id="mandate_passenger_accounting_manager_rule" model="ir.rule">-->
-<!--            <field name="name">Accounting Manager</field>-->
-<!--            <field name="model_id" ref="model_mandate_passenger"/>-->
-<!--            <field name="domain_force">[(1,'=',1)]</field>-->
-<!--            <field name="groups" eval="[(4,ref('mandate_passenger_accounting_manager'))]"/>-->
-<!--        </record>-->
-
-<!--        <record id="mandate_passenger_direct_manager_rule" model="ir.rule">-->
-<!--            <field name="name">Center Manager</field>-->
-<!--            <field name="model_id" ref="model_mandate_passenger"/>-->
-<!--            <field name="domain_force">[(1,'=',1)]</field>-->
-<!--            <field name="groups" eval="[(4,ref('mandate_passenger_center_manager'))]"/>-->
-<!--        </record>-->
 </data>
 </odoo>
 

@@ -50,9 +50,12 @@
         'views/portal_profile_education.xml',
         'views/portal_profile_contract.xml',
         'views/portal.xml',
+        'views/portal_asset_assignation.xml',
+
         'report/partner_ledger_report.xml',
         'report/partner_ledger_report_template.xml',
         'data/access.xml',
+
     ],
     'qweb': [
     ],

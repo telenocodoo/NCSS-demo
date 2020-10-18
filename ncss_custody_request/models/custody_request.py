@@ -21,7 +21,7 @@ class CustodyRequest(models.Model):
     description = fields.Text()
     reason = fields.Text()
     amount = fields.Float()
-    remaining_amount = fields.Float(compute='get_remaining_amount')
+    remaining_amount = fields.Float(compute='get_remaining_amount', store=True)
     date = fields.Date()
     exchange_item_ids = fields.One2many('custody.request.line', 'custody_id')
     move_line_ids = fields.One2many('account.move.line', 'custody_id',

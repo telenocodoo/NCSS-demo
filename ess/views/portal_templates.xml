@@ -46,11 +46,11 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <img class="mb-3 emp_img oe_avatar" 
-                                 t-att-src="website.image_url(employee, 'image_1920')" 
+                            <img class="mb-3 emp_img oe_avatar"
+                                 t-att-src="website.image_url(employee, 'image_1920')"
                                  style="object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"/>
 
-							<!-- <span t-field="employee.image_1920" 
+							<!-- <span t-field="employee.image_1920"
                                   t-options='{"class":"oe_avatar", "widget": "image", "style": "object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"}'/> -->
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="block m-t-xs font-bold" t-field="employee.name" />
@@ -227,7 +227,33 @@
                             <li><a href="/my/track_expense">Track Expense Approvals</a></li>
                         </ul>
                     </li>
+<!--magdy-->
+                    <li t-if="assets_assignation">
+                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Asset Assignation</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/request/asset">Request Asset</a></li>
+                            <li><a href="/my/asset_assignation">Asset Assigned To Me</a></li>
+                        </ul>
+                    </li>
 
+                    <li t-if="custody">
+                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/custody/request">Custody Request</a></li>
+                            <li><a href="/my/custody">My Custody</a></li>
+                        </ul>
+                    </li>
+
+                    <li t-if="mandate">
+                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/request/passenger_mandate">Passenger And Mandate</a></li>
+                            <li><a href="/my/courses_and_mandate">My Passenger And Mandate</a></li>
+                        </ul>
+                    </li>
+
+
+<!--magdy-->
                     <li><a href="/my/network"><i class="fa fa-th-large"></i> <span class="nav-label">Employees Network Directory</span></a></li>
                     <li t-if="announcement"><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>
                 </ul>
