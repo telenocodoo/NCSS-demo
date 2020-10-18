@@ -116,9 +116,10 @@ class CustodyRequest(models.Model):
 
     @api.constrains('amount', 'exchange_item_ids', 'remaining_amount')
     def _constrains_remaining_amount(self):
-        total_amount = sum([line.amount for line in self.exchange_item_ids])
-        if self.amount < total_amount:
-            raise UserError(_("Remaining Amount Must Be Less Than Or Equal To Amount"))
+        for record in self:
+            total_amount = sum([line.amount for line in record.exchange_item_ids])
+            if record.amount < total_amount:
+                raise UserError(_("Remaining Amount Must Be Less Than Or Equal To Amount"))
 
     def action_refuse(self):
         for record in self:
