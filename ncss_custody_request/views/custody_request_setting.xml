@@ -61,8 +61,8 @@
 
         <menuitem id="menu_custody_request_action_settings"
                   name="Accounting Setting"
-                  parent="ncss_custody_request.custody_request_setting_menu"
-                  sequence="2"
+                  parent="ncss_custody_request.custody_request_root"
+                  sequence="99"
                   action="custody_request_configuration_action"
                   groups="ncss_custody_request.custody_request_setting_menu"
         />

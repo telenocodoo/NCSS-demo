@@ -425,11 +425,11 @@
               groups="ncss_custody_request.custody_description_user,ncss_custody_request.custody_description_manager"
     />
 
-    <menuitem id="custody_request_setting_menu"
-              name="Setting"
-              parent="custody_request_root"
-              sequence="6"
-              groups="ncss_custody_request.custody_request_setting_menu"
-    />
+<!--    <menuitem id="custody_request_setting_menu"-->
+<!--              name="Setting"-->
+<!--              parent="custody_request_root"-->
+<!--              sequence="6"-->
+<!--              groups="ncss_custody_request.custody_request_setting_menu"-->
+<!--    />-->
 
 </odoo>
