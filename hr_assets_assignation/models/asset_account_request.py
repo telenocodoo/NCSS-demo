@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 import datetime
+from odoo.exceptions import UserError
 
 
 class AssetAccountRequest(models.Model):
@@ -110,10 +111,10 @@ class CustodyRequestLine(models.Model):
                                            ], default='vacation', tracking=True)
     description = fields.Text()
     state = fields.Selection([('draft', 'Draft'),
-                              ('first_approve', 'Approve'),
+                              ('first_approve', 'Request Sent'),
                               ('clearance', 'clearance'),
-                              ('done', 'Done'),
                               ], default='draft', tracking=True, )
+    # ('done', 'Done'),
     color = fields.Integer(compute="compute_color")
 
     @api.model
@@ -150,7 +151,11 @@ class CustodyRequestLine(models.Model):
                 record.color = 8
 
     def action_first_approve(self):
-        self.state = 'first_approve'
+        for record in self:
+            items_need_disclaimer = record.asset_account_ids.filtered(lambda l: l.is_disclaimer == False)
+            if len(items_need_disclaimer) >= len(record.asset_account_ids):
+                raise UserError(_("You Must Select At Least One Asset To Approve"))
+            record.state = 'first_approve'
 
     def action_clearance(self):
         for record in self.asset_account_ids:

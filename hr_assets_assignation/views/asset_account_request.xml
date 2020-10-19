@@ -48,38 +48,40 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="asset_request_description"  required="1"/>
+                            <field name="asset_request_description"  required="1"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
+                            />
                             <field name="employee_id"
-                            attrs="{'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                            attrs="{'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])],'readonly':[('state','in',['assigned','clearance'])]}"
                             />
                             <field name="type"
-                            attrs="{'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                            attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
-                            <field name="asset_id"
-                                   attrs="{'required':[('type','=','asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
+                            <field name="asset_id" options="{'no_quick_create': True}"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('type','=','asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
                             />
 <!--                           attrs="{'required':[('type','=','asset')],'invisible':[('type','!=','asset')]}"-->
                             <field name="description"
-                                   attrs="{'required':[('type','=','non_asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','non_asset'),('state','not in',['approve','assigned','clearance'])]}"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('type','=','non_asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','non_asset'),('state','not in',['approve','assigned','clearance'])]}"
                            />
 <!--                            attrs="{'required':[('type','=','non_asset')],'invisible':[('type','!=','non_asset')]}"-->
                             <field name="type_of_disclaimer"
-                            attrs="{'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                            attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
                             <field name="date_of_asset_delivery"
-                                    attrs="{'required':[('type_of_disclaimer','=','at_specific_date'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type_of_disclaimer','!=','at_specific_date'),('state','not in',['approve','assigned','clearance'])]}"
+                                    attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('type_of_disclaimer','=','at_specific_date'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type_of_disclaimer','!=','at_specific_date'),('state','not in',['approve','assigned','clearance'])]}"
                            />
 <!--                            attrs="{'required':[('type_of_disclaimer','=','at_specific_date')],'invisible':[('type_of_disclaimer','!=','at_specific_date')]}"-->
                         </group>
                         <group>
                             <field name="date"
-                                    attrs="{'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                                    attrs="{'readonly':[('state','in',['assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
                             <field name="state_of_asset_when_receive"
-                                    attrs="{'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                                    attrs="{'readonly':[('state','in',['assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
                             <field name="state_of_asset_when_delivery"
-                                    attrs="{'invisible':[('state','not in',['approve','assigned','clearance'])]}"
+                                    attrs="{'readonly':[('state','=','clearance')],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
                             <field name="date_of_disclaimer" readonly="1"
                                     attrs="{'invisible':[('state','not in',['approve','assigned','clearance'])]}"
@@ -238,7 +240,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_first_approve" string="Approve"
+                    <button name="action_first_approve" string="Send Request"
                             states='draft'
                             type="object" class="oe_highlight"
                             groups="hr_assets_assignation.employee_asset_approve_button"
@@ -248,33 +250,33 @@
                             type="object" class="oe_highlight"
                             groups="hr_assets_assignation.employee_asset_clearance_from_employee_button"
                     />
-                    <button name="action_done" string="Done"
-                            states='clearance'
-                            type="object" class="oe_highlight"
-                            groups="hr_assets_assignation.employee_asset_done_button"
-                    />
+<!--                    <button name="action_done" string="Done"-->
+<!--                            states='clearance'-->
+<!--                            type="object" class="oe_highlight"-->
+<!--                            groups="hr_assets_assignation.employee_asset_done_button"-->
+<!--                    />-->
                     <button name="set_to_draft" string="Set To Draft"
-                            states='done'
+                            states='clearance'
                             type="object" class="oe_highlight"
                             groups="hr_assets_assignation.employee_asset_set_to_draft_button"
                     />
                     <field name="state" widget="statusbar"
-                           statusbar_visible="draft,first_approve,clearance,done"
+                           statusbar_visible="draft,first_approve,clearance"
                     />
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="employee_id"  required="1"/>
-                            <field name="type_of_disclaimer" required="1"/>
+                            <field name="employee_id"  required="1" attrs="{'readonly':[('state','=','clearance')]}"/>
+                            <field name="type_of_disclaimer" required="1" attrs="{'readonly':[('state','=','clearance')]}"/>
                         </group>
                         <group>
-                            <field name="description" />
+                            <field name="description" attrs="{'readonly':[('state','=','clearance')]}"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Assets" name="assets">
-                            <field name="asset_account_ids">
+                            <field name="asset_account_ids" attrs="{'readonly':[('state','=','clearance')]}">
                                 <tree editable="bottom" create="false">
                                     <field name="employee_id" readonly="1" force_save="True"/>
                                     <field name="custody_request_id" invisible="1"/>
@@ -390,23 +392,23 @@
         <field name="name">Employee Assets Waiting Approve</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">employee.assets</field>
-        <field name="domain">[('state','=','draft')]</field>
-        <field name="view_mode">kanban,tree,form</field>
-    </record>
-
-    <record id="waiting_approve_on_clearance_action" model="ir.actions.act_window">
-        <field name="name">Waiting Approve On Clearance</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">employee.assets</field>
         <field name="domain">[('state','=','first_approve')]</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
 
-    <record id="clearance_employee_done_action" model="ir.actions.act_window">
+    <record id="waiting_approve_on_clearance_action" model="ir.actions.act_window">
         <field name="name">Clearance Done</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">employee.assets</field>
         <field name="domain">[('state','=','clearance')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record id="clearance_employee_done_action" model="ir.actions.act_window">
+        <field name="name">Employee Assets Waiting Sent Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.assets</field>
+        <field name="domain">[('state','=','draft')]</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
     <!--    asset.account.request-->
@@ -429,36 +431,12 @@
               sequence="2"
     />
 
-    <menuitem id="waiting_assignation_action_menu"
-              name="Waiting Assignation To Employee"
-              action="waiting_assign_to_employee_action"
-              parent="asset_account_request_child_menu"
-              sequence="4"
-              groups="hr_assets_assignation.waiting_assignation_to_employee_menu"
-    />
-
-    <menuitem id="waiting_clearance_action_menu"
-              name="Waiting For Clearance"
-              action="waiting_employee_clearance_action"
-              parent="asset_account_request_child_menu"
-              sequence="6"
-              groups="hr_assets_assignation.waiting_for_clearance_menu"
-    />
-
-    <menuitem id="clearance_done_action_menu"
-              name="Clearance Done"
-              action="employee_clearance_done_action"
-              parent="asset_account_request_child_menu"
-              sequence="8"
-              groups="hr_assets_assignation.clearance_done_menu"
-    />
-
-
     <menuitem id="submitted_action_menu"
               name="Submitted Menu"
               action="asset_submitted_action"
               parent="asset_account_request_child_menu"
               groups="hr_assets_assignation.asset_submitted_action_menu"
+              sequence="10"
     />
 
 
@@ -467,6 +445,31 @@
               action="waiting_asset_assignation_approve_action"
               parent="asset_account_request_child_menu"
               groups="hr_assets_assignation.waiting_asset_assignation_approve_action_menu"
+              sequence="20"
+    />
+
+    <menuitem id="waiting_assignation_action_menu"
+              name="Waiting Assignation To Employee"
+              action="waiting_assign_to_employee_action"
+              parent="asset_account_request_child_menu"
+              sequence="30"
+              groups="hr_assets_assignation.waiting_assignation_to_employee_menu"
+    />
+
+    <menuitem id="waiting_clearance_action_menu"
+              name="Waiting For Clearance"
+              action="waiting_employee_clearance_action"
+              parent="asset_account_request_child_menu"
+              sequence="40"
+              groups="hr_assets_assignation.waiting_for_clearance_menu"
+    />
+
+    <menuitem id="clearance_done_action_menu"
+              name="Clearance Done"
+              action="employee_clearance_done_action"
+              parent="asset_account_request_child_menu"
+              sequence="50"
+              groups="hr_assets_assignation.clearance_done_menu"
     />
 
 
@@ -487,18 +490,18 @@
               name="Employee Assets Waiting Approve"
               action="waiting_approve_action"
               parent="employee_assets_menu"
-              sequence="4"
+              sequence="10"
               groups="hr_assets_assignation.employee_asset_waiting_approve_menu"
     />
     <menuitem id="waiting_approve_on_clearance_menu"
               name="Waiting Approve On Clearance"
               action="waiting_approve_on_clearance_action"
               parent="employee_assets_menu"
-              sequence="6"
+              sequence="20"
               groups="hr_assets_assignation.employee_asset_waiting_approve_on_clearance_menu"
     />
     <menuitem id="clearance_employee_done_menu"
-              name="Clearance Done"
+              name="Employee Assets Waiting Sent Request"
               action="clearance_employee_done_action"
               parent="employee_assets_menu"
               sequence="8"
