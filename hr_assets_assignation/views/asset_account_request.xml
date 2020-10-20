@@ -376,6 +376,64 @@
             </kanban>
         </field>
     </record>
+<!--    -->
+
+
+<!--   department clearance -->
+    <record id="department_clearance_form" model="ir.ui.view">
+        <field name="name">department.clearance.form</field>
+        <field name="model">department.clearance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"  required="1"/>
+                       </group>
+                        <group>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Department Lines">
+                            <field name="department_clearance_line_ids">
+                                <tree create="0" editable="bottom">
+                                    <field name="department_id" readonly="1" force_save="1"/>
+                                    <field name="department_manager_id" readonly="1" force_save="1"/>
+                                    <field name="is_department_manager" />
+                                    <field name="notes" attrs="{'readonly':[('is_department_manager','=',False)]}"/>
+                                    <field name="date" attrs="{'readonly':[('is_department_manager','=',False)]}"/>
+<!--                                    <field name="signature" />-->
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="department_clearance_tree" model="ir.ui.view">
+        <field name="name">department.clearance</field>
+        <field name="model">department.clearance</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="employee_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="department_clearance_action" model="ir.actions.act_window">
+        <field name="name">Department Clearance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">department.clearance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--    department clearance -->
 
 
 
@@ -470,6 +528,14 @@
               parent="asset_account_request_child_menu"
               sequence="50"
               groups="hr_assets_assignation.clearance_done_menu"
+    />
+
+
+    <menuitem id="department_clearance_menu"
+              name="Department Clearance"
+              parent="asset_account_request_root"
+              action="department_clearance_action"
+              sequence="99"
     />
 
 

@@ -14,5 +14,6 @@
         'security/ir.model.access.csv',
         'views/asset_account_request.xml',
         'report/employee_assets_report.xml',
+        'report/department_clearance_report.xml',
     ]
 }

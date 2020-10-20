@@ -230,3 +230,81 @@ class EmployeeAssetLine(models.Model):
     date_of_disclaimer = fields.Date('Date Of Clearance')
     is_disclaimer = fields.Boolean('Cleared')
     employee_asset_id = fields.Many2one('employee.assets')
+
+
+class DepartmentClearance(models.Model):
+    _name = 'department.clearance'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _rec_name = 'employee_id'
+
+    department_clearance_line_ids = fields.One2many('department.clearance.line', 'department_clearance_id')
+    employee_id = fields.Many2one('hr.employee', 'Employee')
+
+    @api.onchange('employee_id')
+    def onchange_employee_id(self):
+        self.department_clearance_line_ids = False
+        if self.employee_id:
+            department_obj = self.env['hr.department'].search([])
+            if department_obj:
+                for line in department_obj:
+                    self.department_clearance_line_ids.new({
+                        'department_clearance_id': self.id,
+                        'department_id': line.id,
+                        'department_manager_id': line.manager_id.id,
+                    })
+
+    def get_day_name_from_date(self, contract_day):
+        contract_day = str(contract_day)
+        year, month, day = contract_day.split('-')
+        day_name = datetime.date(int(year), int(month), int(day))
+        e_name = day_name.strftime("%A")
+        if e_name == 'Saturday':
+            ar_name = 'السبت'
+        elif e_name == 'Sunday':
+            ar_name = 'الاحد'
+        elif e_name == 'Monday':
+            ar_name = 'الاثنين'
+        elif e_name == 'Tuesday':
+            ar_name = 'الثلاثاء'
+        elif e_name == 'Wednesday':
+            ar_name = 'الاربعاء'
+        elif e_name == 'Thursday':
+            ar_name = 'الخميس'
+        else:
+            ar_name = 'الجمعه'
+        return ar_name
+
+
+class DepartmentClearanceLine(models.Model):
+    _name = 'department.clearance.line'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
+    department_clearance_id = fields.Many2one('department.clearance')
+    department_id = fields.Many2one('hr.department', 'Department Name')
+    department_manager_id = fields.Many2one('hr.employee')
+    notes = fields.Char()
+    signature = fields.Char()
+    date = fields.Date('Clearance Date', default=fields.date.today())
+    is_department_manager = fields.Boolean(compute="compute_is_department_manager")
+
+    @api.onchange('department_id')
+    def onchange_department_id(self):
+        for record in self:
+            record.department_manager_id = record.department_id.manager_id.id
+
+    @api.depends('department_manager_id')
+    def compute_is_department_manager(self):
+        for record in self:
+            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)])
+            if current_user_id:
+                if current_user_id.department_id and current_user_id.department_id.manager_id:
+                    if record.department_manager_id.id == current_user_id.department_id.manager_id.id:
+                        record.is_department_manager = True
+                    else:
+                        record.is_department_manager = False
+                else:
+                    record.is_department_manager = False
+            else:
+                record.is_department_manager = False
+
+
