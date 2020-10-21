@@ -47,6 +47,17 @@ class EssAsset(Controller):
 
             asset_obj = request.env['asset.account.request'].sudo().create(post)
             asset_obj.sudo().action_submit()
+
+            emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+            asset_assignation_obj = request.env['asset.account.request'].sudo().search(
+                [('employee_id', '=', emb_obj.id)])
+
+            values.update({
+                'partner': request.env.user.partner_id,
+                'employee': emb_obj,
+                'asset_assignation_obj': asset_assignation_obj,
+            })
+            return request.render("ess.ess_view_asset_assignation", values)
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
@@ -82,8 +93,16 @@ class EssAsset(Controller):
                 'amount': post['amount'],
                 'description': post['description'],
             })
-
             request.env['custody.request'].sudo().create(post)
+            emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
+
+            values.update({
+                'partner': request.env.user.partner_id,
+                'employee': emb_obj,
+                'custody_obj': custody_obj,
+            })
+            return request.render("ess.ess_view_custody", values)
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
@@ -130,8 +149,17 @@ class EssAsset(Controller):
                 'description': post['description'],
                 'state': 'draft',
             })
-
             request.env['mandate.passenger'].sudo().create(post)
+            # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+            # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
+            # # print("LLLLLLLLLLLL", courses_and_mandate_obj)
+            # values.update({
+            #     'partner': request.env.user.partner_id,
+            #     'employee': emb_obj,
+            #     'courses_and_mandate_obj': courses_and_mandate_obj,
+            # })
+            # response = request.render("ess.ess_view_courses_and_mandate", values)
+            # return response
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,

@@ -1140,11 +1140,13 @@
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
+<!--                                                                                        <t t-esc="mandate['course_id']['name']" />-->
+<!--                                                                                        ['name']-->
                                                                                         <tr>
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_place_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_place_id']"> <div t-esc="mandate['course_place_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
                                                                                             <td><div t-esc="mandate['start_date']"/></td>
@@ -1179,9 +1181,9 @@
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'draft'">
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_place_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_place_id']"><div t-esc="mandate['course_place_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
                                                                                             <td><div t-esc="mandate['start_date']"/></td>
@@ -1217,7 +1219,7 @@
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'direct_manager_approve'">
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
@@ -1255,7 +1257,7 @@
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'department_manager_approve'">
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
@@ -1293,7 +1295,7 @@
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'accounting_approve'">
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
@@ -1331,7 +1333,7 @@
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'refuse'">
                                                                                             <td><div t-esc="mandate['type']"/></td>
-                                                                                            <td><div t-esc="mandate['course_id']['name']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['course_type']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
