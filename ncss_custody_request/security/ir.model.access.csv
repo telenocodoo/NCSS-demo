@@ -19,3 +19,6 @@ custody_description_manager,custody_description_manager,model_custody_descriptio
 
 
 crm_team,crm_team,crm.model_crm_team,,1,1,1,1
+
+account_move,account_move,account.model_account_move,base.group_user,1,0,0,0
+account_move_line,account_move_line,account.model_account_move_line,base.group_user,1,0,0,0

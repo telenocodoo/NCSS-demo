@@ -14,6 +14,7 @@ class CustodyRequest(models.Model):
     _name = 'custody.request'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = "employee_id"
+    _order = "state"
 
     expense_account_move_id = fields.Many2one('account.move', 'Journal Expense')
     liquidated_account_move_id = fields.Many2one('account.move', 'Journal Liquidated')
@@ -142,12 +143,12 @@ class CustodyRequest(models.Model):
 
     def create_account_move(self, journal, label, debit_account_id, credit_account_id, amount, address_home_id):
         account_move_obj = self.env['account.move']
-        account_move_id = account_move_obj.create({
+        account_move_id = account_move_obj.sudo().create({
             'journal_id': journal,
             'ref': label,
         })
         journal_line = self.with_context(dict(self._context, check_move_validity=False)).env['account.move.line']
-        journal_line.create({
+        journal_line.sudo().create({
             'move_id': account_move_id.id,
             'account_id': debit_account_id,
             'name': label,
@@ -156,7 +157,7 @@ class CustodyRequest(models.Model):
             'partner_id': address_home_id,
             'custody_id': self.id,
         })
-        journal_line.create({
+        journal_line.sudo().create({
             'move_id': account_move_id.id,
             'account_id': credit_account_id,
             'name': label,

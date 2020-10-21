@@ -198,12 +198,12 @@ msgstr "طلب عهده"
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__date
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__date
 msgid "Date"
-msgstr "تاريخ العهده"
+msgstr "تاريخ الصرف"
 
 #. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_kanban
 msgid "Date :"
-msgstr "تاريخ العهده:"
+msgstr "تاريخ الصرف:"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_res_company__debit_account_id
@@ -267,7 +267,7 @@ msgstr ""
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_done_action_menu
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Done"
-msgstr "تمت"
+msgstr "تمت التصفيه"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_done_menu
@@ -789,7 +789,7 @@ msgstr ""
 #. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "liquidated"
-msgstr "تصفيه العهده"
+msgstr "طلب تصفيه العهده"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_description_user

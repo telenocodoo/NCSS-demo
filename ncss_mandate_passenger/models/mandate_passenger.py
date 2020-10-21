@@ -126,6 +126,23 @@ class MandatePassenger(models.Model):
                                ], default='draft')
     color = fields.Integer(compute="compute_color")
 
+    department_id = fields.Many2one('hr.department')
+    budget = fields.Float(compute="compute_budget_info")
+    expensed_from_budget = fields.Float(compute="compute_budget_info")
+    remaining_from_budget = fields.Float(compute="compute_budget_info")
+
+    def compute_budget_info(self):
+        current_employee_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)])
+        if current_employee_id:
+            for record in self:
+                budget_obj = self.env['budget.allocated.training'].search(
+                    [('department_id.manager_id.id', '=', current_employee_id.id)], limit=1)
+                if budget_obj:
+                    record.department_id = budget_obj.department_id.id
+                    record.budget = budget_obj.budget
+                    record.expensed_from_budget = budget_obj.expensed_from_budget
+                    record.remaining_from_budget = budget_obj.remaining_from_budget
+
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         employee = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_employee')

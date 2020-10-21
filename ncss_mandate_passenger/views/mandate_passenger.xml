@@ -276,8 +276,8 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="price"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
-                            <field name="start_date" readonly="1"/>
-                            <field name="end_date" readonly="1"/>
+                            <field name="start_date" readonly="1" force_save="1"/>
+                            <field name="end_date" readonly="1" force_save="1"/>
                             <field name="number_of_days"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                         </group>
@@ -300,6 +300,20 @@
                             <field name="is_department_manager" invisible="1"/>
                             <field name="reason"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="department_id" force_save="1" readonly="1" invisible="1"
+                            attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
+                            />
+                            <field name="budget" force_save="1" readonly="1"
+                            attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
+                            />
+                            <field name="expensed_from_budget" readonly="1" force_save="1"
+                            attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
+                            />
+                            <field name="remaining_from_budget" readonly="1" force_save="1"
+                            attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
                             />
                         </group>
                     </group>

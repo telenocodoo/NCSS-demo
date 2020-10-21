@@ -180,13 +180,13 @@
         <field name="name">custody.request.kanban</field>
         <field name="model">custody.request</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="state">
+            <kanban default_group_by="state" default_order="state" >
                 <field name="employee_id"/>
                 <field name="date" />
                 <field name="amount" />
                 <field name="description"/>
                 <field name="color"/>
-                <field name="state"/>
+                <field name="state" widget="state_selection"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_kanban_record_has_image_fill o_crm_project_kanban" >
