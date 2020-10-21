@@ -45,7 +45,8 @@ class EssAsset(Controller):
                 'asset_request_description': post['description'],
             })
 
-            request.env['asset.account.request'].sudo().create(post)
+            asset_obj = request.env['asset.account.request'].sudo().create(post)
+            asset_obj.sudo().action_submit()
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
