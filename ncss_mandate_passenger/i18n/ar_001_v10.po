@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-21 09:39+0000\n"
-"PO-Revision-Date: 2020-10-21 09:39+0000\n"
+"POT-Creation-Date: 2020-10-15 14:00+0000\n"
+"PO-Revision-Date: 2020-10-15 14:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,6 @@ msgstr ""
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__budget
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__budget
 msgid "Budget"
 msgstr "الميزانيه المرصوده"
 
@@ -171,7 +170,6 @@ msgstr "تكلفه اليوم"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__department_id
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__department_id
 msgid "Department"
 msgstr "القسم"
 
@@ -274,7 +272,6 @@ msgstr "تاريخ نهايه الدوره يجب ان يكون اكبرمن ت�
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__expensed_from_budget
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__expensed_from_budget
 msgid "Expensed From Budget"
 msgstr "المصروف من الميزانيه"
 
@@ -661,7 +658,6 @@ msgstr "قائمه الانتداب والاركاب المرفوض"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__remaining_from_budget
-#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__remaining_from_budget
 msgid "Remaining From Budget"
 msgstr "المتبقى من الميزانيه"
 

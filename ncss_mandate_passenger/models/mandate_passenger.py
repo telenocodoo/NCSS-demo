@@ -138,10 +138,14 @@ class MandatePassenger(models.Model):
                 budget_obj = self.env['budget.allocated.training'].search(
                     [('department_id.manager_id.id', '=', current_employee_id.id)], limit=1)
                 if budget_obj:
-                    record.department_id = budget_obj.department_id.id
+                    # record.department_id = budget_obj.department_id.id
                     record.budget = budget_obj.budget
                     record.expensed_from_budget = budget_obj.expensed_from_budget
                     record.remaining_from_budget = budget_obj.remaining_from_budget
+                else:
+                    record.budget = 0.0
+                    record.expensed_from_budget = 0.0
+                    record.remaining_from_budget = 0.0
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
