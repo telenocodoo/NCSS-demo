@@ -46,37 +46,44 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <img class="mb-3 emp_img oe_avatar"
-                                 t-att-src="website.image_url(employee, 'image_1920')"
-                                 style="object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"/>
+<!--                            <img class="mb-3 emp_img oe_avatar"-->
+<!--                                 t-att-src="website.image_url(employee, 'image_1920')"-->
+<!--                                 style="object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"/>-->
 
-							<!-- <span t-field="employee.image_1920"
-                                  t-options='{"class":"oe_avatar", "widget": "image", "style": "object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"}'/> -->
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold" t-field="employee.name" />
-                                <span class="text-muted text-xs block" style="color: #8095a8 !important;" t-field="employee.department_id"> <b class="caret"></b> </span>
-                            </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li>
-                                    <input type="file" class="d-none input-edit-pic" name="image_1920" accept="image/*"/>
+<!--							&lt;!&ndash; <span t-field="employee.image_1920"-->
+<!--                                  t-options='{"class":"oe_avatar", "widget": "image", "style": "object-fit: cover; border-radius: 50%; width: 100%; height: 170px;"}'/> &ndash;&gt;-->
+<!--                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">-->
+<!--                                <span class="block m-t-xs font-bold" t-field="employee.name" />-->
+<!--                                <span class="text-muted text-xs block" style="color: #8095a8 !important;" t-field="employee.department_id"> <b class="caret"></b> </span>-->
+<!--                            </a>-->
 
-                                    <button onclick="form.submit()" type="submit" class="d-none btn btn-primary upload-btn float-right" style='margin-right: 30px;'>
-                                        Confirm
-                                    </button>
-                                    <a class="dropdown-item edit-pic" href="#">Change Picture 
-                                        
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Update Basic Info</a></li>
-                                <li><a class="dropdown-item" href="/my/myProfile">View Profile</a></li>
-                                <li><a class="dropdown-item" href="/my/view_document">View Personal Docs</a></li>
-                                <li><a class="dropdown-item" href="/my/myEducational">View Educational Info</a></li>
-                                <li><a class="dropdown-item" href="/my/myExperians">View My Experians</a></li>
-                                <li><a class="dropdown-item" href="/my/myskills">View My Skills</a></li>
-                                <li><a class="dropdown-item" href="/my/contracts">View Contract History</a></li>
-                                <li class="dropdown-divider"></li>
-                                <!-- <li><a class="dropdown-item" href="login.html">Logout</a></li> -->
-                            </ul>
+
+
+
+<!--                            <ul class="dropdown-menu animated fadeInRight m-t-xs">-->
+<!--                                <li>-->
+<!--                                    <input type="file" class="d-none input-edit-pic" name="image_1920" accept="image/*"/>-->
+
+<!--                                    <button onclick="form.submit()" type="submit" class="d-none btn btn-primary upload-btn float-right" style='margin-right: 30px;'>-->
+<!--                                        Confirm-->
+<!--                                    </button>-->
+<!--                                    <a class="dropdown-item edit-pic" href="#">Change Picture -->
+<!--                                        -->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li><a class="dropdown-item" href="#">Update Basic Info</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/myProfile">View Profile</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/view_document">View Personal Docs</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/myEducational">View Educational Info</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/myExperians">View My Experians</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/myskills">View My Skills</a></li>-->
+<!--                                <li><a class="dropdown-item" href="/my/contracts">View Contract History</a></li>-->
+<!--                                <li class="dropdown-divider"></li>-->
+<!--                                &lt;!&ndash; <li><a class="dropdown-item" href="login.html">Logout</a></li> &ndash;&gt;-->
+<!--                            </ul>-->
+
+
+
 							<!-- <div class="contact-box-footer">
 								<div class="m-t-xs btn-group">
 									<a href=""  class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
@@ -124,7 +131,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="documents">
+<!--                    <li t-if="documents">-->
+                    <li t-if="documents55">
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Personal Docs</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/document">Upload Document</a></li>
@@ -132,7 +140,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="company_documents">
+<!--                    <li t-if="company_documents">-->
+                    <li t-if="company_documents55">
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Company Docs</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/view_my_company_document">Ownered</a></li>
@@ -141,6 +150,7 @@
                         </ul>
                     </li>
 
+<!--                    <li t-if="True">-->
                     <li t-if="True">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Atteandance</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -150,6 +160,7 @@
                         </ul>
                     </li>
 
+<!--                    <li t-if="payslip">-->
                     <li t-if="payslip">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Payroll</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -163,7 +174,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="training">
+<!--                    <li t-if="training">-->
+                    <li t-if="training55">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Training Management</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/training">Training Request</a></li>
@@ -172,6 +184,7 @@
                         </ul>
                     </li>
 
+<!--                    <li t-if="True">-->
                     <li t-if="True">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Appraisal</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -181,7 +194,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="letter">
+<!--                    <li t-if="letter">-->
+                    <li t-if="letter55">
                         <a href="#"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Letters &amp; Certificates</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/letter">Request a Document</a></li>
@@ -190,7 +204,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="True">
+<!--                    <li t-if="True">-->
+                    <li t-if="True55">
                         <a href="#"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Intranet Requests &amp; Communication</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Create Ticket</a></li>
@@ -199,7 +214,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="av_project">
+<!--                    <li t-if="av_project">-->
+                    <li t-if="av_project55">
                         <a href="#"><i class="fa fa-pencil-square-o"></i> <span class="nav-label">Tasks &amp; Projects</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/view_tasks">My Tasks</a></li>
@@ -210,7 +226,8 @@
                         </ul>
                     </li>
 
-                    <li t-if="pettycash">
+<!--                    <li t-if="pettycash">-->
+                    <li t-if="pettycash55">
                         <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Petty Cash</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/pettycash">Request Petty Cash</a></li>
@@ -254,8 +271,8 @@
 
 
 <!--magdy-->
-                    <li><a href="/my/network"><i class="fa fa-th-large"></i> <span class="nav-label">Employees Network Directory</span></a></li>
-                    <li t-if="announcement"><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>
+<!--                    <li><a href="/my/network"><i class="fa fa-th-large"></i> <span class="nav-label">Employees Network Directory</span></a></li>-->
+<!--                    <li t-if="announcement"><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>-->
                 </ul>
             </div>
      </form>
@@ -342,8 +359,8 @@
 
                         <div class="feed-activity-list">
 							<div class="feed-element" t-if="employee.parent_id">
-                                <span t-field="employee.parent_id.image_1920" 
-                                    t-options='{"widget": "image", "class":"rounded-circle float-left"}'/>
+<!--                                <span t-field="employee.parent_id.image_1920" -->
+<!--                                    t-options='{"widget": "image", "class":"rounded-circle float-left"}'/>-->
 
                                 <div class="media-body">
                                     <strong  t-field="employee.parent_id.name"  />
@@ -353,8 +370,8 @@
                             </div>
 
                             <div class="feed-element">
-                                <span t-field="employee.image_1920" 
-                                    t-options='{"widget": "image", "class":"rounded-circle float-left", "style":"border: 2px solid #00A09D;box-shadow: inset 0 0 0 2px white;"}'/>
+<!--                                <span t-field="employee.image_1920" -->
+<!--                                    t-options='{"widget": "image", "class":"rounded-circle float-left", "style":"border: 2px solid #00A09D;box-shadow: inset 0 0 0 2px white;"}'/>-->
 
                                 <div class="media-body">
                                     <strong  t-field="employee.name"  />
