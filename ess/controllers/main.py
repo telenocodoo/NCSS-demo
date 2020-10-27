@@ -252,7 +252,7 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_assets_assignation')]).state == 'installed':
-            assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)], limit=4)
+            assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
             for assign in assignation_obj:
                 asset_assignation_list.append({
                     'type': assign.type,
@@ -262,7 +262,7 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_custody_request')]).state == 'installed':
-            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)], limit=4)
+            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
             for custody in custody_obj:
                 custody_list.append({
                     'date': custody.date,
@@ -272,7 +272,7 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_mandate_passenger')]).state == 'installed':
-            mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)], limit=4)
+            mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
             for mandate in mandate_obj:
                 mandate_list.append({
                     'type': mandate.type,
