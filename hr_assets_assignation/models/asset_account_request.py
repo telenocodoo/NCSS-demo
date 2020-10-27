@@ -32,8 +32,8 @@ class AssetAccountRequest(models.Model):
                                          ('final', 'Final'),
                                          ('both', 'Both'),
                                          ('at_specific_date', 'At Specific Date'),
-                                         ], default='vacation', tracking=True)
-    date_of_asset_delivery = fields.Date()
+                                         ], default='at_specific_date', tracking=True)
+    date_of_asset_delivery = fields.Date(default=fields.date.today())
     date = fields.Date(default=fields.date.today())
     date_of_disclaimer = fields.Date('Date Of Clearance')
     is_disclaimer = fields.Boolean('Cleared')

@@ -26,6 +26,12 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
+        <record id="mandate_passenger_hr_manager" model="res.groups">
+            <field name="name">HR Manager Access</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
         <record id="mandate_passenger_center_manager" model="res.groups">
             <field name="name">Center Manager</field>
             <field name="category_id" ref="mandate_passenger_security_category"/>
@@ -49,6 +55,13 @@
             <field name="category_id" ref="mandate_passenger_security_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+
+        <record id="mandate_passenger_hr_manager_button" model="res.groups">
+            <field name="name">HR Manager Button</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
         <record id="mandate_passenger_accounting_manager_button" model="res.groups">
             <field name="name">accounting Manager Button</field>
             <field name="category_id" ref="mandate_passenger_security_category"/>
@@ -82,6 +95,12 @@
 
         <record id="mandate_passenger_waiting_accounting_manager_approve_menu" model="res.groups">
             <field name="name">Waiting Accounting Manager Approve Menu</field>
+            <field name="category_id" ref="mandate_passenger_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="mandate_passenger_hr_manager_menu" model="res.groups">
+            <field name="name">HR Manager Menu</field>
             <field name="category_id" ref="mandate_passenger_security_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>

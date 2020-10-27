@@ -29,6 +29,9 @@
                                 <t t-if="attendance_list" t-call="ess.employee_attendance"/>
                                 <t t-if="announcement_list" t-call="ess.employee_announcement"/>
                                 <t t-if="douc_exp_obj" t-call="ess.employee_important_date"/>
+                                <t t-if="asset_assignation_obj" t-call="ess.employee_asset_assignation"/>
+                                <t t-if="custody_obj" t-call="ess.employee_custody"/>
+                                <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
                             </div>
 
                         </div>
@@ -160,8 +163,8 @@
                         </ul>
                     </li>
 
-<!--                    <li t-if="payslip">-->
                     <li t-if="payslip">
+<!--                    <li t-if="payslip">-->
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Payroll</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/payslip">My Payslips</a></li>
@@ -184,8 +187,8 @@
                         </ul>
                     </li>
 
-<!--                    <li t-if="True">-->
                     <li t-if="True">
+<!--                    <li t-if="True">-->
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Appraisal</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/request_appraisal">Request for Appraisal</a></li>
@@ -257,6 +260,7 @@
                         <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/custody/request">Custody Request</a></li>
+                            <li><a href="/my/custody/in_progress">Custody In Progress</a></li>
                             <li><a href="/my/custody">My Custody</a></li>
                         </ul>
                     </li>
@@ -605,6 +609,115 @@
 		</div>
 
         
+    </template>
+
+    <template id="employee_asset_assignation">
+
+        <div class="col-lg-4">
+			<div class="ibox">
+				<div class="iess-title">
+					<h3><span>My Newest Assignations</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Asset</th>
+                                    <th>Description</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="asset_assignation_obj" t-as="ass">
+                                <tr>
+                                    <td><div t-esc="ass['type']"/></td>
+                                    <td><div t-esc="ass['asset_id']"/></td>
+                                    <td><div t-esc="ass['description']"/></td>
+                                    <td><div t-esc="ass['state']"/></td>
+<!--                                    <td>-->
+<!--                                        <span class="badge badge-primary">-->
+<!--                                        <span t-esc="lea['value']"/> -->
+<!--                                        <span t-esc="lea['unit']"/></span>-->
+<!--                                    </td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+
+    </template>
+
+    <template id="employee_custody">
+
+        <div class="col-lg-4">
+			<div class="ibox">
+				<div class="iess-title">
+					<h3><span>My Newest Custody</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Remaining Amount</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="custody_obj" t-as="custody">
+                                <tr>
+                                    <td><div t-esc="custody['date']"/></td>
+                                    <td><div t-esc="custody['amount']"/></td>
+                                    <td><div t-esc="custody['remaining_amount']"/></td>
+                                    <td><div t-esc="custody['state']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+
+    </template>
+
+    <template id="employee_mandate">
+
+        <div class="col-lg-4">
+			<div class="ibox">
+				<div class="iess-title">
+					<h3><span>My Newest Mandate</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Course</th>
+                                    <th>Course Type</th>
+                                    <th>Number Of Days</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="mandate_obj" t-as="mandate">
+                                <tr>
+                                    <td><div t-esc="mandate['type']"/></td>
+                                    <td><div t-esc="mandate['course_id']"/></td>
+                                    <td><div t-esc="mandate['course_type']"/></td>
+                                    <td><div t-esc="mandate['number_of_days']"/></td>
+                                    <td><div t-esc="mandate['state']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+
     </template>
 
 </odoo>

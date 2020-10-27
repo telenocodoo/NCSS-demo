@@ -629,6 +629,164 @@
     </template>
 
 
+    <template id="ess_add_custody_line" name="ESS Add Custody Line">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
+
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+                    <div class="row col-10 col-md col-lg-10">
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>Add Custody Lines</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/add/custody_line" method="post">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                                <div class="row o_portal_expense">
+                                                    <div class="col-lg-12">
+                                                            <div class="row form-group col-lg-12">
+                                                                <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="course_place_id">Custody Description</label>
+                                                                    <select name="custody_description_id" t-attf-class="form-control">
+                                                                        <t t-foreach="custody_description_obj or []" t-as="desc">
+                                                                            <option t-att-value="desc.id" >
+                                                                                <t t-esc="desc.name" />
+                                                                            </option>
+                                                                        </t>
+                                                                    </select>
+                                                                </div>
+                                                                <div t-attf-class="form-group col-xl-3">
+                                                                    <label class="col-form-label" for="date">Date</label>
+                                                                    <input type="date" name="date" t-attf-class="form-control" />
+                                                                </div>
+                                                                <div t-attf-class="form-group col-xl-3">
+                                                                    <label class="col-form-label" for="amount">Amount</label>
+                                                                    <input id="amount" type="number" name="amount" t-attf-class="form-control"/>
+                                                                </div>
+                                                                <div t-attf-class="form-group col-xl-3">
+                                                                    <label class="col-form-label" for="description">Description</label>
+                                                                    <input type="text" name="description" t-attf-class="form-control"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clearfix">
+                                                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;'>
+                                                                    Create
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="ess_custody_in_progress" name="ESS Custody In Progress">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
+
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+                    <div class="row col-10 col-md col-lg-10">
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>Custody In Progress</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/my/custody/in_progress" method="get">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                                <div class="row o_portal_expense">
+                                                    <div class="col-lg-12">
+                                                            <div class="ibox-content iess-p20">
+                                                                <div class="body">
+<!--                                                                    <ul class="nav nav-tabs3">-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link active" data-toggle="tab" href="#custody_in_progress">Custody In Progress</a></li>-->
+<!--                                                                    </ul>-->
+                                                                    <div class="tab-content">
+
+<!--                                                                        <div class="tab-pane" id="custody_in_progress">-->
+
+                                                                            <div class="table-responsive">
+                                                                                <table class="table header-border table-hover table-bordered table-custom spacing5 ess-table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Date</th>
+                                                                                            <th>Amount</th>
+                                                                                            <th>Remaining Amount</th>
+                                                                                            <th>Description</th>
+<!--                                                                                            <th>Reason</th>-->
+                                                                                            <th>State</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody t-foreach="custody_obj" t-as="custody">
+                                                                                        <tr t-if="custody['state'] == 'in_progress'">
+                                                                                            <td><div t-esc="custody['date']"/></td>
+                                                                                            <td><div t-esc="custody['amount']"/></td>
+                                                                                            <td><div t-esc="custody['remaining_amount']"/></td>
+                                                                                            <td><div t-esc="custody['description']"/></td>
+<!--                                                                                            <td>-->
+<!--                                                                                                <input type="text" name="custody_id">-->
+<!--                                                                                                    <div t-esc="custody['id']"/>-->
+<!--                                                                                                </input>-->
+<!--                                                                                            </td>-->
+<!--                                                                                            <td>-->
+<!--                                                                                                <a t-attf-href="/add/custody_line?{'params':{{custody['id']}}}">Add Custody Line</a>-->
+<!--                                                                                                {"params":{"id":"test"}}-->
+<!--                                                                                            </td>-->
+                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+<!--                                                                        </div>-->
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
     <template id="ess_view_custody" name="ESS View Custody">
         <t t-call="portal.portal_layout">
             <t>
@@ -656,14 +814,15 @@
                                                                 <div class="body">
                                                                     <ul class="nav nav-tabs3">
                                                                         <li class="nav-item"><a class="nav-link show ess-tab-link active" data-toggle="tab" href="#all">All Custody</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#draft">Draft</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#dir_manager">Direct Manager Approve</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#d_manager">Department Manager Approve</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#c_manager">Center Manager Approve</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#accounting">Accounting Manager Approve</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#paid">Paid</a></li>
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#draft">Draft</a></li>-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#dir_manager">Direct Manager Approve</a></li>-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#d_manager">Department Manager Approve</a></li>-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#c_manager">Center Manager Approve</a></li>-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#accounting">Accounting Manager Approve</a></li>-->
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#paid">Paid</a></li>-->
+                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#manager_approve">All Manager Approval</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#in_progress">In Progress</a></li>
-                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#liquidated">Liquidated</a></li>
+<!--                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#liquidated">Liquidated</a></li>-->
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#done">Done</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#refused">Refused</a></li>
                                                                     </ul>
@@ -723,7 +882,8 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="tab-pane" id="dir_manager">
+
+                                                                        <div class="tab-pane" id="manager_approve">
 
                                                                             <div class="table-responsive">
                                                                                 <table class="table header-border table-hover table-custom spacing5 ess-table">
@@ -738,7 +898,7 @@
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody t-foreach="custody_obj" t-as="custody">
-                                                                                        <tr t-if="custody['state'] == 'direct_manager_approve'">
+                                                                                        <tr t-if="custody['state'] in ['direct_manager_approve','department_manager_approve','center_manager_approve','accounting_approve']">
                                                                                             <td><div t-esc="custody['date']"/></td>
                                                                                             <td><div t-esc="custody['amount']"/></td>
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
@@ -750,6 +910,7 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
 
                                                                         <div class="tab-pane" id="d_manager">
 
@@ -834,6 +995,7 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="tab-pane" id="paid">
 
                                                                             <div class="table-responsive">
@@ -861,6 +1023,8 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
+
                                                                         <div class="tab-pane" id="in_progress">
 
                                                                             <div class="table-responsive">
@@ -888,6 +1052,7 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="tab-pane" id="liquidated">
 
                                                                             <div class="table-responsive">
@@ -1153,6 +1318,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+<!--                                                                                            <td><a t-attf-href="/web/binary/saveas?model=mandate.passenger&amp;field=attach_file&amp;filename_field='name'&amp;id={{mandate['attach_file']}}">Download</a></td>-->
                                                                                             <td><div t-esc="mandate['state']"/></td>
                                                                                         </tr>
                                                                                     </tbody>

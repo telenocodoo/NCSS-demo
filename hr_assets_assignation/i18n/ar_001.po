@@ -105,7 +105,7 @@ msgstr "في انتظار الموافقه علي الطلب"
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_id
 msgid "Asset Name"
-msgstr "الاصول"
+msgstr "الاصول العينيه"
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_request_description
@@ -715,12 +715,12 @@ msgstr "الحاله :"
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__state_of_asset_when_delivery
 msgid "State Of Asset When Delivery"
-msgstr "حاله الجهاز عند التسليم"
+msgstr "حاله العهده عند التسليم"
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__state_of_asset_when_receive
 msgid "State Of Asset When Receive"
-msgstr "حاله الجهاز عند الاستلام"
+msgstr "حاله العهده عند الاستلام"
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields,help:hr_assets_assignation.field_asset_account_request__activity_state

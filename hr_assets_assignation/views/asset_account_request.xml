@@ -57,7 +57,7 @@
                             <field name="type"
                             attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
-                            <field name="asset_id" options="{'no_quick_create': True}"
+                            <field name="asset_id" options="{'no_create_edit': True,'no_quick_create': True}"
                                    attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('type','=','asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
                             />
 <!--                           attrs="{'required':[('type','=','asset')],'invisible':[('type','!=','asset')]}"-->

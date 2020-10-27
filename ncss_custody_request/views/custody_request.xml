@@ -41,13 +41,13 @@
                             type="object" class="oe_highlight"
                             groups="ncss_custody_request.custody_request_accounting_manager_button"
                     />
-                    <button name="paid_action" string="Paid"
+<!--                    <button name="paid_action" string="Paid"-->
+<!--                            states='accounting_approve'-->
+<!--                            type="object" class="oe_highlight"-->
+<!--                            groups="ncss_custody_request.custody_request_paid_button"-->
+<!--                    />-->
+                    <button name="in_progress_action" string="Paid and In progress"
                             states='accounting_approve'
-                            type="object" class="oe_highlight"
-                            groups="ncss_custody_request.custody_request_paid_button"
-                    />
-                    <button name="in_progress_action" string="In progress"
-                            states='paid'
                             type="object" class="oe_highlight"
                             groups="ncss_custody_request.custody_request_in_progress_button"
                     />
@@ -131,7 +131,7 @@
         <field name="name">custody.request.tree</field>
         <field name="model">custody.request</field>
         <field name="arch" type="xml">
-            <tree string="">
+            <tree string="" default_order="state">
                 <field name="employee_id"/>
                 <field name="date" />
                 <field name="amount" />
@@ -381,13 +381,13 @@
               sequence="12"
               groups="ncss_custody_request.custody_accounting_manager,ncss_custody_request.custody_center_manager"
     />
-    <menuitem id="custody_request_paid_action_menu"
-              name="Paid"
-              action="custody_request_paid_action"
-              parent="custody_request_child_menu"
-              sequence="14"
-              groups="ncss_custody_request.custody_request_paid_menu"
-    />
+<!--    <menuitem id="custody_request_paid_action_menu"-->
+<!--              name="Paid"-->
+<!--              action="custody_request_paid_action"-->
+<!--              parent="custody_request_child_menu"-->
+<!--              sequence="14"-->
+<!--              groups="ncss_custody_request.custody_request_paid_menu"-->
+<!--    />-->
     <menuitem id="custody_request_in_progress_action_menu"
               name="In Progress"
               action="custody_request_in_progress_action"

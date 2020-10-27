@@ -237,13 +237,18 @@
                             type="object" class="oe_highlight"
                             groups="ncss_mandate_passenger.mandate_passenger_department_manager_button"
                     />
-                    <button name="action_accounting_approve" string="Accounting Approve"
+                    <button name="action_hr_manager_approve" string="HR Approve"
                             states='department_manager_approve'
+                            type="object" class="oe_highlight"
+                            groups="ncss_mandate_passenger.mandate_passenger_hr_manager_button"
+                    />
+                    <button name="action_accounting_approve" string="Accounting Approve"
+                            states='hr_approve'
                             type="object" class="oe_highlight"
                             groups="ncss_mandate_passenger.mandate_passenger_accounting_manager_button"
                     />
                     <button name="refuse_action" string="Refuse"
-                            states='draft,direct_manager_approve,department_manager_approve'
+                            states='draft,direct_manager_approve,department_manager_approve,hr_approve'
                             type="object" class="oe_highlight"
                             groups="ncss_mandate_passenger.mandate_passenger_refuse_button"
 
@@ -254,7 +259,7 @@
                             groups="ncss_mandate_passenger.mandate_passenger_set_to_draft_button"
                     />
                     <field name="state" widget="statusbar"
-                           statusbar_visible="draft,direct_manager_approve,department_manager_approve,accounting_approve"
+                           statusbar_visible="draft,direct_manager_approve,department_manager_approve,hr_approve,accounting_approve"
                     />
                 </header>
                 <sheet>
@@ -294,6 +299,10 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="traveling_type"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            <field name="attach_file"
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
+                            groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
+                            />
                             <field name="Subsistence_rate" invisible="1"/>
                             <field name="total" />
                             <field name="is_direct_manager" invisible="1"/>
@@ -445,11 +454,18 @@
         <field name="domain">[('state','=','direct_manager_approve')]</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="waiting_hr_approve_action" model="ir.actions.act_window">
+        <field name="name">Waiting HR Approve</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mandate.passenger</field>
+        <field name="domain">[('state','=','department_manager_approve')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
     <record id="accounting_approve_action" model="ir.actions.act_window">
         <field name="name">Waiting Accounting Approve</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mandate.passenger</field>
-        <field name="domain">[('state','=','department_manager_approve')]</field>
+        <field name="domain">[('state','=','hr_approve')]</field>
         <field name="view_mode">tree,form</field>
     </record>
     <record id="refuse_menu_action" model="ir.actions.act_window">
@@ -502,6 +518,14 @@
               parent="mandate_passenger_child_menu"
               sequence="8"
               groups="ncss_mandate_passenger.mandate_passenger_waiting_department_manager_approve_menu"
+    />
+
+    <menuitem id="hr_approve_menu"
+              name="Waiting HR Approve"
+              action="waiting_hr_approve_action"
+              parent="mandate_passenger_child_menu"
+              sequence="20"
+              groups="ncss_mandate_passenger.mandate_passenger_hr_manager_menu"
     />
 
     <menuitem id="accounting_approve_menu"

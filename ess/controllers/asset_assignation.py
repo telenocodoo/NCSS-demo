@@ -126,6 +126,63 @@ class EssAsset(Controller):
         response = request.render("ess.ess_view_custody", values)
         return response
 
+    @route(['/my/custody/in_progress'], type='http', auth='user', website=True)
+    def view_custody_in_progress(self, redirect=None, **post):
+        values = {}
+        values = ESSPortal.check_modules(self)
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
+
+        values.update({
+            'partner': request.env.user.partner_id,
+            'employee': emb_obj,
+            'custody_obj': custody_obj,
+        })
+        response = request.render("ess.ess_custody_in_progress", values)
+        return response
+
+    @route(['/add/custody_line'], type='http', auth='user', website=True)
+    def add_custody_line(self, redirect=None, **post):
+        values = {}
+        values = ESSPortal.check_modules(self)
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        custody_description_obj = request.env['custody.description'].sudo().search([])
+
+        print(">>>>>>>>>>>>>>>>>>id", post)
+        # c_id = post['id']
+        if post and request.httprequest.method == 'POST':
+            print(">>>>>>>>>>>>>>>>>>id", post['params'])
+            # print(">>>>>>>>>>>>>>>>>>c_id", c_id)
+            print(">>>>>>>>>>>>>>>>>>custody_description_id", post['custody_description_id'])
+            print(">>>>>>>>>>>>>>>>>>date", post['date'])
+            print(">>>>>>>>>>>>>>>>>>amount", post['amount'])
+            print(">>>>>>>>>>>>>>>>>>description", post['description'])
+            post.update({
+                'custody_id': post['id'],
+                'custody_description_id': post['custody_description_id'],
+                'date': post['date'],
+                'amount': post['amount'],
+                'description': post['description'],
+            })
+            request.env['custody.request.line'].sudo().create(post)
+            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
+
+            values.update({
+                'partner': request.env.user.partner_id,
+                'employee': emb_obj,
+                'custody_obj': custody_obj,
+            })
+            request.render("ess.ess_custody_in_progress", values)
+
+        values.update({
+            'partner': request.env.user.partner_id,
+            'employee': emb_obj,
+            'custody_description_obj': custody_description_obj,
+        })
+        response = request.render("ess.ess_add_custody_line", values)
+        return response
+
+
     @route(['/request/passenger_mandate'], type='http', auth='user', website=True)
     def passenger_mandate(self, redirect=None, **post):
         values = {}
@@ -135,11 +192,27 @@ class EssAsset(Controller):
         course_obj = request.env['training.course'].sudo().search([])
         course_place_obj = request.env['course.place'].sudo().search([])
         if post and request.httprequest.method == 'POST':
+            if post['type'] == 'دوره':
+                type = 'course'
+            elif post['type'] == 'انتداب':
+                type = 'mandate'
+            elif post['type'] == 'ورشه عمل':
+                type = 'work_shop'
+            else:
+                type = post['type']
+
+
+            if post['course_type'] == 'داخلي':
+                course_type = 'internal'
+            elif post['course_type'] == 'خارجي':
+                course_type = 'external'
+            else:
+                course_type = post['course_type']
             post.update({
                 'employee_id': emb_obj.id,
                 'employee_degree_id': emb_obj.employee_degree_id.id,
-                'type': post['type'],
-                'course_type': post['course_type'],
+                'type': type,
+                'course_type': course_type,
                 'course_id': post['course_id'],
                 'price': request.env['training.course'].sudo().browse(int(post['course_id'])).price,
                 'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,

@@ -118,9 +118,11 @@ class MandatePassenger(models.Model):
                                        ('vip', 'VIP'),
                                        ])
     reason = fields.Text()
+    attach_file = fields.Binary()
     state = fields.Selection([('draft', 'Draft'),
                                ('direct_manager_approve', 'Direct Manager Approve'),
                                ('department_manager_approve', 'Department Manager Approve'),
+                               ('hr_approve', 'Hr Approved'),
                                ('accounting_approve', 'Accounting Approve'),
                                ('refuse', 'Refuse'),
                                ], default='draft')
@@ -154,6 +156,7 @@ class MandatePassenger(models.Model):
         department_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_department_manager')
         accounting_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_accounting_manager')
         center_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_center_manager')
+        hr_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_hr_manager')
         if employee:
             args += [('create_uid', '=', self.env.user.id)]
         if direct_manager:
@@ -178,7 +181,7 @@ class MandatePassenger(models.Model):
             #     lst.append(mandate.id)
             # print(self.create_uid)
             args += ['|', ('create_uid.id', '=', self.env.user.id), ('state', '=', 'department_manager_approve')]
-        if center_manager:
+        if center_manager or hr_manager:
             # current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
             # passenger_mandate_obj = self.search([])
             # for mandate in passenger_mandate_obj:
@@ -336,6 +339,9 @@ class MandatePassenger(models.Model):
             if budget_obj:
                 budget_obj.expensed_from_budget += record.total
             record.state = 'department_manager_approve'
+
+    def action_hr_manager_approve(self):
+        self.state = 'hr_approve'
 
     def action_accounting_approve(self):
         self.state = 'accounting_approve'

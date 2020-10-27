@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 07:15+0000\n"
-"PO-Revision-Date: 2020-10-26 07:15+0000\n"
+"POT-Creation-Date: 2020-10-13 12:58+0000\n"
+"PO-Revision-Date: 2020-10-13 12:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -384,17 +384,22 @@ msgstr ""
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__in_progress
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_in_progress_action_menu
 msgid "In Progress"
-msgstr "تم الصرف وجارى اهلاكها"
+msgstr "جارى اهلاكها"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_in_progress_button
 msgid "In Progress Button"
-msgstr "زر تم الصرف وجارى اهلاكها"
+msgstr "زر جارى اهلاكها"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_in_progress_menu
 msgid "In Progress Menu"
-msgstr "قائمه تم الصرف وجارى اهلاكها"
+msgstr "قائمه جارى اهلاكها"
+
+#. module: ncss_custody_request
+#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
+msgid "In progress"
+msgstr "جارى اهلاكها"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__is_direct_manager
@@ -578,6 +583,8 @@ msgstr ""
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_paid_action
 #: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__paid
+#: model:ir.ui.menu,name:ncss_custody_request.custody_request_paid_action_menu
+#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Paid"
 msgstr "تم الصرف"
 
@@ -590,11 +597,6 @@ msgstr "زر تم الصرف"
 #: model:res.groups,name:ncss_custody_request.custody_request_paid_menu
 msgid "Paid Menu"
 msgstr "قائمه تم الصرف"
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
-msgid "Paid and In progress"
-msgstr "تم الصرف وجارى اهلاكها"
 
 #. module: ncss_custody_request
 #: code:addons/ncss_custody_request/models/custody_request.py:0

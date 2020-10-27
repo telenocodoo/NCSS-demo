@@ -9400,6 +9400,9 @@ body.md-skin {
 .md-skin.fixed-nav #side-menu {
   background-color: #fff;
 }
+#wrap{
+  background-color: #fff !important;
+}
 .md-skin.fixed-nav #wrapper.top-navigation #page-wrapper {
   margin-top: 0;
 }

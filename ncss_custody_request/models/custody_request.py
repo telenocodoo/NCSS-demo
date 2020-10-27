@@ -23,7 +23,7 @@ class CustodyRequest(models.Model):
     reason = fields.Text()
     amount = fields.Float()
     remaining_amount = fields.Float(compute='get_remaining_amount', store=True)
-    date = fields.Date()
+    date = fields.Date(default=fields.date.today())
     exchange_item_ids = fields.One2many('custody.request.line', 'custody_id')
     move_line_ids = fields.One2many('account.move.line', 'custody_id',
                                     domain=lambda self: [('move_id', '=', self.expense_account_move_id.id)])
@@ -180,6 +180,14 @@ class CustodyRequest(models.Model):
         self.state = 'paid'
 
     def in_progress_action(self):
+        journal = self.env.user.company_id.custody_journal_id.id
+        label = self.env.user.company_id.label
+        debit_account_id = self.env.user.company_id.debit_account_id.id
+        credit_account_id = self.env.user.company_id.credit_account_id.id
+        amount = self.amount
+        address_home_id = self.employee_id.address_home_id.id
+        account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
+        self.expense_account_move_id = account_move_obj.id
         self.state = 'in_progress'
 
     def make_liquidated_action(self):
@@ -205,7 +213,7 @@ class CustodyRequestLine(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     amount = fields.Float()
-    date = fields.Date()
+    date = fields.Date(default=fields.date.today())
     description = fields.Text()
     attach_invoice = fields.Binary()
     custody_description_id = fields.Many2one('custody.description')
