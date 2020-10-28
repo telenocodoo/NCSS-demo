@@ -77,8 +77,6 @@
                                                                 <div t-attf-class="form-group #{error.get('doc_attachment_id') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
                                                                     <input class="attachment" type="file" name="doc_attachment_id" value=""/>
-
-                                                                    
                                                                 </div>
                                                             </div>
                                                             

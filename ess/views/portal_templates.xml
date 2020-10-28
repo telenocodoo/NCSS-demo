@@ -134,8 +134,8 @@
                         </ul>
                     </li>
 
-<!--                    <li t-if="documents">-->
-                    <li t-if="documents55">
+                    <li t-if="documents">
+<!--                    <li t-if="documents55">-->
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Personal Docs</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/document">Upload Document</a></li>
@@ -143,8 +143,8 @@
                         </ul>
                     </li>
 
-<!--                    <li t-if="company_documents">-->
-                    <li t-if="company_documents55">
+                    <li t-if="company_documents">
+<!--                    <li t-if="company_documents55">-->
                         <a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Company Docs</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/view_my_company_document">Ownered</a></li>

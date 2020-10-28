@@ -649,6 +649,8 @@
                                         <div class="col-lg-12" style="margin-top:10px;">
                                             <form action="/add/custody_line" method="post">
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <input type="hidden" name="get_id" t-att-value="request.params.get('id')"/>
+                                                <input type="hidden" name="get_remaining_amount" t-att-value="request.params.get('custody_remain')"/>
 
                                                 <div class="row o_portal_expense">
                                                     <div class="col-lg-12">
@@ -675,6 +677,15 @@
                                                                     <label class="col-form-label" for="description">Description</label>
                                                                     <input type="text" name="description" t-attf-class="form-control"/>
                                                                 </div>
+                                                                <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="doc_attachment_id">Attachment</label>
+                                                                    <input t-attf-class="form-control" class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                </div>
+                                                                <div t-attf-class="form-group col-xl-3">
+                                                                    <label class="col-form-label" for="remaining_amount2">Remaining amount</label>
+<!--                                                                    <input type="text" name="description" t-attf-class="form-control"/>-->
+                                                                    <input type="text" name="remaining_amount2" readonly="readonly" t-attf-class="form-control" t-att-value="request.params.get('custody_remain')"/>
+                                                                </div>
                                                             </div>
 
                                                             <div class="clearfix">
@@ -686,6 +697,36 @@
                                                         </div>
                                                 </div>
                                             </form>
+
+                                            <div class="tab-content">
+                                                <div class="table-responsive">
+                                                    <table class="table header-border table-hover table-bordered table-custom spacing5 ess-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Description</th>
+                                                                <th>Date</th>
+<!--                                                                <th>Attachment</th>-->
+                                                                <th>Custody Description</th>
+                                                                <th>amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody t-foreach="custody_line_obj" t-as="custody">
+                                                            <tr>
+                                                                <td><div t-esc="custody['description']"/></td>
+                                                                <td><div t-esc="custody['date']"/></td>
+<!--                                                                <td><div t-esc="custody['attach_file']"/></td>-->
+                                                                <td><div t-esc="custody['custody_description_id']['name']"/></td>
+                                                                <td><div t-esc="custody['amount']"/></td>
+<!--                                                                <td>-->
+<!--                                                                    <a t-attf-href="/add/custody_line?id={{custody['id']}}&amp;custody_remain={{custody['remaining_amount']}}">Add Custody Line</a>-->
+<!--                                                                </td>-->
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                        </div>
                                         </div>
 
                                     </div>
@@ -738,8 +779,8 @@
                                                                                             <th>Amount</th>
                                                                                             <th>Remaining Amount</th>
                                                                                             <th>Description</th>
-<!--                                                                                            <th>Reason</th>-->
                                                                                             <th>State</th>
+                                                                                            <th>Add Custody Line</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody t-foreach="custody_obj" t-as="custody">
@@ -748,16 +789,14 @@
                                                                                             <td><div t-esc="custody['amount']"/></td>
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
-<!--                                                                                            <td>-->
-<!--                                                                                                <input type="text" name="custody_id">-->
-<!--                                                                                                    <div t-esc="custody['id']"/>-->
-<!--                                                                                                </input>-->
-<!--                                                                                            </td>-->
-<!--                                                                                            <td>-->
-<!--                                                                                                <a t-attf-href="/add/custody_line?{'params':{{custody['id']}}}">Add Custody Line</a>-->
-<!--                                                                                                {"params":{"id":"test"}}-->
-<!--                                                                                            </td>-->
                                                                                             <td><div t-esc="custody['state']"/></td>
+                                                                                            <td>
+                                                                                                <a t-attf-href="/add/custody_line?id={{custody['id']}}&amp;custody_remain={{custody['remaining_amount']}}">Add Custody Line</a>
+<!--                                                                                                {'params':{'id':{{custody['id']}}}}-->
+<!--                                                                                                {'params':{'id':{{custody['id']}}}}-->
+<!--                                                                                                {"params":{"id":"test"}}-->
+                                                                                            </td>
+
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -772,6 +811,55 @@
                                                         </div>
 
 
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="custody_warning_message" name="ESS Custody Warning">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
+
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+                    <div class="row col-10 col-md col-lg-10">
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>Custody Warning</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/custody/warning" method="post">
+                                                <div class="row o_portal_expense">
+                                                    <div class="col-lg-12">
+                                                            <div class="row form-group col-lg-12">
+                                                                <div t-attf-class="form-group col-xl-12">
+                                                                    <span>You Aren't Allowed to Add This Line, Your Amount must be less Than or Equal <h3><t t-esc="remain_amount" /></h3></span>
+
+                                                                </div>
+                                                            </div>
+
+<!--                                                            <div class="clearfix">-->
+<!--                                                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;'>-->
+<!--                                                                    back-->
+<!--                                                                </button>-->
+<!--                                                            </div>-->
+
+                                                        </div>
                                                 </div>
                                             </form>
                                         </div>

@@ -141,43 +141,62 @@ class EssAsset(Controller):
         response = request.render("ess.ess_custody_in_progress", values)
         return response
 
+    @route(['/custody/warning'], type='http', auth='user', website=True)
+    def custody_warning(self, redirect=None, **post):
+        values = {}
+        values = ESSPortal.check_modules(self)
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+
+        values.update({
+            'partner': request.env.user.partner_id,
+            'employee': emb_obj,
+        })
+        response = request.render("ess.custody_warning_message", values)
+        return response
+
     @route(['/add/custody_line'], type='http', auth='user', website=True)
     def add_custody_line(self, redirect=None, **post):
         values = {}
         values = ESSPortal.check_modules(self)
         emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
         custody_description_obj = request.env['custody.description'].sudo().search([])
-
-        print(">>>>>>>>>>>>>>>>>>id", post)
-        # c_id = post['id']
         if post and request.httprequest.method == 'POST':
-            print(">>>>>>>>>>>>>>>>>>id", post['params'])
-            # print(">>>>>>>>>>>>>>>>>>c_id", c_id)
-            print(">>>>>>>>>>>>>>>>>>custody_description_id", post['custody_description_id'])
-            print(">>>>>>>>>>>>>>>>>>date", post['date'])
-            print(">>>>>>>>>>>>>>>>>>amount", post['amount'])
-            print(">>>>>>>>>>>>>>>>>>description", post['description'])
-            post.update({
-                'custody_id': post['id'],
-                'custody_description_id': post['custody_description_id'],
-                'date': post['date'],
-                'amount': post['amount'],
-                'description': post['description'],
-            })
-            request.env['custody.request.line'].sudo().create(post)
-            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
+            if float(post['amount']) > float(post['get_remaining_amount']):
+                values.update({
+                    'partner': request.env.user.partner_id,
+                    'employee': emb_obj,
+                    'remain_amount': post['get_remaining_amount'],
+                })
+                return request.render("ess.custody_warning_message", values)
+            else:
+                file = post['doc_attachment_id']
+                print(">>>>>>>>>>>>>>>>>", type(file))
+                print(">>>>>>>>>>>>>>>>>", type(base64.b64encode(file.encode())))
+                request.env['custody.request.line'].sudo().create({
+                    'custody_id': int(post['get_id']),
+                    'custody_description_id': post['custody_description_id'],
+                    'date': post['date'],
+                    'amount': post['amount'],
+                    'attach_invoice': base64.b64encode(file.encode()),
+                    # 'attach_invoice': io.BytesIO(base64.b64encode(file.read())),
+                    'description': post['description'],
+                })
+                custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
 
-            values.update({
-                'partner': request.env.user.partner_id,
-                'employee': emb_obj,
-                'custody_obj': custody_obj,
-            })
-            request.render("ess.ess_custody_in_progress", values)
-
+                values.update({
+                    'partner': request.env.user.partner_id,
+                    'employee': emb_obj,
+                    'custody_obj': custody_obj,
+                })
+                return request.render("ess.ess_custody_in_progress", values)
+        custody_line_obj = request.env['custody.request.line'].sudo().search([('custody_id.id', '=', int(post['id']))])
+        print(">>>>>>>>>>>>>>>custody_line_obj", custody_line_obj)
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
             'custody_description_obj': custody_description_obj,
+            'custody_id': post.get('id'),
+            'custody_line_obj': custody_line_obj,
         })
         response = request.render("ess.ess_add_custody_line", values)
         return response
