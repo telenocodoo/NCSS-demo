@@ -41,13 +41,17 @@ class letterDynamicReport(models.AbstractModel):
 
             myword = str[first_index:second_index + 1]
             mynewWord=str[first_index+9:second_index]
+
             x = myemp.mapped(mynewWord)
+            if x:
 
-            print(x[0])
-            newstr=newstr.replace(myword,x[0])
+                newstr=newstr.replace(myword,x[0])
 
-            print(first_index, second_index, myword)
-            list1.append(mynewWord)
+                print(first_index, second_index, myword)
+                list1.append(mynewWord)
+            else:
+                newstr = newstr.replace(myword, '')
+                list1.append('')
             startpos = second_index + 1
         #
 
