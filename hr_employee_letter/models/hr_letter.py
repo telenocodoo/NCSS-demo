@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 
 class LetterLetter(models.Model):
     _name = 'letter.letter'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.template', 'mail.activity.mixin']
 
     name = fields.Char()
     template_id = fields.Html('Template')
