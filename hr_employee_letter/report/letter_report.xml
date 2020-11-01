@@ -28,7 +28,8 @@
                                     <span t-esc="o.request_id.name"/>
                                     <span>تشهد الشركه بان الموظف</span>
                                 </p>
-                                <p style="color:black;"><span t-raw="o.letter_type_id.template_id"/></p>
+<!--                                <p style="color:black;"><span t-raw="o.letter_type_id.temp_template_id"/></p>-->
+                                <p style="color:black;"><span t-raw="my_list[0]['temp']"/></p>
                             </div>
                           </div>
                      </div>

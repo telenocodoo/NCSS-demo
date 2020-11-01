@@ -5,10 +5,14 @@ from odoo import models, fields, api, _
 
 class LetterLetter(models.Model):
     _name = 'letter.letter'
-    _inherit = ['mail.thread',  'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin'  ]
 
-    name = fields.Char()
+    name  = fields.Char()
     template_id = fields.Html('Template')
+
+
+    model_id = fields.Many2one('ir.model', 'Applies to', help="The type of document this template can be used with")
+    model = fields.Char('Related Document Model', related='model_id.model', index=True, store=True, readonly=True)
 
 
 class LetterRequest(models.Model):
