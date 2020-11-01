@@ -8,7 +8,7 @@
     'description': """
     hr_employee_letter
     """,
-    'depends': ['hr'],
+    'depends': ['hr','mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/hr_letter.xml',
