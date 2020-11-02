@@ -8,7 +8,7 @@ class LetterLetter(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin'  ]
 
     name  = fields.Char()
-    template_id = fields.Html('Template')
+    template_id = fields.Html('Template',translate=True, sanitize=False)
 
 
     model_id = fields.Many2one('ir.model', 'Applies to', help="The type of document this template can be used with")
