@@ -93,6 +93,7 @@ class EssAsset(Controller):
                 'amount': post['amount'],
                 'description': post['description'],
             })
+            print(post)
             request.env['custody.request'].sudo().create(post)
             emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
@@ -169,17 +170,35 @@ class EssAsset(Controller):
                 })
                 return request.render("ess.custody_warning_message", values)
             else:
-                file = post['doc_attachment_id']
-                print(">>>>>>>>>>>>>>>>>", type(file))
-                print(">>>>>>>>>>>>>>>>>", type(base64.b64encode(file.encode())))
-                request.env['custody.request.line'].sudo().create({
+                print(post)
+                name = post.get('doc_attachment_id').filename
+                file = post.get('doc_attachment_id')
+                # print(file)
+                # file = post['doc_attachment_id']
+                # print(">>>>>>>>>>>>>>>>>", type(file))
+                # print(">>>>>>>>>>>>>>>>>", type(base64.b64encode(file.encode())))
+                docid=request.env['custody.request.line'].sudo().create({
                     'custody_id': int(post['get_id']),
                     'custody_description_id': post['custody_description_id'],
                     'date': post['date'],
                     'amount': post['amount'],
-                    'attach_invoice': base64.b64encode(file.encode()),
+                    #'attach_invoice': base64.b64encode(file.encode()),
                     # 'attach_invoice': io.BytesIO(base64.b64encode(file.read())),
                     'description': post['description'],
+                })
+
+                Attachments = request.env['ir.attachment']
+
+                attachment_id = Attachments.sudo().create({
+                    'name': name,
+                    'type': 'binary',
+                    'datas': base64.b64encode(file.read()),
+                    'res_model': 'custody.request.line',
+                    'res_id': docid.id
+                })
+                print(docid)
+                docid.sudo().update({
+                    'attach_invoice': [(4, attachment_id.id)],
                 })
                 custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)])
 

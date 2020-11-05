@@ -44,6 +44,13 @@ class CustodyRequest(models.Model):
                               ], default='draft', tracking=True,)
     color = fields.Integer(compute="compute_color")
 
+    # @api.model
+    # def create(self, values):
+    #     print(self.env.user)
+    #     res = super(CustodyRequest, self).create(values)
+    #     return res
+
+
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
         employee = self.env.user.has_group('ncss_custody_request.custody_employee')
@@ -51,6 +58,7 @@ class CustodyRequest(models.Model):
         department_manager = self.env.user.has_group('ncss_custody_request.custody_department_manager')
         accounting_manager = self.env.user.has_group('ncss_custody_request.custody_accounting_manager')
         center_manager = self.env.user.has_group('ncss_custody_request.custody_center_manager')
+
         if employee:
             args += [('create_uid', '=', self.env.user.id)]
         if direct_manager:
@@ -215,7 +223,10 @@ class CustodyRequestLine(models.Model):
     amount = fields.Float()
     date = fields.Date(default=fields.date.today())
     description = fields.Text()
-    attach_invoice = fields.Binary()
+    # attach_invoice = fields.Binary()
+    attach_invoice = fields.Many2many('ir.attachment', 'cust_attach_rel', 'doc_id', 'attach_id3', string="Attachment",
+                                 help='You can attach the copy of your document', copy=False)
+
     custody_description_id = fields.Many2one('custody.description')
     custody_id = fields.Many2one('custody.request')
 
