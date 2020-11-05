@@ -701,7 +701,7 @@ class ESSPortal(Controller):
                 post.update({
                     'document_type': int(post['document_type']),
                 })
-
+            print(post)
             name = post.get('doc_attachment_id').filename
             file = post.get('doc_attachment_id')
 

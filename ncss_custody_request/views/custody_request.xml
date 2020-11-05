@@ -104,11 +104,12 @@
                         </page>
                         <page string="Exchange Items" name="Exchange Items"
                         attrs="{'invisible':[('state','not in',['paid','in_progress','liquidated','done'])]}">
-                            <field name="exchange_item_ids" attrs="{'readonly':[('state','in',['refuse','done'])]}">
+                            <field name="exchange_item_ids" attrs="{'readonly':[('state','in',['refuse','done'])]}" mode="tree,form">
                                 <tree editable="bottom">
                                     <field name="description" required="1"/>
                                     <field name="date" required="1"/>
-                                    <field name="attach_invoice" required="1"/>
+<!--                                    <field name="attach_invoice" required="1"/>-->
+                                    <field name="attach_invoice" widget="many2many_binary" required="1"/>
                                     <field name="custody_description_id" required="1"
                                     options="{'no_create': True,'no_edit':True}"/>
                                     <field name="amount" required="1"/>
@@ -126,6 +127,34 @@
             </form>
         </field>
     </record>
+
+
+
+
+    <record model='ir.ui.view' id='custody_request_line_form_view'>
+        <field name="name">custody.request.line.form</field>
+        <field name="model">custody.request.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+
+                                    <field name="description" required="1"/>
+                                    <field name="date" required="1"/>
+<!--                                    <field name="attach_invoice" required="1"/>-->
+
+                                    <field name="custody_description_id" required="1"
+                                    options="{'no_create': True,'no_edit':True}"/>
+                                    <field name="amount" required="1"/>
+                                   <field name="attach_invoice" widget="many2many_binary" required="1"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
 
     <record id="custody_request_tree" model="ir.ui.view">
         <field name="name">custody.request.tree</field>
@@ -207,7 +236,12 @@
         </field>
     </record>
 
-
+ <record id="custody_request_action" model="ir.actions.act_window">
+        <field name="name">Custody Request line</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custody.request.line</field>
+        <field name="view_mode"> tree,form </field>
+    </record>
 
     <record id="custody_request_action" model="ir.actions.act_window">
         <field name="name">Custody Request</field>
