@@ -632,6 +632,8 @@
     <template id="ess_add_custody_line" name="ESS Add Custody Line">
         <t t-call="portal.portal_layout">
             <t>
+
+
                 <div class="row justify-content-between mt-4">
 
                     <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
@@ -665,14 +667,21 @@
                                                                         </t>
                                                                     </select>
                                                                 </div>
+
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="date">Date</label>
-                                                                    <input type="date" name="date" t-attf-class="form-control" />
+                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control"  />
+
                                                                 </div>
+                                                                <script>
+                                                                     document.getElementById('theDate').value = new Date().toISOString().substring(0, 10);
+                                                                </script>
+
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="amount">Amount</label>
                                                                     <input id="amount" type="number" name="amount" t-attf-class="form-control"/>
                                                                 </div>
+
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="description">Description</label>
                                                                     <input type="text" name="description" t-attf-class="form-control"/>
