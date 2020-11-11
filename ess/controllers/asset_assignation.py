@@ -206,6 +206,7 @@ class EssAsset(Controller):
                     'partner': request.env.user.partner_id,
                     'employee': emb_obj,
                     'custody_obj': custody_obj,
+
                 })
                 return request.render("ess.ess_custody_in_progress", values)
         custody_line_obj = request.env['custody.request.line'].sudo().search([('custody_id.id', '=', int(post['id']))])
@@ -216,6 +217,7 @@ class EssAsset(Controller):
             'custody_description_obj': custody_description_obj,
             'custody_id': post.get('id'),
             'custody_line_obj': custody_line_obj,
+
         })
         response = request.render("ess.ess_add_custody_line", values)
         return response

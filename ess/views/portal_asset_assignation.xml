@@ -595,8 +595,11 @@
                                                             <div class="row form-group col-lg-12">
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="date">Date</label>
-                                                                    <input type="date" name="date" t-attf-class="form-control" />
+                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control" />
                                                                 </div>
+                                                                 <script>
+                                                                     document.getElementById('theDate').value = new Date().toISOString().substring(0, 10);
+                                                                </script>
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="amount">Amount</label>
                                                                     <input id="amount" type="number" name="amount" t-attf-class="form-control"/>
