@@ -19,8 +19,9 @@
                             class="oe_highlight"
                             groups="hr_assets_assignation.asset_assignation_approve_button"
                     />
-                    <button name="action_refuse" string="Refuse"
-                            type="object"
+<!--                    <button name="action_refuse" string="Refuse"-->
+                    <button name="%(hr_assets_assignation.create_reason_wizard)d" string="Refuse"
+                            type="action"
                             states='submit'
                             class="oe_highlight"
                             groups="hr_assets_assignation.asset_assignation_refuse_button"
@@ -50,6 +51,12 @@
                         <group>
                             <field name="asset_request_description"  required="1"
                                    attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
+                            />
+                            <field name="refuse_boolean"  invisible="1"
+
+                            />
+                            <field name="asset_request_Refuse_reason"
+                                   attrs="{'invisible':[('refuse_boolean','=',False)]}"
                             />
                             <field name="employee_id"
                             attrs="{'required':[('state','in',['approve','assigned','clearance'])],'invisible':[('state','not in',['approve','assigned','clearance'])],'readonly':[('state','in',['assigned','clearance'])]}"
@@ -469,6 +476,11 @@
         <field name="domain">[('state','=','draft')]</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
+
+
+
+<!--    Wizard reason-->
+
     <!--    asset.account.request-->
 
     <menuitem id="asset_account_request_root"

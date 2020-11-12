@@ -695,6 +695,30 @@ msgid "Set To Draft Button"
 msgstr "زر اعاده كجديده"
 
 #. module: hr_assets_assignation
+#: code:addons/hr_assets_assignation/wizards/wizard.py:0
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_assests_wizard__Reason
+#, python-format
+msgid "Reason Refuse"
+msgstr "سبب الرفض"
+
+
+#. module: hr_assets_assignation
+#: model_terms:ir.ui.view,arch_db:hr_assets_assignation.create_reason_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__asset_request_Refuse_reason
+msgid "Refuse Reason"
+msgstr "سبب الرفض"
+
+#. module: hr_assets_assignation
+#: model:ir.actions.act_window,name:hr_assets_assignation.create_reason_wizard
+#: model_terms:ir.ui.view,arch_db:hr_assets_assignation.create_reason_form
+msgid "Add Reason"
+msgstr "إضافة "
+
+#. module: hr_assets_assignation
 #: model:ir.model.fields,field_description:hr_assets_assignation.field_department_clearance_line__signature
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.department_clearance_report_template
 #: model_terms:ir.ui.view,arch_db:hr_assets_assignation.employee_assets_report_template

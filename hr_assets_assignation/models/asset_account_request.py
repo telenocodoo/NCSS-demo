@@ -22,6 +22,8 @@ class AssetAccountRequest(models.Model):
             return False
 
     asset_request_description = fields.Char()
+    asset_request_Refuse_reason = fields.Char(string="Refuse Reason")
+    refuse_boolean=fields.Boolean(default=False)
     employee_id = fields.Many2one('hr.employee', 'Employee', default=get_employee_id)
     type = fields.Selection([('asset', 'Asset'),
                              ('non_asset', 'Non Asset'),
@@ -85,7 +87,9 @@ class AssetAccountRequest(models.Model):
         self.state = 'approve'
 
     def action_refuse(self):
+
         self.state = 'refuse'
+
 
     def action_assign_to_employee(self):
         self.state = 'assigned'
