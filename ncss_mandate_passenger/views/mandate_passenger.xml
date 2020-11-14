@@ -303,6 +303,11 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
                             groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
+                             <field name="attach_file_ticket"
+
+                            groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
+                            />
+
                             <field name="Subsistence_rate" invisible="1"/>
                             <field name="total" />
                             <field name="is_direct_manager" invisible="1"/>
@@ -312,18 +317,20 @@
                             />
                         </group>
                         <group>
+
                             <field name="department_id" force_save="1" readonly="1" invisible="1"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            />
+                            style="color: red; font-weight: bold;"/>
                             <field name="budget" force_save="1" readonly="1"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            />
+                            style="color: red; font-weight: bold;"/>
                             <field name="expensed_from_budget" readonly="1" force_save="1"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            />
+                           style="color: red; font-weight: bold;" />
                             <field name="remaining_from_budget" readonly="1" force_save="1"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            />
+                            style="color: red; font-weight: bold;"/>
+
                         </group>
                     </group>
                 </sheet>
@@ -460,6 +467,7 @@
         <field name="res_model">mandate.passenger</field>
         <field name="domain">[('state','=','department_manager_approve')]</field>
         <field name="view_mode">tree,form</field>
+
     </record>
     <record id="accounting_approve_action" model="ir.actions.act_window">
         <field name="name">Waiting Accounting Approve</field>
@@ -475,11 +483,29 @@
         <field name="domain">[('state','=','refuse')]</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="travel_ticket_menu_action" model="ir.actions.act_window">
         <field name="name">Travel Ticket</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mandate.passenger</field>
         <field name="domain">[('course_place_id.need_ticket','=',True)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+        <record id="travel_ticket_hr_menu_action" model="ir.actions.act_window">
+        <field name="name">Travel Ticket Waiting Approve by HR</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mandate.passenger</field>
+        <field name="domain">[('course_place_id.need_ticket','=',True) ,('state','=','department_manager_approve') ,  ]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+       <record id="travel_ticket_account_menu_action" model="ir.actions.act_window">
+        <field name="name">Travel Ticket Done</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mandate.passenger</field>
+        <field name="domain">[('course_place_id.need_ticket','=',True) ,('state','=','accounting_approve') ,  ]</field>
         <field name="view_mode">tree,form</field>
     </record>
     <!--    crm.project Form-->
@@ -547,12 +573,34 @@
 
     <menuitem id="travel_ticket_child"
               name="Travel Ticket"
-              action="travel_ticket_menu_action"
               parent="mandate_passenger_root"
               sequence="4"
               groups="ncss_mandate_passenger.mandate_passenger_travel_ticket"
     />
 
+    <menuitem id="All_travel_ticket_child"
+              name="All Ticket"
+              action="travel_ticket_menu_action"
+              parent="travel_ticket_child"
+              sequence="5"
+              groups="ncss_mandate_passenger.mandate_passenger_travel_ticket"
+    />
+
+    <menuitem id="travel_ticket_hr_child"
+              name="Ticket Waiting  Appove by HR"
+              action="travel_ticket_hr_menu_action"
+              parent="travel_ticket_child"
+              sequence="6"
+              groups="ncss_mandate_passenger.mandate_passenger_travel_ticket"
+    />
+
+    <menuitem id="travel_ticket_Account_child"
+              name="Travel Ticket Done"
+              action="travel_ticket_account_menu_action"
+              parent="travel_ticket_child"
+              sequence="6"
+              groups="ncss_mandate_passenger.mandate_passenger_travel_ticket"
+    />
     <menuitem id="mandate_passenger_setting_child"
               name="Courses"
               action="training_course_action"

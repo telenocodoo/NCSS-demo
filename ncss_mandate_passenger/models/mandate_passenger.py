@@ -119,6 +119,7 @@ class MandatePassenger(models.Model):
                                        ])
     reason = fields.Text()
     attach_file = fields.Binary()
+    attach_file_ticket = fields.Binary(string=_('Attachment ticket'))
     state = fields.Selection([('draft', 'Draft'),
                                ('direct_manager_approve', 'Direct Manager Approve'),
                                ('department_manager_approve', 'Department Manager Approve'),

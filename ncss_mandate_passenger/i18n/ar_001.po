@@ -72,6 +72,12 @@ msgstr "الفتره المسموحه بين الدورتين"
 msgid "Attach File"
 msgstr "ارفاق ملف"
 
+
+#. module: ncss_mandate_passenger
+#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__attach_file_ticket
+msgid "Attach Ticket"
+msgstr "ارفاق صورة التذكرة"
+
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training__message_attachment_count
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place__message_attachment_count
@@ -767,12 +773,12 @@ msgstr ""
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__total
 msgid "Total"
-msgstr "اجمالي التكلفه بدون تذكره الطيران"
+msgstr "اجمالي التكلفه "
 
 #. module: ncss_mandate_passenger
 #: model_terms:ir.ui.view,arch_db:ncss_mandate_passenger.mandate_passenger_kanban
 msgid "Total :"
-msgstr "اجمالي التكلفه بدون تذكره الطيران"
+msgstr "اجمالي التكلفه"
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_mandate_passenger__total_value_without_ticket
@@ -795,6 +801,33 @@ msgstr "تكلفه التنقل"
 #: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_travel_ticket
 msgid "Travel Ticket"
 msgstr "تذاكر الطيران"
+
+
+#. module: ncss_mandate_passenger
+#: model:ir.ui.menu,name:ncss_mandate_passenger.All_travel_ticket_child
+msgid "All Ticket"
+msgstr "كل التذاكر"
+
+
+#. module: ncss_mandate_passenger
+#: model:ir.ui.menu,name:ncss_mandate_passenger.travel_ticket_hr_child
+msgid "Ticket Waiting  Appove by HR"
+msgstr "  تنتظر موافقة الموار البشرية"
+
+#. module: ncss_mandate_passenger
+#: model:ir.ui.menu,name:ncss_mandate_passenger.travel_ticket_Account_child
+msgid "Travel Ticket Done"
+msgstr "  تذاكر الطيران التى تم صرفها"
+
+
+#. module: ncss_mandate_passenger
+#: model:ir.actions.act_window,name:ncss_mandate_passenger.travel_ticket_menu_action
+#: model:ir.ui.menu,name:ncss_mandate_passenger.travel_ticket_child
+#: model:res.groups,name:ncss_mandate_passenger.mandate_passenger_travel_ticket
+msgid "All Ticket"
+msgstr "كل تذاكر الطيران"
+
+
 
 #. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__traveling_type
