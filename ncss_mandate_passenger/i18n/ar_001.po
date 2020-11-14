@@ -419,6 +419,12 @@ msgid "Internal"
 msgstr "داخلي"
 
 #. module: ncss_mandate_passenger
+#: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__mandate_passenger__course_type__internal
+#: model:ir.model.fields.selection,name:ncss_mandate_passenger.selection__training_course__type__internal
+msgid "Private"
+msgstr "خاصة"
+
+#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value__internal_day_value
 msgid "Internal Day Value"
 msgstr "تكلفه اليوم الداخلي"

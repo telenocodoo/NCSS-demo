@@ -5,6 +5,7 @@
                 <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/main.css"/>
                 <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/menu.scss"/>
                 <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style.css"/>
+
             </xpath>
 
             <xpath expr="//script[last()]" position="after">

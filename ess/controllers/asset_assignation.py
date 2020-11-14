@@ -232,6 +232,10 @@ class EssAsset(Controller):
         course_obj = request.env['training.course'].sudo().search([])
         course_place_obj = request.env['course.place'].sudo().search([])
         if post and request.httprequest.method == 'POST':
+            print(post)
+            private_start_date = post['start_date']
+            private_end_date = post['end_date']
+
             if post['type'] == 'دوره':
                 type = 'course'
             elif post['type'] == 'انتداب':
@@ -246,6 +250,9 @@ class EssAsset(Controller):
                 course_type = 'internal'
             elif post['course_type'] == 'خارجي':
                 course_type = 'external'
+            elif post['course_type'] == 'خاصة':
+                course_type = 'private'
+
             else:
                 course_type = post['course_type']
             post.update({
@@ -255,14 +262,25 @@ class EssAsset(Controller):
                 'course_type': course_type,
                 'course_id': post['course_id'],
                 'price': request.env['training.course'].sudo().browse(int(post['course_id'])).price,
-                'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,
-                'end_date': request.env['training.course'].sudo().browse(int(post['course_id'])).end_date,
-                'number_of_days': request.env['training.course'].sudo().browse(int(post['course_id'])).number_of_days,
+
+                'number_of_days': request.env['training.course'].sudo().browse( int(post['course_id'])).number_of_days,
                 'course_place_id': post['course_place_id'],
                 'description': post['description'],
                 'state': 'draft',
             })
-            request.env['mandate.passenger'].sudo().create(post)
+
+
+            if course_type != 'private' :
+                post.update({ 'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,
+                'end_date': request.env['training.course'].sudo().browse(int(post['course_id'])).end_date
+                              })
+            elif course_type == 'private' :
+                post.update(
+                    {'start_date':  private_start_date,
+                     'end_date': private_end_date
+                     })
+            print("befor create",post)
+            obj_id =request.env['mandate.passenger'].sudo().create(post)
             # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
             # # print("LLLLLLLLLLLL", courses_and_mandate_obj)
@@ -278,8 +296,9 @@ class EssAsset(Controller):
             'employee': emb_obj,
             'course_obj': course_obj,
             'course_place_obj': course_place_obj,
+            'msg':_('Your Request has been Sent Successfully')
         })
-
+        print(values)
         response = request.render("ess.ess_passenger_mandate", values)
         return response
 

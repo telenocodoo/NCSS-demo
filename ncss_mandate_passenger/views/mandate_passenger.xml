@@ -281,8 +281,8 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="price"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
-                            <field name="start_date" readonly="1" force_save="1"/>
-                            <field name="end_date" readonly="1" force_save="1"/>
+                            <field name="start_date" attrs="{'readonly':[('course_type','!=','private')]}" force_save="1"/>
+                            <field name="end_date" attrs="{'readonly':[('course_type','!=','private')]}" force_save="1"/>
                             <field name="number_of_days"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                         </group>

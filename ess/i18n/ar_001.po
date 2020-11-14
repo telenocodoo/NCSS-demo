@@ -1942,6 +1942,21 @@ msgid "course"
 msgstr "دوره"
 
 #. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+msgid "Reset"
+msgstr "إعادة"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+msgid "End Date"
+msgstr "تاريخ النهاية"
+
+#. module: ess
 #: model:ir.model,name:ess.model_course_schedule
 msgid "course.schedule"
 msgstr "مواعيد الدورة"
@@ -1976,6 +1991,16 @@ msgid "internal"
 msgstr "داخلي"
 
 #. module: ess
+#: model_terms:ir.model.fields.selection,name:ess.ess_passenger_mandate
+msgid "Private"
+msgstr "خاصة"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+msgid "private"
+msgstr "خاصة"
+
+#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
 msgid "mandate"
 msgstr "انتداب"
@@ -1999,3 +2024,16 @@ msgstr "حفظ"
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
 msgid "work_shop"
 msgstr "ورشه عمل"
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+msgid "Your Request has been Sent Successfully"
+msgstr "تم ارسال طلبك بنجاح"
+
+#. module: ess
+#: code:addons/ess/controllers/asset_assignation.py:0
+#, python-format
+msgid "Your Request has been Sent Successfully"
+msgstr "تم ارسال طلبك بنجاح"
+

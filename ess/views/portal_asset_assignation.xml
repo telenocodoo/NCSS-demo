@@ -1277,43 +1277,47 @@
                         <t t-call="ess.side_menu"/>
                     </nav>
 
+
+
                     <div class="row col-10 col-md col-lg-10">
+
+
                         <div class="col-lg-12">
                             <div class="ibox ">
                                 <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Mandate And Passenger</span></h3>
                                 </div>
                                 <div class="ibox-content">
-                                    <div class="row">
+                                    <div class="row col-lg-12">
+             
                                         <div class="col-lg-12" style="margin-top:10px;">
-                                            <form action="/request/passenger_mandate" method="post">
+                                            <form action="/request/passenger_mandate" method="post"  id="contactForm1" >
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
 
                                                 <div class="row o_portal_expense">
                                                   <div class="row form-group col-lg-12">
-                                                        <div t-attf-class="form-group col-xl-6">
+
                                                             <div t-attf-class="form-group col-xl-6">
-                                                                <label class="col-form-label" for="type">Type</label>
+                                                                <label class="col-form-label " for="type">Type</label>
                                                                 <select name="type" t-attf-class="form-control">
                                                                         <option t-att-value="course" >course</option>
                                                                         <option t-att-value="mandate" >mandate</option>
                                                                         <option t-att-value="work_shop" >work_shop</option>
                                                                 </select>
                                                             </div>
-                                                        </div>
-                                                        <div t-attf-class="form-group col-xl-6">
+
+
                                                             <div t-attf-class="form-group col-xl-6">
                                                                 <label class="col-form-label" for="course_type">Course Type</label>
-                                                                <select name="course_type" t-attf-class="form-control">
+                                                                <select name="course_type" t-attf-class="form-control" id="course_type">
                                                                         <option t-att-value="internal" >internal</option>
                                                                         <option t-att-value="external" >external</option>
+                                                                     <option t-att-value="private" >private</option>
                                                                 </select>
                                                             </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-lg-12">
-                                                        <div t-attf-class="form-group col-xl-6">
+                                                       <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_id">Course</label>
                                                             <select name="course_id" t-attf-class="form-control">
                                                                 <t t-foreach="course_obj or []" t-as="cor">
@@ -1323,8 +1327,7 @@
                                                                 </t>
                                                             </select>
                                                         </div>
-
-                                                        <div t-attf-class="form-group col-xl-6">
+                                                      <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_place_id">Course PLace</label>
                                                             <select name="course_place_id" t-attf-class="form-control">
                                                                 <t t-foreach="course_place_obj or []" t-as="place">
@@ -1335,19 +1338,42 @@
                                                             </select>
                                                         </div>
 
-                                                        <div class="row form-group col-lg-12">
-                                                            <div t-attf-class="form-group col-xl-6">
-                                                                <label class="col-form-label" for="description">Description</label>
-                                                                <textarea rows="4" cols="50" name="description" t-attf-class="form-control"/>
-                                                            </div>
-                                                        </div>
 
-                                                        <div class="clearfix">
-                                                            <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;'>
-                                                                Create
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                             <div t-attf-class="form-group col-xl-6" id="start_date" style="display:none">
+                                                            <label class="col-form-label" for="start_date">Start Date</label>
+                                                                <input type="date" name="start_date"  id="start_date"  t-attf-class="form-control" />
+                                                                              </div>
+
+                                                              <div t-attf-class="form-group col-xl-6" id="end_date" style="display:none">
+                                                            <label class="col-form-label" for="end_date">End Date</label>
+                                                                <input type="date" name="end_date"  id="end_date"  t-attf-class="form-control" />
+                                                          </div>
+
+
+                                                        <div t-attf-class="form-group col-xl-6">
+                                                                <label class="col-form-label" for="description">Description</label>
+                                                                <textarea rows="4" cols="50" name="description" t-attf-class="form-control"  ></textarea>
+                                                            </div>
+
+                               <div t-attf-class="form-group col-xl-6"  id="error_msg"  style="font-weight:bold;font-size:14px;color:green;">
+                                  </div>
+
+
+                            <div class="clearfix" t-attf-class="form-group col-xl-6">
+                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;' id="submit_button_id">
+                                    Create
+                                </button>
+
+                                <button type="reset" class="btn btn-primary float-right" style='margin-right: 30px;'  >
+                                    Reset
+                                </button>
+
+                            </div>
+
+
+</div>
+
+
                                                 </div>
                                             </form>
                                         </div>
@@ -1360,6 +1386,10 @@
                 </div>
             </t>
         </t>
+
+<!--             <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style2.css"/>-->
+           <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
     </template>
 
 
