@@ -460,6 +460,16 @@ msgid "Is Free"
 msgstr "مجاني"
 
 #. module: ncss_mandate_passenger
+#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__is_private
+msgid "Is Private"
+msgstr "دورة خاصة"
+
+#. module: ncss_mandate_passenger
+#: model:ir.model.fields,field_description:ncss_mandate_passenger.field_training_course__employee_id
+msgid "Employee"
+msgstr "موظف "
+
+#. module: ncss_mandate_passenger
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_budget_allocated_training____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_course_place____last_update
 #: model:ir.model.fields,field_description:ncss_mandate_passenger.field_employee_degree_value____last_update

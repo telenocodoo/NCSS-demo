@@ -746,6 +746,58 @@ msgstr "حاله العهده عند التسليم"
 msgid "State Of Asset When Receive"
 msgstr "حاله العهده عند الاستلام"
 
+
+
+#. module: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__state_of_asset_when_delivery
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__state_of_asset_when_delivery
+msgid "State Of Asset When Delivery"
+msgstr "حاله العهده عند التسليم"
+
+#. module: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__state_of_asset_when_receive
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__state_of_asset_when_receive
+msgid "State Of Asset When Receive"
+msgstr "حاله العهده عند الاستلام"
+
+
+
+#. module: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__driver_id
+msgid "Driver"
+msgstr "الموظف"
+
+#. module: hr_assets_assignation
+#: model:ir.model,name:hr_assets_assignation.model_fleet_vehicle_employee_log
+msgid "Drivers history on a vehicle"
+msgstr "سجل الموظف على مركبة"
+
+#. modules: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__date_start
+msgid "Start Date"
+msgstr "تاريخ الاسناد"
+
+#. module: hr_assets_assignation
+#: code:addons/hr_assets_assignation/models/asset_account_request.py:0
+#: code:addons/hr_assets_assignation/models/asset_account_request.py:0
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__car_employee_have
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_asset_account_request__log_id_employee
+#, python-format
+msgid "Employee Car"
+msgstr "السيارة المسندة"
+
+
+
+#. modules: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__date_start
+msgid "Start Date"
+msgstr "تاريخ الاسناد"
+
+#. modules: hr_assets_assignation
+#: model:ir.model.fields,field_description:hr_assets_assignation.field_fleet_vehicle_employee_log__date_end
+msgid "End Date"
+msgstr "تاريخ اخلاء الطرف"
+
 #. module: hr_assets_assignation
 #: model:ir.model.fields,help:hr_assets_assignation.field_asset_account_request__activity_state
 #: model:ir.model.fields,help:hr_assets_assignation.field_department_clearance__activity_state

@@ -55,6 +55,9 @@
                             <field name="refuse_boolean"  invisible="1"
 
                             />
+                            <field name="is_car"  invisible="1"
+
+                            />
                             <field name="asset_request_Refuse_reason"
                                    attrs="{'invisible':[('refuse_boolean','=',False)]}"
                             />
@@ -66,6 +69,10 @@
                             />
                             <field name="asset_id" options="{'no_create_edit': True,'no_quick_create': True}"
                                    attrs="{'readonly':[('state','in',['assigned','clearance'])],'required':[('type','=','asset'),('state','in',['approve','assigned','clearance'])],'invisible':['|',('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
+                            />
+
+                            <field name="car_employee_have" options="{'no_create_edit': True,'no_quick_create': True}"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])],'invisible':['|','|',('is_car','=',False),('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
                             />
 <!--                           attrs="{'required':[('type','=','asset')],'invisible':[('type','!=','asset')]}"-->
                             <field name="description"
@@ -90,6 +97,10 @@
                             <field name="state_of_asset_when_delivery"
                                     attrs="{'readonly':[('state','=','clearance')],'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
+                            <field name="log_id_employee"
+            attrs="{'readonly':[('state','in',['assigned','clearance'])],'invisible':['|','|',('is_car','=',False),('type','!=','asset'),('state','not in',['approve','assigned','clearance'])]}"
+
+ />
                             <field name="date_of_disclaimer" readonly="1"
                                     attrs="{'invisible':[('state','not in',['approve','assigned','clearance'])]}"
                             />
@@ -478,8 +489,71 @@
     </record>
 
 
-
 <!--    Wizard reason-->
+<!-- hr assets assignation -->
+
+     <record id="view_form_inherited_Assest" model="ir.ui.view">
+            <field name="name">Inherited Form Assest Car</field>
+            <field name="model">account.asset</field>
+            <field name="inherit_id" ref="account_asset.view_account_asset_form"/>
+                <field name="arch" type="xml">
+
+                    <xpath expr="//field[@name='acquisition_date']" position="after">
+                    <!-- Add your fields or attributes here -->
+                        <field name="car_ids"  domain="[('is_take_by_employee','=',False)]"/>
+                    </xpath>
+               </field>
+        </record>
+
+<!--    hr assests assignation -->
+
+    <!-- Car assets assignation -->
+
+     <record id="view_form_inherited_employee" model="ir.ui.view">
+            <field name="name">Inherited Form Employee log Car</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+                <field name="arch" type="xml">
+
+                 <xpath expr=  "//button[@name='open_assignation_logs']" position="before">
+                    <!-- Add your fields or attributes here -->
+                         <button name="open_fleet_employee_logs"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-history">
+                            <field name="history_count_emp" widget="statinfo" string="Employee History"/>
+                        </button>
+
+                    </xpath>
+
+
+                    <xpath expr="//field[@name='location']" position="after">
+                <field name="is_take_by_employee" invisible="1"  />
+            </xpath>
+               </field>
+        </record>
+
+
+
+
+       <record id="fleet_vehicle_employee_log_view_list" model="ir.ui.view">
+        <field name="name">fleet.vehicle.employee.log.view.tree</field>
+        <field name="model">fleet.vehicle.employee.log</field>
+        <field name="arch" type="xml">
+            <tree string="Assignation Logs" editable="bottom">
+                <field name="vehicle_id" invisible="1"/>
+                <field name="driver_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+             <field name="state_of_asset_when_receive" />
+
+        <field name="state_of_asset_when_delivery" />
+            </tree>
+        </field>
+    </record>
+
+<!--    Car assests assignation -->
+
 
     <!--    asset.account.request-->
 

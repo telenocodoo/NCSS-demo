@@ -1,7 +1,44 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
-import datetime
+from datetime import date
+from datetime import datetime, timedelta
 from odoo.exceptions import UserError
+
+class carfleetvicle(models.Model):
+    _inherit = 'fleet.vehicle'
+    history_count_emp = fields.Integer(compute="_compute_count_all_emp", string="Employees History Count")
+    is_take_by_employee = fields.Boolean(  string="Is Taken", default=False)
+
+    def _compute_count_all_emp(self):
+
+        for record in self:
+           record.history_count_emp = self.env['fleet.vehicle.employee.log'].search_count([('vehicle_id', '=', record.id)])
+
+
+
+    def open_fleet_employee_logs(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Assignation Logs',
+            'view_mode': 'tree',
+            'res_model': 'fleet.vehicle.employee.log',
+            'domain': [('vehicle_id', '=', self.id)],
+            'context': {'default_driver_id': self.driver_id.id, 'default_vehicle_id': self.id}
+        }
+class Cardriverdetails(models.Model):
+
+    _name = "fleet.vehicle.employee.log"
+    _description = "Drivers history on a vehicle"
+    _order = "create_date desc, date_start desc"
+    _rec_name = "driver_id"
+
+    vehicle_id = fields.Many2one('fleet.vehicle', string="Vehicle", required=True,domain="[('is_take_by_employee','=',False)]")
+    driver_id = fields.Many2one('hr.employee', string="Driver", required=True)
+    date_start = fields.Date(string="Start Date")
+    date_end = fields.Date(string="End Date")
+    state_of_asset_when_receive = fields.Char()
+    state_of_asset_when_delivery = fields.Char()
 
 
 class AssetAccountRequest(models.Model):
@@ -50,6 +87,29 @@ class AssetAccountRequest(models.Model):
     color = fields.Integer(compute="compute_color")
     state_of_asset_when_receive = fields.Char()
     state_of_asset_when_delivery = fields.Char()
+    log_id_employee= fields.Many2one('fleet.vehicle.employee.log',string=_("Employee Car"))
+
+
+    # def _get_car(self):
+    #     if self.asset_id.car_ids:
+    #        return self.asset_id.car_ids.id
+
+    car_employee_have= fields.Many2one('fleet.vehicle',string=_("Employee Car"),readonly=True )
+    is_car=fields.Boolean("Car",default=False)
+
+    @api.onchange('asset_id')
+    def _getCar(self):
+        print("tesr>>>")
+        if self.asset_id.car_ids:
+            self.car_employee_have=self.asset_id.car_ids.id
+            self.is_car=True
+        else:
+            self.is_car = False
+            self.car_employee_have=False
+            self.log_id_employee=False
+
+
+    #        return self.asset_id.car_ids.id
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -59,15 +119,19 @@ class AssetAccountRequest(models.Model):
         center_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_center_manager')
         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
 
-        if user:
-            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
-        if direct_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id), ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        if department_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id), ('employee_id.department_id.manager_id.id', '=', current_user_id),
-                     ('create_uid.id', '=', self.env.user.id)]
         if center_manager:
             args += []
+        elif department_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id),
+                     ('employee_id.department_id.manager_id.id', '=', current_user_id),
+                     ('create_uid.id', '=', self.env.user.id)]
+        elif direct_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id),
+                     ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        elif user:
+            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
+
+
         return super(AssetAccountRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
@@ -92,9 +156,36 @@ class AssetAccountRequest(models.Model):
 
 
     def action_assign_to_employee(self):
+        now = datetime.now()
+        values={}
+        values['driver_id']=self.employee_id.id
+        values['date_start']=now
+        values['state_of_asset_when_receive']=self.state_of_asset_when_receive
+        values['vehicle_id']=self.asset_id.car_ids.id
+        self.asset_id.car_ids.is_take_by_employee=True
+        log_id=self.env['fleet.vehicle.employee.log'].sudo().create(values)
+        self.log_id_employee = log_id
         self.state = 'assigned'
 
     def action_clearance(self):
+        now = datetime.now()
+        # self.env['fleet.vehicle.assignation.log'].sudo().create(driver_id=self.employee_id, date_start=now,
+        #  state_of_asset_when_receive=self.state_of_asset_when_receive)
+        print(self.log_id_employee.id)
+        log_id=self.env['fleet.vehicle.employee.log'].sudo().search([('id','=', self.log_id_employee.id)  ],limit=1)
+        print(" hi .???",log_id)
+        if len(log_id)==1:
+            now = datetime.now()
+            values = {}
+            values['date_end'] = now
+            values['state_of_asset_when_delivery'] = self.state_of_asset_when_delivery
+            # values['vehicle_id'] = self.asset_id.car_ids.id
+            # self.asset_id.car_ids.is_take_by_employee = True
+            print(values)
+            for rec in log_id:
+                print(log_id)
+                rec.write(values)
+
         self.date_of_disclaimer = fields.date.today()
         self.state = 'clearance'
 
@@ -311,4 +402,8 @@ class DepartmentClearanceLine(models.Model):
             else:
                 record.is_department_manager = False
 
+class AssetAccount(models.Model):
 
+    _inherit = 'account.asset'
+
+    car_ids = fields.Many2one('fleet.vehicle',string =_('Cars '))

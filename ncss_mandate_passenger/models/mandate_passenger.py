@@ -2,7 +2,8 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 from datetime import date
-from datetime import datetime
+from datetime import datetime, timedelta
+
 
 
 class BudgetAllocatedTraining(models.Model):
@@ -65,6 +66,13 @@ class TrainingCourse(models.Model):
     start_date = fields.Date()
     end_date = fields.Date()
     is_free = fields.Boolean()
+    is_private = fields.Boolean(string=_('Private'),default=False)
+    employee_id = fields.Many2one('hr.employee', 'Employee')
+
+    @api.onchange('is_private')
+    def onchange_rem_emp(self):
+        if self.is_private ==False:
+            self.employee_id=False
 
     @api.constrains('start_date', 'end_date')
     def constrains_start_end_date(self):
@@ -97,8 +105,8 @@ class MandatePassenger(models.Model):
                               ('mandate', 'Mandate'),
                               ('work_shop', 'work shop'),
                               ])
-    course_id = fields.Many2one('training.course', 'Course')
-    course_type = fields.Selection([('internal', 'Internal'), ('external', 'External'), ('private', 'Private')])
+    course_id = fields.Many2one('training.course', 'Course',required=True)
+    course_type = fields.Selection([('internal', 'Internal'), ('external', 'External')])
     description = fields.Text()
     price = fields.Float()
     start_date = fields.Date()
@@ -126,7 +134,7 @@ class MandatePassenger(models.Model):
                                ('hr_approve', 'Hr Approved'),
                                ('accounting_approve', 'Accounting Approve'),
                                ('refuse', 'Refuse'),
-                               ], default='draft')
+                               ], default='draft', order="id")
     color = fields.Integer(compute="compute_color")
 
     department_id = fields.Many2one('hr.department')
@@ -194,12 +202,50 @@ class MandatePassenger(models.Model):
 
         return super(MandatePassenger, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
+    @api.model
+    def create(self, values):
+        res = super(MandatePassenger, self).create(values)
+        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        res.make_activity(user_ids[0])
+        return res
+
+
+    def make_activity(self,user_ids):
+        print("j...",user_ids)
+        now = datetime.now()
+        date_deadline =  now.date()
+
+        if self :
+
+            if user_ids:
+                actv_id=self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+                             self._name, self.id, self.employee_id._name,
+                             self.employee_id.id, self.employee_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                    )
+                print("active" ,actv_id)
+
+
+
+    # @api.onchange('state')
+    # def create_task_activity(self):
+    #
+    #     self.make_activity()
+
     @api.depends('state')
     def compute_color(self):
         for record in self:
             if record.state == 'draft':
+
                 record.color = 2
             elif record.state == 'direct_manager_approve':
+                # self.make_activity()
                 record.color = 4
             elif record.state == 'department_manager_approve':
                 record.color = 6
@@ -335,7 +381,26 @@ class MandatePassenger(models.Model):
                 self.is_department_manager = False
 
     def action_direct_manager_approve(self):
+        user_ids = self.mapped('employee_id.department_id.manager_id.user_id').ids
+        print(user_ids)
+        if user_ids:
+            self.make_activity(user_ids[0])
         self.state = 'direct_manager_approve'
+
+    def get_users(self,groupidxml):
+        myuserlist=[]
+        groupid=self.env.ref(groupidxml).id
+        groupObj = self.env['res.groups'].search([('id','=',groupid)])
+        if groupObj:
+              for rec in groupObj.users:
+                  myuserlist.append(rec.id)
+
+        return myuserlist
+
+        #     for i in groupObj.users:
+        #         userObj = self.env['res.users'].search([('id', '=', i.id)])
+
+
 
     def action_department_manager_approve(self):
         for record in self:
@@ -343,12 +408,25 @@ class MandatePassenger(models.Model):
                 [('department_id.id', '=', record.employee_id.department_id.id)], limit=1)
             if budget_obj:
                 budget_obj.expensed_from_budget += record.total
+
+            user_ids = list(self.get_users("ncss_mandate_passenger.mandate_passenger_hr_manager"))
+            print (user_ids)
+            if user_ids:
+                for rec in user_ids:
+
+                    record.make_activity(rec)
             record.state = 'department_manager_approve'
 
     def action_hr_manager_approve(self):
+        user_ids = list(self.get_users("ncss_mandate_passenger.mandate_passenger_accounting_manager"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
         self.state = 'hr_approve'
 
     def action_accounting_approve(self):
+
         self.state = 'accounting_approve'
 
     def refuse_action(self):

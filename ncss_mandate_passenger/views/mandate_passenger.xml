@@ -27,6 +27,11 @@
                             <field name="type" />
                             <field name="is_free" />
                             <field name="price" />
+                               <field name="is_private" />
+                               <field name="employee_id"
+                                attrs="{'invisible':[('is_private','=',False) ]}"
+                               />
+
                         </group>
                         <group>
                             <field name="start_date"/>
@@ -253,11 +258,11 @@
                             groups="ncss_mandate_passenger.mandate_passenger_refuse_button"
 
                     />
-                    <button name="set_to_draft" string="Set To Draft"
-                            states='refuse,accounting_approve'
-                            type="object" class="oe_highlight"
-                            groups="ncss_mandate_passenger.mandate_passenger_set_to_draft_button"
-                    />
+<!--                    <button name="set_to_draft" string="Set To Draft"-->
+<!--                            states='refuse,accounting_approve'-->
+<!--                            type="object" class="oe_highlight"-->
+<!--                            groups="ncss_mandate_passenger.mandate_passenger_set_to_draft_button"-->
+<!--                    />-->
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,direct_manager_approve,department_manager_approve,hr_approve,accounting_approve"
                     />
@@ -304,8 +309,8 @@
                             groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
                              <field name="attach_file_ticket"
-
-                            groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
+                             attrs="{'invisible':[ ('state','in',['draft','direct_manager_approve'])]   }"
+                             groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
 
                             <field name="Subsistence_rate" invisible="1"/>
