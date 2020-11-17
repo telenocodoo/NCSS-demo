@@ -271,6 +271,7 @@
                         <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/request/passenger_mandate">Passenger And Mandate</a></li>
+                            <li><a href="/request/passenger_mandate_private">Create Private Course</a></li>
                             <li><a href="/my/courses_and_mandate">My Passenger And Mandate</a></li>
                         </ul>
                     </li>

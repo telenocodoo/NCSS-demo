@@ -37,6 +37,8 @@
                             <field name="start_date"/>
                             <field name="end_date"/>
                             <field name="number_of_days"/>
+                            <field name="course_place_id"/>
+
                             <field name="description"/>
                         </group>
                     </group>
@@ -306,10 +308,13 @@
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="attach_file"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
+                                   widget="many2many_binary"
                             groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
                              <field name="attach_file_ticket"
                              attrs="{'invisible':[ ('state','in',['draft','direct_manager_approve'])]   }"
+                                    widget="many2many_binary"
+
                              groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
 

@@ -1268,7 +1268,7 @@
 
 
 
-    <template id="ess_passenger_mandate" name="ESS Passenger Mandate">
+ <template id="ess_passenger_mandate" name="ESS Passenger Mandate">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -1276,8 +1276,6 @@
                     <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
                         <t t-call="ess.side_menu"/>
                     </nav>
-
-
 
                     <div class="row col-10 col-md col-lg-10">
 
@@ -1289,7 +1287,7 @@
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row col-lg-12">
-             
+
                                         <div class="col-lg-12" style="margin-top:10px;">
                                             <form action="/request/passenger_mandate" method="post"  id="contactForm1" >
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -1313,7 +1311,7 @@
                                                                 <select name="course_type" t-attf-class="form-control" id="course_type">
                                                                         <option t-att-value="internal" >internal</option>
                                                                         <option t-att-value="external" >external</option>
-                                                                     <option t-att-value="private" >private</option>
+<!--                                                                     <option t-att-value="private" >private</option>-->
                                                                 </select>
                                                             </div>
 
@@ -1392,8 +1390,7 @@
    <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
     </template>
 
-
-    <template id="ess_view_courses_and_mandate" name="ESS View Passenger Mandate">
+<template id="ess_view_courses_and_mandate" name="ESS View Passenger Mandate">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -1422,7 +1419,9 @@
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#draft">Draft</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#dir_manager">Direct Manager Approved</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#d_manager">Department Manager Approved</a></li>
+                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#hr">Human Resources Manager Approved</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#accounting">Accounting Manager Approved</a></li>
+
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#refused">Refused</a></li>
                                                                     </ul>
                                                                     <div class="tab-content">
@@ -1579,6 +1578,49 @@
                                                                             </div>
                                                                         </div>
 
+                                                                        <div class="tab-pane" id="hr">
+
+                                                                            <div class="table-responsive">
+                                                                                <table class="table header-border table-hover table-custom spacing5 ess-table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Type</th>
+                                                                                            <th>Course</th>
+                                                                                            <th>Course Type</th>
+                                                                                            <th>Course Place</th>
+                                                                                            <th>Description</th>
+                                                                                            <th>Course Price</th>
+                                                                                            <th>Start Date</th>
+                                                                                            <th>End Date</th>
+                                                                                            <th>Number Of Days</th>
+                                                                                            <th>Total</th>
+                                                                                            <th>State</th>
+                                                                                            <th>Attachment File</th>
+
+                                                                                            <th>Attachment Ticket</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
+                                                                                        <tr t-if="mandate['state'] == 'accounting_approve'">
+                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
+                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_place_id']['name']"/></td>
+                                                                                            <td><div t-esc="mandate['description']"/></td>
+                                                                                            <td><div t-esc="mandate['price']"/></td>
+                                                                                            <td><div t-esc="mandate['start_date']"/></td>
+                                                                                            <td><div t-esc="mandate['end_date']"/></td>
+                                                                                            <td><div t-esc="mandate['number_of_days']"/></td>
+                                                                                            <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                           <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
+
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="tab-pane" id="accounting">
 
                                                                             <div class="table-responsive">
@@ -1675,6 +1717,151 @@
             </t>
         </t>
     </template>
+
+
+        <template id="ess_passenger_mandate_private" name="ESS Passenger Mandate private">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
+
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+
+
+                    <div class="row col-10 col-md col-lg-10">
+
+
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>Mandate And Passenger Private</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row col-lg-12">
+
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/request/passenger_mandate_private" method="post"  id="contactForm1" >
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+
+                                                <div class="row o_portal_expense">
+                                                  <div class="row form-group col-lg-12">
+                                                         <div t-attf-class="form-group col-xl-6" >
+                                                            <label class="col-form-label" for="name">Name</label>
+                                                                <input type="text" name="name"  t-attf-class="form-control" />
+                                                         </div>
+
+<!--                                                            <div t-attf-class="form-group col-xl-6">-->
+<!--                                                                <label class="col-form-label " for="type">Type</label>-->
+<!--                                                                <select name="type" t-attf-class="form-control">-->
+<!--                                                                        <option t-att-value="course" >course</option>-->
+<!--                                                                        <option t-att-value="mandate" >mandate</option>-->
+<!--                                                                        <option t-att-value="work_shop" >work_shop</option>-->
+<!--                                                                </select>-->
+<!--                                                            </div>-->
+
+
+                                                            <div t-attf-class="form-group col-xl-6">
+                                                                <label class="col-form-label" for="type">Course Type</label>
+                                                                <select name="type" t-attf-class="form-control" id="course_type">
+                                                                        <option t-att-value="internal" >internal</option>
+                                                                        <option t-att-value="external" >external</option>
+<!--                                                                     <option t-att-value="private" >private</option>-->
+                                                                </select>
+                                                            </div>
+
+                                                         <div t-attf-class="form-group col-xl-6" >
+                                                            <label class="col-form-label" for="name">price</label>
+                                                                <input type="number" name="price"  t-attf-class="form-control" />
+                                                         </div>
+
+
+<!--                                                       <div t-attf-class="form-group col-xl-6">-->
+<!--                                                            <label class="col-form-label" for="course_id">Course</label>-->
+<!--                                                            <select name="course_id" t-attf-class="form-control">-->
+<!--                                                                <t t-foreach="course_obj or []" t-as="cor">-->
+<!--                                                                    <option t-att-value="cor.id" >-->
+<!--                                                                        <t t-esc="cor.name" />-->
+<!--                                                                    </option>-->
+<!--                                                                </t>-->
+<!--                                                            </select>-->
+<!--                                                        </div>-->
+                                                      <div t-attf-class="form-group col-xl-6">
+                                                            <label class="col-form-label" for="course_place_id">Course PLace</label>
+                                                            <select name="course_place_id" t-attf-class="form-control">
+                                                                <t t-foreach="course_place_obj or []" t-as="place">
+                                                                    <option t-att-value="place.id" >
+                                                                        <t t-esc="place.name" />
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </div>
+
+
+                                                             <div t-attf-class="form-group col-xl-6" id="start_date"  >
+                                                            <label class="col-form-label" for="start_date">Start Date</label>
+                                                                <input type="date" name="start_date"  id="start_date_private"  t-attf-class="form-control" />
+                                                                              </div>
+
+                                                              <div t-attf-class="form-group col-xl-6" id="end_date"  >
+                                                            <label class="col-form-label" for="end_date">End Date</label>
+                                                                <input type="date" name="end_date"  id="end_date_private"  t-attf-class="form-control" />
+                                                          </div>
+                                                            <div t-attf-class="form-group col-xl-6" >
+                                                                <label class="col-form-label" for="number_of_days">No of Days</label>
+                                                                    <input type="number" name="number_of_days"  id="number_of_days" t-attf-class="form-control" />
+                                                             </div>
+
+                                                        <div t-attf-class="form-group col-xl-6">
+                                                                <label class="col-form-label" for="description">Description</label>
+                                                                <textarea rows="4" cols="50" name="description" t-attf-class="form-control"  ></textarea>
+                                                        </div>
+
+                               <div t-attf-class="form-group col-xl-6"  id="error_msg"  style="font-weight:bold;font-size:14px;color:green;">
+                                  </div>
+
+                               <div t-attf-class="form-group col-xl-6"   name="msg" style="font-weight:bold;font-size:14px;color:green;">
+                               </div>
+
+
+                            <div class="clearfix" t-attf-class="form-group col-xl-6">
+                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;' id="submit_button_id">
+                                    Create
+                                </button>
+
+                                <button type="reset" class="btn btn-primary float-right" style='margin-right: 30px;'  >
+                                    Reset
+                                </button>
+
+                            </div>
+
+
+</div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+
+<!--             <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style2.css"/>-->
+           <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
+   <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
+    </template>
+
+
+
+
 
 
 </odoo>

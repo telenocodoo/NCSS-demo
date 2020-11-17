@@ -68,6 +68,7 @@ class TrainingCourse(models.Model):
     is_free = fields.Boolean()
     is_private = fields.Boolean(string=_('Private'),default=False)
     employee_id = fields.Many2one('hr.employee', 'Employee')
+    course_place_id = fields.Many2one('course.place')
 
     @api.onchange('is_private')
     def onchange_rem_emp(self):
@@ -126,8 +127,11 @@ class MandatePassenger(models.Model):
                                        ('vip', 'VIP'),
                                        ])
     reason = fields.Text()
-    attach_file = fields.Binary()
-    attach_file_ticket = fields.Binary(string=_('Attachment ticket'))
+    attach_file = fields.Many2many('ir.attachment', 'mandate_attach_rel', 'doc_id', 'attach_id4',
+                                   string=_('Attachment File'),
+                                          help='You can attach the copy of your document', copy=False)
+    attach_file_ticket = fields.Many2many('ir.attachment', 'mandate_attach_rel', 'doc_id', 'attach_id4', string=_('Attachment ticket'),
+                                      help='You can attach the copy of your document', copy=False)
     state = fields.Selection([('draft', 'Draft'),
                                ('direct_manager_approve', 'Direct Manager Approve'),
                                ('department_manager_approve', 'Department Manager Approve'),

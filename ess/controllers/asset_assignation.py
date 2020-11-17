@@ -4,7 +4,7 @@ import base64
 
 from odoo.http import content_disposition, Controller, request, route
 import odoo.addons.portal.controllers.portal as PortalController
-from datetime import date, datetime
+from datetime import date, datetime ,timedelta
 import base64
 import io
 from werkzeug.utils import redirect
@@ -15,6 +15,7 @@ from odoo.tools.translate import _
 import pytz
 import time
 from odoo.tools import formataddr
+
 
 from .main import ESSPortal
 # from odoo.addons.ess.controllers.main import ESSPortal
@@ -225,11 +226,16 @@ class EssAsset(Controller):
 
     @route(['/request/passenger_mandate'], type='http', auth='user', website=True)
     def passenger_mandate(self, redirect=None, **post):
+        print("hi passenger_mandate2")
         values = {}
+        now = datetime.now()
+        date_start = now.date()
         values = ESSPortal.check_modules(self)
         emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
 
-        course_obj = request.env['training.course'].sudo().search([])
+        course_obj = request.env['training.course'].sudo().search([ '&',('start_date','>=',date_start),'|',('is_private','=' ,False),'&', ('is_private','=', True) ,('employee_id','=',emb_obj.id)  ])
+        for rec in course_obj:
+            print(rec)
         course_place_obj = request.env['course.place'].sudo().search([])
         if post and request.httprequest.method == 'POST':
             print(post)
@@ -300,6 +306,87 @@ class EssAsset(Controller):
         })
         print(values)
         response = request.render("ess.ess_passenger_mandate", values)
+        return response
+
+
+    @route(['/request/passenger_mandate_private'], type='http', auth='user', website=True)
+    def passenger_mandate_private(self, redirect=None, **post):
+
+
+        now = datetime.now()
+        date_start = now.date()
+        values = {}
+        values = ESSPortal.check_modules(self)
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+
+        # course_obj = request.env['training.course'].sudo().search( [ '&',('start_date','>=',date_start),'|',('is_private','=' ,False),'&', ('is_private','=', True) ,('employee_id','=',emb_obj.id) ])
+        course_place_obj = request.env['course.place'].sudo().search([])
+        if post and request.httprequest.method == 'POST':
+            print(post)
+            # private_start_date = post['start_date']
+            # private_end_date = post['end_date']
+
+            # if post['type'] == 'دوره':
+            #     type = 'course'
+            # elif post['type'] == 'انتداب':
+            #     type = 'mandate'
+            # elif post['type'] == 'ورشه عمل':
+            #     type = 'work_shop'
+            # else:
+            #     type = post['type']
+
+
+            if post['type'] == 'داخلي':
+                course_type = 'internal'
+            elif post['type'] == 'خارجي':
+                course_type = 'external'
+
+            else:
+                course_type = post['type']
+
+            post.update({
+                'name':post['name'],
+                'description': post['description'],
+                'type': course_type,
+                'price':post['price'],
+                'start_date':post['start_date'],
+                'end_date':post['end_date'],
+                'number_of_days':post['number_of_days'],
+                'is_private':True,
+                'employee_id': emb_obj.id,
+                    })
+
+
+            # if course_type != 'private' :
+            #     post.update({ 'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,
+            #     'end_date': request.env['training.course'].sudo().browse(int(post['course_id'])).end_date
+            #                   })
+            # elif course_type == 'private' :
+            #     post.update(
+            #         {'start_date':  private_start_date,
+            #          'end_date': private_end_date
+            #          })
+            print("befor create",post)
+            obj_id =request.env['training.course'].sudo().create(post)
+            # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+            # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
+            # # print("LLLLLLLLLLLL", courses_and_mandate_obj)
+            # values.update({
+            #     'partner': request.env.user.partner_id,
+            #     'employee': emb_obj,
+            #     'courses_and_mandate_obj': courses_and_mandate_obj,
+            # })
+            # response = request.render("ess.ess_view_courses_and_mandate", values)
+            # return response
+        values.update({
+            'partner': request.env.user.partner_id,
+            'employee': emb_obj,
+            # 'course_obj': course_obj,
+            'course_place_obj': course_place_obj,
+            'msg':_('Your Request has been Sent Successfully')
+        })
+        print(values)
+        response = request.render("ess.ess_passenger_mandate_private", values)
         return response
 
     @route(['/my/courses_and_mandate'], type='http', auth='user', website=True)
