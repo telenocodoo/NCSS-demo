@@ -157,14 +157,16 @@ class AssetAccountRequest(models.Model):
 
     def action_assign_to_employee(self):
         now = datetime.now()
+
         values={}
-        values['driver_id']=self.employee_id.id
-        values['date_start']=now
-        values['state_of_asset_when_receive']=self.state_of_asset_when_receive
-        values['vehicle_id']=self.asset_id.car_ids.id
-        self.asset_id.car_ids.is_take_by_employee=True
-        log_id=self.env['fleet.vehicle.employee.log'].sudo().create(values)
-        self.log_id_employee = log_id
+        if self.asset_id.car_ids.id:
+            values['driver_id']=self.employee_id.id
+            values['date_start']=now
+            values['state_of_asset_when_receive']=self.state_of_asset_when_receive
+            values['vehicle_id']=self.asset_id.car_ids.id
+            self.asset_id.car_ids.is_take_by_employee=True
+            log_id=self.env['fleet.vehicle.employee.log'].sudo().create(values)
+            self.log_id_employee = log_id
         self.state = 'assigned'
 
     def action_clearance(self):
