@@ -708,27 +708,40 @@ msgstr "دوره"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Course PLace"
 msgstr "مقر الدوره"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Course Place"
 msgstr "مقر الدوره"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Course Price"
+msgstr "سعر الدوره"
+
+
+#. module: ess
+
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "price"
 msgstr "سعر الدوره"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_mandate model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
 msgid "Course Type"
 msgstr "نوع الدوره"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_add_custody_line model_terms:ir.ui.view,arch_db:ess.ess_asset_assignation
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 #: model_terms:ir.ui.view,arch_db:ess.ess_custody_request model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
 msgid "Create"
 msgstr "إنشاء"
@@ -878,8 +891,26 @@ msgstr "المعالين"
 #: model_terms:ir.ui.view,arch_db:ess.ess_short_leaves model_terms:ir.ui.view,arch_db:ess.ess_statement
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate model_terms:ir.ui.view,arch_db:ess.ess_view_custody
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Description"
 msgstr "الوصف"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "price"
+msgstr "السعر"
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "No of Days"
+msgstr "عدد الايام"
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "Reset"
+msgstr "إعادة تعيين"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_eos
@@ -1297,8 +1328,15 @@ msgstr "مهامي"
 #: model_terms:ir.ui.view,arch_db:ess.ess_track_leaves model_terms:ir.ui.view,arch_db:ess.ess_track_letter
 #: model_terms:ir.ui.view,arch_db:ess.ess_track_loan model_terms:ir.ui.view,arch_db:ess.ess_view_company_docs_owner
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_company_docs_req model_terms:ir.ui.view,arch_db:ess.ess_view_docs
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Name"
 msgstr "الاسم"
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
+msgid "Human Resources Manager Approved"
+msgstr "موافقة الموارد البشرية"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_myorofile
@@ -1627,6 +1665,7 @@ msgstr "المرحلة"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_announcement model_terms:ir.ui.view,arch_db:ess.ess_contract
 #: model_terms:ir.ui.view,arch_db:ess.ess_history_leaves model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "Start Date"
 msgstr "تاريخ البداية"
 
@@ -1937,6 +1976,21 @@ msgid "capacity"
 msgstr "السعة"
 
 #. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "<span>Mandate And Passenger Private</span>"
+msgstr "إنشاء دورة خاصة"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
+msgid "<span>دورات خاصة</span>"
+msgstr ""
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.side_menu
+msgid "Create Private Course"
+msgstr "إنشاء دورة خاصة"
+
+#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
 msgid "course"
 msgstr "دوره"
@@ -1953,6 +2007,7 @@ msgstr "تاريخ البداية"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate
+#: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "End Date"
 msgstr "تاريخ النهاية"
 

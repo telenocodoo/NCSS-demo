@@ -21,9 +21,9 @@ var payment_id = data.id;
 // Redirect the user to transaction_url
 var str=$("#course_type").val
  console.log(str);
-if (['internal', 'external', 'private'].indexOf(str) >= 0)
+if (['internal', 'external'].indexOf(str) >= 0)
  errmsg.text('Your Request has been Sent Successfully');
-else
+else if (['داخلي', 'خارجي'].indexOf(str) >= 0)
     errmsg.text('تم ارسال طلبكم بنجاح');
 })
 .fail(function (data) {
