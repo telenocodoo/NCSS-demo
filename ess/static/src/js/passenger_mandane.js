@@ -23,7 +23,7 @@ var str=$("#course_type").val
  console.log(str);
 if (['internal', 'external'].indexOf(str) >= 0)
  errmsg.text('Your Request has been Sent Successfully');
-else if (['داخلي', 'خارجي'].indexOf(str) >= 0)
+else
     errmsg.text('تم ارسال طلبكم بنجاح');
 })
 .fail(function (data) {
