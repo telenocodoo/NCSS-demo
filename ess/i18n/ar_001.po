@@ -896,6 +896,11 @@ msgid "Description"
 msgstr "الوصف"
 
 #. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation
+msgid "Assest Request Reason"
+msgstr "سبب الطلب"
+
+#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "price"
 msgstr "السعر"
@@ -1338,6 +1343,7 @@ msgstr "الاسم"
 msgid "Human Resources Manager Approved"
 msgstr "موافقة الموارد البشرية"
 
+
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_myorofile
 msgid "Nationality (Country)"
@@ -1676,6 +1682,11 @@ msgstr "تاريخ البداية"
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate model_terms:ir.ui.view,arch_db:ess.ess_view_custody
 msgid "State"
 msgstr "الحالة"
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation
+msgid "Refuse Reason"
+msgstr "سبب الرفض"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation

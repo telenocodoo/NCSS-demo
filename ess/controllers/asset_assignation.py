@@ -44,6 +44,9 @@ class EssAsset(Controller):
             post.update({
                 'employee_id': emb_obj.id,
                 'asset_request_description': post['description'],
+                'asset_request_Reason': post['asset_request_Reason'],
+                'asset_request_startDate': post['asset_request_startDate'],
+                'asset_request_deliveryDate': post['asset_request_deliveryDate'],
             })
 
             asset_obj = request.env['asset.account.request'].sudo().create(post)
@@ -72,6 +75,11 @@ class EssAsset(Controller):
         values = ESSPortal.check_modules(self)
         emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
         asset_assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)])
+        for rec in asset_assignation_obj:
+            if rec['type_of_disclaimer_desc']:
+                assest_list=rec['type_of_disclaimer_desc']
+                print(assest_list)
+
 
         values.update({
             'partner': request.env.user.partner_id,
