@@ -284,16 +284,16 @@ class EssAsset(Controller):
             })
 
 
-            if course_type != 'private' :
-                post.update({ 'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,
-                'end_date': request.env['training.course'].sudo().browse(int(post['course_id'])).end_date
-                              })
-            elif course_type == 'private' :
-                post.update(
-                    {'start_date':  private_start_date,
-                     'end_date': private_end_date
-                     })
-            print("befor create",post)
+            # if course_type != 'private' :
+            post.update({ 'start_date': request.env['training.course'].sudo().browse(int(post['course_id'])).start_date,
+            'end_date': request.env['training.course'].sudo().browse(int(post['course_id'])).end_date
+                          })
+            # elif course_type == 'private' :
+            #     post.update(
+            #         {'start_date':  private_start_date,
+            #          'end_date': private_end_date
+            #          })
+            print("befor create shaliby ",post)
             obj_id =request.env['mandate.passenger'].sudo().create(post)
             # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
@@ -331,6 +331,9 @@ class EssAsset(Controller):
         course_place_obj = request.env['course.place'].sudo().search([])
         if post and request.httprequest.method == 'POST':
             print(post)
+            print(post)
+            name = post.get('doc_attachment_id').filename
+            file = post.get('doc_attachment_id')
             # private_start_date = post['start_date']
             # private_end_date = post['end_date']
 
@@ -374,18 +377,46 @@ class EssAsset(Controller):
             #         {'start_date':  private_start_date,
             #          'end_date': private_end_date
             #          })
+
             print("befor create",post)
+            Attachments = request.env['ir.attachment']
+
+            attachment_id = Attachments.sudo().create({
+                'name': name,
+                'type': 'binary',
+                'datas': base64.b64encode(file.read()),
+                'res_model': 'custody.request.line',
+                'res_id': 1
+            })
+
+            post ['doc_attachment_id']= [(4, attachment_id.id)]
+            print("Private shaliby ",post)
             obj_id =request.env['training.course'].sudo().create(post)
-            # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
-            # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
-            # # print("LLLLLLLLLLLL", courses_and_mandate_obj)
-            # values.update({
-            #     'partner': request.env.user.partner_id,
-            #     'employee': emb_obj,
-            #     'courses_and_mandate_obj': courses_and_mandate_obj,
+            # Update mypost
+            mypost = post.copy()
+            mypost['course_type']=post['type']
+            mypost['type'] ='course'
+            mypost['course_id'] =obj_id.id
+            mypost['employee_degree_id']= emb_obj.employee_degree_id.id
+            mypost['state'] = 'draft'
+            del mypost['doc_attachment_id']
+            del mypost['is_private']
+            del mypost['name']
+            del mypost['message_follower_ids']
+            # = request.env['training.course'].sudo().create(post)
+            print("shaliby2 mypost",mypost)
+            mand_id= request.env['mandate.passenger'].sudo().create(mypost)
+            print(mand_id.id)
+            attachment_id.update({
+
+                'res_id': obj_id.id
+            })
+
+            # print(obj_id)
+            # docid.sudo().update({
+            #     'doc_attachment_id': [(4, attachment_id.id)],
             # })
-            # response = request.render("ess.ess_view_courses_and_mandate", values)
-            # return response
+
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
