@@ -41,7 +41,7 @@ class CustodyRequest(models.Model):
                               ('liquidated', 'Liquidated'),
                               ('refuse', 'Refuse'),
                               ('done', 'Done'),
-                              ], default='draft', tracking=True,)
+                              ], default='draft', tracking=True,translate=True)
     color = fields.Integer(compute="compute_color")
 
     # @api.model

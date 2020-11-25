@@ -91,6 +91,7 @@
                             <field name="reason"
                             attrs="{'readonly':[('state','in',['refuse','done'])]}"
                             />
+                            <field name="state"/>
                         </group>
                     </group>
                     <notebook>
