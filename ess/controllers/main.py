@@ -121,7 +121,7 @@ class ESSPortal(Controller):
                 'hr_payslip_correction': False,
             })
 
-        if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_announcement')]).state == 'installed':
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
             values.update({
                 'announcement': True,
             })
@@ -996,7 +996,7 @@ class ESSPortal(Controller):
 
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-        announcement_obj = request.env['hr.announcement'].sudo().search([('is_announcement', '=', True)])
+        announcement_obj = request.env['hr.announcement'].sudo().search([])
         announcement_by_employee_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'employee')]).filtered(lambda r: emb_obj in r.employee_ids)
         announcement_by_department_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'department')]).filtered(lambda r: emb_obj.department_id in r.department_ids)
         announcement_by_job_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'job_position')]).filtered(lambda r: emb_obj.job_id in r.position_ids)
@@ -1016,7 +1016,7 @@ class ESSPortal(Controller):
             'announcement_by_department_obj': announcement_by_department_obj,
             'announcement_by_job_obj': announcement_by_job_obj,
         })
-        
+        print (announcement_obj)
         response = request.render("ess.ess_announcement", values)
         response.headers['X-Frame-Options'] = 'DENY'
         return response

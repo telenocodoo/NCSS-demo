@@ -32,7 +32,9 @@
                                 <t t-if="asset_assignation_obj" t-call="ess.employee_asset_assignation"/>
                                 <t t-if="custody_obj" t-call="ess.employee_custody"/>
                                 <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
+
                             </div>
+
 
                         </div>
                     </t>
@@ -117,6 +119,7 @@
 					<li t-if="holidays">
                         <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Leaves</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
+
                             <li><a href="/my/leaves">Apply Leave</a></li>
                             <li><a href="/my/short_leaves">Short Leave Request</a></li>
                             <li><a href="/my/allocation">Leave Allocation Request</a></li>
@@ -276,10 +279,21 @@
                         </ul>
                     </li>
 
+                    <li t-if="announcement">
+                        <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Announcements &amp; Events</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li><a href="/my/announcement">My Annoncement</a></li>
+
+                        </ul>
+                    </li>
+
+
 
 <!--magdy-->
 <!--                    <li><a href="/my/network"><i class="fa fa-th-large"></i> <span class="nav-label">Employees Network Directory</span></a></li>-->
-<!--                    <li t-if="announcement"><a href="/my/announcement"><i class="fa fa-th-large"></i> <span class="nav-label">Announcements &amp; Events</span></a></li>-->
+
+
                 </ul>
             </div>
      </form>

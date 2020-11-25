@@ -901,6 +901,21 @@ msgid "Assest Request Reason"
 msgstr "سبب الطلب"
 
 #. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.side_menu
+msgid ""
+"<span class="nav-label">Announcements &amp; Events</span> "
+
+msgstr ""
+"<span class="nav-label"> الاعلانات &amp; الاحداث</span> "
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.side_menu
+msgid "<a href="/my/announcement">My Annoncement</a>"
+msgstr " <a href="/my/announcement">اعلاناتى</a>"
+
+
+#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_passenger_mandate_private
 msgid "price"
 msgstr "السعر"

@@ -159,6 +159,27 @@ class AssetAccountRequest(models.Model):
     car_employee_have= fields.Many2one('fleet.vehicle',string=_("Employee Car"),readonly=True )
     is_car=fields.Boolean("Car",default=False)
 
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+                             self._name, self.id, self.employee_id._name,
+                             self.employee_id.id, self.employee_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
     @api.onchange('asset_id')
     def _getCar(self):
         print("tesr>>>")
