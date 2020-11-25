@@ -59,14 +59,20 @@ class AssetAccountRequest(models.Model):
             return False
 
     asset_request_description = fields.Char()
+    asset_request_Reason = fields.Char()
+    asset_request_startDate = fields.Date(default=fields.date.today())
+    asset_request_deliveryDate= fields.Date()
+
     asset_request_Refuse_reason = fields.Char(string="Refuse Reason")
     refuse_boolean=fields.Boolean(default=False)
     employee_id = fields.Many2one('hr.employee', 'Employee', default=get_employee_id)
     type = fields.Selection([('asset', 'Asset'),
                              ('non_asset', 'Non Asset'),
                              ], default='asset', tracking=True)
+
+
     asset_id = fields.Many2one('account.asset', string="Asset Name", domain=get_account_asset_assignation)
-    description = fields.Char()
+    description = fields.Char(translate=True)
     type_of_disclaimer = fields.Selection([('vacation', 'Vacation'),
                                          ('final', 'Final'),
                                          ('both', 'Both'),
@@ -76,13 +82,18 @@ class AssetAccountRequest(models.Model):
     date = fields.Date(default=fields.date.today())
     date_of_disclaimer = fields.Date('Date Of Clearance')
     is_disclaimer = fields.Boolean('Cleared')
+
+    def _expand_states(self, states, domain, order):
+        return [key for key, val in type(self).state.selection]
+
     state = fields.Selection([('draft', 'Draft'),
                               ('submit', 'Submitted'),
                               ('approve', 'In progress'),
                               ('assigned', 'Assigned'),
                               ('clearance', 'clearance'),
                               ('refuse', 'Refused'),
-                              ], default='draft', tracking=True, )
+                              ], default='draft', tracking=True, group_expand='_expand_states')
+
     employee_asset_id = fields.Many2one('employee.assets')
     color = fields.Integer(compute="compute_color")
     state_of_asset_when_receive = fields.Char()
@@ -90,12 +101,84 @@ class AssetAccountRequest(models.Model):
     log_id_employee= fields.Many2one('fleet.vehicle.employee.log',string=_("Employee Car"))
 
 
+    def _getdesc(self):
+        value = dict(self.env['asset.account.request'].fields_get(allfields=['type'])['type']['selection'])
+        for rec in self:
+
+
+            if rec.type:
+                rec.type_desc =value[rec.type]
+            else:
+                rec.type_desc = ''
+
+    def _get_state_desc(self):
+        value = dict(self.env['asset.account.request'].fields_get(allfields=['state'])['state']['selection'])
+
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
+
+
+    # def _get_state_seq(self):
+    #     value = dict(self.env['asset.account.request'].fields_get(allfields=['state'])['state']['selection'])
+    #     for record in self:
+    #         if record.state== 'draft':
+    #             record.state_seq = 0
+    #         elif record.state== 'submit':
+    #             record.state_seq = 1
+    #         elif record.state== 'approve':
+    #             record.state_seq = 2
+    #         elif record.state== 'assigned':
+    #             record.state_seq = 3
+    #         elif record.state== 'clearance':
+    #             record.state_seq = 4
+    #         elif record.state == 'refuse':
+    #             record.state_seq = 5
+    #         else : record.state_seq = -1
+
+    def _get_type_of_disclaimer_desc(self):
+        value = dict(self.env['asset.account.request'].fields_get(allfields=['type_of_disclaimer'])['type_of_disclaimer']['selection'])
+
+        for record in self:
+            if record.type_of_disclaimer:
+                record.type_of_disclaimer_desc = value[record.type_of_disclaimer]
+            else:
+                record.type_of_disclaimer_desc = ''
+
+    type_desc = fields.Char(compute="_getdesc")
+    state_desc = fields.Char(compute="_get_state_desc")
+    # state_seq = fields.Char(compute="_get_state_seq")
+    type_of_disclaimer_desc = fields.Char(compute="_get_type_of_disclaimer_desc")
     # def _get_car(self):
     #     if self.asset_id.car_ids:
     #        return self.asset_id.car_ids.id
 
+
     car_employee_have= fields.Many2one('fleet.vehicle',string=_("Employee Car"),readonly=True )
     is_car=fields.Boolean("Car",default=False)
+
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+                             self._name, self.id, self.employee_id._name,
+                             self.employee_id.id, self.employee_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
 
     @api.onchange('asset_id')
     def _getCar(self):

@@ -68,7 +68,9 @@ class TrainingCourse(models.Model):
     is_free = fields.Boolean()
     is_private = fields.Boolean(string=_('Private'),default=False)
     employee_id = fields.Many2one('hr.employee', 'Employee')
-    course_place_id = fields.Many2one('course.place')
+    course_place_id = fields.Many2one('course.place',required=True)
+    doc_attachment_id = fields.Many2many('ir.attachment', 'doc_attach_private_rel', 'doc_id', 'attach_id3', string="Attachment",
+                                         help='You can attach the copy of your document', copy=False)
 
     @api.onchange('is_private')
     def onchange_rem_emp(self):
@@ -101,7 +103,7 @@ class MandatePassenger(models.Model):
                                       ('manager', 'Manager'),
                                       ])
     employee_degree_id = fields.Many2one('employee.degree.value')
-    course_place_id = fields.Many2one('course.place')
+    course_place_id = fields.Many2one('course.place',reuired=True)
     type = fields.Selection([('course', 'Course'),
                               ('mandate', 'Mandate'),
                               ('work_shop', 'work shop'),
@@ -132,13 +134,19 @@ class MandatePassenger(models.Model):
                                           help='You can attach the copy of your document', copy=False)
     attach_file_ticket = fields.Many2many('ir.attachment', 'mandate_attach_rel', 'doc_id', 'attach_id4', string=_('Attachment ticket'),
                                       help='You can attach the copy of your document', copy=False)
+
+    def _expand_states(self, states, domain, order):
+        return [key for key, val in type(self).state.selection]
+
     state = fields.Selection([('draft', 'Draft'),
                                ('direct_manager_approve', 'Direct Manager Approve'),
                                ('department_manager_approve', 'Department Manager Approve'),
                                ('hr_approve', 'Hr Approved'),
                                ('accounting_approve', 'Accounting Approve'),
                                ('refuse', 'Refuse'),
-                               ], default='draft', order="id")
+                               ], default='draft', tracking=True, group_expand='_expand_states')
+
+
     color = fields.Integer(compute="compute_color")
 
     department_id = fields.Many2one('hr.department')

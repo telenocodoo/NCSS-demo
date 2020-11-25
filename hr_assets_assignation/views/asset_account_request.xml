@@ -52,6 +52,17 @@
                             <field name="asset_request_description"  required="1"
                                    attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
                             />
+
+                            <field name="asset_request_Reason"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
+                            />
+                             <field name="asset_request_startDate"  required="1"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
+                            />
+
+                              <field name="asset_request_deliveryDate"  required="1"
+                                   attrs="{'readonly':[('state','in',['assigned','clearance'])]}"
+                            />
                             <field name="refuse_boolean"  invisible="1"
 
                             />
@@ -119,6 +130,7 @@
     <record id="asset_account_request_tree" model="ir.ui.view">
         <field name="name">asset.account.request</field>
         <field name="model">asset.account.request</field>
+
         <field name="arch" type="xml">
             <tree string="">
                 <field name="employee_id" />
@@ -159,7 +171,7 @@
         <field name="name">asset.account.request.calendar</field>
         <field name="model">asset.account.request</field>
         <field name="arch" type="xml">
-            <calendar color="state" date_start='date' hide_time="true" event_limit="5">
+            <calendar color="state" date_start='date' hide_time="true" >
                 <field name="employee_id" avatar_field="image_128"/>
                 <field name="asset_id"/>
             </calendar>
@@ -198,11 +210,34 @@
     </record>
 
 
+
+     <record id="asset_account_request_search" model="ir.ui.view">
+        <field name="name">asset.account.request.search</field>
+        <field name="model">asset.account.request</field>
+        <field name="arch" type="xml">
+            <search string="Asset Search"  >
+    <field name="description" string="Name and description"
+           filter_domain="[ ('description', 'ilike', self)]"/>
+    <field name="state" widget="selection"/>
+    <group string="Group By">
+        <filter name="group_by_state"
+                context="{'group_by': 'state'}"/>
+    </group>
+</search>
+
+        </field>
+    </record>
+
+
+
+
+
     <record id="asset_account_request_action" model="ir.actions.act_window">
         <field name="name">Assets Assignation</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">asset.account.request</field>
-        <field name="view_mode">kanban,tree,calendar,pivot,graph,form</field>
+        <field name="context">{'search_default_group_by_state': 1}</field>
+        <field name="view_mode">tree,kanban,calendar,pivot,graph,form</field>
     </record>
 
     <record id="asset_submitted_action" model="ir.actions.act_window">
@@ -553,6 +588,13 @@
     </record>
 
 <!--    Car assests assignation -->
+<!--search-->
+
+
+
+
+<!--    -->
+
 
 
     <!--    asset.account.request-->

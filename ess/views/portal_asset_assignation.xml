@@ -55,6 +55,25 @@
                                                                     <label class="col-form-label" for="reference">Description</label>
                                                                     <input type="text" name="description" t-attf-class="form-control}"/>
                                                                 </div>
+
+                                                                   <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="reference">Assest Request Reason</label>
+                                                                    <input type="text" name="asset_request_Reason" t-attf-class="form-control}"/>
+                                                                </div>
+
+                                                                   <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="reference">Start Date</label>
+                                                                    <input type="Date" name="asset_request_startDate"  id="theDate1" t-attf-class="form-control}"/>
+                                                                </div>
+
+                                                                 <script>
+                                                                     document.getElementById('theDate1').value = new Date().toISOString().substring(0, 10);
+                                                                </script>
+                                                                   <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="reference">Delivery Date</label>
+                                                                    <input type="Date" name="asset_request_deliveryDate" t-attf-class="form-control}"/>
+                                                                </div>
+
 <!--                                                                <div t-attf-class="form-group #{error.get('date') and 'o_has_error' or ''} col-xl-3">-->
 <!--                                                                    <label class="col-form-label" for="date">Date</label>-->
 <!--                                                                    <input type="date" name="date" t-attf-class="form-control #{error.get('date') and 'is-invalid' or ''}" />-->
@@ -321,20 +340,22 @@
                                                                                             <th>State Of Asset When Receive</th>
                                                                                             <th>State Of Asset When Delivery</th>
                                                                                             <th>Date Of Disclaimer</th>
+
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr>
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -360,15 +381,15 @@
                                                                                     </thead>
                                                                                      <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'draft'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -394,15 +415,17 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'submit'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']" /></td>
+<!--                                                                                            <td><div t-esc="asset['type']" /></td>-->
+<!--                                                                                            <td><div t-esc="asset['type_desc']" /></td>-->
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']" /></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -428,15 +451,15 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'approve'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -462,15 +485,15 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'assigned'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -496,15 +519,15 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'clearance'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -525,20 +548,22 @@
                                                                                             <th>State Of Asset When Receive</th>
                                                                                             <th>State Of Asset When Delivery</th>
                                                                                             <th>Date Of Disclaimer</th>
+                                                                                            <th>Refuse Reason</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody t-foreach="asset_assignation_obj" t-as="asset">
                                                                                         <tr t-if="asset['state'] == 'refuse'">
-                                                                                            <td><div t-esc="asset['type']"/></td>
+                                                                                            <td><div t-esc="asset['type_desc']"/></td>
                                                                                             <td><div t-esc="asset['asset_id']['name']"/></td>
                                                                                             <td><div t-esc="asset['description']"/></td>
-                                                                                            <td><div t-esc="asset['type_of_disclaimer']"/></td>
+                                                                                            <td><div t-esc="asset['type_of_disclaimer_desc']"/></td>
                                                                                             <td><div t-esc="asset['date']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_receive']"/></td>
                                                                                             <td><div t-esc="asset['state_of_asset_when_delivery']"/></td>
                                                                                             <td><div t-esc="asset['date_of_disclaimer']"/></td>
-                                                                                            <td><div t-esc="asset['state']"/></td>
+                                                                                            <td><div t-esc="asset['asset_request_Refuse_reason']"/></td>
+                                                                                            <td><div t-esc="asset['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -650,7 +675,13 @@
                                     <h3><span>Add Custody Lines</span></h3>
                                 </div>
                                 <div class="ibox-content">
+
                                     <div class="row">
+                                         <div class="col-lg-12">
+                                                                <div t-if="error_message" class="alert alert-danger" role="alert">
+                                                                    <t t-foreach="error_message" t-as="err"><t t-esc="err"/><br /></t>
+                                                                </div>
+                                                            </div>
                                         <div class="col-lg-12" style="margin-top:10px;">
                                             <form action="/add/custody_line" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
@@ -689,10 +720,9 @@
                                                                     <label class="col-form-label" for="description">Description</label>
                                                                     <input type="text" name="description" t-attf-class="form-control"/>
                                                                 </div>
-                                                                <div t-attf-class="form-group col-xl-6">
+                                                               <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input t-attf-class="form-control" class="attachment" type="file" name="doc_attachment_id" value=""/>
-<!--                                                                 <input class="attachment" type="file" name="doc_attachment_id" value=""/>-->
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
                                                                 </div>
 
 
@@ -1742,7 +1772,7 @@
                                     <div class="row col-lg-12">
 
                                         <div class="col-lg-12" style="margin-top:10px;">
-                                            <form action="/request/passenger_mandate_private" method="post"  id="contactForm1" >
+                                            <form action="/request/passenger_mandate_private" method="post"  id="contactForm1" enctype="multipart/form-data" >
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
 
@@ -1809,10 +1839,18 @@
                                                             <label class="col-form-label" for="end_date">End Date</label>
                                                                 <input type="date" name="end_date"  id="end_date_private"  t-attf-class="form-control" />
                                                           </div>
+
+
                                                             <div t-attf-class="form-group col-xl-6" >
                                                                 <label class="col-form-label" for="number_of_days">No of Days</label>
                                                                     <input type="number" name="number_of_days"  id="number_of_days" t-attf-class="form-control" />
                                                              </div>
+
+
+                                                                <div t-attf-class="form-group  col-xl-6">
+                                                                    <label class="col-form-label" for="doc_attachment_id">Attachment</label>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                </div>
 
                                                         <div t-attf-class="form-group col-xl-6">
                                                                 <label class="col-form-label" for="description">Description</label>
@@ -1822,8 +1860,8 @@
                                <div t-attf-class="form-group col-xl-6"  id="error_msg"  style="font-weight:bold;font-size:14px;color:green;">
                                   </div>
 
-                               <div t-attf-class="form-group col-xl-6"   name="msg" style="font-weight:bold;font-size:14px;color:green;">
-                               </div>
+<!--                               <input t-attf-class="form-group col-xl-6"   name="msg" id="msg" style="font-weight:bold;font-size:14px;color:green;">-->
+<!--                               </input>-->
 
 
                             <div class="clearfix" t-attf-class="form-group col-xl-6">

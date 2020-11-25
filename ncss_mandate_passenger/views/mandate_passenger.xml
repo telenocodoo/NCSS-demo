@@ -32,6 +32,9 @@
                                 attrs="{'invisible':[('is_private','=',False) ]}"
                                />
 
+                       <field name="doc_attachment_id" widget="many2many_binary" class="oe_inline"/>
+
+
                         </group>
                         <group>
                             <field name="start_date"/>
@@ -455,7 +458,7 @@
         <field name="name">Mandate And Passenger</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">mandate.passenger</field>
-        <field name="view_mode">kanban,tree,form,graph,pivot</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot</field>
     </record>
     <record id="direct_manager_approve_action" model="ir.actions.act_window">
         <field name="name">Waiting Direct Manager Approve</field>
