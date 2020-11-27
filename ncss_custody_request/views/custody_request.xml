@@ -156,6 +156,22 @@
     </record>
 
 
+  <record id="custody_request_search" model="ir.ui.view">
+        <field name="name">custody.request.search</field>
+        <field name="model">custody.request</field>
+        <field name="arch" type="xml">
+            <search string="custody Search"  >
+    <field name="description" string="Name and description"
+           filter_domain="[ ('description', 'ilike', self)]"/>
+    <field name="state" widget="selection"/>
+    <group string="Group By">
+        <filter name="group_by_state"
+                context="{'group_by': 'state'}"/>
+    </group>
+</search>
+
+        </field>
+    </record>
 
     <record id="custody_request_tree" model="ir.ui.view">
         <field name="name">custody.request.tree</field>
@@ -248,7 +264,8 @@
         <field name="name">Custody Request</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">custody.request</field>
-        <field name="view_mode">kanban,tree,form,graph,pivot,calendar</field>
+         <field name="context">{'search_default_group_by_state': 1}</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot,calendar</field>
     </record>
 
     <record id="custody_request_manager_action" model="ir.actions.act_window">

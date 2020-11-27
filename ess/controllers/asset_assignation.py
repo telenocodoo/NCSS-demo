@@ -48,9 +48,10 @@ class EssAsset(Controller):
                 'asset_request_startDate': post['asset_request_startDate'],
                 'asset_request_deliveryDate': post['asset_request_deliveryDate'],
             })
-
+            print("post assest ",post)
             asset_obj = request.env['asset.account.request'].sudo().create(post)
             asset_obj.sudo().action_submit()
+            print("post Id ", asset_obj.id)
 
             emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             asset_assignation_obj = request.env['asset.account.request'].sudo().search(
@@ -66,6 +67,7 @@ class EssAsset(Controller):
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
         })
+        print(" heloo ", values)
         response = request.render("ess.ess_asset_assignation", values)
         return response
 
@@ -76,6 +78,7 @@ class EssAsset(Controller):
         emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
         asset_assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)])
         for rec in asset_assignation_obj:
+            print(rec.state)
             if rec['type_of_disclaimer_desc']:
                 assest_list=rec['type_of_disclaimer_desc']
                 print(assest_list)

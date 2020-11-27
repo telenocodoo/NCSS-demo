@@ -31,6 +31,10 @@ class CustodyRequest(models.Model):
                                                domain=lambda self: [('move_id', '=', self.liquidated_account_move_id.id)])
     is_direct_manager = fields.Boolean(compute='get_direct_manager')
     is_liquidated = fields.Boolean(compute='get_is_liquidated')
+
+    def _expand_states(self, states, domain, order):
+        return [key for key, val in type(self).state.selection]
+
     state = fields.Selection([('draft', 'Draft'),
                               ('direct_manager_approve', 'Direct Manager Approve'),
                               ('department_manager_approve', 'Department Manager Approve'),
@@ -41,7 +45,7 @@ class CustodyRequest(models.Model):
                               ('liquidated', 'Liquidated'),
                               ('refuse', 'Refuse'),
                               ('done', 'Done'),
-                              ], default='draft', tracking=True,translate=True)
+                              ], default='draft',  translate=True ,tracking=True, group_expand='_expand_states')
     color = fields.Integer(compute="compute_color")
 
     # @api.model
