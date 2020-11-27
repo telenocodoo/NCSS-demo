@@ -1033,7 +1033,7 @@ msgstr "يجب اختيار علي الاقل واحده من العهد للم�
 #. module: hr_assets_assignation
 #: model:ir.model,name:hr_assets_assignation.model_asset_account_request
 msgid "asset.account.request"
-msgstr ""
+msgstr "العهد العينية"
 
 #. module: hr_assets_assignation
 #: model:ir.model.fields.selection,name:hr_assets_assignation.selection__asset_account_request__state__clearance

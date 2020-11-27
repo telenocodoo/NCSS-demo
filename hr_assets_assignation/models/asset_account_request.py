@@ -4,6 +4,35 @@ from datetime import date
 from datetime import datetime, timedelta
 from odoo.exceptions import UserError
 
+
+# class sendactivity(models.Model):
+#     _inherit = 'res.users'
+#
+#
+#     def make_activity(self, user_ids):
+#         print("j...", user_ids)
+#         now = datetime.now()
+#         date_deadline = now.date()
+#
+#         if self:
+#
+#             if user_ids:
+#                 actv_id = self.sudo().activity_schedule(
+#                     'mail.mail_activity_data_todo', date_deadline,
+#                     note=_(
+#                         '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+#                              self._name, self.id, self.employee_id._name,
+#                              self.employee_id.id, self.employee_id.display_name),
+#                     user_id=user_ids,
+#                     res_id=self.id,
+#
+#                     summary=_("Request Approve")
+#                 )
+#                 print("active", actv_id)
+
+
+
+
 class carfleetvicle(models.Model):
     _inherit = 'fleet.vehicle'
     history_count_emp = fields.Integer(compute="_compute_count_all_emp", string="Employees History Count")
@@ -180,6 +209,13 @@ class AssetAccountRequest(models.Model):
                 )
                 print("active", actv_id)
 
+    @api.model
+    def create(self, values):
+        res = super(AssetAccountRequest, self).create(values)
+        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        res.make_activity(user_ids[0])
+        return res
+
     @api.onchange('asset_id')
     def _getCar(self):
         print("tesr>>>")
@@ -227,10 +263,35 @@ class AssetAccountRequest(models.Model):
             else:
                 record.color = 6
 
+
+    def get_users(self,groupidxml):
+        myuserlist=[]
+        groupid=self.env.ref(groupidxml).id
+        groupObj = self.env['res.groups'].search([('id','=',groupid)])
+        if groupObj:
+              for rec in groupObj.users:
+                  myuserlist.append(rec.id)
+
+        return myuserlist
+
+
     def action_submit(self):
+        user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_approve_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+
+
         self.state = 'submit'
 
     def action_approve(self):
+
+        user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_assign_to_employee_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
         self.state = 'approve'
 
     def action_refuse(self):

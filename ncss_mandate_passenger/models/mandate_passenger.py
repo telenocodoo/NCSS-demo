@@ -426,7 +426,7 @@ class MandatePassenger(models.Model):
             if user_ids:
                 for rec in user_ids:
 
-                    record.make_activity(rec)
+                    rec.make_activity(rec)
             record.state = 'department_manager_approve'
 
     def action_hr_manager_approve(self):
