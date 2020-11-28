@@ -2,8 +2,10 @@
 from . import calverter
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-import datetime
-from datetime import timedelta
+
+from datetime import date
+from datetime import datetime, timedelta
+
 
 
 class AdministrativeCommunicationCategory(models.Model):
@@ -177,9 +179,34 @@ class AdministrativeCommunication(models.Model):
             'view_mode': 'tree,form',
         }
 
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for %s\'Review') % (
+                             self._name, self.id,
+                               self.user_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
+
     def assign_to_department_action(self):
         if not self.transfer_to_id:
             raise UserError(_('Please Add The Department.'))
+        if self.user_id:
+            self.make_activity(self.user_id.id)
+
         self.state = 'reviewed'
 
     def assign_to_employee_action(self):
@@ -291,10 +318,54 @@ class AdministrativeCommunicationWizard(models.TransientModel):
         domain = {'user_id': [('id', 'in', users)]}
         return {'domain': domain}
 
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for %s\'Review') % (
+                             self._name, self.id,
+                             self.user_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for %s\'Review') % (
+                             self._name, self.id,
+                             self.user_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
     def action_assign_to(self):
         print(self.env.context.get('active_ids')[0])
         communication_id = self.env['administrative.communication'].browse(self.env.context.get('active_ids')[0])
         communication_lines = self.env['administrative.communication.line']
+        if self.user_id:
+            communication_id.make_activity(self.user_id.id)
         communication_lines.create({
             'administrative_communication_id': self.env.context.get('active_ids')[0],
             'user_attached_id': self.env.user.id,
@@ -321,7 +392,7 @@ class AdministrativeCommunicationLine(models.Model):
     transfer_to_id = fields.Many2one('administrative.communication.management')
     procedure_id = fields.Many2one('administrative.communication.procedures')
     sender_type = fields.Many2one('administrative.communication.sender')
-    date_and_time = fields.Datetime('Date And Time', default=datetime.datetime.now())
+    date_and_time = fields.Datetime('Date And Time', default=datetime.now())
     notes = fields.Char()
     sender_notes = fields.Char()
     receipt_notes = fields.Char()
