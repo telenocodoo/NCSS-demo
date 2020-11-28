@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+from datetime import date
+from datetime import datetime, timedelta
+
 
 
 class CustodyDescription(models.Model):
@@ -134,6 +137,37 @@ class CustodyRequest(models.Model):
             if record.amount < total_amount:
                 raise UserError(_("Remaining Amount Must Be Less Than Or Equal To Amount"))
 
+    def make_activity(self,user_ids):
+        print("j...",user_ids)
+        now = datetime.now()
+        date_deadline =  now.date()
+
+        if self :
+
+            if user_ids:
+                actv_id=self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+                             self._name, self.id, self.employee_id._name,
+                             self.employee_id.id, self.employee_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                    )
+                print("active" ,actv_id)
+
+
+    @api.model
+    def create(self, values):
+        res = super(CustodyRequest, self).create(values)
+        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        if user_ids:
+            res.make_activity(user_ids[0])
+        return res
+
+
     def action_refuse(self):
         for record in self:
             if not record.reason:
@@ -142,15 +176,47 @@ class CustodyRequest(models.Model):
                 self.state = 'refuse'
 
     def action_direct_manager_approve(self):
+        user_ids = self.mapped('employee_id.department_id.manager_id.user_id').ids
+        print(user_ids)
+        if user_ids:
+            self.make_activity(user_ids[0])
         self.state = 'direct_manager_approve'
 
+    def get_users(self, groupidxml):
+        myuserlist = []
+        groupid = self.env.ref(groupidxml).id
+        groupObj = self.env['res.groups'].search([('id', '=', groupid)])
+        if groupObj:
+            for rec in groupObj.users:
+                myuserlist.append(rec.id)
+
+        return myuserlist
+
     def action_department_manager_approve(self):
+        user_ids = list(self.get_users("ncss_custody_request.custody_request_center_manager_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+
         self.state = 'department_manager_approve'
 
     def center_manager_approve(self):
+        user_ids = list(self.get_users("ncss_custody_request.custody_request_accounting_manager_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+
         self.state = 'center_manager_approve'
 
+
     def accounting_approve(self):
+        user_ids = list(self.get_users("ncss_custody_request.custody_request_in_progress_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
         self.state = 'accounting_approve'
 
     def create_account_move(self, journal, label, debit_account_id, credit_account_id, amount, address_home_id):
@@ -189,6 +255,12 @@ class CustodyRequest(models.Model):
         address_home_id = self.employee_id.address_home_id.id
         account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.expense_account_move_id = account_move_obj.id
+
+        user_ids = list(self.get_users("ncss_custody_request.custody_request_liquidated_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
         self.state = 'paid'
 
     def in_progress_action(self):
@@ -200,6 +272,12 @@ class CustodyRequest(models.Model):
         address_home_id = self.employee_id.address_home_id.id
         account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.expense_account_move_id = account_move_obj.id
+
+        # user_ids = list(self.get_users("ncss_custody_request.custody_request_done_button"))
+        # print(user_ids)
+        # if user_ids:
+        #     for rec in user_ids:
+        #         self.make_activity(rec)
         self.state = 'in_progress'
 
     def make_liquidated_action(self):

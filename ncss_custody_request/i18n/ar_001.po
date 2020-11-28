@@ -777,12 +777,12 @@ msgstr ""
 #. module: ncss_custody_request
 #: model:ir.model,name:ncss_custody_request.model_custody_request
 msgid "custody.request"
-msgstr ""
+msgstr "العهد المالية"
 
 #. module: ncss_custody_request
 #: model:ir.model,name:ncss_custody_request.model_custody_request_line
 msgid "custody.request.line"
-msgstr ""
+msgstr "بنود العهد المالية"
 
 #. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
