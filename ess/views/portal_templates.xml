@@ -162,7 +162,8 @@
                     <li t-if="True">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Atteandance</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="/my/attendance">Daily Attendance</a></li>
+                            <li><a href="/my/attendance">Attendance</a></li>
+                            <li><a href="/my/dayattendance">Daily Attendance</a></li>
                             <li><a href="#">Time Off Report</a></li>
                             <li><a href="#">Time Off Adjustment</a></li>
                         </ul>

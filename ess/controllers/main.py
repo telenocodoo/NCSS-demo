@@ -4,7 +4,7 @@ import base64
 
 from odoo.http import content_disposition, Controller, request, route
 import odoo.addons.portal.controllers.portal as PortalController
-from datetime import date, datetime
+from datetime import date, datetime, time
 import base64
 import io
 from werkzeug.utils import redirect
@@ -13,9 +13,10 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 from dateutil.relativedelta import relativedelta
 from odoo.tools.translate import _
 import pytz
-import time
-from odoo.tools import formataddr
 
+from odoo.tools import formataddr
+from pytz import timezone
+from odoo.tools import format_datetime
 
 
 class ESSPortal(Controller):
@@ -235,11 +236,18 @@ class ESSPortal(Controller):
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_attendance')]).state == 'installed':
             attendance_obj = request.env['hr.attendance'].sudo().search([('employee_id','=',emb_obj.id)],order="id desc",limit=5)
+
             for att in attendance_obj:
+                tin=tout=""
+                if att.check_in:
+                    tin=att.check_in.time()
+                if att.check_out:
+                    tout=att.check_out.time()
+
                 attendance_list.append({
                     'date': att.check_in.date(),
-                    'in': att.check_in.time(),
-                    'out': att.check_out.time(),
+                    'in': tin,
+                    'out': tout ,
                 })
         
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_holidays')]).state == 'installed':
@@ -1344,6 +1352,71 @@ class ESSPortal(Controller):
         response.headers['X-Frame-Options'] = 'DENY'
         return response
 
+    def get_attendance_emp(self,emp_obj , from_date,to_date ):
+        mydata={
+        'today_late': .30,
+        'month_late': 5,
+        'Att_percent': 20,
+        'month_Absence': 2,
+        }
+
+        datas = []
+
+        for employee in emp_obj:
+            present = 0
+            absent = 0
+            tz = timezone(employee.resource_calendar_id.tz)
+            date_from = tz.localize(datetime.combine(    from_date  , time.min))
+            date_to = tz.localize(datetime.combine (  to_date  , time.max))
+            today= tz.localize(datetime.combine (  date.today()  , time.max))
+            print(date_to)
+            if today < date_to:
+              intervals = employee.list_work_time_per_day(date_from, today, calendar=employee.resource_calendar_id)
+            else :
+                intervals = employee.list_work_time_per_day(date_from, date_to, calendar=employee.resource_calendar_id)
+
+            print(intervals)
+            totaldays=0
+            delta_late=0
+            total_delta_late=0
+            today_late=0
+
+            for rec in intervals:
+
+                attendances = request.env["hr.attendance"].sudo().search([('employee_id', '=', employee.id),
+                ('check_in', '>=', rec[0]),  ('check_in', '<=', rec[0])])
+                print("attendance --",attendances)
+                print("attendance --",attendances.check_in)
+                Daily_check_in_emp =  rec[1]
+
+                if attendances:
+                   if attendances.check_in.hour > Daily_check_in_emp:
+                        delta_late = attendances.check_in.hour  - Daily_check_in_emp
+
+                        if attendances.check_in.date() == date.today() :
+                            today_late=delta_late
+                   # late_hour = delta_late.total_seconds() / 3600.0
+                   print(delta_late)
+                   total_delta_late +=delta_late
+                totaldays+=1
+                if attendances:
+                    present += 1
+                else:
+                    absent += 1
+
+        print(present)
+        print(absent)
+        print(totaldays)
+        print(today_late)
+        mydata['month_Absence']=absent
+        mydata['month_late']=total_delta_late
+        mydata['today_late']=today_late
+        mydata['Att_percent']=present*100//totaldays
+
+
+
+        return mydata
+
     @route(['/my/attendance'], type='http', auth='user', website=True)
     def attendance(self, redirect=None, **post):
         values = {}
@@ -1360,29 +1433,138 @@ class ESSPortal(Controller):
             'error': {},
             'error_message': [],
         })
-
+        mydata = {
+            'today_late': 0,
+            'month_late': 0,
+            'Att_percent': 0,
+            'month_Absence': 0,
+        }
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_attendance')]).state == 'installed':
             attendance_obj = request.env['hr.attendance'].sudo().search([('employee_id','=',emb_obj.id)],order="id desc",limit=5)
+            print("test1..")
+            now = datetime.now()
+            now_utc = pytz.utc.localize(now)
+            print(now_utc)
+            tz = pytz.timezone(emb_obj.resource_calendar_id.tz)
+
+            now_tz = now_utc.astimezone(tz)
+            print("now_tz..",now_tz)
+            start_tz = now_tz + relativedelta(hour=0, minute=0)  # day start in the employee's timezone
+            print("start_tz..", start_tz)
+            start_naive = start_tz.astimezone(pytz.utc).replace(tzinfo=None)
+            print("start_naive..", start_naive)
+
+            print("test1..")
+
             for att in attendance_obj:
+
+                tin = tout = ""
+                if att.check_in:
+                    tin =  format_datetime(request.env, att.check_in, dt_format="short")
+                if att.check_out:
+                    tout = format_datetime(request.env, att.check_out, dt_format="short")
+
                 attendance_list.append({
                     'date': att.check_in.date(),
-                    'in': att.check_in.time(),
-                    'out': att.check_out.time(),
-                    'worked_hours': att.worked_hours,
+                    'in': tin,
+                    'out': tout,
+                    'worked_hours': round(att.worked_hours,2),
                 })
-        
-   
 
+            from_date = date.today().replace(day=1)
+            to_date =  (datetime.now() + relativedelta(months=+1, day=1, days=-1)).date()
+
+            print(from_date)
+            print(to_date)
+            mydata=self.get_attendance_emp(emb_obj,from_date,to_date)
 
 
         values.update({
             'partner': partner,
             'employee': emb_obj,
             'attendance_list': attendance_list,
+            'today_late':mydata['today_late'],
+            'month_late':mydata['month_late'],
+            'Att_percent': mydata['Att_percent'],
+            'month_Absence':  mydata['month_Absence'] ,
         })
         
 
         response = request.render("ess.ess_view_attendance", values)
+        response.headers['X-Frame-Options'] = 'DENY'
+        return response
+
+    @route(['/my/dayattendance'], type='http', auth='user', website=True)
+    def dayattendance(self, redirect=None, **post):
+        values = {}
+
+        attendance_list = []
+
+        partner = request.env.user.partner_id
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+
+        values = self.check_modules()
+
+        values.update({
+            'error': {},
+            'error_message': [],
+        })
+        mydata = {
+            'today_late': 0,
+            'month_late': 0,
+            'Att_percent': 0,
+            'month_Absence': 0,
+        }
+
+
+
+        if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_attendance')]).state == 'installed':
+            if post and request.httprequest.method == 'POST':
+                if post['startdate']:
+                    startdate = post['startdate']
+                    if post['enddate']:
+                        enddate = post['enddate']
+                    else:
+                        enddate = startdate
+                    print(post['startdate'])
+                    print(post['enddate'])
+                    attendance_obj = request.env['hr.attendance'].sudo().search([('employee_id', '=', emb_obj.id),
+                                                                                 ('check_in', '>=', startdate),
+                                                                                 ('check_in', '<=', enddate)],
+                                                                                order="id desc")
+
+                    for att in attendance_obj:
+                        tin = tout = ""
+                        if att.check_in:
+                            tin = format_datetime(request.env, att.check_in, dt_format="short")
+                        if att.check_out:
+                            tout = format_datetime(request.env, att.check_out, dt_format="short")
+
+                        attendance_list.append({
+                            'date': att.check_in.date(),
+                            'in': tin,
+                            'out': tout,
+                            'worked_hours': round(att.worked_hours,2),
+                        })
+
+                    from_date = date.today().replace(day=1)
+                    to_date = (datetime.now() + relativedelta(months=+1, day=1, days=-1)).date()
+
+                    print(from_date)
+                    print(to_date)
+                    mydata = self.get_attendance_emp(emb_obj, from_date, to_date)
+
+        values.update({
+            'partner': partner,
+            'employee': emb_obj,
+            'attendance_list': attendance_list,
+            'today_late': mydata['today_late'],
+            'month_late': mydata['month_late'],
+            'Att_percent': mydata['Att_percent'],
+            'month_Absence': mydata['month_Absence'],
+        })
+
+        response = request.render("ess.ess_view_attendance_day", values)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
 
