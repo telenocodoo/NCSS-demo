@@ -199,7 +199,13 @@ msgstr "<span>إضافة بنود الصرف</span>"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
 msgid "<span>All Announcement</span>"
-msgstr "<span>جميع التنبيهات</span>"
+msgstr "<span>اعلانات خاصة</span>"
+
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
+msgid "<span>Public Announcement</span>"
+msgstr "<span> اعلانات عامة</span>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_leaves

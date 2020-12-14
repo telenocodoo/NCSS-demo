@@ -56,6 +56,16 @@ class CustodyRequest(models.Model):
     #     print(self.env.user)
     #     res = super(CustodyRequest, self).create(values)
     #     return res
+    def _get_state_desc(self):
+        value = dict(self.env['custody.request'].fields_get(allfields=['state'])['state']['selection'])
+
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
+
+    state_desc = fields.Char(compute="_get_state_desc")
 
 
     @api.model

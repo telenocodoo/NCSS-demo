@@ -11,7 +11,7 @@
     <template id="ess_dashboard" name="ESS Dashboard">
         <t t-call="portal.portal_layout">
             <div id="wrap" class='o_portal_wrap'>
-                <div class="container mb64">
+                <div class="container mb64" >
                     <t >
                         <div class="row justify-content-between mt-4">
 
@@ -21,17 +21,22 @@
 
 
                             <div class="row col-10 col-md col-lg-10">
+
                                 <t t-call="ess.employee_organization"/>
                                 <t t-if="leave_list" t-call="ess.employee_leaves"/>
                                 <t t-if="leave_allocation_list" t-call="ess.employee_leave_allocation"/>
                                 <t t-if="douc_obj" t-call="ess.employee_document"/>
                                 <t t-if="appraisal_list" t-call="ess.employee_appraisal"/>
                                 <t t-if="attendance_list" t-call="ess.employee_attendance"/>
-                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>
+<!--                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>-->
+
                                 <t t-if="douc_exp_obj" t-call="ess.employee_important_date"/>
                                 <t t-if="asset_assignation_obj" t-call="ess.employee_asset_assignation"/>
                                 <t t-if="custody_obj" t-call="ess.employee_custody"/>
                                 <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
+
+                                <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
+                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>
 
                             </div>
 
@@ -520,6 +525,7 @@
                                     <th>Title</th>
                                     <th>Date Start</th>
                                     <th>Date End</th>
+                                     <th><a class="fa fa-download"/></th>
                                 </tr>
                             </thead>
                             <tbody t-foreach="announcement_list" t-as="ann">
@@ -527,6 +533,41 @@
                                     <td><div t-esc="ann['title']"/></td>
                                     <td><span t-esc="ann['date_start']"/></td>
                                     <td><span t-esc="ann['date_end']"/></td>
+                    <td><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </template>
+
+        <template id="employee_announcement_public">
+        <div class="col-lg-4">
+			<div class="ibox">
+				<div class="iess-title">
+					<h3><span>Public Announcement</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date Start</th>
+                                    <th>Date End</th>
+                                     <th><a class="fa fa-download"/></th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="announcement_list" t-as="ann">
+                                <tr>
+                                    <td><div t-esc="ann['title']"/></td>
+                                    <td><span t-esc="ann['date_start']"/></td>
+                                    <td><span t-esc="ann['date_end']"/></td>
+                                <td><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -649,10 +690,10 @@
                             </thead>
                             <tbody t-foreach="asset_assignation_obj" t-as="ass">
                                 <tr>
-                                    <td><div t-esc="ass['type']"/></td>
+                                    <td><div t-esc="ass['type_desc']"/></td>
                                     <td><div t-esc="ass['asset_id']"/></td>
                                     <td><div t-esc="ass['description']"/></td>
-                                    <td><div t-esc="ass['state']"/></td>
+                                    <td><div t-esc="ass['state_desc']"/></td>
 <!--                                    <td>-->
 <!--                                        <span class="badge badge-primary">-->
 <!--                                        <span t-esc="lea['value']"/> -->
@@ -723,11 +764,11 @@
                             </thead>
                             <tbody t-foreach="mandate_obj" t-as="mandate">
                                 <tr>
-                                    <td><div t-esc="mandate['type']"/></td>
+                                    <td><div t-esc="mandate['type_desc']"/></td>
                                     <td><div t-esc="mandate['course_id']"/></td>
                                     <td><div t-esc="mandate['course_type']"/></td>
                                     <td><div t-esc="mandate['number_of_days']"/></td>
-                                    <td><div t-esc="mandate['state']"/></td>
+                                    <td><div t-esc="mandate['state_desc']"/></td>
                                 </tr>
                             </tbody>
                         </table>

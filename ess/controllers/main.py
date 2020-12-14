@@ -192,6 +192,7 @@ class ESSPortal(Controller):
         leave_list = []
         appraisal_list = []
         announcement_list = []
+        announcement_list_public = []
         attendance_list = []
         asset_assignation_list = []
         custody_list = []
@@ -199,6 +200,7 @@ class ESSPortal(Controller):
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
         values = self.check_modules()
+        values['announcement_list_public']=announcement_list_public
         values.update({
             'error': {},
             'error_message': [],
@@ -228,11 +230,25 @@ class ESSPortal(Controller):
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
             announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')])
             for ann in announcement_obj:
-                announcement_list.append({
-                    'title': ann.announcement_reason,
-                    'date_start': ann.date_start,
-                    'date_end': ann.date_end,
-                })
+                print(ann.is_announcement)
+                if ann.is_announcement:
+                    announcement_list_public.append({
+                        'title': ann.announcement_reason,
+                        'date_start': ann.date_start,
+                        'date_end': ann.date_end,
+                        'attachment_id': ann.attachment_id,
+                    })
+                else:
+                    announcement_list.append({
+                        'title': ann.announcement_reason,
+                        'date_start': ann.date_start,
+                        'date_end': ann.date_end,
+                        'attachment_id': ann.attachment_id,
+                    })
+                print(announcement_list)
+                print(announcement_list_public)
+
+
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_attendance')]).state == 'installed':
             attendance_obj = request.env['hr.attendance'].sudo().search([('employee_id','=',emb_obj.id)],order="id desc",limit=5)
@@ -267,6 +283,8 @@ class ESSPortal(Controller):
                     'asset_id': assign.asset_id.name,
                     'description': assign.description,
                     'state': assign.state,
+                    'state_desc': assign.state_desc,
+                    'type_desc': assign.type_desc,
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_custody_request')]).state == 'installed':
@@ -288,6 +306,8 @@ class ESSPortal(Controller):
                     'course_type': mandate.course_type,
                     'number_of_days': mandate.number_of_days,
                     'state': mandate.state,
+                    'state_desc': mandate.state_desc,
+                    'type_desc': mandate.type_desc,
                 })
 
 
@@ -298,6 +318,7 @@ class ESSPortal(Controller):
             'leave_allocation_list': leave_allocation_list,
             'appraisal_list': appraisal_list,
             'announcement_list': announcement_list,
+            'announcement_list_public': announcement_list_public,
             'attendance_list': attendance_list,
             'leave_list': leave_list,
             'douc_exp_obj': self.get_expiry_douc(douc_obj),
