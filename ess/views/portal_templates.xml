@@ -23,6 +23,7 @@
                             <div class="row col-10 col-md col-lg-10">
 
                                 <t t-call="ess.employee_organization"/>
+
                                 <t t-if="leave_list" t-call="ess.employee_leaves"/>
                                 <t t-if="leave_allocation_list" t-call="ess.employee_leave_allocation"/>
                                 <t t-if="douc_obj" t-call="ess.employee_document"/>
@@ -127,7 +128,7 @@
 
                             <li><a href="/my/leaves">Apply Leave</a></li>
                             <li><a href="/my/short_leaves">Short Leave Request</a></li>
-                            <li><a href="/my/allocation">Leave Allocation Request</a></li>
+<!--                            <li><a href="/my/allocation">Leave Allocation Request</a></li>-->
                             <li><a href="/my/track_leaves">Track Leaves Requests</a></li>
                             <li><a href="/my/leaves_balance">Leave Balance Summary</a></li>
                             <li><a href="/my/history_leaves">View Leaves History</a></li>
@@ -347,11 +348,14 @@
     <template id="employee_document">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+
+			<div class="ibox card">
+
+                <div class="iess-title">
 					<h3><span>My Documents</span></h3>
 				</div>
-				<div class="ibox-content iess-p20">
+				<div class="ibox-content iess-p20 ">
+                    <div>
                     <div class="table-responsive">
                         <table class="table header-border table-hover table-custom spacing5 ess-table">
                             <thead>
@@ -368,6 +372,7 @@
                             </tbody>
                         </table>
                     </div>
+                        </div>
 				</div>
 			</div>
 		</div>
@@ -377,7 +382,7 @@
 
     <template id="employee_organization">
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>Organization Chart</span></h3>
 				</div>
@@ -427,7 +432,7 @@
     <template id="employee_important_date">
 
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>Important Dates</span></h3>
 				</div>
@@ -456,7 +461,7 @@
     <template id="employee_leave_allocation">
 
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>My Balance</span></h3>
 				</div>
@@ -485,7 +490,7 @@
 
     <template id="employee_appraisal">
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>My Appraisal</span></h3>
 				</div>
@@ -513,7 +518,7 @@
 
     <template id="employee_announcement">
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>All Announcement</span></h3>
 				</div>
@@ -546,7 +551,7 @@
 
         <template id="employee_announcement_public">
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>Public Announcement</span></h3>
 				</div>
@@ -579,7 +584,7 @@
 
     <template id="employee_attendance">
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>Time Office</span></h3>
 				</div>
@@ -612,7 +617,7 @@
     <template id="employee_leaves">
 
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>Time Off</span></h3>
 				</div>
@@ -673,8 +678,8 @@
     <template id="employee_asset_assignation">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox card">
+       <div class="iess-title">
 					<h3><span>My Newest Assignations</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -712,7 +717,7 @@
     <template id="employee_custody">
 
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>My Newest Custody</span></h3>
 				</div>
@@ -732,7 +737,7 @@
                                     <td><div t-esc="custody['date']"/></td>
                                     <td><div t-esc="custody['amount']"/></td>
                                     <td><div t-esc="custody['remaining_amount']"/></td>
-                                    <td><div t-esc="custody['state']"/></td>
+                                    <td><div t-esc="custody['state_desc']"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -746,7 +751,7 @@
     <template id="employee_mandate">
 
         <div class="col-lg-4">
-			<div class="ibox">
+			<div class="ibox card">
 				<div class="iess-title">
 					<h3><span>My Newest Mandate</span></h3>
 				</div>

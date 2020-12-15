@@ -295,6 +295,7 @@ class ESSPortal(Controller):
                     'amount': custody.amount,
                     'remaining_amount': custody.remaining_amount,
                     'state': custody.state,
+                    'state_desc': custody.state_desc,
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_mandate_passenger')]).state == 'installed':
@@ -683,6 +684,7 @@ class ESSPortal(Controller):
 
             
         for leave in allocation_obj:
+
             allocation_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,

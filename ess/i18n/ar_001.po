@@ -322,7 +322,7 @@ msgstr "<span>دوراتي</span>"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_document
 msgid "<span>My Documents</span>"
-msgstr "مستنداتي"
+msgstr "<span>مستنداتي</span>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_myeducational

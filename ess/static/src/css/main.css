@@ -41,7 +41,8 @@
 .ibox-content{border:0 !important;}
   .iess-title{text-align:center; border: 0px;}
   .iess-title>h3{margin:0;}
-  .iess-title>h3>span{padding: 10px 30px;color: #fff;background: linear-gradient(150deg, #875A7B 20%, #62495B 80%) !important;}
+  .iess-title>h3>span{padding: 10px 30px;color: #fff;background: linear-gradient(150deg, #875A7B 20%, #62495B 80%) !important;
+  border-radius: 25px;}
   .nav.nav-tabs3 {
     border-bottom: 1px solid #875a7b;
 }
