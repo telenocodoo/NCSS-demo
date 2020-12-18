@@ -155,6 +155,15 @@ class MandatePassenger(models.Model):
             else:
                 rec.type_desc = ''
 
+    def _getcoursetypedesc(self):
+        value = dict(self.env['mandate.passenger'].fields_get(allfields=['course_type'])['course_type']['selection'])
+        for rec in self:
+
+            if rec.course_type:
+                rec.course_type_desc = value[rec.course_type]
+            else:
+                rec.course_type_desc = ''
+
     def _get_state_desc(self):
         value = dict(self.env['mandate.passenger'].fields_get(allfields=['state'])['state']['selection'])
 
@@ -166,6 +175,7 @@ class MandatePassenger(models.Model):
 
     state_desc = fields.Char(compute="_get_state_desc")
     type_desc = fields.Char(compute="_getdesc")
+    course_type_desc= fields.Char(compute="_getcoursetypedesc")
 
     color = fields.Integer(compute="compute_color")
 

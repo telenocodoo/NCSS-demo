@@ -48,46 +48,46 @@ msgstr ""
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">Asset "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">Asset "
 "Assignation</span> <span class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">العهد العينية</span>"
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">العهد العينية</span>"
 " <span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">Custody</span> <span"
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">Custody</span> <span"
 " class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">العهد المالية</span>"
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">العهد المالية</span>"
 " <span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">Expenses</span> "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">Expenses</span> "
 "<span class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">المصروفات</span> "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">المصروفات</span> "
 "<span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">Passenger And "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">Passenger And "
 "Mandate</span> <span class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">الانتداب و "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">الانتداب و "
 "الإركاب</span> <span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">Petty Cash</span> "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">Petty Cash</span> "
 "<span class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-fa-money\"/> <span class=\"nav-label\">العهد</span> <span "
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">العهد</span> <span "
 "class=\"fa arrow\"/>"
 
 #. module: ess
@@ -975,6 +975,7 @@ msgstr "التاريخ"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
+#: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 msgid "Date End"
 msgstr "تاريخ النهايه"
 
@@ -985,6 +986,7 @@ msgstr "تاريخ اخلاء الطرف"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
+#: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 msgid "Date Start"
 msgstr "تاريخ البدايه"
 
@@ -2001,6 +2003,7 @@ msgstr "نوع الاجازه"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
+#: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 #: model_terms:ir.ui.view,arch_db:ess.ess_announcement
 msgid "Title"
 msgstr "العنوان"

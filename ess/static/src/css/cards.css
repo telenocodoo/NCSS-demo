@@ -10,6 +10,10 @@ background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%,
   position: relative;
   z-index: 9999;
   width:120%;
+
+}
+.card{
+ font-family: 'Cairo', sans-serif;
 }
 .container {
     max-width: 1200px;

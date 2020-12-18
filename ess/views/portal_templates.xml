@@ -253,7 +253,7 @@
                     </li>
 
                     <li t-if="expense">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-usd"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/expense">Register Expense</a></li>
                             <li><a href="/my/track_expense">Track Expense Approvals</a></li>
@@ -261,7 +261,7 @@
                     </li>
 <!--magdy-->
                     <li t-if="assets_assignation">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Asset Assignation</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Asset Assignation</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/request/asset">Request Asset</a></li>
                             <li><a href="/my/asset_assignation">Asset Assigned To Me</a></li>
@@ -269,7 +269,7 @@
                     </li>
 
                     <li t-if="custody">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/custody/request">Custody Request</a></li>
                             <li><a href="/my/custody/in_progress">Custody In Progress</a></li>
@@ -278,7 +278,7 @@
                     </li>
 
                     <li t-if="mandate1">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/request/passenger_mandate">Passenger And Mandate</a></li>
                             <li><a href="/request/passenger_mandate_private">Create Private Course</a></li>
@@ -771,7 +771,7 @@
                                 <tr>
                                     <td><div t-esc="mandate['type_desc']"/></td>
                                     <td><div t-esc="mandate['course_id']"/></td>
-                                    <td><div t-esc="mandate['course_type']"/></td>
+                                    <td><div t-esc="mandate['course_type_desc']"/></td>
                                     <td><div t-esc="mandate['number_of_days']"/></td>
                                     <td><div t-esc="mandate['state_desc']"/></td>
                                 </tr>

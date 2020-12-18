@@ -305,6 +305,7 @@ class ESSPortal(Controller):
                     'type': mandate.type,
                     'course_id': mandate.course_id.name,
                     'course_type': mandate.course_type,
+                    'course_type_desc': mandate.course_type_desc,
                     'number_of_days': mandate.number_of_days,
                     'state': mandate.state,
                     'state_desc': mandate.state_desc,
