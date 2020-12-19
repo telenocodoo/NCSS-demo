@@ -1,7 +1,7 @@
 .iess-title {
 margin: 15px;
 }
- .card:hover {
+ .carddash:hover {
   transform: scale(1.15);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
   transition: 0.5s ease;
@@ -12,7 +12,7 @@ background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%,
   width:120%;
 
 }
-.card{
+.carddash{
  font-family: 'Cairo', sans-serif;
 }
 .container {

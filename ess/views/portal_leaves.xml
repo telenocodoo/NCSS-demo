@@ -80,7 +80,7 @@
                                                                     <tr>
                                                                         <td><div t-esc="lea['name']"/></td>
                                                                         <td><div t-esc="lea['number_of_days']"/></td>
-                                                                        <td><div t-esc="lea['state']"/></td>
+                                                                        <td><div t-esc="lea['state_desc']"/></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

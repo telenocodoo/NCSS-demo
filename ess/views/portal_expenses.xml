@@ -13,7 +13,7 @@
                     <div class="row col-10 col-md col-lg-10"> 
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Register Expense</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -57,23 +57,23 @@
                                                                 </div>
                                                                 <div t-attf-class="form-group #{error.get('date') and 'o_has_error' or ''} col-xl-3">
                                                                     <label class="col-form-label" for="date">Date</label>
-                                                                    <input type="date" name="date" t-attf-class="form-control #{error.get('date') and 'is-invalid' or ''}" />
+                                                                    <input type="date" name="date" t-attf-class="form-control #{error.get('date') and 'is-invalid' or ''}" required="" />
                                                                 </div>
                                                                 <div t-attf-class="form-group #{error.get('unit_amount') and 'o_has_error' or ''} col-xl-3">
                                                                     <label class="col-form-label" for="unit_amount">Price</label>
-                                                                    <input id="unit_amount" type="number" name="unit_amount" t-attf-class="form-control #{error.get('unit_amount') and 'is-invalid' or ''}"/>
+                                                                    <input id="unit_amount" type="number" name="unit_amount" t-attf-class="form-control #{error.get('unit_amount') and 'is-invalid' or ''}" required=""/>
                                                                 </div>
 
                                                                 <div t-attf-class="form-group #{error.get('quantity') and 'o_has_error' or ''} col-xl-3">
                                                                     <label class="col-form-label" for="quantity">Quantity</label>
-                                                                    <input t-att-value="1" type="number" name="quantity" t-attf-class="form-control #{error.get('quantity') and 'is-invalid' or ''}"/>
+                                                                    <input t-att-value="1" type="number" name="quantity" t-attf-class="form-control #{error.get('quantity') and 'is-invalid' or ''}" required=""/>
                                                                 </div>
                                                             </div>
                                                             
                                                             <div class="row form-group col-lg-12">
                                                                 <div t-attf-class="form-group #{error.get('payment_mode') and 'o_has_error' or ''} col-xl-6">
                                                                     <label class="col-form-label" for="payment_mode">Paid By</label>
-                                                                    <select name="payment_mode" t-attf-class="form-control #{error.get('payment_mode') and 'is-invalid' or ''}">
+                                                                    <select name="payment_mode" t-attf-class="form-control #{error.get('payment_mode') and 'is-invalid' or ''}" required="">
                                                                         <option value="own_account">Employee (to reimburse)</option>
                                                                         <option value="company_account">Company</option>
                                                                     </select>

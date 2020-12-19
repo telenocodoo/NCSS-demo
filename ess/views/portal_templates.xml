@@ -170,8 +170,8 @@
                         <ul class="nav nav-second-level">
                             <li><a href="/my/attendance">Attendance</a></li>
                             <li><a href="/my/dayattendance">Daily Attendance</a></li>
-                            <li><a href="#">Time Off Report</a></li>
-                            <li><a href="#">Time Off Adjustment</a></li>
+<!--                            <li><a href="#">Time Off Report</a></li>-->
+<!--                            <li><a href="#">Time Off Adjustment</a></li>-->
                         </ul>
                     </li>
 
@@ -253,7 +253,7 @@
                     </li>
 
                     <li t-if="expense">
-                        <a href="#"><i class="fa fa-usd"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/expense">Register Expense</a></li>
                             <li><a href="/my/track_expense">Track Expense Approvals</a></li>
@@ -349,9 +349,9 @@
 
         <div class="col-lg-4">
 
-			<div class="ibox card">
+			<div class="ibox carddash">
 
-                <div class="iess-title">
+                <div class="row iess-title">
 					<h3><span>My Documents</span></h3>
 				</div>
 				<div class="ibox-content iess-p20 ">
@@ -382,8 +382,8 @@
 
     <template id="employee_organization">
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Organization Chart</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -432,8 +432,8 @@
     <template id="employee_important_date">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Important Dates</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -461,8 +461,8 @@
     <template id="employee_leave_allocation">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Balance</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -490,8 +490,8 @@
 
     <template id="employee_appraisal">
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Appraisal</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -518,8 +518,8 @@
 
     <template id="employee_announcement">
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>All Announcement</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -551,8 +551,8 @@
 
         <template id="employee_announcement_public">
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Public Announcement</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -584,8 +584,8 @@
 
     <template id="employee_attendance">
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Time Office</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -617,8 +617,8 @@
     <template id="employee_leaves">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Time Off</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -678,8 +678,8 @@
     <template id="employee_asset_assignation">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-       <div class="iess-title">
+			<div class="ibox carddash">
+       <div class="row iess-title">
 					<h3><span>My Newest Assignations</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -717,8 +717,8 @@
     <template id="employee_custody">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Newest Custody</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -751,8 +751,8 @@
     <template id="employee_mandate">
 
         <div class="col-lg-4">
-			<div class="ibox card">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Newest Mandate</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">

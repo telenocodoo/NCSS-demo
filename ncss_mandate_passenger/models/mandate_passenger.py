@@ -28,7 +28,7 @@ class CoursePlace(models.Model):
     _name = 'course.place'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char()
+    name = fields.Char(translate=True)
     need_ticket = fields.Boolean(default=True)
 
 

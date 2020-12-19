@@ -72,6 +72,16 @@ msgstr ""
 "<i class=\"fa fa-money\"/> <span class=\"nav-label\">المصروفات</span> "
 "<span class=\"fa arrow\"/>"
 
+
+#. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.side_menu
+msgid ""
+"<i class=\"fa fa-usd\"/> <span class=\"nav-label\">Expenses</span> <span "
+"class=\"fa arrow\"/>"
+msgstr ""
+"<i class=\"fa fa-usd\"/> <span class=\"nav-label\">المصروفات</span> <span "
+"class=\"fa arrow\"/>"
+
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
@@ -970,6 +980,7 @@ msgstr "الحضور اليومي"
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_custody
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance_day
 msgid "Date"
 msgstr "التاريخ"
 
@@ -1321,8 +1332,10 @@ msgstr "استقالة فورية"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_attendance
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance_day
 msgid "In"
 msgstr "من"
+
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_custody
@@ -1631,6 +1644,7 @@ msgstr "غير ذلك"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_attendance
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance_day
 msgid "Out"
 msgstr "إلى"
 
@@ -2187,6 +2201,7 @@ msgstr "البريد الإلكتروني للعمل"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance
+#: model_terms:ir.ui.view,arch_db:ess.ess_view_attendance_day
 msgid "Work Hours"
 msgstr "ساعات العمل"
 

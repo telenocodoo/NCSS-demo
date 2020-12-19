@@ -16,7 +16,7 @@
 
 
 
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
 
                                     <h3><span>Daily Attendance</span></h3>
                                 </div>
@@ -149,7 +149,7 @@
 
 
 
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
 
                                     <h3><span>Daily Attendance</span></h3>
                                 </div>
@@ -175,7 +175,7 @@
          <i class="fa fa-calendar">
          </i>
         </div>
-        <input class="form-control" id="sdate" name="startdate" placeholder="MM/DD/YYYY" type="date"/>
+        <input class="form-control" id="sdate" name="startdate" placeholder="MM/DD/YYYY" type="date" required=""/>
             <script>
             document.getElementById('sdate').value = new Date().toISOString().substring(0, 10);
                </script>
@@ -183,7 +183,7 @@
           <span> To  </span>  <i class="fa fa-calendar">
          </i>
         </div>
-		<input class="form-control" id="edate" name="enddate" placeholder="MM/DD/YYYY" type="Date"/>
+		<input class="form-control" id="edate" name="enddate" placeholder="MM/DD/YYYY" type="Date" required=""/>
         <div class="input-group-addon">
            <button class="btn btn-primary btn-rounded " name="submit" type="submit">
                <i class="fa fa-search"></i>
