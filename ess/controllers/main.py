@@ -229,6 +229,7 @@ class ESSPortal(Controller):
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
             announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')])
+
             for ann in announcement_obj:
                 print(ann.is_announcement)
                 if ann.is_announcement:
@@ -245,8 +246,8 @@ class ESSPortal(Controller):
                         'date_end': ann.date_end,
                         'attachment_id': ann.attachment_id,
                     })
-                print(announcement_list)
-                print(announcement_list_public)
+                print("private ",announcement_list)
+                print("public ",announcement_list_public)
 
 
 

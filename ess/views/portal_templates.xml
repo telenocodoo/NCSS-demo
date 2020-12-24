@@ -530,7 +530,7 @@
                                     <th>Title</th>
                                     <th>Date Start</th>
                                     <th>Date End</th>
-                                     <th><a class="fa fa-download"/></th>
+                                     <th><a class="fa fa-tasks"/></th>
                                 </tr>
                             </thead>
                             <tbody t-foreach="announcement_list" t-as="ann">
@@ -538,7 +538,7 @@
                                     <td><div t-esc="ann['title']"/></td>
                                     <td><span t-esc="ann['date_start']"/></td>
                                     <td><span t-esc="ann['date_end']"/></td>
-                    <td><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+                <td t-if="ann['attachment_id']" ><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
 
                                 </tr>
                             </tbody>
@@ -563,15 +563,15 @@
                                     <th>Title</th>
                                     <th>Date Start</th>
                                     <th>Date End</th>
-                                     <th><a class="fa fa-download"/></th>
+                                     <th> <i class="fa fa-tasks"/></th>
                                 </tr>
                             </thead>
-                            <tbody t-foreach="announcement_list" t-as="ann">
+                            <tbody t-foreach="announcement_list_public" t-as="ann">
                                 <tr>
                                     <td><div t-esc="ann['title']"/></td>
                                     <td><span t-esc="ann['date_start']"/></td>
                                     <td><span t-esc="ann['date_end']"/></td>
-                                <td><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+                                <td  t-if="ann['attachment_id']"><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
 
                                 </tr>
                             </tbody>
