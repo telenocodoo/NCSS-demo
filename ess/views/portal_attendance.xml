@@ -29,7 +29,7 @@
 
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a class="dashboard-stat red" href="#">
+      <div class="dashboard-stat red"  >
         <div class="visual">
           <i class="fa fa-usd"></i>
         </div>
@@ -39,10 +39,10 @@
           </div>
           <div class="desc">Today Late</div>
         </div>
-      </a>
+      </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a class="dashboard-stat blue" href="#">
+      <div class="dashboard-stat blue" >
         <div class="visual">
           <i class="fa fa-bar-chart-o"></i>
         </div>
@@ -52,10 +52,10 @@
           </div>
           <div class="desc">Month Absent</div>
         </div>
-      </a>
+      </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a class="dashboard-stat hoki" href="#">
+      <div class="dashboard-stat hoki"  >
         <div class="visual">
           <i class="fa fa-credit-card"></i>
         </div>
@@ -65,10 +65,10 @@
           </div>
           <div class="desc">Attendance Percentage</div>
         </div>
-      </a>
+      </div>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a class="dashboard-stat purple" href="#">
+      <div class="dashboard-stat purple" >
         <div class="visual">
           <i class="fa fa-comments"></i>
         </div>
@@ -78,7 +78,7 @@
           </div>
           <div class="desc">Month Late</div>
         </div>
-      </a>
+      </div>
     </div>
 
   </div>
@@ -215,7 +215,7 @@
                                                             <div class="table-responsive">
                                                                 <table class="table header-border table-hover table-custom spacing5 ess-table">
                                                                     <thead  >
-                                                                        <tr style="background: #36c6d3; border-top-color: transparent;color: #fff;" >
+                                                                        <tr style="background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); border-top-color: transparent;color: #fff;" >
                                                                             <th>Date</th>
                                                                             <th>In</th>
                                                                             <th>Out</th>

@@ -722,7 +722,7 @@
                                                                 </div>
                                                                <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""  required=""/>
                                                                 </div>
 
 
@@ -1849,7 +1849,7 @@
 
                                                                 <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value="" required=""/>
                                                                 </div>
 
                                                         <div t-attf-class="form-group col-xl-6">

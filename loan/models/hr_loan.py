@@ -64,6 +64,18 @@ class HrLoan(models.Model):
         ('cancel', 'Canceled'),
     ], string="State", default='draft', track_visibility='onchange', copy=False, )
 
+
+    def _get_state_desc(self):
+        value = dict(self.env['hr.loan'].fields_get(allfields=['state'])['state']['selection'])
+
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
+
+    state_desc = fields.Char(compute="_get_state_desc")
+
     @api.model
     def create(self, values):
         loan_count = self.env['hr.loan'].search_count(

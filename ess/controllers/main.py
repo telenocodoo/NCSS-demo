@@ -8,6 +8,8 @@ from datetime import date, datetime, time
 import base64
 import io
 from werkzeug.utils import redirect
+from werkzeug.wrappers import Response
+from odoo.service import wsgi_server
 from odoo import http
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
 from dateutil.relativedelta import relativedelta
@@ -193,6 +195,7 @@ class ESSPortal(Controller):
         appraisal_list = []
         announcement_list = []
         announcement_list_public = []
+        notification_list=[]
         attendance_list = []
         asset_assignation_list = []
         custody_list = []
@@ -229,6 +232,25 @@ class ESSPortal(Controller):
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
             announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')])
+            announcement_private_obj = request.env['hr.announcement'].sudo().search([('state','=','approved'),('employee_ids','in',[emb_obj.id])])
+
+            notification_obj = request.env['hr.notification'].sudo().search([('state','=','notify'),('employee_id','=',emb_obj.id)])
+
+            for obj in notification_obj:
+                notification_list.append({
+                    'title': obj.notification_MSG,
+
+                })
+            print("notify ", notification_list)
+
+            for ann in announcement_private_obj:
+                if not ann.is_announcement:
+                    announcement_list.append({
+                        'title': ann.announcement_reason,
+                        'date_start': ann.date_start,
+                        'date_end': ann.date_end,
+                        'attachment_id': ann.attachment_id,
+                    })
 
             for ann in announcement_obj:
                 print(ann.is_announcement)
@@ -239,15 +261,10 @@ class ESSPortal(Controller):
                         'date_end': ann.date_end,
                         'attachment_id': ann.attachment_id,
                     })
-                else:
-                    announcement_list.append({
-                        'title': ann.announcement_reason,
-                        'date_start': ann.date_start,
-                        'date_end': ann.date_end,
-                        'attachment_id': ann.attachment_id,
-                    })
+
                 print("private ",announcement_list)
                 print("public ",announcement_list_public)
+
 
 
 
@@ -322,6 +339,7 @@ class ESSPortal(Controller):
             'appraisal_list': appraisal_list,
             'announcement_list': announcement_list,
             'announcement_list_public': announcement_list_public,
+            'notification_list': notification_list,
             'attendance_list': attendance_list,
             'leave_list': leave_list,
             'douc_exp_obj': self.get_expiry_douc(douc_obj),
@@ -335,6 +353,46 @@ class ESSPortal(Controller):
         response = request.render("ess.ess_dashboard", values)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
+
+    @route(['/my/wleaves'], type='http', auth='user', website=True)
+    def wleaves(self, redirect=None, **post):
+
+        values = {}
+        leave_list = []
+
+        partner = request.env.user.partner_id
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+
+        leave_type = request.env['hr.leave.type'].sudo().search([])
+        leave_obj = request.env['hr.leave'].sudo().search([('employee_id', '=', emb_obj.id)])
+
+        values = self.check_modules()
+
+        values.update({
+            'error': {},
+            'error_message': ['خطأ فى أدخال  البيانات'],
+             'message': []
+        })
+
+        for leave in leave_obj:
+            leave_list.append({
+                'name': leave.holiday_status_id.name,
+                'state': leave.state,
+                'state_desc': leave.state_desc,
+                'number_of_days': leave.number_of_days,
+            })
+
+        values.update({
+            'partner': partner,
+            'employee': emb_obj,
+            'leave_type': leave_type.with_context(employee_id=emb_obj.id),
+            'leave_list': leave_list,
+        })
+
+        response = request.render("ess.ess_leaves", values)
+        response.headers['X-Frame-Options'] = 'DENY'
+        return response
+
 
     @route(['/my/leaves'], type='http', auth='user', website=True)
     def leaves(self, redirect=None, **post):
@@ -360,9 +418,43 @@ class ESSPortal(Controller):
                 'employee_id': emb_obj.id,
                 'holiday_status_id': int(post['holiday_status_id']),
             })
-            request.env['hr.leave'].sudo().create(post)
 
-            
+            print(post)
+
+            # if post['date_to'] >post['date_from'] :
+            #     request.env['hr.leave'].sudo().create(post)
+            #     values.update({
+            #         'error': {},
+            #         'error_message': [],
+            #         'message':['تم تسجيل طلبكم بنجاح']
+            #     })
+            # else:
+            #     values.update({
+            #         'error':{},
+            #         'error_message': ['خطأ فى أدخال  البيانات'],
+            #         'message': []
+            #     })
+            try:
+                if post['date_to'] > post['date_from']:
+                    request.env['hr.leave'].sudo().create(post)
+                else:
+                    return request.redirect("/my/wleaves")
+                values.update({
+                        'error': {},
+                        'error_message': [],
+                        'message':['تم تسجيل طلبكم بنجاح']
+                    })
+            except:
+                print("Ya rab")
+
+                return request.redirect("/my/wleaves")
+                # response = wsgi_server.xmlrpc_handle_exception_string(error)
+
+                # request.render("ess.ess_leaves" ,values)
+
+
+
+
         for leave in leave_obj:
             leave_list.append({
                 'name': leave.holiday_status_id.name,
@@ -635,7 +727,7 @@ class ESSPortal(Controller):
             'error_message': [],
         })
 
-        loan_obj = request.env['hr.loan'].sudo().search([('employee_id','=',emb_obj.id)])
+        loan_obj = request.env['hr.loan'].sudo().search([('employee_id','=',emb_obj.id),('state','=','approve')])
 
 
         values.update({

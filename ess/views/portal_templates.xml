@@ -21,9 +21,11 @@
 
 
                             <div class="row col-10 col-md col-lg-10">
+<!--                                 <t t-if="announcement_list" t-call="ess.employee_notification"/>-->
 
+                                 <t t-if="announcement_list" t-call="ess.employee_announcement"/>
+                                 <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
                                 <t t-call="ess.employee_organization"/>
-
                                 <t t-if="leave_list" t-call="ess.employee_leaves"/>
                                 <t t-if="leave_allocation_list" t-call="ess.employee_leave_allocation"/>
                                 <t t-if="douc_obj" t-call="ess.employee_document"/>
@@ -36,8 +38,7 @@
                                 <t t-if="custody_obj" t-call="ess.employee_custody"/>
                                 <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
 
-                                <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
-                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>
+
 
                             </div>
 
@@ -127,7 +128,7 @@
                         <ul class="nav nav-second-level">
 
                             <li><a href="/my/leaves">Apply Leave</a></li>
-                            <li><a href="/my/short_leaves">Short Leave Request</a></li>
+<!--                            <li><a href="/my/short_leaves">Short Leave Request</a></li>-->
 <!--                            <li><a href="/my/allocation">Leave Allocation Request</a></li>-->
                             <li><a href="/my/track_leaves">Track Leaves Requests</a></li>
                             <li><a href="/my/leaves_balance">Leave Balance Summary</a></li>
@@ -549,7 +550,7 @@
 		</div>
     </template>
 
-        <template id="employee_announcement_public">
+   <template id="employee_announcement_public">
         <div class="col-lg-4">
 			<div class="ibox carddash">
 				<div class="row iess-title">
@@ -581,6 +582,41 @@
 			</div>
 		</div>
     </template>
+
+
+    <template id="employee_notification">
+        <div class="col-lg-4">
+			<div class="ibox carddash">
+				<div class="row iess-title">
+					<h3><span>All Notification</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+<!--                                    <th>Date Start</th>-->
+<!--                                    <th>Date End</th>-->
+<!--                                     <th><a class="fa fa-tasks"/></th>-->
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="notification_list" t-as="ann">
+                                <tr>
+                                    <td><div t-esc="ann['title']"/></td>
+<!--                                    <td><span t-esc="ann['date_start']"/></td>-->
+<!--                                    <td><span t-esc="ann['date_end']"/></td>-->
+<!--                <td t-if="ann['attachment_id']" ><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>-->
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </template>
+
 
     <template id="employee_attendance">
         <div class="col-lg-4">

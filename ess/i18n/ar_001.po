@@ -213,6 +213,12 @@ msgstr "<span>اعلانات خاصة</span>"
 
 
 #. module: ess
+#: model_terms:ir.ui.view,arch_db:ess.employee_notification
+msgid "<span>All Notification</span>"
+msgstr "<span> الاشعارات </span>"
+
+
+#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 msgid "<span>Public Announcement</span>"
 msgstr "<span> اعلانات عامة</span>"

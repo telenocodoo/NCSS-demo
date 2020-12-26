@@ -272,6 +272,15 @@ class MandatePassenger(models.Model):
                     summary=_("Request Approve")
                     )
                 print("active" ,actv_id)
+                now = datetime.now()
+                start_date = now.date()
+                end_date= start_date + timedelta(days=1)
+                # notify_id =self.env['hr.notification'].sudo().create({'notification_MSG':'Approve Request',
+                #                                        'date_start':start_date ,'date_end':end_date,'state':'notify','employee_id':self.employee_id})
+                print("notify_id",notify_id)
+
+
+
 
 
 

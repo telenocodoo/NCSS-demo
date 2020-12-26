@@ -32,7 +32,7 @@
                                                             <div class="row form-group col-lg-12">
                                                                 <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="name">Document Number</label>
-                                                                    <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"/>
+                                                                    <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" required=""/>
                                                                 </div>
 
                                                                 <div t-attf-class="form-group #{error.get('issue_date') and 'o_has_error' or ''} col-xl-4">
@@ -76,7 +76,7 @@
 
                                                                 <div t-attf-class="form-group #{error.get('doc_attachment_id') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value="" required=""/>
                                                                 </div>
                                                             </div>
                                                             
