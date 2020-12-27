@@ -22,3 +22,4 @@
 ###################################################################################
 from . import hr_warning
 from . import hr_employee
+from . import hr_notification
