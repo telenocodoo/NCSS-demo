@@ -13,7 +13,7 @@
                     <div class="row col-10 col-md col-lg-10"> 
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Request Asset Assignation</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -58,12 +58,12 @@
 
                                                                    <div t-attf-class="form-group col-xl-6">
                                                                     <label class="col-form-label" for="reference">Assest Request Reason</label>
-                                                                    <input type="text" name="asset_request_Reason" t-attf-class="form-control}"/>
+                                                                    <input type="text" name="asset_request_Reason" t-attf-class="form-control}" required=""/>
                                                                 </div>
 
                                                                    <div t-attf-class="form-group col-xl-6">
                                                                     <label class="col-form-label" for="reference">Start Date</label>
-                                                                    <input type="Date" name="asset_request_startDate"  id="theDate1" t-attf-class="form-control}"/>
+                                                                    <input type="Date" name="asset_request_startDate"  id="theDate1" t-attf-class="form-control}" required=""/>
                                                                 </div>
 
                                                                  <script>
@@ -71,7 +71,7 @@
                                                                 </script>
                                                                    <div t-attf-class="form-group col-xl-6">
                                                                     <label class="col-form-label" for="reference">Delivery Date</label>
-                                                                    <input type="Date" name="asset_request_deliveryDate" t-attf-class="form-control}"/>
+                                                                    <input type="Date" name="asset_request_deliveryDate" t-attf-class="form-control}" required=""/>
                                                                 </div>
 
 <!--                                                                <div t-attf-class="form-group #{error.get('date') and 'o_has_error' or ''} col-xl-3">-->
@@ -304,7 +304,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Asset Assignation</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -606,7 +606,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Custody Request</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -620,18 +620,18 @@
                                                             <div class="row form-group col-lg-12">
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="date">Date</label>
-                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control" />
+                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control" required=""/>
                                                                 </div>
                                                                  <script>
                                                                      document.getElementById('theDate').value = new Date().toISOString().substring(0, 10);
                                                                 </script>
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="amount">Amount</label>
-                                                                    <input id="amount" type="number" name="amount" t-attf-class="form-control"/>
+                                                                    <input id="amount" type="number" name="amount" t-attf-class="form-control" required=""/>
                                                                 </div>
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="description">Description</label>
-                                                                    <input type="text" name="description" t-attf-class="form-control"/>
+                                                                    <input type="text" name="description" t-attf-class="form-control" required=""/>
                                                                 </div>
                                                             </div>
 
@@ -671,7 +671,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Add Custody Lines</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -704,7 +704,7 @@
 
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="date">Date</label>
-                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control"  />
+                                                                    <input type="date" name="date"  id="theDate"  t-attf-class="form-control" required="" />
 
                                                                 </div>
                                                                 <script>
@@ -713,16 +713,16 @@
 
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="amount">Amount</label>
-                                                                    <input id="amount" type="number" name="amount" t-attf-class="form-control"/>
+                                                                    <input id="amount" type="number" name="amount" t-attf-class="form-control" required=""/>
                                                                 </div>
 
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="description">Description</label>
-                                                                    <input type="text" name="description" t-attf-class="form-control"/>
+                                                                    <input type="text" name="description" t-attf-class="form-control" />
                                                                 </div>
                                                                <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""  required=""/>
                                                                 </div>
 
 
@@ -803,7 +803,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Custody In Progress</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -889,7 +889,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Custody Warning</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -939,7 +939,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Custody</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -1312,7 +1312,7 @@
 
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Mandate And Passenger</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -1369,12 +1369,12 @@
 
                                                              <div t-attf-class="form-group col-xl-6" id="start_date" style="display:none">
                                                             <label class="col-form-label" for="start_date">Start Date</label>
-                                                                <input type="date" name="start_date"  id="start_date"  t-attf-class="form-control" />
+                                                                <input type="date" name="start_date"  id="start_date"  t-attf-class="form-control" required="" />
                                                                               </div>
 
                                                               <div t-attf-class="form-group col-xl-6" id="end_date" style="display:none">
                                                             <label class="col-form-label" for="end_date">End Date</label>
-                                                                <input type="date" name="end_date"  id="end_date"  t-attf-class="form-control" />
+                                                                <input type="date" name="end_date"  id="end_date"  t-attf-class="form-control" required="" />
                                                           </div>
 
 
@@ -1432,7 +1432,7 @@
                     <div class="row col-10 col-md col-lg-10">
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Mandate And Passenger</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -1477,9 +1477,9 @@
 <!--                                                                                        <t t-esc="mandate['course_id']['name']" />-->
 <!--                                                                                        ['name']-->
                                                                                         <tr>
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_place_id']"> <div t-esc="mandate['course_place_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1488,7 +1488,7 @@
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
 <!--                                                                                            <td><a t-attf-href="/web/binary/saveas?model=mandate.passenger&amp;field=attach_file&amp;filename_field='name'&amp;id={{mandate['attach_file']}}">Download</a></td>-->
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1515,9 +1515,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'draft'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_place_id']"><div t-esc="mandate['course_place_id']['name']"/></t></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1525,7 +1525,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1553,9 +1553,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'direct_manager_approve'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1563,7 +1563,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1591,9 +1591,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'department_manager_approve'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1601,7 +1601,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1632,9 +1632,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'accounting_approve'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1642,7 +1642,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
                                                                                            <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
 
@@ -1672,9 +1672,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'accounting_approve'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1682,7 +1682,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1710,9 +1710,9 @@
                                                                                     </thead>
                                                                                     <tbody t-foreach="courses_and_mandate_obj" t-as="mandate">
                                                                                         <tr t-if="mandate['state'] == 'refuse'">
-                                                                                            <td><div t-esc="mandate['type']"/></td>
+                                                                                            <td><div t-esc="mandate['type_desc']"/></td>
                                                                                             <td><t t-if="mandate['course_id']"><div t-esc="mandate['course_id']['name']"/></t></td>
-                                                                                            <td><div t-esc="mandate['course_type']"/></td>
+                                                                                            <td><div t-esc="mandate['course_type_desc']"/></td>
                                                                                             <td><div t-esc="mandate['course_place_id']['name']"/></td>
                                                                                             <td><div t-esc="mandate['description']"/></td>
                                                                                             <td><div t-esc="mandate['price']"/></td>
@@ -1720,7 +1720,7 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
-                                                                                            <td><div t-esc="mandate['state']"/></td>
+                                                                                            <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1765,7 +1765,7 @@
 
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Mandate And Passenger Private</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -1780,7 +1780,7 @@
                                                   <div class="row form-group col-lg-12">
                                                          <div t-attf-class="form-group col-xl-6" >
                                                             <label class="col-form-label" for="name">Name</label>
-                                                                <input type="text" name="name"  t-attf-class="form-control" />
+                                                                <input type="text" name="name"  t-attf-class="form-control" required="" />
                                                          </div>
 
 <!--                                                            <div t-attf-class="form-group col-xl-6">-->
@@ -1804,7 +1804,7 @@
 
                                                          <div t-attf-class="form-group col-xl-6" >
                                                             <label class="col-form-label" for="name">price</label>
-                                                                <input type="number" name="price"  t-attf-class="form-control" />
+                                                                <input type="number" name="price"  t-attf-class="form-control" required="" />
                                                          </div>
 
 
@@ -1832,24 +1832,24 @@
 
                                                              <div t-attf-class="form-group col-xl-6" id="start_date"  >
                                                             <label class="col-form-label" for="start_date">Start Date</label>
-                                                                <input type="date" name="start_date"  id="start_date_private"  t-attf-class="form-control" />
+                                                                <input type="date" name="start_date"  id="start_date_private"  t-attf-class="form-control" required="" />
                                                                               </div>
 
                                                               <div t-attf-class="form-group col-xl-6" id="end_date"  >
                                                             <label class="col-form-label" for="end_date">End Date</label>
-                                                                <input type="date" name="end_date"  id="end_date_private"  t-attf-class="form-control" />
+                                                                <input type="date" name="end_date"  id="end_date_private"  t-attf-class="form-control" required="" />
                                                           </div>
 
 
                                                             <div t-attf-class="form-group col-xl-6" >
                                                                 <label class="col-form-label" for="number_of_days">No of Days</label>
-                                                                    <input type="number" name="number_of_days"  id="number_of_days" t-attf-class="form-control" />
+                                                                    <input type="number" name="number_of_days"  id="number_of_days" t-attf-class="form-control" required="" />
                                                              </div>
 
 
                                                                 <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""/>
+                                                                    <input class="attachment" type="file" name="doc_attachment_id" value="" required=""/>
                                                                 </div>
 
                                                         <div t-attf-class="form-group col-xl-6">

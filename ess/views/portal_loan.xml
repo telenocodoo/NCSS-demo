@@ -14,7 +14,7 @@
                         <div class="card" style="margin: 10px;">
                             <div class="col-lg-12">
                                     <div class="ibox ">
-                                        <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                        <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                             <h3><span>Request Loan</span></h3>
                                         </div>
                                         <div class="ibox-content">
@@ -35,15 +35,15 @@
                                                                     <div class="row form-group col-lg-12">
                                                                         <div t-attf-class="form-group #{error.get('loan_amount') and 'o_has_error' or ''} col-xl-4">
                                                                             <label class="col-form-label" for="loan_amount">Loan Amount</label>
-                                                                            <input type="number" name="loan_amount" t-attf-class="form-control #{error.get('loan_amount') and 'is-invalid' or ''}"/>
+                                                                            <input type="number" name="loan_amount" t-attf-class="form-control #{error.get('loan_amount') and 'is-invalid' or ''}"  required=""/>
                                                                         </div>
                                                                         <div t-attf-class="form-group #{error.get('installment') and 'o_has_error' or ''} col-xl-4">
                                                                             <label class="col-form-label" for="installment">No Of Installments</label>
-                                                                            <input type="number" name="installment" t-attf-class="form-control #{error.get('installment') and 'is-invalid' or ''}"/>
+                                                                            <input type="number" name="installment" t-attf-class="form-control #{error.get('installment') and 'is-invalid' or ''}" required=""/>
                                                                         </div>
                                                                         <div t-attf-class="form-group #{error.get('payment_date') and 'o_has_error' or ''} col-xl-4">
                                                                             <label class="col-form-label" for="payment_date">Payment Start Date</label>
-                                                                            <input type="date" name="payment_date" t-attf-class="form-control #{error.get('payment_date') and 'is-invalid' or ''}" />
+                                                                            <input type="date" name="payment_date" t-attf-class="form-control #{error.get('payment_date') and 'is-invalid' or ''}"  required=""/>
                                                                         </div>
                                                                         
                                                                     </div>
@@ -74,7 +74,7 @@
                                                                                         <td class="td"><div t-esc="loa['loan_amount']"/></td>
                                                                                         <td class="td"><div t-esc="loa['total_paid_amount']"/></td>
                                                                                         <td class="td"><div t-esc="loa['balance_amount']"/></td>
-                                                                                        <td class="td"><div t-esc="loa['state']"/></td>
+                                                                                        <td class="td"><div t-esc="loa['state_desc']"/></td>
                                                                                 </tr>
                                                                                 </tbody>
                                                                             </table>

@@ -11,7 +11,7 @@
     <template id="ess_dashboard" name="ESS Dashboard">
         <t t-call="portal.portal_layout">
             <div id="wrap" class='o_portal_wrap'>
-                <div class="container mb64">
+                <div class="container mb64" >
                     <t >
                         <div class="row justify-content-between mt-4">
 
@@ -21,17 +21,24 @@
 
 
                             <div class="row col-10 col-md col-lg-10">
+<!--                                 <t t-if="announcement_list" t-call="ess.employee_notification"/>-->
+
+                                 <t t-if="announcement_list" t-call="ess.employee_announcement"/>
+                                 <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
                                 <t t-call="ess.employee_organization"/>
                                 <t t-if="leave_list" t-call="ess.employee_leaves"/>
                                 <t t-if="leave_allocation_list" t-call="ess.employee_leave_allocation"/>
                                 <t t-if="douc_obj" t-call="ess.employee_document"/>
                                 <t t-if="appraisal_list" t-call="ess.employee_appraisal"/>
                                 <t t-if="attendance_list" t-call="ess.employee_attendance"/>
-                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>
+<!--                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>-->
+
                                 <t t-if="douc_exp_obj" t-call="ess.employee_important_date"/>
                                 <t t-if="asset_assignation_obj" t-call="ess.employee_asset_assignation"/>
                                 <t t-if="custody_obj" t-call="ess.employee_custody"/>
                                 <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
+
+
 
                             </div>
 
@@ -121,8 +128,8 @@
                         <ul class="nav nav-second-level">
 
                             <li><a href="/my/leaves">Apply Leave</a></li>
-                            <li><a href="/my/short_leaves">Short Leave Request</a></li>
-                            <li><a href="/my/allocation">Leave Allocation Request</a></li>
+<!--                            <li><a href="/my/short_leaves">Short Leave Request</a></li>-->
+<!--                            <li><a href="/my/allocation">Leave Allocation Request</a></li>-->
                             <li><a href="/my/track_leaves">Track Leaves Requests</a></li>
                             <li><a href="/my/leaves_balance">Leave Balance Summary</a></li>
                             <li><a href="/my/history_leaves">View Leaves History</a></li>
@@ -162,9 +169,10 @@
                     <li t-if="True">
                         <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Atteandance</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="/my/attendance">Daily Attendance</a></li>
-                            <li><a href="#">Time Off Report</a></li>
-                            <li><a href="#">Time Off Adjustment</a></li>
+                            <li><a href="/my/attendance">Attendance</a></li>
+                            <li><a href="/my/dayattendance">Daily Attendance</a></li>
+<!--                            <li><a href="#">Time Off Report</a></li>-->
+<!--                            <li><a href="#">Time Off Adjustment</a></li>-->
                         </ul>
                     </li>
 
@@ -246,7 +254,7 @@
                     </li>
 
                     <li t-if="expense">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/my/expense">Register Expense</a></li>
                             <li><a href="/my/track_expense">Track Expense Approvals</a></li>
@@ -254,7 +262,7 @@
                     </li>
 <!--magdy-->
                     <li t-if="assets_assignation">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Asset Assignation</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Asset Assignation</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/request/asset">Request Asset</a></li>
                             <li><a href="/my/asset_assignation">Asset Assigned To Me</a></li>
@@ -262,7 +270,7 @@
                     </li>
 
                     <li t-if="custody">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Custody</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/custody/request">Custody Request</a></li>
                             <li><a href="/my/custody/in_progress">Custody In Progress</a></li>
@@ -271,7 +279,7 @@
                     </li>
 
                     <li t-if="mandate1">
-                        <a href="#"><i class="fa fa-fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Passenger And Mandate</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/request/passenger_mandate">Passenger And Mandate</a></li>
                             <li><a href="/request/passenger_mandate_private">Create Private Course</a></li>
@@ -341,11 +349,14 @@
     <template id="employee_document">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+
+			<div class="ibox carddash">
+
+                <div class="row iess-title">
 					<h3><span>My Documents</span></h3>
 				</div>
-				<div class="ibox-content iess-p20">
+				<div class="ibox-content iess-p20 ">
+                    <div>
                     <div class="table-responsive">
                         <table class="table header-border table-hover table-custom spacing5 ess-table">
                             <thead>
@@ -362,6 +373,7 @@
                             </tbody>
                         </table>
                     </div>
+                        </div>
 				</div>
 			</div>
 		</div>
@@ -371,8 +383,8 @@
 
     <template id="employee_organization">
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Organization Chart</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -421,8 +433,8 @@
     <template id="employee_important_date">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Important Dates</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -450,8 +462,8 @@
     <template id="employee_leave_allocation">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Balance</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -479,8 +491,8 @@
 
     <template id="employee_appraisal">
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Appraisal</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -507,8 +519,8 @@
 
     <template id="employee_announcement">
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>All Announcement</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -519,6 +531,7 @@
                                     <th>Title</th>
                                     <th>Date Start</th>
                                     <th>Date End</th>
+                                     <th><a class="fa fa-tasks"/></th>
                                 </tr>
                             </thead>
                             <tbody t-foreach="announcement_list" t-as="ann">
@@ -526,6 +539,8 @@
                                     <td><div t-esc="ann['title']"/></td>
                                     <td><span t-esc="ann['date_start']"/></td>
                                     <td><span t-esc="ann['date_end']"/></td>
+                <td t-if="ann['attachment_id']" ><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -535,10 +550,78 @@
 		</div>
     </template>
 
+   <template id="employee_announcement_public">
+        <div class="col-lg-4">
+			<div class="ibox carddash">
+				<div class="row iess-title">
+					<h3><span>Public Announcement</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date Start</th>
+                                    <th>Date End</th>
+                                     <th> <i class="fa fa-tasks"/></th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="announcement_list_public" t-as="ann">
+                                <tr>
+                                    <td><div t-esc="ann['title']"/></td>
+                                    <td><span t-esc="ann['date_start']"/></td>
+                                    <td><span t-esc="ann['date_end']"/></td>
+                                <td  t-if="ann['attachment_id']"><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </template>
+
+
+    <template id="employee_notification">
+        <div class="col-lg-4">
+			<div class="ibox carddash">
+				<div class="row iess-title">
+					<h3><span>All Notification</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+<!--                                    <th>Date Start</th>-->
+<!--                                    <th>Date End</th>-->
+<!--                                     <th><a class="fa fa-tasks"/></th>-->
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="notification_list" t-as="ann">
+                                <tr>
+                                    <td><div t-esc="ann['title']"/></td>
+<!--                                    <td><span t-esc="ann['date_start']"/></td>-->
+<!--                                    <td><span t-esc="ann['date_end']"/></td>-->
+<!--                <td t-if="ann['attachment_id']" ><a t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/></td>-->
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </template>
+
+
     <template id="employee_attendance">
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Time Office</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -570,8 +653,8 @@
     <template id="employee_leaves">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>Time Off</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -631,8 +714,8 @@
     <template id="employee_asset_assignation">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+       <div class="row iess-title">
 					<h3><span>My Newest Assignations</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -648,10 +731,10 @@
                             </thead>
                             <tbody t-foreach="asset_assignation_obj" t-as="ass">
                                 <tr>
-                                    <td><div t-esc="ass['type']"/></td>
+                                    <td><div t-esc="ass['type_desc']"/></td>
                                     <td><div t-esc="ass['asset_id']"/></td>
                                     <td><div t-esc="ass['description']"/></td>
-                                    <td><div t-esc="ass['state']"/></td>
+                                    <td><div t-esc="ass['state_desc']"/></td>
 <!--                                    <td>-->
 <!--                                        <span class="badge badge-primary">-->
 <!--                                        <span t-esc="lea['value']"/> -->
@@ -670,8 +753,8 @@
     <template id="employee_custody">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Newest Custody</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -690,7 +773,7 @@
                                     <td><div t-esc="custody['date']"/></td>
                                     <td><div t-esc="custody['amount']"/></td>
                                     <td><div t-esc="custody['remaining_amount']"/></td>
-                                    <td><div t-esc="custody['state']"/></td>
+                                    <td><div t-esc="custody['state_desc']"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -704,8 +787,8 @@
     <template id="employee_mandate">
 
         <div class="col-lg-4">
-			<div class="ibox">
-				<div class="iess-title">
+			<div class="ibox carddash">
+				<div class="row iess-title">
 					<h3><span>My Newest Mandate</span></h3>
 				</div>
 				<div class="ibox-content iess-p20">
@@ -722,11 +805,11 @@
                             </thead>
                             <tbody t-foreach="mandate_obj" t-as="mandate">
                                 <tr>
-                                    <td><div t-esc="mandate['type']"/></td>
+                                    <td><div t-esc="mandate['type_desc']"/></td>
                                     <td><div t-esc="mandate['course_id']"/></td>
-                                    <td><div t-esc="mandate['course_type']"/></td>
+                                    <td><div t-esc="mandate['course_type_desc']"/></td>
                                     <td><div t-esc="mandate['number_of_days']"/></td>
-                                    <td><div t-esc="mandate['state']"/></td>
+                                    <td><div t-esc="mandate['state_desc']"/></td>
                                 </tr>
                             </tbody>
                         </table>

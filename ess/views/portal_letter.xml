@@ -13,7 +13,7 @@
                     <div class="row col-10 col-md col-lg-10"> 
                         <div class="col-lg-12">
                             <div class="ibox ">
-                                <div class="iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
                                     <h3><span>Request a Document</span></h3>
                                 </div>
                                 <div class="ibox-content">
@@ -34,12 +34,12 @@
                                                             <div class="row form-group col-lg-12">
                                                                 <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="name">Name</label>
-                                                                    <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"/>
+                                                                    <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" required=""/>
                                                                 </div>
 
                                                                 <div t-attf-class="form-group #{error.get('letter_type_id') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="letter_type_id">Letter Type</label>
-                                                                    <select name="letter_type_id" t-attf-class="form-control #{error.get('letter_type_id') and 'is-invalid' or ''}">
+                                                                    <select name="letter_type_id" t-attf-class="form-control #{error.get('letter_type_id') and 'is-invalid' or ''}" required="">
                                                                         <t t-foreach="letter_letter_obj or []" t-as="type">
                                                                             <option t-att-value="type.id" >
                                                                                 <t t-esc="type.name" />

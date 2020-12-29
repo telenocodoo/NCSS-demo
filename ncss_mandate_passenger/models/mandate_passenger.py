@@ -28,7 +28,7 @@ class CoursePlace(models.Model):
     _name = 'course.place'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char()
+    name = fields.Char(translate=True)
     need_ticket = fields.Boolean(default=True)
 
 
@@ -107,7 +107,7 @@ class MandatePassenger(models.Model):
     type = fields.Selection([('course', 'Course'),
                               ('mandate', 'Mandate'),
                               ('work_shop', 'work shop'),
-                              ])
+                              ] ,default='course',tracking=True,)
     course_id = fields.Many2one('training.course', 'Course',required=True)
     course_type = fields.Selection([('internal', 'Internal'), ('external', 'External')])
     description = fields.Text()
@@ -146,6 +146,36 @@ class MandatePassenger(models.Model):
                                ('refuse', 'Refuse'),
                                ], default='draft', tracking=True, group_expand='_expand_states')
 
+    def _getdesc(self):
+        value = dict(self.env['mandate.passenger'].fields_get(allfields=['type'])['type']['selection'])
+        for rec in self:
+
+            if rec.type:
+                rec.type_desc = value[rec.type]
+            else:
+                rec.type_desc = ''
+
+    def _getcoursetypedesc(self):
+        value = dict(self.env['mandate.passenger'].fields_get(allfields=['course_type'])['course_type']['selection'])
+        for rec in self:
+
+            if rec.course_type:
+                rec.course_type_desc = value[rec.course_type]
+            else:
+                rec.course_type_desc = ''
+
+    def _get_state_desc(self):
+        value = dict(self.env['mandate.passenger'].fields_get(allfields=['state'])['state']['selection'])
+
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
+
+    state_desc = fields.Char(compute="_get_state_desc")
+    type_desc = fields.Char(compute="_getdesc")
+    course_type_desc= fields.Char(compute="_getcoursetypedesc")
 
     color = fields.Integer(compute="compute_color")
 
@@ -242,6 +272,15 @@ class MandatePassenger(models.Model):
                     summary=_("Request Approve")
                     )
                 print("active" ,actv_id)
+                now = datetime.now()
+                start_date = now.date()
+                end_date= start_date + timedelta(days=1)
+                # notify_id =self.env['hr.notification'].sudo().create({'notification_MSG':'Approve Request',
+                #                                        'date_start':start_date ,'date_end':end_date,'state':'notify','employee_id':self.employee_id})
+                print("notify_id",notify_id)
+
+
+
 
 
 
