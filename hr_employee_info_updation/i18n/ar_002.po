@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-30 15:05+0000\n"
-"PO-Revision-Date: 2020-12-30 15:05+0000\n"
+"POT-Creation-Date: 2020-12-29 12:46+0000\n"
+"PO-Revision-Date: 2020-12-29 12:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -100,19 +100,9 @@ msgid "Attachment Count"
 msgstr "عدد المرفقات"
 
 #. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__bachelor
-msgid "Bachelor"
-msgstr "البكالوريوس"
-
-#. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__blood_id
 msgid "Blood Type"
 msgstr "فصيلة الدم"
-
-#. module: hr_employee_info_updation
-#: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__certificate
-msgid "Certificate Level"
-msgstr "مستوى الشهادة"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_payslip__consolidation_set_id
@@ -262,22 +252,22 @@ msgstr "الاسم الاول"
 #. module: hr_employee_info_updation
 #: model_terms:ir.ui.view,arch_db:hr_employee_info_updation.view_employee_form_inherit
 msgid "First Related Person"
-msgstr "أول شخص مقرب"
+msgstr "أول شخص ذو قرابه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__first_related_person_name
 msgid "First Related Person Name"
-msgstr "اسم اول شخص مقرب"
+msgstr "الاسم"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__first_related_person_phone
 msgid "First Related Person Phone"
-msgstr "جوال اول شخص مقرب"
+msgstr "الهاتف"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__first_related_person_relation
 msgid "First Related Person Relation"
-msgstr "صله القرابه مع الشخص الاول"
+msgstr "صله القرابه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_job_history__message_follower_ids
@@ -306,11 +296,6 @@ msgstr "تاريخ التعيين الحكومي"
 #: model_terms:ir.ui.view,arch_db:hr_employee_info_updation.view_hr_payslip_form_inherit
 msgid "Government Information"
 msgstr "المعلومات الحكومية"
-
-#. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__high_school
-msgid "High School"
-msgstr "ثانويه عامه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_history_line__hr_employee_id
@@ -349,11 +334,6 @@ msgid "If checked, some messages have a delivery error."
 msgstr "إذا كان محددًا، فقد حدث خطأ في تسليم بعض الرسائل."
 
 #. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__intermediate_education
-msgid "Intermediate education"
-msgstr "متوسط"
-
-#. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_appraisal__iqama_no
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__iqama_no
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_leave__iqama_no
@@ -370,7 +350,7 @@ msgstr "متابع"
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__job_cat_chain
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_job_history__job_cat_chain
 msgid "Job Cat Chain"
-msgstr "تسلسل الفئه الوظيفي"
+msgstr ""
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__job_class_code
@@ -473,11 +453,6 @@ msgstr "كود الموقع"
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_job_history__message_main_attachment_id
 msgid "Main Attachment"
 msgstr "المرفق الرئيسي"
-
-#. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__master
-msgid "Master"
-msgstr "ماجيستير"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_job_history__message_has_error
@@ -647,22 +622,22 @@ msgstr "الاسم الثاني"
 #. module: hr_employee_info_updation
 #: model_terms:ir.ui.view,arch_db:hr_employee_info_updation.view_employee_form_inherit
 msgid "Second Related Person"
-msgstr "الشخص الثاني المقرب"
+msgstr "ثاني شخص ذو قرابه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__second_related_person_name
 msgid "Second Related Person Name"
-msgstr "اسم الشخص الثاني"
+msgstr "الاسم"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__second_related_person_phone
 msgid "Second Related Person Phone"
-msgstr "هاتف الشخص الثاني "
+msgstr "الهاتف "
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_employee__second_related_person_relation
 msgid "Second Related Person Relation"
-msgstr "صله القرابه مع الشخص الثاني"
+msgstr "صله القرابه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields,field_description:hr_employee_info_updation.field_hr_appraisal__start_date
@@ -796,16 +771,6 @@ msgstr "سيئ"
 #: model:ir.model,name:hr_employee_info_updation.model_blood_blood
 msgid "blood.blood"
 msgstr ""
-
-#. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__diploma
-msgid "diploma"
-msgstr "دبلوم"
-
-#. module: hr_employee_info_updation
-#: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_employee__certificate__doctorate
-msgid "doctorate"
-msgstr "دكتوراه"
 
 #. module: hr_employee_info_updation
 #: model:ir.model.fields.selection,name:hr_employee_info_updation.selection__hr_appraisal__rating_code__excellent
