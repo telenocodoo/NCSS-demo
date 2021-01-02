@@ -249,16 +249,14 @@ class MandatePassenger(models.Model):
         res = super(MandatePassenger, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
+        print(">>>>>>>>>>>>>>>>>>", user_ids, user_ids[0])
         return res
-
 
     def make_activity(self,user_ids):
         print("j...",user_ids)
         now = datetime.now()
-        date_deadline =  now.date()
-
-        if self :
-
+        date_deadline = now.date()
+        if self:
             if user_ids:
                 actv_id=self.sudo().activity_schedule(
                     'mail.mail_activity_data_todo', date_deadline,
@@ -271,18 +269,16 @@ class MandatePassenger(models.Model):
 
                     summary=_("Request Approve")
                     )
-                print("active" ,actv_id)
+                print("active", actv_id)
                 now = datetime.now()
                 start_date = now.date()
-                end_date= start_date + timedelta(days=1)
-                # notify_id =self.env['hr.notification'].sudo().create({'notification_MSG':'Approve Request',
-                #                                        'date_start':start_date ,'date_end':end_date,'state':'notify','employee_id':self.employee_id})
-                print("notify_id",notify_id)
-
-
-
-
-
+                end_date = start_date + timedelta(days=1)
+                notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': 'Approve Request',
+                                                                       'date_start': start_date,
+                                                                       'date_end': end_date,
+                                                                       'state': 'notify',
+                                                                       'employee_id': self.employee_id.id})
+                print("notify_id", notify_id)
 
     # @api.onchange('state')
     # def create_task_activity(self):

@@ -841,7 +841,7 @@
                                                                                             <td><div t-esc="custody['amount']"/></td>
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                             <td>
                                                                                                 <a t-attf-href="/add/custody_line?id={{custody['id']}}&amp;custody_remain={{custody['remaining_amount']}}">Add Custody Line</a>
 <!--                                                                                                {'params':{'id':{{custody['id']}}}}-->
@@ -987,7 +987,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
                                                                                             <td><div t-esc="custody['reason']"/></td>
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1015,13 +1015,12 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-
 
                                                                         <div class="tab-pane" id="manager_approve">
 
@@ -1044,13 +1043,12 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-
 
                                                                         <div class="tab-pane" id="d_manager">
 
@@ -1073,7 +1071,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1101,7 +1099,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1129,7 +1127,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1157,13 +1155,12 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-
 
                                                                         <div class="tab-pane" id="in_progress">
 
@@ -1186,7 +1183,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1214,12 +1211,13 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="tab-pane" id="done">
 
                                                                             <div class="table-responsive">
@@ -1241,12 +1239,13 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
 <!--                                                                                            <td><div t-esc="custody['reason']"/></td>-->
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="tab-pane" id="refused">
 
                                                                             <div class="table-responsive">
@@ -1268,7 +1267,7 @@
                                                                                             <td><div t-esc="custody['remaining_amount']"/></td>
                                                                                             <td><div t-esc="custody['description']"/></td>
                                                                                             <td><div t-esc="custody['reason']"/></td>
-                                                                                            <td><div t-esc="custody['state']"/></td>
+                                                                                            <td><div t-esc="custody['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -1276,16 +1275,11 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
-
-
                                                 </div>
                                             </form>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

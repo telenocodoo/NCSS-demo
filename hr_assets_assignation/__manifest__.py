@@ -8,13 +8,12 @@
     'description': """
     asset_account_request
     """,
-    'depends': ['base', 'mail', 'hr', 'account_asset'],
+    'depends': ['base', 'mail', 'hr', 'fleet', 'account_asset'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizards/wizard_reason.xml',
         'views/asset_account_request.xml',
-
         'report/employee_assets_report.xml',
         'report/department_clearance_report.xml',
     ]
