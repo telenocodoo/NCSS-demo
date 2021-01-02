@@ -25,6 +25,15 @@ class ReligionReligion(models.Model):
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
+    certificate = fields.Selection([
+        ('bachelor', 'Bachelor'),
+        ('master', 'Master'),
+        ('doctorate', 'doctorate'),
+        ('diploma', 'diploma'),
+        ('High School', 'High School'),
+        ('Intermediate education', 'Intermediate education'),
+    	], 'Certificate Level', default='bachelor', groups="hr.group_hr_user", tracking=True)
+
     job_history_ids = fields.One2many('hr.history.line', 'hr_employee_id')
     sub_agency_id = fields.Char('Sub Agency Id')
     employee_number = fields.Char('Employee Id')
@@ -85,10 +94,10 @@ class HrEmployee(models.Model):
     second_related_person_relation = fields.Char()
     second_related_person_phone = fields.Char()
 
-    @api.constrains('national_id')
-    def _check_national_id(self):
-        if len(self.national_id) > 10:
-            raise UserError(_('Number Of Characters In National ID Must Not Exceed 10'))
+    #@api.constrains('national_id')
+    #def _check_national_id(self):
+        #if len(self.national_id) > 10:
+           # raise UserError(_('Number Of Characters In National ID Must Not Exceed 10'))
 
 
 class HrHistoryLine(models.Model):

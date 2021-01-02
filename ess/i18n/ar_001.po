@@ -689,12 +689,12 @@ msgstr "مرفق"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
 msgid "Attachment File"
-msgstr ""
+msgstr "الملف المرفق"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_courses_and_mandate
 msgid "Attachment Ticket"
-msgstr ""
+msgstr "التذكره المرفقه"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_myorofile

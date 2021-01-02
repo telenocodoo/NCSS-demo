@@ -21,8 +21,8 @@
 
 
                             <div class="row col-10 col-md col-lg-10">
-<!--                                 <t t-if="announcement_list" t-call="ess.employee_notification"/>-->
-
+                                 <t t-call="ess.employee_notification"/>
+<!-- t-if="announcement_list" -->
                                  <t t-if="announcement_list" t-call="ess.employee_announcement"/>
                                  <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
                                 <t t-call="ess.employee_organization"/>

@@ -147,13 +147,11 @@ class CustodyRequest(models.Model):
             if record.amount < total_amount:
                 raise UserError(_("Remaining Amount Must Be Less Than Or Equal To Amount"))
 
-    def make_activity(self,user_ids):
-        print("j...",user_ids)
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
         now = datetime.now()
-        date_deadline =  now.date()
-
-        if self :
-
+        date_deadline = now.date()
+        if self:
             if user_ids:
                 actv_id=self.sudo().activity_schedule(
                     'mail.mail_activity_data_todo', date_deadline,
@@ -163,11 +161,18 @@ class CustodyRequest(models.Model):
                              self.employee_id.id, self.employee_id.display_name),
                     user_id=user_ids,
                     res_id=self.id,
-
                     summary=_("Request Approve")
                     )
                 print("active" ,actv_id)
-
+                now = datetime.now()
+                start_date = now.date()
+                end_date = start_date + timedelta(days=1)
+                notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': 'Approve Request',
+                                                                       'date_start': start_date,
+                                                                       'date_end': end_date,
+                                                                       'state': 'notify',
+                                                                       'employee_id': self.employee_id.id})
+                print("notify_id", notify_id)
 
     @api.model
     def create(self, values):
@@ -175,8 +180,8 @@ class CustodyRequest(models.Model):
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         if user_ids:
             res.make_activity(user_ids[0])
+        print(">>>>>>>>>>>>>>", user_ids)
         return res
-
 
     def action_refuse(self):
         for record in self:
