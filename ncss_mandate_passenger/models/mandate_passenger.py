@@ -249,10 +249,23 @@ class MandatePassenger(models.Model):
         res = super(MandatePassenger, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
+        message = 'تم انشاء طلب انتداب واركاب لك'
+        res.make_notification(message)
         print(">>>>>>>>>>>>>>>>>>", user_ids, user_ids[0])
         return res
 
-    def make_activity(self,user_ids):
+    def make_notification(self, message):
+        now = datetime.now()
+        start_date = now.date()
+        end_date = start_date + timedelta(days=1)
+        notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                                                               'date_start': start_date,
+                                                               'date_end': end_date,
+                                                               'state': 'notify',
+                                                               'employee_id': self.employee_id.id})
+        print("notify_id", notify_id)
+
+    def make_activity(self, user_ids):
         print("j...",user_ids)
         now = datetime.now()
         date_deadline = now.date()
@@ -270,15 +283,15 @@ class MandatePassenger(models.Model):
                     summary=_("Request Approve")
                     )
                 print("active", actv_id)
-                now = datetime.now()
-                start_date = now.date()
-                end_date = start_date + timedelta(days=1)
-                notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': 'Approve Request',
-                                                                       'date_start': start_date,
-                                                                       'date_end': end_date,
-                                                                       'state': 'notify',
-                                                                       'employee_id': self.employee_id.id})
-                print("notify_id", notify_id)
+                # now = datetime.now()
+                # start_date = now.date()
+                # end_date = start_date + timedelta(days=1)
+                # notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                #                                                        'date_start': start_date,
+                #                                                        'date_end': end_date,
+                #                                                        'state': 'notify',
+                #                                                        'employee_id': self.employee_id.id})
+                # print("notify_id", notify_id)
 
     # @api.onchange('state')
     # def create_task_activity(self):
@@ -432,6 +445,8 @@ class MandatePassenger(models.Model):
         print(user_ids)
         if user_ids:
             self.make_activity(user_ids[0])
+        message = 'تمت موافقه المدير المباشر علي طلب الانتداب والاركاب الخاص بك'
+        self.make_notification(message)
         self.state = 'direct_manager_approve'
 
     def get_users(self,groupidxml):
@@ -447,8 +462,6 @@ class MandatePassenger(models.Model):
         #     for i in groupObj.users:
         #         userObj = self.env['res.users'].search([('id', '=', i.id)])
 
-
-
     def action_department_manager_approve(self):
         for record in self:
             budget_obj = self.env['budget.allocated.training'].search(
@@ -460,8 +473,9 @@ class MandatePassenger(models.Model):
             print (user_ids)
             if user_ids:
                 for rec in user_ids:
-
-                    rec.make_activity(rec)
+                    self.make_activity(rec)
+            message = 'تمت موافقه مدير القسم علي طلب الانتداب والاركاب الخاص بك'
+            self.make_notification(message)
             record.state = 'department_manager_approve'
 
     def action_hr_manager_approve(self):
@@ -470,10 +484,13 @@ class MandatePassenger(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
+        message = 'تمت موافقه مدير الموارد البشريه علي طلب الانتداب والاركاب الخاص بك'
+        self.make_notification(message)
         self.state = 'hr_approve'
 
     def action_accounting_approve(self):
-
+        message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك'
+        self.make_notification(message)
         self.state = 'accounting_approve'
 
     def refuse_action(self):
@@ -481,7 +498,11 @@ class MandatePassenger(models.Model):
             if not record.reason:
                 raise UserError(_("Please Add the reason of Refuse"))
             else:
+                message = 'تمت رفض طلب الانتداب والاركاب الخاص بك'
+                self.make_notification(message)
                 self.state = 'refuse'
 
     def set_to_draft(self):
+        message = 'تمت اعاده طلب الانتداب والاركاب الخاص بك كجديد'
+        self.make_notification(message)
         self.state = 'draft'

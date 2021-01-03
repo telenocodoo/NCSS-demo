@@ -164,15 +164,26 @@ class CustodyRequest(models.Model):
                     summary=_("Request Approve")
                     )
                 print("active" ,actv_id)
-                now = datetime.now()
-                start_date = now.date()
-                end_date = start_date + timedelta(days=1)
-                notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': 'Approve Request',
-                                                                       'date_start': start_date,
-                                                                       'date_end': end_date,
-                                                                       'state': 'notify',
-                                                                       'employee_id': self.employee_id.id})
-                print("notify_id", notify_id)
+                # now = datetime.now()
+                # start_date = now.date()
+                # end_date = start_date + timedelta(days=1)
+                # notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                #                                                        'date_start': start_date,
+                #                                                        'date_end': end_date,
+                #                                                        'state': 'notify',
+                #                                                        'employee_id': self.employee_id.id})
+                # print("notify_id", notify_id)
+
+    def make_notification(self, message):
+        now = datetime.now()
+        start_date = now.date()
+        end_date = start_date + timedelta(days=1)
+        notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                                                               'date_start': start_date,
+                                                               'date_end': end_date,
+                                                               'state': 'notify',
+                                                               'employee_id': self.employee_id.id})
+        print("notify_id", notify_id)
 
     @api.model
     def create(self, values):
@@ -180,6 +191,8 @@ class CustodyRequest(models.Model):
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         if user_ids:
             res.make_activity(user_ids[0])
+        message = 'تم انشاء طلب العهده الخاص بك'
+        res.make_notification(message)
         print(">>>>>>>>>>>>>>", user_ids)
         return res
 
@@ -195,6 +208,8 @@ class CustodyRequest(models.Model):
         print(user_ids)
         if user_ids:
             self.make_activity(user_ids[0])
+        message = 'تمت موافقه المدير المباشر علي طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'direct_manager_approve'
 
     def get_users(self, groupidxml):
@@ -213,7 +228,8 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-
+        message = 'تمت موافقه مدير القسم علي طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'department_manager_approve'
 
     def center_manager_approve(self):
@@ -222,9 +238,9 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-
+        message = 'تمت موافقه مدير المركز علي طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'center_manager_approve'
-
 
     def accounting_approve(self):
         user_ids = list(self.get_users("ncss_custody_request.custody_request_in_progress_button"))
@@ -232,6 +248,8 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
+        message = 'تمت موافقه مدير الحسابات علي طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'accounting_approve'
 
     def create_account_move(self, journal, label, debit_account_id, credit_account_id, amount, address_home_id):
@@ -276,6 +294,8 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
+        message = 'تمت صرف العهده المطلوبه'
+        self.make_notification(message)
         self.state = 'paid'
 
     def in_progress_action(self):
@@ -293,9 +313,13 @@ class CustodyRequest(models.Model):
         # if user_ids:
         #     for rec in user_ids:
         #         self.make_activity(rec)
+        message = 'جارى اهلاك العهده الخاصه بك'
+        self.make_notification(message)
         self.state = 'in_progress'
 
     def make_liquidated_action(self):
+        message = 'تم طلب تصفيه العهده الخاصه بك'
+        self.make_notification(message)
         self.state = 'liquidated'
 
     def liquidated_action(self):
@@ -307,9 +331,13 @@ class CustodyRequest(models.Model):
         address_home_id = self.employee_id.address_home_id.id
         account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.liquidated_account_move_id = account_move_obj.id
+        message = 'تمت تسويه العهده الخاصه بك'
+        self.make_notification(message)
         self.state = 'done'
 
     def set_to_draft(self):
+        message = 'تمت اعاده العهده الخاصه بك كجديده'
+        self.make_notification(message)
         self.state = 'draft'
 
 
