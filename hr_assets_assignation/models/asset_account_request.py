@@ -209,11 +209,24 @@ class AssetAccountRequest(models.Model):
                 )
                 print("active", actv_id)
 
+    def make_notification(self, message):
+        now = datetime.now()
+        start_date = now.date()
+        end_date = start_date + timedelta(days=1)
+        notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                                                               'date_start': start_date,
+                                                               'date_end': end_date,
+                                                               'state': 'notify',
+                                                               'employee_id': self.employee_id.id})
+        print("notify_id", notify_id)
+
     @api.model
     def create(self, values):
         res = super(AssetAccountRequest, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
+        message = 'تم انشاء طلب العهده الخاص بك'
+        res.make_notification(message)
         return res
 
     @api.onchange('asset_id')
@@ -226,8 +239,6 @@ class AssetAccountRequest(models.Model):
             self.is_car = False
             self.car_employee_have=False
             self.log_id_employee=False
-
-
     #        return self.asset_id.car_ids.id
 
     @api.model
@@ -263,7 +274,6 @@ class AssetAccountRequest(models.Model):
             else:
                 record.color = 6
 
-
     def get_users(self,groupidxml):
         myuserlist=[]
         groupid=self.env.ref(groupidxml).id
@@ -271,9 +281,7 @@ class AssetAccountRequest(models.Model):
         if groupObj:
               for rec in groupObj.users:
                   myuserlist.append(rec.id)
-
         return myuserlist
-
 
     def action_submit(self):
         user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_approve_button"))
@@ -281,28 +289,29 @@ class AssetAccountRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-
-
+        message = 'تم ارسال طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'submit'
 
     def action_approve(self):
-
+        print("::::::::::::::::::", self.employee_id.name)
         user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_assign_to_employee_button"))
         print(user_ids)
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
+        message = 'تمت الموافقه علي طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'approve'
 
     def action_refuse(self):
-
+        message = 'تم رفض طلب العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'refuse'
-
 
     def action_assign_to_employee(self):
         now = datetime.now()
-
-        values={}
+        values = {}
         if self.asset_id.car_ids.id:
             values['driver_id']=self.employee_id.id
             values['date_start']=now
@@ -311,6 +320,8 @@ class AssetAccountRequest(models.Model):
             self.asset_id.car_ids.is_take_by_employee=True
             log_id=self.env['fleet.vehicle.employee.log'].sudo().create(values)
             self.log_id_employee = log_id
+        message = 'تم اسناد العهده اليك'
+        self.make_notification(message)
         self.state = 'assigned'
 
     def action_clearance(self):
@@ -333,9 +344,13 @@ class AssetAccountRequest(models.Model):
                 rec.write(values)
 
         self.date_of_disclaimer = fields.date.today()
+        message = 'تم اخلاء طرف العهده الخاص بك'
+        self.make_notification(message)
         self.state = 'clearance'
 
     def set_to_draft(self):
+        message = 'تم اعاده طلب العهده الخاص بك كجديده'
+        self.make_notification(message)
         self.state = 'draft'
 
 
@@ -391,17 +406,86 @@ class CustodyRequestLine(models.Model):
             else:
                 record.color = 8
 
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+
+        if self:
+
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_(
+                        '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
+                             self._name, self.id, self.employee_id._name,
+                             self.employee_id.id, self.employee_id.display_name),
+                    user_id=user_ids,
+                    res_id=self.id,
+
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
+    def make_notification(self, message):
+        now = datetime.now()
+        start_date = now.date()
+        end_date = start_date + timedelta(days=1)
+        notify_id = self.env['hr.notification'].sudo().create({'notification_MSG': message,
+                                                               'date_start': start_date,
+                                                               'date_end': end_date,
+                                                               'state': 'notify',
+                                                               'employee_id': self.employee_id.id})
+        print("notify_id", notify_id)
+
+    def get_users(self, groupidxml):
+        myuserlist = []
+        groupid = self.env.ref(groupidxml).id
+        groupObj = self.env['res.groups'].search([('id', '=', groupid)])
+        if groupObj:
+            for rec in groupObj.users:
+                myuserlist.append(rec.id)
+
+        return myuserlist
+
+    @api.model
+    def create(self, values):
+        res = super(CustodyRequestLine, self).create(values)
+        user_ids = list(self.get_users("hr_assets_assignation.employee_asset_approve_button"))
+        print(user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+        message = 'تم انشاء طلب لاخلاء طرفك من الاقسام'
+        res.make_notification(message)
+        print(">>>>>>>>>>>>>>", user_ids)
+
+        return res
+
     def action_first_approve(self):
         for record in self:
             items_need_disclaimer = record.asset_account_ids.filtered(lambda l: l.is_disclaimer == False)
             if len(items_need_disclaimer) >= len(record.asset_account_ids):
                 raise UserError(_("You Must Select At Least One Asset To Approve"))
+
+            user_ids = list(self.get_users("hr_assets_assignation.employee_asset_clearance_from_employee_button"))
+            print(user_ids)
+            if user_ids:
+                for rec in user_ids:
+                    self.make_activity(rec)
+            message = 'تم ارسال طلب لاخلاء طرفك من الاقسام'
+            self.make_notification(message)
+
             record.state = 'first_approve'
 
     def action_clearance(self):
         for record in self.asset_account_ids:
             if record.is_disclaimer:
                 record.custody_request_id.action_clearance()
+
+        message = 'تم اخلاء طرفك من الاقسام'
+        self.make_notification(message)
+
         self.state = 'clearance'
 
     def action_done(self):
