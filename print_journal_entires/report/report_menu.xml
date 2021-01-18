@@ -13,7 +13,7 @@
 					</div>
 				</div>
 
-				<div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+				<div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                         <t t-call="web.address_layout"/>
                         <div class="page" style="font-size:15px;">
                             <br t-if="report_type == 'pdf'" />
@@ -32,13 +32,13 @@
 							<div class="row">
 									<table style="border-collapse: separate;border:0px;" width="100%">
 									   <tr style="text-align:center;">
-
-										   <td style="width:80%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
-												.
-											</td>
-										   <td style="width:20%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
+											<td style="width:20%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
 												اسم صاحب الاستحقاق
 											</td>
+										    <td style="width:80%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
+												.
+											</td>
+
 										</tr>
 
 									</table>
@@ -48,12 +48,11 @@
 							<div class="row">
 									<table style="border-collapse: separate;border:0px;" width="100%">
 									   <tr style="text-align:center;">
-
-										   <td style="width:90%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
-												.
-											</td>
-										   <td style="width:10%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
+											<td style="width:10%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
 												البيان
+											</td>
+										    <td style="width:90%;text-align:center;border: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;">
+												.
 											</td>
 										</tr>
 
@@ -125,7 +124,7 @@
 				<div class="footer o_standard_footer">
 				<div class="container-fluid" >
 				  <div style="width:100%;" class="row">
-					<div class="col-auto" style="width:22%;text-align:center;">
+					<div class="col-auto" style="width:27%;text-align:center;">
 						<span style="text-align: center;border: 1px solid black;background-color:#b6b3b7;">المحاسب</span><br/>
 						<p>أ.احمدبن سعدابوعباه</p>
 						<p>
@@ -158,7 +157,7 @@
 						</p>
 					</div>
 
-					<div class="col-auto" style="width:27%;text-align:center;">
+					<div class="col-auto" style="width:22%;text-align:center;">
 						<span style="text-align: center;border: 1px solid black;background-color:#b6b3b7;">المدير العام</span><br/>
 						<p>أ.د.سامي بن عبدالعزيزالدامغ</p>
 						<p>
