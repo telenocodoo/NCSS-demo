@@ -13,7 +13,7 @@
 					</div>
 				</div>
 
-				<div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+				<div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
                         <t t-call="web.address_layout"/>
                         <div class="page" style="font-size:15px;">
                             <br t-if="report_type == 'pdf'" />
