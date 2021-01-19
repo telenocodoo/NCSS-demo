@@ -31,19 +31,14 @@ from odoo.exceptions import UserError
 #                 print("active", actv_id)
 
 
-
-
-class carfleetvicle(models.Model):
+class CarFleetVicle(models.Model):
     _inherit = 'fleet.vehicle'
     history_count_emp = fields.Integer(compute="_compute_count_all_emp", string="Employees History Count")
     is_take_by_employee = fields.Boolean(  string="Is Taken", default=False)
 
     def _compute_count_all_emp(self):
-
         for record in self:
            record.history_count_emp = self.env['fleet.vehicle.employee.log'].search_count([('vehicle_id', '=', record.id)])
-
-
 
     def open_fleet_employee_logs(self):
         self.ensure_one()
@@ -55,7 +50,9 @@ class carfleetvicle(models.Model):
             'domain': [('vehicle_id', '=', self.id)],
             'context': {'default_driver_id': self.driver_id.id, 'default_vehicle_id': self.id}
         }
-class Cardriverdetails(models.Model):
+
+
+class CarDriverDetails(models.Model):
 
     _name = "fleet.vehicle.employee.log"
     _description = "Drivers history on a vehicle"
@@ -87,6 +84,7 @@ class AssetAccountRequest(models.Model):
         else:
             return False
 
+    name = fields.Char()
     asset_request_description = fields.Char()
     asset_request_Reason = fields.Char()
     asset_request_startDate = fields.Date(default=fields.date.today())
@@ -98,8 +96,6 @@ class AssetAccountRequest(models.Model):
     type = fields.Selection([('asset', 'Asset'),
                              ('non_asset', 'Non Asset'),
                              ], default='asset', tracking=True)
-
-
     asset_id = fields.Many2one('account.asset', string="Asset Name", domain=get_account_asset_assignation)
     description = fields.Char(translate=True)
     type_of_disclaimer = fields.Selection([('vacation', 'Vacation'),
@@ -180,13 +176,8 @@ class AssetAccountRequest(models.Model):
     state_desc = fields.Char(compute="_get_state_desc")
     # state_seq = fields.Char(compute="_get_state_seq")
     type_of_disclaimer_desc = fields.Char(compute="_get_type_of_disclaimer_desc")
-    # def _get_car(self):
-    #     if self.asset_id.car_ids:
-    #        return self.asset_id.car_ids.id
-
-
     car_employee_have= fields.Many2one('fleet.vehicle',string=_("Employee Car"),readonly=True )
-    is_car=fields.Boolean("Car",default=False)
+    is_car = fields.Boolean("Car",default=False)
 
     def make_activity(self, user_ids):
         print("j...", user_ids)
@@ -222,6 +213,7 @@ class AssetAccountRequest(models.Model):
 
     @api.model
     def create(self, values):
+        values['name'] = self.env['ir.sequence'].next_by_code('asset.request.sequence')
         res = super(AssetAccountRequest, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
@@ -359,6 +351,7 @@ class CustodyRequestLine(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'employee_id'
 
+    name = fields.Char()
     asset_account_ids = fields.One2many('employee.asset.line', 'employee_asset_id')
     employee_id = fields.Many2one('hr.employee', 'Employee')
     type_of_disclaimer = fields.Selection([('vacation', 'Vacation'),
@@ -450,6 +443,7 @@ class CustodyRequestLine(models.Model):
 
     @api.model
     def create(self, values):
+        values['name'] = self.env['ir.sequence'].next_by_code('employee.assets.sequence')
         res = super(CustodyRequestLine, self).create(values)
         user_ids = list(self.get_users("hr_assets_assignation.employee_asset_approve_button"))
         print(user_ids)
@@ -631,6 +625,7 @@ class DepartmentClearanceLine(models.Model):
                     record.is_department_manager = False
             else:
                 record.is_department_manager = False
+
 
 class AssetAccount(models.Model):
 

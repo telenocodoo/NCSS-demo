@@ -13,6 +13,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizards/wizard_reason.xml',
+        'views/asset_request_sequence.xml',
         'views/asset_account_request.xml',
         'report/employee_assets_report.xml',
         'report/department_clearance_report.xml',

@@ -12,6 +12,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'views/mandate_passenger_sequence.xml',
         'views/mandate_passenger.xml',
     ]
 }

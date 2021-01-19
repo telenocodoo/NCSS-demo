@@ -5,7 +5,6 @@ from datetime import date
 from datetime import datetime, timedelta
 
 
-
 class BudgetAllocatedTraining(models.Model):
     _name = 'budget.allocated.training'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -97,6 +96,7 @@ class MandatePassenger(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = "employee_id"
 
+    name = fields.Char()
     employee_id = fields.Many2one('hr.employee', 'Employee')
     employee_type = fields.Selection([('employee', 'Employee'),
                                       ('department_manager', 'Department Manager'),
@@ -246,6 +246,7 @@ class MandatePassenger(models.Model):
 
     @api.model
     def create(self, values):
+        values['name'] = self.env['ir.sequence'].next_by_code('mandate.passenger.sequence')
         res = super(MandatePassenger, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])

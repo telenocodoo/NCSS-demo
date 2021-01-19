@@ -5,7 +5,6 @@ from datetime import date
 from datetime import datetime, timedelta
 
 
-
 class CustodyDescription(models.Model):
     _name = 'custody.description'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -19,6 +18,7 @@ class CustodyRequest(models.Model):
     _rec_name = "employee_id"
     _order = "state"
 
+    name = fields.Char()
     expense_account_move_id = fields.Many2one('account.move', 'Journal Expense')
     liquidated_account_move_id = fields.Many2one('account.move', 'Journal Liquidated')
     employee_id = fields.Many2one('hr.employee', 'Employee')
@@ -51,11 +51,6 @@ class CustodyRequest(models.Model):
                               ], default='draft',  translate=True ,tracking=True, group_expand='_expand_states')
     color = fields.Integer(compute="compute_color")
 
-    # @api.model
-    # def create(self, values):
-    #     print(self.env.user)
-    #     res = super(CustodyRequest, self).create(values)
-    #     return res
     def _get_state_desc(self):
         value = dict(self.env['custody.request'].fields_get(allfields=['state'])['state']['selection'])
 
@@ -66,7 +61,6 @@ class CustodyRequest(models.Model):
                 record.state_desc = ''
 
     state_desc = fields.Char(compute="_get_state_desc")
-
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -187,13 +181,13 @@ class CustodyRequest(models.Model):
 
     @api.model
     def create(self, values):
+        values['name'] = self.env['ir.sequence'].next_by_code('custody.sequence')
         res = super(CustodyRequest, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         if user_ids:
             res.make_activity(user_ids[0])
         message = 'تم انشاء طلب العهده الخاص بك'
         res.make_notification(message)
-        print(">>>>>>>>>>>>>>", user_ids)
         return res
 
     def action_refuse(self):

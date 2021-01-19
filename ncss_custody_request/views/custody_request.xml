@@ -70,11 +70,14 @@
                             type="object" class="oe_highlight"
                             groups="ncss_custody_request.custody_center_manager"
                     />
-                    <field name="state" widget="statusbar"
-                           statusbar_visible="draft,direct_manager_approve,department_manager_approve,center_manager_approve"
-                    />
+                    <field name="state" widget="statusbar" readonly="1" statusbar_visible="draft,direct_manager_approve,department_manager_approve,center_manager_approve"/>
                 </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="employee_id" attrs="{'readonly':[('state','in',['refuse','done'])]}" required="1"/>
@@ -86,12 +89,12 @@
                             <field name="is_liquidated" invisible="1"/>
                         </group>
                         <group>
-                            <field name="remaining_amount" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
+                            <field name="remaining_amount" readonly="1"/>
                             <field name="description" attrs="{'readonly':[('state','in',['refuse','done'])]}"/>
                             <field name="reason"
                             attrs="{'readonly':[('state','in',['refuse','done'])]}"
                             />
-                            <field name="state"/>
+<!--                            <field name="state"/>-->
                         </group>
                     </group>
                     <notebook>
@@ -160,16 +163,14 @@
         <field name="name">custody.request.search</field>
         <field name="model">custody.request</field>
         <field name="arch" type="xml">
-            <search string="custody Search"  >
-    <field name="description" string="Name and description"
-           filter_domain="[ ('description', 'ilike', self)]"/>
-    <field name="state" widget="selection"/>
-    <group string="Group By">
-        <filter name="group_by_state"
-                context="{'group_by': 'state'}"/>
-    </group>
-</search>
-
+            <search string="custody Search">
+                <field name="description" string="Name and description"
+                       filter_domain="[('description', 'ilike', self)]"/>
+                <field name="state" widget="selection"/>
+                <group string="Group By">
+                    <filter name="group_by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

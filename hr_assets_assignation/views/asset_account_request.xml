@@ -47,6 +47,11 @@
                     />
                 </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h2>
+                            <field name="name" readonly="1"/>
+                        </h2>
+                    </div>
                     <group>
                         <group>
                             <field name="asset_request_description"  required="1"
@@ -209,28 +214,20 @@
         </field>
     </record>
 
-
-
-     <record id="asset_account_request_search" model="ir.ui.view">
+    <record id="asset_account_request_search" model="ir.ui.view">
         <field name="name">asset.account.request.search</field>
         <field name="model">asset.account.request</field>
         <field name="arch" type="xml">
             <search string="Asset Search"  >
-    <field name="description" string="Name and description"
-           filter_domain="[ ('description', 'ilike', self)]"/>
-    <field name="state" widget="selection"/>
-    <group string="Group By">
-        <filter name="group_by_state"
-                context="{'group_by': 'state'}"/>
-    </group>
-</search>
-
+                <field name="description" string="Name and description"
+                       filter_domain="[ ('description', 'ilike', self)]"/>
+                <field name="state" widget="selection"/>
+                <group string="Group By">
+                    <filter name="group_by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
         </field>
     </record>
-
-
-
-
 
     <record id="asset_account_request_action" model="ir.actions.act_window">
         <field name="name">Assets Assignation</field>
@@ -318,6 +315,11 @@
                     />
                 </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h2>
+                            <field name="name" readonly="1"/>
+                        </h2>
+                    </div>
                     <group>
                         <group>
                             <field name="employee_id"  required="1" attrs="{'readonly':[('state','=','clearance')]}"/>

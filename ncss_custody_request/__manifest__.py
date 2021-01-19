@@ -13,6 +13,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'demo/custody_description.xml',
+        'views/custody_sequence.xml',
         'views/custody_request.xml',
         'views/custody_request_setting.xml',
     ]
