@@ -67,6 +67,12 @@ class HrAnnouncementTable(models.Model):
         self.state = 'approved'
 
     def sent(self):
+        user_ids = list(self.get_users("hr.group_hr_manager"))
+        print("********************************", user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+
         self.state = 'to_approve'
 
     @api.constrains('date_start', 'date_end')
@@ -74,13 +80,44 @@ class HrAnnouncementTable(models.Model):
         if self.date_start > self.date_end:
             raise ValidationError("Start date must be less than End Date")
 
+    def make_activity(self, user_ids):
+        print("j...", user_ids)
+        now = datetime.now()
+        date_deadline = now.date()
+        if self:
+            if user_ids:
+                actv_id = self.sudo().activity_schedule(
+                    'mail.mail_activity_data_todo', date_deadline,
+                    note=_('<a href="#" data-oe-model="%s" data-oe-id="%s"> Task Review</a>') % (self._name, self.id),
+                    user_id=user_ids,
+                    res_id=self.id,
+                    summary=_("Request Approve")
+                )
+                print("active", actv_id)
+
+    def get_users(self, group_id):
+        user_list = []
+        group_id = self.env.ref(group_id).id
+        group_obj = self.env['res.groups'].search([('id', '=', group_id)])
+        if group_obj:
+            for rec in group_obj.users:
+                user_list.append(rec.id)
+
+        return user_list
+
     @api.model
-    def create(self, vals):
-        if vals.get('is_announcement'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('hr.announcement.general')
+    def create(self, values):
+        if values.get('is_announcement'):
+            values['name'] = self.env['ir.sequence'].next_by_code('hr.announcement.general')
         else:
-            vals['name'] = self.env['ir.sequence'].next_by_code('hr.announcement')
-        return super(HrAnnouncementTable, self).create(vals)
+            values['name'] = self.env['ir.sequence'].next_by_code('hr.announcement')
+        res = super(HrAnnouncementTable, self).create(values)
+        user_ids = list(res.get_users("hr.group_hr_user"))
+        print("********************************", user_ids)
+        if user_ids:
+            for rec in user_ids:
+                res.make_activity(rec)
+        return res
 
     def get_expiry_state(self):
         """

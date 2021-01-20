@@ -250,9 +250,8 @@ class MandatePassenger(models.Model):
         res = super(MandatePassenger, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
-        message = 'تم انشاء طلب انتداب واركاب لك'
+        message = 'تم انشاء طلب انتداب واركاب لك (%s)' % res['name']
         res.make_notification(message)
-        print(">>>>>>>>>>>>>>>>>>", user_ids, user_ids[0])
         return res
 
     def make_notification(self, message):
@@ -293,11 +292,6 @@ class MandatePassenger(models.Model):
                 #                                                        'state': 'notify',
                 #                                                        'employee_id': self.employee_id.id})
                 # print("notify_id", notify_id)
-
-    # @api.onchange('state')
-    # def create_task_activity(self):
-    #
-    #     self.make_activity()
 
     @api.depends('state')
     def compute_color(self):
@@ -446,7 +440,7 @@ class MandatePassenger(models.Model):
         print(user_ids)
         if user_ids:
             self.make_activity(user_ids[0])
-        message = 'تمت موافقه المدير المباشر علي طلب الانتداب والاركاب الخاص بك'
+        message = 'تمت موافقه المدير المباشر علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'direct_manager_approve'
 
@@ -475,7 +469,7 @@ class MandatePassenger(models.Model):
             if user_ids:
                 for rec in user_ids:
                     self.make_activity(rec)
-            message = 'تمت موافقه مدير القسم علي طلب الانتداب والاركاب الخاص بك'
+            message = 'تمت موافقه مدير القسم علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
             self.make_notification(message)
             record.state = 'department_manager_approve'
 
@@ -485,12 +479,12 @@ class MandatePassenger(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت موافقه مدير الموارد البشريه علي طلب الانتداب والاركاب الخاص بك'
+        message = 'تمت موافقه مدير الموارد البشريه علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'hr_approve'
 
     def action_accounting_approve(self):
-        message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك'
+        message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'accounting_approve'
 
@@ -499,11 +493,11 @@ class MandatePassenger(models.Model):
             if not record.reason:
                 raise UserError(_("Please Add the reason of Refuse"))
             else:
-                message = 'تمت رفض طلب الانتداب والاركاب الخاص بك'
+                message = 'تمت رفض طلب الانتداب والاركاب الخاص بك (%s)' % self.name
                 self.make_notification(message)
                 self.state = 'refuse'
 
     def set_to_draft(self):
-        message = 'تمت اعاده طلب الانتداب والاركاب الخاص بك كجديد'
+        message = 'تمت اعاده طلب الانتداب والاركاب الخاص بك كجديد (%s)' % self.name
         self.make_notification(message)
         self.state = 'draft'

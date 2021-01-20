@@ -186,7 +186,7 @@ class CustodyRequest(models.Model):
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         if user_ids:
             res.make_activity(user_ids[0])
-        message = 'تم انشاء طلب العهده الخاص بك'
+        message = 'تم انشاء طلب العهده الخاص بك (%s)' % res['name']
         res.make_notification(message)
         return res
 
@@ -202,7 +202,7 @@ class CustodyRequest(models.Model):
         print(user_ids)
         if user_ids:
             self.make_activity(user_ids[0])
-        message = 'تمت موافقه المدير المباشر علي طلب العهده الخاص بك'
+        message = 'تمت موافقه المدير المباشر علي طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'direct_manager_approve'
 
@@ -222,7 +222,7 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت موافقه مدير القسم علي طلب العهده الخاص بك'
+        message = 'تمت موافقه مدير القسم علي طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'department_manager_approve'
 
@@ -232,7 +232,7 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت موافقه مدير المركز علي طلب العهده الخاص بك'
+        message = 'تمت موافقه مدير المركز علي طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'center_manager_approve'
 
@@ -242,7 +242,7 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت موافقه مدير الحسابات علي طلب العهده الخاص بك'
+        message = 'تمت موافقه مدير الحسابات علي طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'accounting_approve'
 
@@ -288,7 +288,7 @@ class CustodyRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت صرف العهده المطلوبه'
+        message = 'تمت صرف العهده المطلوبه (%s)' % self.name
         self.make_notification(message)
         self.state = 'paid'
 
@@ -307,12 +307,17 @@ class CustodyRequest(models.Model):
         # if user_ids:
         #     for rec in user_ids:
         #         self.make_activity(rec)
-        message = 'جارى اهلاك العهده الخاصه بك'
+        message = 'جارى اهلاك العهده الخاصه بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'in_progress'
 
     def make_liquidated_action(self):
-        message = 'تم طلب تصفيه العهده الخاصه بك'
+        user_ids = list(self.get_users("ncss_custody_request.custody_request_done_button"))
+        print(":::::::::::::::::", user_ids)
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+        message = 'تم طلب تصفيه العهده الخاصه بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'liquidated'
 
@@ -325,12 +330,12 @@ class CustodyRequest(models.Model):
         address_home_id = self.employee_id.address_home_id.id
         account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.liquidated_account_move_id = account_move_obj.id
-        message = 'تمت تسويه العهده الخاصه بك'
+        message = 'تمت تسويه العهده الخاصه بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'done'
 
     def set_to_draft(self):
-        message = 'تمت اعاده العهده الخاصه بك كجديده'
+        message = 'تمت اعاده العهده الخاصه بك كجديده (%s)' % self.name
         self.make_notification(message)
         self.state = 'draft'
 

@@ -125,7 +125,6 @@ class AssetAccountRequest(models.Model):
     state_of_asset_when_delivery = fields.Char()
     log_id_employee= fields.Many2one('fleet.vehicle.employee.log',string=_("Employee Car"))
 
-
     def _getdesc(self):
         value = dict(self.env['asset.account.request'].fields_get(allfields=['type'])['type']['selection'])
         for rec in self:
@@ -217,7 +216,7 @@ class AssetAccountRequest(models.Model):
         res = super(AssetAccountRequest, self).create(values)
         user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
-        message = 'تم انشاء طلب العهده الخاص بك'
+        message = 'تم انشاء طلب العهده الخاص بك (%s)' % res['name']
         res.make_notification(message)
         return res
 
@@ -281,7 +280,7 @@ class AssetAccountRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تم ارسال طلب العهده الخاص بك'
+        message = 'تم ارسال طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'submit'
 
@@ -292,12 +291,12 @@ class AssetAccountRequest(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تمت الموافقه علي طلب العهده الخاص بك'
+        message = 'تمت الموافقه علي طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'approve'
 
     def action_refuse(self):
-        message = 'تم رفض طلب العهده الخاص بك'
+        message = 'تم رفض طلب العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'refuse'
 
@@ -312,7 +311,11 @@ class AssetAccountRequest(models.Model):
             self.asset_id.car_ids.is_take_by_employee=True
             log_id=self.env['fleet.vehicle.employee.log'].sudo().create(values)
             self.log_id_employee = log_id
-        message = 'تم اسناد العهده اليك'
+        user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_clearance_button"))
+        if user_ids:
+            for rec in user_ids:
+                self.make_activity(rec)
+        message = 'تم اسناد العهده اليك (%s)' % self.name
         self.make_notification(message)
         self.state = 'assigned'
 
@@ -336,12 +339,12 @@ class AssetAccountRequest(models.Model):
                 rec.write(values)
 
         self.date_of_disclaimer = fields.date.today()
-        message = 'تم اخلاء طرف العهده الخاص بك'
+        message = 'تم اخلاء طرف العهده الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'clearance'
 
     def set_to_draft(self):
-        message = 'تم اعاده طلب العهده الخاص بك كجديده'
+        message = 'تم اعاده طلب العهده الخاص بك كجديده (%s)' % self.name
         self.make_notification(message)
         self.state = 'draft'
 
@@ -450,10 +453,8 @@ class CustodyRequestLine(models.Model):
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
-        message = 'تم انشاء طلب لاخلاء طرفك من الاقسام'
+        message = 'تم انشاء طلب لاخلاء طرفك من الاقسام (%s)' % res['name']
         res.make_notification(message)
-        print(">>>>>>>>>>>>>>", user_ids)
-
         return res
 
     def action_first_approve(self):
@@ -467,17 +468,16 @@ class CustodyRequestLine(models.Model):
             if user_ids:
                 for rec in user_ids:
                     self.make_activity(rec)
-            message = 'تم ارسال طلب لاخلاء طرفك من الاقسام'
+            message = 'تم ارسال طلب لاخلاء طرفك من الاقسام (%s)' % self.name
             self.make_notification(message)
 
             record.state = 'first_approve'
 
     def action_clearance(self):
+        message = 'تم اخلاء طرفك من الاقسام (%s)' % self.name
         for record in self.asset_account_ids:
             if record.is_disclaimer:
                 record.custody_request_id.action_clearance()
-
-        message = 'تم اخلاء طرفك من الاقسام'
         self.make_notification(message)
 
         self.state = 'clearance'
