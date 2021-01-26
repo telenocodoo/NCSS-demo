@@ -1837,23 +1837,24 @@ class ESSPortal(Controller):
     def get_expiry_douc(self, documents):
         doc_list = []
         for doc in documents:
-            date_before = datetime.strptime(str(doc.expiry_date),DEFAULT_SERVER_DATE_FORMAT) + relativedelta(days=-int(doc.before_days))
-            if doc.notification_type:
-                if doc.notification_type == 'single':
-                    if date.today() == doc.expiry_date:
-                        doc_list.append(doc)
+            if doc.expiry_date:
+                date_before = datetime.strptime(str(doc.expiry_date),DEFAULT_SERVER_DATE_FORMAT) + relativedelta(days=-int(doc.before_days))
+                if doc.notification_type:
+                    if doc.notification_type == 'single':
+                        if date.today() == doc.expiry_date:
+                            doc_list.append(doc)
 
-                elif doc.notification_type == 'multi':
-                    if  date.today() == date_before.date() or date.today() == doc.expiry_date:
-                         doc_list.append(doc)
+                    elif doc.notification_type == 'multi':
+                        if  date.today() == date_before.date() or date.today() == doc.expiry_date:
+                             doc_list.append(doc)
 
-                elif doc.notification_type == 'everyday':
-                    if date.today() >= date_before.date() and date.today() == doc.expiry_date:
-                         doc_list.append(doc)
+                    elif doc.notification_type == 'everyday':
+                        if date.today() >= date_before.date() and date.today() == doc.expiry_date:
+                             doc_list.append(doc)
 
-                elif doc.notification_type == 'everyday_after':
-                    if date.today() == date_before.date() and date.today() == doc.expiry_date:
-                         doc_list.append(doc)
+                    elif doc.notification_type == 'everyday_after':
+                        if date.today() == date_before.date() and date.today() == doc.expiry_date:
+                             doc_list.append(doc)
 
 
         return doc_list
