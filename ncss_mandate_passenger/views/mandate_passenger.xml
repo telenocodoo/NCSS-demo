@@ -313,14 +313,14 @@
                             <field name="daily_expenses"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
                             <field name="traveling_type"
-                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"/>
+                            attrs="{'readonly':[('state','in',['refuse','accounting_approve'])],'required':[('state','=','department_manager_approve')]}"/>
                             <field name="attach_file"
                             attrs="{'readonly':[('state','in',['refuse','accounting_approve'])]}"
                                    widget="many2many_binary"
                             groups="ncss_mandate_passenger.mandate_passenger_hr_manager"
                             />
                              <field name="attach_file_ticket"
-                             attrs="{'invisible':[('state','in',['draft','direct_manager_approve'])],'required':[('state','=','department_manager_approve')]}"
+                             attrs="{'invisible':[('state','in',['draft','direct_manager_approve'])]}"
                                     widget="many2many_binary"
 
                              groups="ncss_mandate_passenger.mandate_passenger_hr_manager"

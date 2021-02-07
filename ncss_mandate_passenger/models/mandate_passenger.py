@@ -512,8 +512,9 @@ class MandatePassenger(models.Model):
     def action_hr_manager_approve(self):
         user_ids = list(self.get_users("ncss_mandate_passenger.mandate_passenger_accounting_manager"))
         print(user_ids)
-        if not self.attach_file_ticket:
-            raise UserError(_("Please Add Flight Ticket"))
+        if self.course_type == 'external':
+            if not self.attach_file_ticket:
+                raise UserError(_("Please Add Flight Ticket"))
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
@@ -522,8 +523,9 @@ class MandatePassenger(models.Model):
         self.state = 'hr_approve'
 
     def action_accounting_approve(self):
-        if not self.attach_file_ticket:
-            raise UserError(_("Please Add Flight Ticket"))
+        if self.course_type == 'external':
+            if not self.attach_file_ticket:
+                raise UserError(_("Please Add Flight Ticket"))
         message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'accounting_approve'
