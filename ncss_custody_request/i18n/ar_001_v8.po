@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 14:50+0000\n"
-"PO-Revision-Date: 2021-01-27 14:50+0000\n"
+"POT-Creation-Date: 2020-10-26 07:15+0000\n"
+"PO-Revision-Date: 2020-10-26 07:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,27 +16,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ncss_custody_request
-#: code:addons/ncss_custody_request/models/custody_request.py:0
-#, python-format
-msgid ""
-"<a href=\"#\" data-oe-model=\"%s\" data-oe-id=\"%s\">Task </a> for <a "
-"href=\"#\" data-oe-model=\"%s\" data-oe-id=\"%s\">%s's</a> Review"
-msgstr ""
-
-#. module: ncss_custody_request
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_settings_form
 msgid "<span class=\"o_form_label\">Custody Request</span>"
 msgstr "اعدادات العهد"
 
 #. module: ncss_custody_request
+#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__accounting_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Accounting Approve"
 msgstr "موافقه الماليه"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__accounting_approve
-msgid "Accounting Approved"
-msgstr "تمت موافقه الماليه"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_accounting_manager
@@ -100,8 +88,8 @@ msgstr "المبلغ:"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__attach_invoice
-msgid "Attachment"
-msgstr ""
+msgid "Attach Invoice"
+msgstr "ارفاق فاتوره"
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__message_attachment_count
@@ -116,14 +104,10 @@ msgid "Center Manager"
 msgstr "مدير المركز"
 
 #. module: ncss_custody_request
+#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__center_manager_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Center Manager Approve"
 msgstr "موافقه مدير المركز"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__center_manager_approve
-msgid "Center Manager Approved"
-msgstr "تمت موافقه مدير المركز"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_center_manager_button
@@ -233,14 +217,10 @@ msgid "Department Manager"
 msgstr "مدير قسم"
 
 #. module: ncss_custody_request
+#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__department_manager_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Department Manager Approve"
 msgstr "موافقه مدير القسم"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__department_manager_approve
-msgid "Department Manager Approved"
-msgstr "تمت موافقه مدير القسم"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_department_manager_button
@@ -264,14 +244,10 @@ msgid "Direct Manager"
 msgstr "مدير مباشر"
 
 #. module: ncss_custody_request
+#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__direct_manager_approve
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Direct Manager Approve"
 msgstr "موافقه المدير المباشر"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__direct_manager_approve
-msgid "Direct Manager Approved"
-msgstr "تمت موافقه المدير المباشر"
 
 #. module: ncss_custody_request
 #: model:res.groups,name:ncss_custody_request.custody_request_direct_manager_button
@@ -360,11 +336,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__message_partner_ids
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request_line__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_search
-msgid "Group By"
 msgstr ""
 
 #. module: ncss_custody_request
@@ -545,14 +516,8 @@ msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__name
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__name
 msgid "Name"
 msgstr "الاسم"
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_search
-msgid "Name and description"
-msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__activity_date_deadline
@@ -643,6 +608,7 @@ msgid "Reason"
 msgstr "سبب الرفض"
 
 #. module: ncss_custody_request
+#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__refuse
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_form
 msgid "Refuse"
 msgstr "رفض"
@@ -659,7 +625,6 @@ msgstr "زر رفض طلب العهده"
 
 #. module: ncss_custody_request
 #: model:ir.actions.act_window,name:ncss_custody_request.custody_request_refuse_action
-#: model:ir.model.fields.selection,name:ncss_custody_request.selection__custody_request__state__refuse
 #: model:ir.ui.menu,name:ncss_custody_request.custody_request_refuse_action_menu
 msgid "Refused"
 msgstr "مرفوض"
@@ -674,12 +639,6 @@ msgstr "المبلغ المتبقي"
 #, python-format
 msgid "Remaining Amount Must Be Less Than Or Equal To Amount"
 msgstr "المبلغ المتبقي يجب ان يكون اقل من اويساوي مبلغ العهده"
-
-#. module: ncss_custody_request
-#: code:addons/ncss_custody_request/models/custody_request.py:0
-#, python-format
-msgid "Request Approve"
-msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,field_description:ncss_custody_request.field_custody_description__activity_user_id
@@ -719,11 +678,6 @@ msgstr "الحاله"
 #: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_kanban
 msgid "State :"
 msgstr "الحاله:"
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,field_description:ncss_custody_request.field_custody_request__state_desc
-msgid "State Desc"
-msgstr ""
 
 #. module: ncss_custody_request
 #: model:ir.model.fields,help:ncss_custody_request.field_custody_description__activity_state
@@ -813,16 +767,6 @@ msgstr ""
 #: model:ir.model.fields,help:ncss_custody_request.field_custody_request__website_message_ids
 #: model:ir.model.fields,help:ncss_custody_request.field_custody_request_line__website_message_ids
 msgid "Website communication history"
-msgstr ""
-
-#. module: ncss_custody_request
-#: model:ir.model.fields,help:ncss_custody_request.field_custody_request_line__attach_invoice
-msgid "You can attach the copy of your document"
-msgstr ""
-
-#. module: ncss_custody_request
-#: model_terms:ir.ui.view,arch_db:ncss_custody_request.custody_request_search
-msgid "custody Search"
 msgstr ""
 
 #. module: ncss_custody_request

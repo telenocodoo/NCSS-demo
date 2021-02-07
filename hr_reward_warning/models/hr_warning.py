@@ -59,6 +59,7 @@ class HrAnnouncementTable(models.Model):
     date_end = fields.Date(string='End Date', default=fields.Date.today(), required=True, help="End date of "
                                                                                                "announcement want too"
                                                                                                " see")
+    is_read = fields.Boolean()
 
     def reject(self):
         self.state = 'rejected'

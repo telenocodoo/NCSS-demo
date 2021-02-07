@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-07 05:40+0000\n"
-"PO-Revision-Date: 2021-02-07 05:40+0000\n"
+"POT-Creation-Date: 2021-01-27 11:19+0000\n"
+"PO-Revision-Date: 2021-01-27 11:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,14 +26,6 @@ msgstr " أيام"
 #, python-format
 msgid " hours"
 msgstr "ساعات"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.side_menu
-msgid ""
-"<i class=\"fa fa-diamond\"/> <span class=\"nav-label\">All "
-"Notifications</span> <span class=\"fa arrow\"/>"
-msgstr "<i class=\"fa fa-diamond\"/> <span class=\"nav-label\">جميع "
-"الاشعارات</span> <span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
@@ -122,8 +114,8 @@ msgid ""
 "<i class=\"fa fa-money\"/> <span class=\"nav-label\">Passenger And "
 "Mandate</span> <span class=\"fa arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-money\"/> <span class=\"nav-label\">الدورات</span> <span "
-"class=\"fa arrow\"/>"
+"<i class=\"fa fa-money\"/> <span class=\"nav-label\">الدورات"
+"</span> <span class=\"fa arrow\"/>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
@@ -224,11 +216,6 @@ msgstr "<span>اعلانات خاصة</span>"
 #: model_terms:ir.ui.view,arch_db:ess.employee_notification
 msgid "<span>All Notification</span>"
 msgstr "<span> الاشعارات </span>"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
-msgid "<span>All Notifications</span>"
-msgstr "<span>الاشعارات</span>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_leaves
@@ -586,12 +573,6 @@ msgid "All Mandate And Passenger"
 msgstr "جميع طلبات الانتداب"
 
 #. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
-#: model_terms:ir.ui.view,arch_db:ess.side_menu
-msgid "All Notifications"
-msgstr "جميع الاشعارات"
-
-#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_allocation
 msgid "Allocated Until"
 msgstr "اجازه الي"
@@ -806,12 +787,6 @@ msgstr "اغلاق الرصيد"
 #: model_terms:ir.ui.view,arch_db:ess.ess_announcement
 msgid "Code"
 msgstr "الكود"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.employee_announcement
-#: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
-msgid "Code No"
-msgstr ""
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_track_appraisal
@@ -1624,11 +1599,6 @@ msgid "Notes"
 msgstr "الملاحظات"
 
 #. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
-msgid "Notification Date"
-msgstr "تاريخ الاشعار"
-
-#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_document
 msgid "Notification Type"
 msgstr "نوع التنبيه"
@@ -1819,11 +1789,6 @@ msgstr "اعلانات عامه"
 #: model_terms:ir.ui.view,arch_db:ess.ess_track_expenses
 msgid "Quantity"
 msgstr "الكمية"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
-msgid "Read Notifications"
-msgstr "الاشعارات المقرؤه"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_payslip_correction_track
@@ -2057,7 +2022,6 @@ msgstr "نوع الاجازه"
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 #: model_terms:ir.ui.view,arch_db:ess.employee_notification
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
 #: model_terms:ir.ui.view,arch_db:ess.ess_announcement
 msgid "Title"
 msgstr "العنوان"
@@ -2202,11 +2166,6 @@ msgstr "النوع"
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_asset_assignation
 msgid "Type Of Disclaimer"
 msgstr "مطلوب تسليمها عند"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
-msgid "Unread Notifications"
-msgstr "الاشعارات الغير مقرؤه"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_company_docs_req

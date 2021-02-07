@@ -5,36 +5,10 @@ from datetime import datetime, timedelta
 from odoo.exceptions import UserError
 
 
-# class sendactivity(models.Model):
-#     _inherit = 'res.users'
-#
-#
-#     def make_activity(self, user_ids):
-#         print("j...", user_ids)
-#         now = datetime.now()
-#         date_deadline = now.date()
-#
-#         if self:
-#
-#             if user_ids:
-#                 actv_id = self.sudo().activity_schedule(
-#                     'mail.mail_activity_data_todo', date_deadline,
-#                     note=_(
-#                         '<a href="#" data-oe-model="%s" data-oe-id="%s">Task </a> for <a href="#" data-oe-model="%s" data-oe-id="%s">%s\'s</a> Review') % (
-#                              self._name, self.id, self.employee_id._name,
-#                              self.employee_id.id, self.employee_id.display_name),
-#                     user_id=user_ids,
-#                     res_id=self.id,
-#
-#                     summary=_("Request Approve")
-#                 )
-#                 print("active", actv_id)
-
-
-class CarFleetVicle(models.Model):
+class CarFleetVehicle(models.Model):
     _inherit = 'fleet.vehicle'
     history_count_emp = fields.Integer(compute="_compute_count_all_emp", string="Employees History Count")
-    is_take_by_employee = fields.Boolean(  string="Is Taken", default=False)
+    is_take_by_employee = fields.Boolean(string="Is Taken", default=False)
 
     def _compute_count_all_emp(self):
         for record in self:
@@ -144,24 +118,6 @@ class AssetAccountRequest(models.Model):
             else:
                 record.state_desc = ''
 
-
-    # def _get_state_seq(self):
-    #     value = dict(self.env['asset.account.request'].fields_get(allfields=['state'])['state']['selection'])
-    #     for record in self:
-    #         if record.state== 'draft':
-    #             record.state_seq = 0
-    #         elif record.state== 'submit':
-    #             record.state_seq = 1
-    #         elif record.state== 'approve':
-    #             record.state_seq = 2
-    #         elif record.state== 'assigned':
-    #             record.state_seq = 3
-    #         elif record.state== 'clearance':
-    #             record.state_seq = 4
-    #         elif record.state == 'refuse':
-    #             record.state_seq = 5
-    #         else : record.state_seq = -1
-
     def _get_type_of_disclaimer_desc(self):
         value = dict(self.env['asset.account.request'].fields_get(allfields=['type_of_disclaimer'])['type_of_disclaimer']['selection'])
 
@@ -214,7 +170,7 @@ class AssetAccountRequest(models.Model):
     def create(self, values):
         values['name'] = self.env['ir.sequence'].next_by_code('asset.request.sequence')
         res = super(AssetAccountRequest, self).create(values)
-        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        user_ids = res.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
         message = 'تم انشاء طلب العهده الخاص بك (%s)' % res['name']
         res.make_notification(message)
@@ -222,7 +178,6 @@ class AssetAccountRequest(models.Model):
 
     @api.onchange('asset_id')
     def _getCar(self):
-        print("tesr>>>")
         if self.asset_id.car_ids:
             self.car_employee_have=self.asset_id.car_ids.id
             self.is_car=True
@@ -230,29 +185,30 @@ class AssetAccountRequest(models.Model):
             self.is_car = False
             self.car_employee_have=False
             self.log_id_employee=False
-    #        return self.asset_id.car_ids.id
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
-        user = self.env.user.has_group('hr_assets_assignation.asset_assignation_user')
+        employee = self.env.user.has_group('hr_assets_assignation.asset_assignation_user')
         direct_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_direct_manager')
         department_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_department_manager')
         center_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_center_manager')
         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
 
-        if center_manager:
-            args += []
-        elif department_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id),
-                     ('employee_id.department_id.manager_id.id', '=', current_user_id),
-                     ('create_uid.id', '=', self.env.user.id)]
-        elif direct_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id),
-                     ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        elif user:
+        if employee:
             args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
 
-
+        elif direct_manager:
+            args += ['|', '|', ('employee_id', '=', current_user_id),
+                     ('employee_id.parent_id.id', '=', current_user_id),
+                     ('create_uid.id', '=', self.env.user.id)]
+        # elif department_manager:
+        #     args += ['|', '|', '|', ('employee_id', '=', current_user_id),
+        #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
+        #              ('employee_id.parent_id.id', '=', current_user_id),
+        #              ('create_uid.id', '=', self.env.user.id)]
+        # if center_manager:
+        else:
+            args += []
         return super(AssetAccountRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
@@ -382,11 +338,12 @@ class CustodyRequestLine(models.Model):
         if direct_manager:
             args += ['|', '|', ('employee_id', '=', current_user_id),
                      ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        if department_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id),
-                     ('employee_id.department_id.manager_id.id', '=', current_user_id),
-                     ('create_uid.id', '=', self.env.user.id)]
-        if center_manager:
+        # if department_manager:
+        #     args += ['|', '|', ('employee_id', '=', current_user_id),
+        #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
+        #              ('create_uid.id', '=', self.env.user.id)]
+        # if center_manager:
+        else:
             args += []
         return super(CustodyRequestLine, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
@@ -448,11 +405,11 @@ class CustodyRequestLine(models.Model):
     def create(self, values):
         values['name'] = self.env['ir.sequence'].next_by_code('employee.assets.sequence')
         res = super(CustodyRequestLine, self).create(values)
-        user_ids = list(self.get_users("hr_assets_assignation.employee_asset_approve_button"))
+        user_ids = list(res.get_users("hr_assets_assignation.employee_asset_approve_button"))
         print(user_ids)
         if user_ids:
             for rec in user_ids:
-                self.make_activity(rec)
+                res.make_activity(rec)
         message = 'تم انشاء طلب لاخلاء طرفك من الاقسام (%s)' % res['name']
         res.make_notification(message)
         return res
@@ -510,7 +467,9 @@ class CustodyRequestLine(models.Model):
     def get_day_name_from_date(self, contract_day):
         contract_day = str(contract_day)
         year, month, day = contract_day.split('-')
-        day_name = datetime.date(int(year), int(month), int(day))
+        print(year, month, day)
+        day_name = datetime(int(year), int(month), int(day))
+        # day_name = date(int(year), int(month), int(day))
         e_name = day_name.strftime("%A")
         if e_name == 'Saturday':
             ar_name = 'السبت'
@@ -575,7 +534,8 @@ class DepartmentClearance(models.Model):
     def get_day_name_from_date(self, contract_day):
         contract_day = str(contract_day)
         year, month, day = contract_day.split('-')
-        day_name = datetime.date(int(year), int(month), int(day))
+        # day_name = datetime.date(int(year), int(month), int(day))
+        day_name = datetime(int(year), int(month), int(day))
         e_name = day_name.strftime("%A")
         if e_name == 'Saturday':
             ar_name = 'السبت'

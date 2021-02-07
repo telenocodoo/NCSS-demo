@@ -9556,3 +9556,6 @@ body.md-skin {
     margin: 0;
   }
 }
+
+.visitedlink{color:red !important;}
+a.visitedlink:visited{color:black !important}

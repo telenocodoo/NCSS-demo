@@ -129,7 +129,7 @@
 
         <menuitem id="hr_announcement"
                   name="Announcements"
-                  groups="hr.group_hr_user,hr.group_hr_manager"
+                  groups="hr.group_hr_user,hr.group_hr_manager,base.group_user"
                   web_icon="hr_reward_warning,static/description/announcement_icon.png"
                   sequence="-6"/>
 
@@ -137,7 +137,7 @@
                   name="Announcements"
                   action="action_hr_announcement"
                   parent="hr_announcement"
-                  groups="hr.group_hr_user,hr.group_hr_manager"
+                  groups="hr.group_hr_user,hr.group_hr_manager,base.group_user"
                   sequence="1"/>
 
         <record model="ir.ui.view" id="announcement_inherit_form_view">

@@ -78,6 +78,26 @@ console.log(end.getTime());
  noDays.val(dif);
  console.log(dif);
 });
+
+
+
+//$("#course_id").change(function(){
+// var errmsg = $('#error_msg');
+//   if($(this).val()=="private" || $(this).val()==  "خاصة")
+//   {
+//       $("div#start_date").show();
+//       $("div#end_date").show();
+//         errmsg.text('');
+//
+//   }
+//    else
+//    {
+//     errmsg.text('');
+//        $("div#start_date").hide();
+//        $("div#end_date").hide();
+//
+//    }
+//});
 //
 //$("#submit_button_id").submit(function(event){
 //	event.preventDefault(); //prevent default action
@@ -93,3 +113,4 @@ console.log(end.getTime());
 //		$("#server-results").html(response);
 //	});
 //});
+

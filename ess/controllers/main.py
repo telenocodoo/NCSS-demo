@@ -231,14 +231,16 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
-            announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')])
-            announcement_private_obj = request.env['hr.announcement'].sudo().search([('state','=','approved'),('employee_ids','in',[emb_obj.id])])
+            announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')],order='id desc')
+            announcement_private_obj = request.env['hr.announcement'].sudo().search([('state','=','approved'),('employee_ids','in',[emb_obj.id])],order='id desc')
 
-            notification_obj = request.env['hr.notification'].sudo().search([('state','=','notify'),('employee_id','=',emb_obj.id)])
+            notification_obj = request.env['hr.notification'].sudo().search([('state','=','notify'),('employee_id','=',emb_obj.id)],order='id desc')
 
             for obj in notification_obj:
                 notification_list.append({
                     'title': obj.notification_MSG,
+                    'id': obj.id,
+                    'is_read': obj.is_read,
 
                 })
             print("notify ", notification_list)
@@ -246,20 +248,28 @@ class ESSPortal(Controller):
             for ann in announcement_private_obj:
                 if not ann.is_announcement:
                     announcement_list.append({
+                        'code': ann.name,
                         'title': ann.announcement_reason,
+                        'announcement': ann.announcement,
                         'date_start': ann.date_start,
                         'date_end': ann.date_end,
                         'attachment_id': ann.attachment_id,
+                        'id': ann.id,
+                        'is_read': ann.is_read,
                     })
 
             for ann in announcement_obj:
                 print(ann.is_announcement)
                 if ann.is_announcement:
                     announcement_list_public.append({
+                        'code': ann.name,
                         'title': ann.announcement_reason,
+                        'announcement': ann.announcement,
                         'date_start': ann.date_start,
                         'date_end': ann.date_end,
                         'attachment_id': ann.attachment_id,
+                        'id': ann.id,
+                        'is_read': ann.is_read,
                     })
 
                 print("private ",announcement_list)
@@ -294,9 +304,10 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_assets_assignation')]).state == 'installed':
-            assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
+            assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for assign in assignation_obj:
                 asset_assignation_list.append({
+                    'name': assign.name,
                     'type': assign.type,
                     'asset_id': assign.asset_id.name,
                     'description': assign.description,
@@ -306,9 +317,10 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_custody_request')]).state == 'installed':
-            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
+            custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for custody in custody_obj:
                 custody_list.append({
+                    'name': custody.name,
                     'date': custody.date,
                     'amount': custody.amount,
                     'remaining_amount': custody.remaining_amount,
@@ -317,9 +329,10 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'ncss_mandate_passenger')]).state == 'installed':
-            mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=4)
+            mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for mandate in mandate_obj:
                 mandate_list.append({
+                    'name': mandate.name,
                     'type': mandate.type,
                     'course_id': mandate.course_id.name,
                     'course_type': mandate.course_type,
@@ -1123,7 +1136,9 @@ class ESSPortal(Controller):
 
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-        announcement_obj = request.env['hr.announcement'].sudo().search([])
+        # announcement_obj = request.env['hr.announcement'].sudo().search([])
+        announcement_obj = request.env['hr.announcement'].sudo().search([('state', '=', 'approved'),
+                                                                         ('is_announcement', '=', True)])
         announcement_by_employee_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'employee')]).filtered(lambda r: emb_obj in r.employee_ids)
         announcement_by_department_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'department')]).filtered(lambda r: emb_obj.department_id in r.department_ids)
         announcement_by_job_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'job_position')]).filtered(lambda r: emb_obj.job_id in r.position_ids)

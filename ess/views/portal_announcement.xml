@@ -28,7 +28,8 @@
                                                             <div class="ibox-content iess-p20">
                                                                 <div class="body">
                                                                     <ul class="nav nav-tabs3">
-                                                                        <li class="nav-item"><a class="nav-link show ess-tab-link active" data-toggle="tab" href="#all">All</a></li>
+<!--                                                                        <li class="nav-item"><a class="nav-link show ess-tab-link active" data-toggle="tab" href="#all">All</a></li>-->
+                                                                        <li class="nav-item"><a class="nav-link show ess-tab-link active" data-toggle="tab" href="#all">Public Announcement</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#by_employee">By Employee</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#by_department">By Department</a></li>
                                                                         <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#by_job_position">By Job Position</a></li>
@@ -41,6 +42,7 @@
                                                                                         <tr>
                                                                                             <th>Code</th>
                                                                                             <th>Title</th>
+                                                                                            <th>Description</th>
                                                                                             <th>Start Date</th>
                                                                                             <th>End Date</th>
                                                                                             <th>Requested Date</th>
@@ -51,6 +53,7 @@
                                                                                         <tr>
                                                                                             <td><div t-esc="ann['name']"/></td>
                                                                                             <td><div t-esc="ann['announcement_reason']"/></td>
+                                                                                            <td><span t-raw="ann['announcement']"/></td>
                                                                                             <td><div t-esc="ann['date_start']"/></td>
                                                                                             <td><div t-esc="ann['date_end']"/></td>
                                                                                             <td><div t-esc="ann['requested_date']"/></td>
@@ -69,6 +72,7 @@
                                                                                         <tr>
                                                                                             <th>Code</th>
                                                                                             <th>Title</th>
+                                                                                            <th>Description</th>
                                                                                             <th>Start Date</th>
                                                                                             <th>End Date</th>
                                                                                             <th>Requested Date</th>
@@ -79,6 +83,7 @@
                                                                                         <tr>
                                                                                             <td><div t-esc="ann['name']"/></td>
                                                                                             <td><div t-esc="ann['announcement_reason']"/></td>
+                                                                                            <td><span t-raw="ann['announcement']"/></td>
                                                                                             <td><div t-esc="ann['date_start']"/></td>
                                                                                             <td><div t-esc="ann['date_end']"/></td>
                                                                                             <td><div t-esc="ann['requested_date']"/></td>
@@ -97,6 +102,7 @@
                                                                                         <tr>
                                                                                             <th>Code</th>
                                                                                             <th>Title</th>
+                                                                                            <th>Description</th>
                                                                                             <th>Start Date</th>
                                                                                             <th>End Date</th>
                                                                                             <th>Requested Date</th>
@@ -107,6 +113,7 @@
                                                                                         <tr>
                                                                                             <td><div t-esc="ann['name']"/></td>
                                                                                             <td><div t-esc="ann['announcement_reason']"/></td>
+                                                                                            <td><span t-raw="ann['announcement']"/></td>
                                                                                             <td><div t-esc="ann['date_start']"/></td>
                                                                                             <td><div t-esc="ann['date_end']"/></td>
                                                                                             <td><div t-esc="ann['requested_date']"/></td>
@@ -125,6 +132,7 @@
                                                                                         <tr>
                                                                                             <th>Code</th>
                                                                                             <th>Title</th>
+                                                                                            <th>Description</th>
                                                                                             <th>Start Date</th>
                                                                                             <th>End Date</th>
                                                                                             <th>Requested Date</th>
@@ -135,6 +143,7 @@
                                                                                         <tr>
                                                                                             <td><div t-esc="ann['name']"/></td>
                                                                                             <td><div t-esc="ann['announcement_reason']"/></td>
+                                                                                            <td><span t-raw="ann['announcement']"/></td>
                                                                                             <td><div t-esc="ann['date_start']"/></td>
                                                                                             <td><div t-esc="ann['date_end']"/></td>
                                                                                             <td><div t-esc="ann['requested_date']"/></td>

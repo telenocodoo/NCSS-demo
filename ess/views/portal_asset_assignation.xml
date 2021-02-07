@@ -1290,7 +1290,13 @@
         </t>
     </template>
 
+<template id="assets_frontend_as" inherit_id="website_sale_stock.assets_frontend">
 
+    <xpath expr="." position="inside">
+       <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
+       <script type="text/javascript" src="/ess/static/src/js/check_notification_link.js"></script>
+   </xpath>
+</template>
 
  <template id="ess_passenger_mandate" name="ESS Passenger Mandate">
         <t t-call="portal.portal_layout">
@@ -1341,7 +1347,7 @@
 
                                                        <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_id">Course</label>
-                                                            <select name="course_id" t-attf-class="form-control">
+                                                            <select name="course_id" t-attf-class="form-control" id="course_id">
                                                                 <t t-foreach="course_obj or []" t-as="cor">
                                                                     <option t-att-value="cor.id" >
                                                                         <t t-esc="cor.name" />
@@ -1349,9 +1355,28 @@
                                                                 </t>
                                                             </select>
                                                         </div>
+<!--                                                      magdy-->
+
+<!--                                                      <div t-attf-class="form-group col-xl-6">-->
+<!--                                                            <label class="col-form-label" for="course_id">Course and place</label>-->
+<!--                                                          <t t-esc="course_obj" />-->
+<!--                                                          <t t-esc="course_and_place_obj" />-->
+<!--&lt;!&ndash;                                                          <t t-esc="course_obj['id']" />&ndash;&gt;-->
+<!--&lt;!&ndash;                                                          <t t-esc="course_obj['course_place_id']" />&ndash;&gt;-->
+<!--                                                            <select name="course_and_place_obj" t-attf-class="form-control" id="course_and_place_id">-->
+<!--                                                                <t t-foreach="course_and_place_obj or []" t-as="cor">-->
+<!--                                                                    <option t-att-value="cor['course']">-->
+<!--&lt;!&ndash;                                                                        <t t-esc="cor['course']" />&ndash;&gt;-->
+<!--                                                                        <t t-esc="cor['place']" />-->
+<!--                                                                    </option>-->
+<!--                                                                </t>-->
+<!--                                                            </select>-->
+<!--                                                        </div>-->
+
+
                                                       <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_place_id">Course PLace</label>
-                                                            <select name="course_place_id" t-attf-class="form-control">
+                                                            <select name="course_place_id" t-attf-class="form-control" id="place_id">
                                                                 <t t-foreach="course_place_obj or []" t-as="place">
                                                                     <option t-att-value="place.id" >
                                                                         <t t-esc="place.name" />
@@ -1464,6 +1489,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1482,6 +1509,8 @@
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
 <!--                                                                                            <td><a t-attf-href="/web/binary/saveas?model=mandate.passenger&amp;field=attach_file&amp;filename_field='name'&amp;id={{mandate['attach_file']}}">Download</a></td>-->
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1504,6 +1533,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1519,6 +1550,8 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1542,6 +1575,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1557,6 +1592,8 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1580,6 +1617,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1595,6 +1634,8 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1620,7 +1661,6 @@
                                                                                             <th>Total</th>
                                                                                             <th>State</th>
                                                                                             <th>Attachment File</th>
-
                                                                                             <th>Attachment Ticket</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1661,6 +1701,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1676,6 +1718,8 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                            <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1699,6 +1743,8 @@
                                                                                             <th>End Date</th>
                                                                                             <th>Number Of Days</th>
                                                                                             <th>Total</th>
+                                                                                            <th>Attachment File</th>
+                                                                                            <th>Attachment Ticket</th>
                                                                                             <th>State</th>
                                                                                         </tr>
                                                                                     </thead>
@@ -1714,6 +1760,8 @@
                                                                                             <td><div t-esc="mandate['end_date']"/></td>
                                                                                             <td><div t-esc="mandate['number_of_days']"/></td>
                                                                                             <td><div t-esc="mandate['total']"/></td>
+                                                                                            <td><a t-if="mandate['attach_file']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file'].id" class="fa fa-download"/></td>
+                                                                                           <td><a t-if="mandate['attach_file_ticket']" t-att-href="'/attachment/download?attachment_id=%i' % mandate['attach_file_ticket'].id" class="fa fa-download"/></td>
                                                                                             <td><div t-esc="mandate['state_desc']"/></td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -1892,7 +1940,115 @@
     </template>
 
 
+        <template id="ess_all_notification" name="ESS View All Notification">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
 
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+                    <div class="row col-10 col-md col-lg-10">
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>All Notifications</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/all/notification" method="get">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                                <div class="row o_portal_expense">
+                                                    <div class="col-lg-12">
+                                                            <div class="ibox-content iess-p20">
+                                                                <div class="body">
+                                                                    <ul class="nav nav-tabs3">
+                                                                        <li class="nav-item"><a class="nav-link show ess-tab-link active" data-toggle="tab" href="#all">All Notifications</a></li>
+                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#unread">Unread Notifications</a></li>
+                                                                        <li class="nav-item"><a class="nav-link ess-tab-link" data-toggle="tab" href="#read">Read Notifications</a></li>
+                                                                    </ul>
+                                                                    <div class="tab-content">
+                                                                        <div class="tab-pane show active" id="all">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table header-border table-hover table-custom spacing5 ess-table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Title</th>
+                                                                                            <th>Notification Date</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody t-foreach="notification_obj" t-as="notify">
+                                                                                        <tr>
+                                                                                            <td><div t-esc="notify['notification_MSG']"/></td>
+                                                                                            <td><div t-esc="notify['date_start']"/></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="tab-pane" id="unread">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table header-border table-hover table-custom spacing5 ess-table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Title</th>
+                                                                                            <th>Notification Date</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody t-foreach="notification_obj" t-as="notify">
+                                                                                        <tr t-if="notify['is_read'] == False">
+                                                                                            <td><div t-esc="notify['notification_MSG']"/></td>
+                                                                                            <td><div t-esc="notify['date_start']"/></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="tab-pane" id="read">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table header-border table-hover table-custom spacing5 ess-table">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Title</th>
+                                                                                            <th>Notification Date</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody t-foreach="notification_obj" t-as="notify">
+                                                                                        <tr t-if="notify['is_read']">
+                                                                                            <td><div t-esc="notify['notification_MSG']"/></td>
+                                                                                            <td><div t-esc="notify['date_start']"/></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
 
 
 

@@ -390,7 +390,7 @@ msgstr "الموافقات"
 #: model_terms:ir.ui.view,arch_db:ohrmspro_holidays_approval.hr_holidays_status_validators
 #: model_terms:ir.ui.view,arch_db:ohrmspro_holidays_approval.hr_holidays_status_validators_leave_create
 msgid "Approve"
-msgstr "يوافق"
+msgstr "موافقه"
 
 #. module: ohrmspro_holidays_approval
 #: model:ir.model.fields,field_description:ohrmspro_holidays_approval.field_leave_validation_status__validation_status
@@ -593,17 +593,17 @@ msgstr "اعمال"
 #. module: hr_reward_warning
 #: model:ir.model.fields.selection,name:hr_reward_warning.selection__hr_announcement__announcement_type__department
 msgid "By Department"
-msgstr "من قبل وزارة"
+msgstr "موجه لقسم"
 
 #. module: hr_reward_warning
 #: model:ir.model.fields.selection,name:hr_reward_warning.selection__hr_announcement__announcement_type__employee
 msgid "By Employee"
-msgstr "بواسطة الموظف"
+msgstr "موجه الموظف"
 
 #. module: hr_reward_warning
 #: model:ir.model.fields.selection,name:hr_reward_warning.selection__hr_announcement__announcement_type__job_position
 msgid "By Job Position"
-msgstr "حسب الوظيفة"
+msgstr "موجه لمنصب وظيفي"
 
 #. modules: hr_gratuity_settlement, oh_appraisal, ohrms_salary_advance,
 #. ohrms_loan_accounting, uae_wps_report, hr_vacation_mngmt,

@@ -239,6 +239,7 @@ class EssAsset(Controller):
     def passenger_mandate(self, redirect=None, **post):
         print("hi passenger_mandate2")
         values = {}
+        courses = []
         now = datetime.now()
         date_start = now.date()
         values = ESSPortal.check_modules(self)
@@ -248,6 +249,11 @@ class EssAsset(Controller):
         for rec in course_obj:
             print(rec)
         course_place_obj = request.env['course.place'].sudo().search([])
+        for cour in course_obj:
+            courses.append({
+                'course': cour.id,
+                'place': cour.course_place_id.id
+            })
         if post and request.httprequest.method == 'POST':
             print(post)
             private_start_date = post['start_date']
@@ -313,6 +319,7 @@ class EssAsset(Controller):
             'employee': emb_obj,
             'course_obj': course_obj,
             'course_place_obj': course_place_obj,
+            'course_and_place_obj': courses,
             'msg':_('Your Request has been Sent Successfully')
         })
         print(values)
@@ -444,4 +451,55 @@ class EssAsset(Controller):
             'courses_and_mandate_obj': courses_and_mandate_obj,
         })
         response = request.render("ess.ess_view_courses_and_mandate", values)
+        return response
+
+    @route(['/get/course_place'], type='json', auth="public", methods=['GET', 'POST'], csrf=False)
+    def get_country(self, **args):
+        course_obj = request.env['training.course'].sudo().browse(int(args['course_id']))
+        values = {}
+        for place in course_obj:
+            values.update({
+                'val': place.course_place_id.id,
+            })
+        return values
+
+    @route(['/change/notification'], type='json', auth="public", methods=['GET', 'POST'], csrf=False)
+    def change_notification_color(self, **args):
+        notification_id = int(args['course_id'].split("#")[1])
+        notification_obj = request.env['hr.notification'].sudo().browse(int(args['course_id'].split("#")[1]))
+        if notification_obj:
+            for notify in notification_obj:
+                notify.is_read = 1
+
+        value = {
+            'result': notification_id
+        }
+        return value
+
+    @route(['/change/announcement_color'], type='json', auth="public", methods=['GET', 'POST'], csrf=False)
+    def change_announcement_color(self, **args):
+        announcement_id = int(args['url'].split("#")[1])
+        announcement_obj = request.env['hr.announcement'].sudo().browse(int(args['url'].split("#")[1]))
+        if announcement_obj:
+            for announcement in announcement_obj:
+                announcement.is_read = 1
+        value = {
+            'result': announcement_id
+        }
+        return value
+
+    @route(['/all/notification'], type='http', auth='user', website=True)
+    def asset_assignation(self, redirect=None, **post):
+        values = {}
+        values = ESSPortal.check_modules(self)
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        notification_obj = request.env['hr.notification'].sudo().search([('employee_id', '=', emb_obj.id)],order='id desc')
+        values.update({
+            'partner': request.env.user.partner_id,
+            'employee': emb_obj,
+            'notification_obj': notification_obj,
+        })
+
+        response = request.render("ess.ess_all_notification", values)
+        response.headers['X-Frame-Options'] = 'DENY'
         return response

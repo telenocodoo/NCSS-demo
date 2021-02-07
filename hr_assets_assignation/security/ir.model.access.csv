@@ -20,3 +20,5 @@ employee_asset_line_center_manager,employee_asset_line_center_manager,model_empl
 department_clearance,department_clearance,model_department_clearance,,1,1,1,1
 department_clearance_line,department_clearance_line,model_department_clearance_line,,1,1,1,1
 fleet_vehicle_employee_log,fleet_vehicle_employee_log,model_fleet_vehicle_employee_log,,1,1,1,1
+
+account_asset_access,account_asset,account_asset.model_account_asset,base.group_user,1,0,0,0

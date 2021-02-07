@@ -39,14 +39,14 @@ class CustodyRequest(models.Model):
         return [key for key, val in type(self).state.selection]
 
     state = fields.Selection([('draft', 'Draft'),
-                              ('direct_manager_approve', 'Direct Manager Approve'),
-                              ('department_manager_approve', 'Department Manager Approve'),
-                              ('center_manager_approve', 'Center Manager Approve'),
-                              ('accounting_approve', 'Accounting Approve'),
+                              ('direct_manager_approve', 'Direct Manager Approved'),
+                              ('department_manager_approve', 'Department Manager Approved'),
+                              ('center_manager_approve', 'Center Manager Approved'),
+                              ('accounting_approve', 'Accounting Approved'),
                               ('paid', 'Paid'),
                               ('in_progress', 'In Progress'),
                               ('liquidated', 'Liquidated'),
-                              ('refuse', 'Refuse'),
+                              ('refuse', 'Refused'),
                               ('done', 'Done'),
                               ], default='draft',  translate=True ,tracking=True, group_expand='_expand_states')
     color = fields.Integer(compute="compute_color")
@@ -75,13 +75,17 @@ class CustodyRequest(models.Model):
         if direct_manager:
             current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
             args += ['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        if department_manager:
-            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            args += ['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
-                     ('create_uid.id', '=', self.env.user.id)]
+        # if department_manager:
+        #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+        #     args += ['|', '|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+        #              ('employee_id.parent_id.id', '=', current_user_id),
+        #              ('create_uid.id', '=', self.env.user.id)]
         if accounting_manager:
             current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            args += ['|', ('create_uid.id', '=', self.env.user.id), ('state', '=', 'center_manager_approve')]
+            args += ['|', '|', ('create_uid.id', '=', self.env.user.id),
+                     ('employee_id.parent_id.id', '=', current_user_id),
+                     ('state', 'in', ['center_manager_approve', 'accounting_approve','paid', 'in_progress', 'liquidated', 'refuse', 'done'])
+                     ]
         if center_manager:
             args += []
         return super(CustodyRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
@@ -125,6 +129,10 @@ class CustodyRequest(models.Model):
         for record in self:
             if record.remaining_amount == 0.0:
                 record.is_liquidated = True
+                user_ids = list(self.get_users("ncss_custody_request.custody_request_liquidated_button"))
+                if user_ids:
+                    for rec in user_ids:
+                        self.make_activity(rec)
             else:
                 record.is_liquidated = False
 
@@ -183,7 +191,7 @@ class CustodyRequest(models.Model):
     def create(self, values):
         values['name'] = self.env['ir.sequence'].next_by_code('custody.sequence')
         res = super(CustodyRequest, self).create(values)
-        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        user_ids = res.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         if user_ids:
             res.make_activity(user_ids[0])
         message = 'تم انشاء طلب العهده الخاص بك (%s)' % res['name']
@@ -279,8 +287,8 @@ class CustodyRequest(models.Model):
         debit_account_id = self.env.user.company_id.debit_account_id.id
         credit_account_id = self.env.user.company_id.credit_account_id.id
         amount = self.amount
-        address_home_id = self.employee_id.address_home_id.id
-        account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
+        address_home_id = self.sudo().employee_id.address_home_id.id
+        account_move_obj = self.sudo().create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.expense_account_move_id = account_move_obj.id
 
         user_ids = list(self.get_users("ncss_custody_request.custody_request_liquidated_button"))
@@ -298,8 +306,8 @@ class CustodyRequest(models.Model):
         debit_account_id = self.env.user.company_id.debit_account_id.id
         credit_account_id = self.env.user.company_id.credit_account_id.id
         amount = self.amount
-        address_home_id = self.employee_id.address_home_id.id
-        account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
+        address_home_id = self.sudo().employee_id.address_home_id.id
+        account_move_obj = self.sudo().create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.expense_account_move_id = account_move_obj.id
 
         # user_ids = list(self.get_users("ncss_custody_request.custody_request_done_button"))
@@ -327,8 +335,8 @@ class CustodyRequest(models.Model):
         credit_account_id = self.env.user.company_id.debit_account_id.id
         debit_account_id = self.env.user.company_id.expense_account_id.id
         amount = self.amount
-        address_home_id = self.employee_id.address_home_id.id
-        account_move_obj = self.create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
+        address_home_id = self.sudo().employee_id.address_home_id.id
+        account_move_obj = self.sudo().create_account_move(journal, label, debit_account_id, credit_account_id, amount, address_home_id)
         self.liquidated_account_move_id = account_move_obj.id
         message = 'تمت تسويه العهده الخاصه بك (%s)' % self.name
         self.make_notification(message)

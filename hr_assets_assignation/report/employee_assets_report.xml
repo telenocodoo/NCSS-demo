@@ -19,6 +19,7 @@
                         <p style="text-align:center;">
                             <strong>انه في يوم </strong>
                             <strong>
+<!--                                <t t-set="date" t-value="datetime.datetime.now().strftime('%Y-%m-%d')"/>-->
                                 <t t-set="date" t-value="datetime.datetime.now().strftime('%Y-%m-%d')"/>
                                 (<span t-esc="o.get_day_name_from_date(date)" />)
                             </strong>

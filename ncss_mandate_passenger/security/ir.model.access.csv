@@ -21,3 +21,6 @@ budget_allocated_training_manager,budget_allocated_training,model_budget_allocat
 ir_filters,ir_filters,base.model_ir_filters,,1,1,1,1
 ir_actions_server,ir_actions_server,base.model_ir_actions_server,,1,1,1,1
 ir_actions_act_window_view,ir_actions_act_window_view,base.model_ir_actions_act_window_view,,1,1,1,1
+
+hr_employee_access,hr_employee,hr.model_hr_employee,base.group_user,1,0,0,0
+hr_employee_public_access,hr_employee_public,hr.model_hr_employee_public,base.group_user,1,0,0,0

@@ -43,6 +43,7 @@ class HrnotificationTable(models.Model):
     date_end = fields.Date(string='End Date', default=fields.Date.today(), required=True, help="End date of "
                                                                                                "Notification want too")
     employee_id = fields.Many2one('hr.employee', 'Employee')
+    is_read = fields.Boolean()
     # res_id =fields.Integer(string="Model id")
 
     @api.constrains('date_start', 'date_end')

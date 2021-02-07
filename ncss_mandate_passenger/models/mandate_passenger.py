@@ -139,11 +139,11 @@ class MandatePassenger(models.Model):
         return [key for key, val in type(self).state.selection]
 
     state = fields.Selection([('draft', 'Draft'),
-                               ('direct_manager_approve', 'Direct Manager Approve'),
-                               ('department_manager_approve', 'Department Manager Approve'),
-                               ('hr_approve', 'Hr Approved'),
-                               ('accounting_approve', 'Accounting Approve'),
-                               ('refuse', 'Refuse'),
+                               ('direct_manager_approve', 'Direct Manager Approved'),
+                               ('department_manager_approve', 'Department Manager Approved'),
+                               ('hr_approve', 'Hr Approvedd'),
+                               ('accounting_approve', 'Accounting Approved'),
+                               ('refuse', 'Refused'),
                                ], default='draft', tracking=True, group_expand='_expand_states')
 
     def _getdesc(self):
@@ -184,21 +184,41 @@ class MandatePassenger(models.Model):
     expensed_from_budget = fields.Float(compute="compute_budget_info")
     remaining_from_budget = fields.Float(compute="compute_budget_info")
 
+    def return_main_department(self, department):
+        if department and department.is_main_department:
+            return department
+        else:
+            parent_department = department.parent_id
+            return self.return_main_department(parent_department)
+
     def compute_budget_info(self):
         current_employee_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)])
-        if current_employee_id:
+        if current_employee_id and self.state == 'direct_manager_approve':
             for record in self:
-                budget_obj = self.env['budget.allocated.training'].search(
-                    [('department_id.manager_id.id', '=', current_employee_id.id)], limit=1)
-                if budget_obj:
-                    # record.department_id = budget_obj.department_id.id
-                    record.budget = budget_obj.budget
-                    record.expensed_from_budget = budget_obj.expensed_from_budget
-                    record.remaining_from_budget = budget_obj.remaining_from_budget
+                main_department = self.return_main_department(record.employee_id.department_id)
+                if main_department:
+                    print(">>>>>>>>>>>>>>>>>>", main_department)
+                    budget_obj = self.env['budget.allocated.training'].search(
+                        [('department_id.id', '=', main_department.id)], limit=1)
+                        # [('department_id.manager_id.id', '=', current_employee_id.id)], limit=1)
+                    if budget_obj:
+                        print(">>>>>>>>>>>>>>>>>>11111111111111")
+                        # record.department_id = budget_obj.department_id.id
+                        record.budget = budget_obj.budget
+                        record.expensed_from_budget = budget_obj.expensed_from_budget
+                        record.remaining_from_budget = budget_obj.remaining_from_budget
+                    else:
+                        record.budget = 0.0
+                        record.expensed_from_budget = 0.0
+                        record.remaining_from_budget = 0.0
                 else:
                     record.budget = 0.0
                     record.expensed_from_budget = 0.0
                     record.remaining_from_budget = 0.0
+        else:
+            self.budget = 0.0
+            self.expensed_from_budget = 0.0
+            self.remaining_from_budget = 0.0
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -209,37 +229,46 @@ class MandatePassenger(models.Model):
         center_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_center_manager')
         hr_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_hr_manager')
         order = "create_date desc"
-
         if center_manager or hr_manager:
             # current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
             # passenger_mandate_obj = self.search([])
             # for mandate in passenger_mandate_obj:
             #     lst.append(mandate.id)
             args += []
-        elif accounting_manager:
+        if accounting_manager:
             current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
             # passenger_mandate_obj = self.search([('state', '=', 'department_manager_approve')])
             # for mandate in passenger_mandate_obj:
             #     lst.append(mandate.id)
             # print(self.create_uid)
-            args += ['|', ('create_uid.id', '=', self.env.user.id), ('state', '=', 'department_manager_approve')]
+            # print(":::LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", self.is_department_manager)
+            # main_department = self.return_main_department(self.employee_id.department_id)
+            # print(":::::::::::::::::::", main_department)
+            # print(":::::::::::::::::::", self.employee_id.department_id.name)
+            # print(":::::::::::::::::::", self.employee_id.name)
+            args += ['|', '|', ('create_uid.id', '=', self.env.user.id),
+                     ('employee_id.parent_id.id', '=', current_user_id),
+                     ('state', 'in', ['refuse', 'hr_approve', 'accounting_approve'])]
 
-        elif department_manager:
-            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            # passenger_mandate_obj = self.search(['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
-            #                                      ('create_uid', '=', current_user_id)])
-            # for mandate in passenger_mandate_obj:
-            #     lst.append(mandate.id)
-            args += ['|', ('employee_id.department_id.manager_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+        # if department_manager:
+        #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+        #     # passenger_mandate_obj = self.search(['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+        #     #                                      ('create_uid', '=', current_user_id)])
+        #     # for mandate in passenger_mandate_obj:
+        #     #     lst.append(mandate.id)
+        #     args += ['|', '|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+        #              ('employee_id.parent_id.id', '=', current_user_id),
+        #              ('create_uid.id', '=', self.env.user.id)]
 
-        elif direct_manager:
+        if direct_manager:
             current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
             # passenger_mandate_obj = self.search(['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid', '=', current_user_id)])
             # for mandate in passenger_mandate_obj:
             #     lst.append(mandate.id)
             # args += [('id', 'in', lst)]
             args += ['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        elif employee:
+        # else:
+        if employee:
             args += [('create_uid', '=', self.env.user.id)]
 
         return super(MandatePassenger, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
@@ -248,7 +277,7 @@ class MandatePassenger(models.Model):
     def create(self, values):
         values['name'] = self.env['ir.sequence'].next_by_code('mandate.passenger.sequence')
         res = super(MandatePassenger, self).create(values)
-        user_ids = self.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
+        user_ids = res.mapped('employee_id.parent_id.user_id').ids or [self.env.uid]
         res.make_activity(user_ids[0])
         message = 'تم انشاء طلب انتداب واركاب لك (%s)' % res['name']
         res.make_notification(message)
@@ -419,13 +448,18 @@ class MandatePassenger(models.Model):
     def compute_department_manager(self):
         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
         for record in self:
-            if record.employee_id.department_id and record.employee_id.department_id.manager_id:
-                if record.employee_id.department_id.manager_id.id == current_user_id:
-                    budget_obj = self.env['budget.allocated.training'].search(
-                        [('department_id.id', '=', record.employee_id.department_id.id)], limit=1)
-                    if budget_obj:
-                        if budget_obj.remaining_from_budget > record.total:
-                            self.is_department_manager = True
+            if record.employee_id.department_id:
+                main_department = self.return_main_department(record.employee_id.department_id)
+                if main_department and main_department.manager_id:
+                    if main_department.manager_id.id == current_user_id:
+                        budget_obj = self.env['budget.allocated.training'].search(
+                            [('department_id.id', '=', main_department.id)], limit=1)
+                            # [('department_id.id', '=', record.employee_id.department_id.id)], limit=1)
+                        if budget_obj:
+                            if budget_obj.remaining_from_budget > record.total:
+                                self.is_department_manager = True
+                            else:
+                                self.is_department_manager = False
                         else:
                             self.is_department_manager = False
                     else:
@@ -436,10 +470,12 @@ class MandatePassenger(models.Model):
                 self.is_department_manager = False
 
     def action_direct_manager_approve(self):
-        user_ids = self.mapped('employee_id.department_id.manager_id.user_id').ids
-        print(user_ids)
-        if user_ids:
-            self.make_activity(user_ids[0])
+        department_id = self.mapped('employee_id.department_id')
+        if department_id:
+            dep = self.return_main_department(department_id)
+            user_ids = dep.mapped('manager_id.user_id').ids
+            if user_ids:
+                self.make_activity(user_ids[0])
         message = 'تمت موافقه المدير المباشر علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'direct_manager_approve'
@@ -476,6 +512,8 @@ class MandatePassenger(models.Model):
     def action_hr_manager_approve(self):
         user_ids = list(self.get_users("ncss_mandate_passenger.mandate_passenger_accounting_manager"))
         print(user_ids)
+        if not self.attach_file_ticket:
+            raise UserError(_("Please Add Flight Ticket"))
         if user_ids:
             for rec in user_ids:
                 self.make_activity(rec)
@@ -484,6 +522,8 @@ class MandatePassenger(models.Model):
         self.state = 'hr_approve'
 
     def action_accounting_approve(self):
+        if not self.attach_file_ticket:
+            raise UserError(_("Please Add Flight Ticket"))
         message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
         self.state = 'accounting_approve'

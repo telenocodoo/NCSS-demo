@@ -13,6 +13,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/mandate_passenger_sequence.xml',
+        'views/hr_department.xml',
         'views/mandate_passenger.xml',
     ]
 }

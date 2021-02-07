@@ -23,3 +23,8 @@ crm_team,crm_team,crm.model_crm_team,,1,1,1,1
 account_move,account_move,account.model_account_move,base.group_user,1,0,0,0
 account_move_line,account_move_line,account.model_account_move_line,base.group_user,1,0,0,0
 ir_actions_act_url,ir_actions_act_url,base.model_ir_actions_act_url,base.group_user,1,1,1,1
+
+res_partner_access,res_partner,base.model_res_partner,base.group_user,1,0,0,0
+account_move_access,account_move,account.model_account_move,base.group_user,1,0,0,0
+hr_employee_access,hr_employee,hr.model_hr_employee,base.group_user,1,0,0,0
+hr_employee_public_access,hr_employee_public,hr.model_hr_employee_public,base.group_user,1,0,0,0
