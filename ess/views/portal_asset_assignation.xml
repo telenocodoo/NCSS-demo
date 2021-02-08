@@ -1290,15 +1290,14 @@
         </t>
     </template>
 
-<template id="assets_frontend_as" inherit_id="website_sale_stock.assets_frontend">
+    <template id="assets_frontend_as" inherit_id="website_sale_stock.assets_frontend">
+        <xpath expr="." position="inside">
+           <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
+            <script type="text/javascript" src="/ess/static/src/js/check_notification_link.js"></script>
+       </xpath>
+    </template>
 
-    <xpath expr="." position="inside">
-       <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
-       <script type="text/javascript" src="/ess/static/src/js/check_notification_link.js"></script>
-   </xpath>
-</template>
-
- <template id="ess_passenger_mandate" name="ESS Passenger Mandate">
+    <template id="ess_passenger_mandate" name="ESS Passenger Mandate">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -1436,10 +1435,13 @@
 
 <!--             <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style2.css"/>-->
            <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
-   <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
+            <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
+
+             <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
+
     </template>
 
-<template id="ess_view_courses_and_mandate" name="ESS View Passenger Mandate">
+    <template id="ess_view_courses_and_mandate" name="ESS View Passenger Mandate">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -1791,7 +1793,7 @@
     </template>
 
 
-        <template id="ess_passenger_mandate_private" name="ESS Passenger Mandate private">
+    <template id="ess_passenger_mandate_private" name="ESS Passenger Mandate private">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -1940,7 +1942,7 @@
     </template>
 
 
-        <template id="ess_all_notification" name="ESS View All Notification">
+    <template id="ess_all_notification" name="ESS View All Notification">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">

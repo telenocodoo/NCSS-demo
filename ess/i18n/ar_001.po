@@ -811,7 +811,7 @@ msgstr "الكود"
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement
 #: model_terms:ir.ui.view,arch_db:ess.employee_announcement_public
 msgid "Code No"
-msgstr ""
+msgstr "رقم الاعلان"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_track_appraisal
