@@ -351,6 +351,7 @@ class MandatePassenger(models.Model):
                     raise UserError(_("Please Add Employee"))
                 record.description = record.course_id.description
                 record.course_type = record.course_id.type
+                record.course_place_id = record.course_id.course_place_id.id
                 record.price = record.course_id.price
                 record.start_date = record.course_id.start_date
                 record.end_date = record.course_id.end_date
