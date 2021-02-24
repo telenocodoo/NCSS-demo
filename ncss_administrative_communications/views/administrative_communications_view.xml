@@ -505,7 +505,7 @@
                             <field name="transaction_attachment_line_ids" attrs="{'readonly':[('state','=','done')]}">
                                 <tree editable="bottom">
                                     <field name="attachments" invisible="1"/>
-                                    <field name="attachment_ids"  strring='المرفقات' widget="many2many_binary" required="1"/>
+                                    <field name="attachment_ids"  string='المرفقات' widget="many2many_binary" required="1"/>
                                     <field name="description"/>
                                 </tree>
                             </field>
