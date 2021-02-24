@@ -193,6 +193,7 @@ class ESSPortal(Controller):
         leave_allocation_list = []
         leave_list = []
         appraisal_list = []
+        department_announcement_list = []
         announcement_list = []
         announcement_list_public = []
         notification_list=[]
@@ -231,11 +232,32 @@ class ESSPortal(Controller):
                 })
 
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_reward_warning')]).state == 'installed':
-            announcement_obj = request.env['hr.announcement'].sudo().search([('state','=','approved')],order='id desc')
-            announcement_private_obj = request.env['hr.announcement'].sudo().search([('state','=','approved'),('employee_ids','in',[emb_obj.id])],order='id desc')
-
-            notification_obj = request.env['hr.notification'].sudo().search([('state','=','notify'),('employee_id','=',emb_obj.id)],order='id desc')
-
+            announcement_obj = request.env['hr.announcement'].sudo().\
+                search([('state', '=', 'approved')], order='id desc')
+            announcement_private_obj = request.env['hr.announcement'].sudo().\
+                search([('state', '=', 'approved'),('employee_ids', 'in', [emb_obj.id])], order='id desc')
+            notification_obj = request.env['hr.notification'].sudo().\
+                search([('state', '=', 'notify'), ('employee_id', '=', emb_obj.id)], order='id desc')
+            announcement_by_all_department_obj = request.env['hr.announcement'].sudo().search \
+                ([('announcement_type', '=', 'department'), ('state', '=', 'approved')])
+            announcement_lst = []
+            for announcement in announcement_by_all_department_obj:
+                if announcement.department_ids:
+                    for dep in announcement.department_ids:
+                        if dep.is_main_department:
+                            if emb_obj.department_id.parent_id:
+                                if emb_obj.department_id.parent_id.id == dep.id:
+                                    if announcement.id not in announcement_lst:
+                                        announcement_lst.append(announcement.id)
+                            if emb_obj.department_id:
+                                if emb_obj.department_id.id == dep.id:
+                                    if announcement.id not in announcement_lst:
+                                        announcement_lst.append(announcement.id)
+                        else:
+                            if emb_obj.department_id.id == dep.id:
+                                if announcement.id not in announcement_lst:
+                                    announcement_lst.append(announcement.id)
+            announcement_all_dep_obj = request.env['hr.announcement'].sudo().browse(announcement_lst[::-1])
             for obj in notification_obj:
                 notification_list.append({
                     'title': obj.notification_MSG,
@@ -244,6 +266,18 @@ class ESSPortal(Controller):
 
                 })
             print("notify ", notification_list)
+
+            for ann in announcement_all_dep_obj:
+                department_announcement_list.append({
+                    'code': ann.name,
+                    'title': ann.announcement_reason,
+                    'announcement': ann.announcement,
+                    'date_start': ann.date_start,
+                    'date_end': ann.date_end,
+                    'attachment_id': ann.attachment_id,
+                    'id': ann.id,
+                    'is_read': ann.is_read,
+                })
 
             for ann in announcement_private_obj:
                 if not ann.is_announcement:
@@ -307,6 +341,7 @@ class ESSPortal(Controller):
             assignation_obj = request.env['asset.account.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for assign in assignation_obj:
                 asset_assignation_list.append({
+                    'id': assign.id,
                     'name': assign.name,
                     'type': assign.type,
                     'asset_id': assign.asset_id.name,
@@ -320,6 +355,7 @@ class ESSPortal(Controller):
             custody_obj = request.env['custody.request'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for custody in custody_obj:
                 custody_list.append({
+                    'id': custody.id,
                     'name': custody.name,
                     'date': custody.date,
                     'amount': custody.amount,
@@ -332,6 +368,7 @@ class ESSPortal(Controller):
             mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)], order='id desc', limit=5)
             for mandate in mandate_obj:
                 mandate_list.append({
+                    'id': mandate.id,
                     'name': mandate.name,
                     'type': mandate.type,
                     'course_id': mandate.course_id.name,
@@ -350,6 +387,7 @@ class ESSPortal(Controller):
             'employee': emb_obj,
             'leave_allocation_list': leave_allocation_list,
             'appraisal_list': appraisal_list,
+            'department_announcement_list': department_announcement_list,
             'announcement_list': announcement_list,
             'announcement_list_public': announcement_list_public,
             'notification_list': notification_list,
@@ -1138,10 +1176,42 @@ class ESSPortal(Controller):
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
         # announcement_obj = request.env['hr.announcement'].sudo().search([])
         announcement_obj = request.env['hr.announcement'].sudo().search([('state', '=', 'approved'),
-                                                                         ('is_announcement', '=', True)])
-        announcement_by_employee_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'employee')]).filtered(lambda r: emb_obj in r.employee_ids)
-        announcement_by_department_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'department')]).filtered(lambda r: emb_obj.department_id in r.department_ids)
-        announcement_by_job_obj = request.env['hr.announcement'].sudo().search([('announcement_type', '=', 'job_position')]).filtered(lambda r: emb_obj.job_id in r.position_ids)
+                                                                         ('is_announcement', '=', True)],
+                                                                        order="id desc")
+        announcement_by_employee_obj = request.env['hr.announcement'].sudo().\
+            search([('announcement_type', '=', 'employee')], order="id desc").\
+            filtered(lambda r: emb_obj in r.employee_ids)
+        announcement_by_department_obj = request.env['hr.announcement'].sudo().\
+            search([('announcement_type', '=', 'department')], order="id desc").\
+            filtered(lambda r: emb_obj.department_id in r.department_ids)
+        announcement_by_all_department_obj = request.env['hr.announcement'].sudo().\
+            search([('announcement_type', '=', 'department'), ('state', '=', 'approved')], order="id desc")
+        announcement_lst = []
+        for announcement in announcement_by_all_department_obj:
+            if announcement.department_ids:
+                for dep in announcement.department_ids:
+                    print(":::::::::::::::::::", dep.name)
+                    if dep.is_main_department:
+                        if emb_obj.department_id.parent_id:
+                            if emb_obj.department_id.parent_id.id == dep.id:
+                                if announcement.id not in announcement_lst:
+                                    announcement_lst.append(announcement.id)
+                        if emb_obj.department_id:
+                            if emb_obj.department_id.id == dep.id:
+                                if announcement.id not in announcement_lst:
+                                    announcement_lst.append(announcement.id)
+                    else:
+                        if emb_obj.department_id.id == dep.id:
+                            if announcement.id not in announcement_lst:
+                                announcement_lst.append(announcement.id)
+        print(":::::::::::::::::", announcement_lst)
+        announcement_all_dep_obj = request.env['hr.announcement'].sudo().browse(announcement_lst)
+        print("announcement_all_dep_obj::::::::::::::", announcement_all_dep_obj)
+        print("announcement_lst::::::::::::::", announcement_lst)
+        print("announcement_lst::::::::::::::", announcement_lst[::-1])
+        announcement_by_job_obj = request.env['hr.announcement'].sudo().\
+            search([('announcement_type', '=', 'job_position')], order="id desc").\
+            filtered(lambda r: emb_obj.job_id in r.position_ids)
 
         values = self.check_modules()
         print(":::::::::::::", values)
@@ -1155,7 +1225,7 @@ class ESSPortal(Controller):
             'employee': emb_obj,
             'announcement_obj': announcement_obj,
             'announcement_by_employee_obj': announcement_by_employee_obj,
-            'announcement_by_department_obj': announcement_by_department_obj,
+            'announcement_by_department_obj': announcement_all_dep_obj,
             'announcement_by_job_obj': announcement_by_job_obj,
         })
         print (announcement_obj)

@@ -4,7 +4,7 @@ odoo.define('ess.uom_portal', function (require) {
     var rpc = require('web.rpc')
 
     publicWidget.registry.place = publicWidget.Widget.extend({
-        selector: '#contactForm1',
+        selector: '#contactForm2',
         events: {
             'change select[name="course_id"]': '_adaptCityForm',
         },

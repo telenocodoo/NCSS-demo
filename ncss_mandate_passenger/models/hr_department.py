@@ -10,3 +10,9 @@ class HrDepartment(models.Model):
 
     is_main_department = fields.Boolean('Main Department', default=True)
 
+
+class HrAttendance(models.Model):
+    _inherit = 'hr.attendance'
+
+    description = fields.Char()
+

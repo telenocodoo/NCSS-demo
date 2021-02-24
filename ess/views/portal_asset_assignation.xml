@@ -292,7 +292,7 @@
 
 
 
-    <template id="ess_view_asset_assignation" name="ESS View Asset Assignation">
+    <template id="ess_view_asset_assignation2" name="ESS View Asset Assignation">
         <t t-call="portal.portal_layout">
             <t>
                 <div class="row justify-content-between mt-4">
@@ -683,7 +683,7 @@
                                                                 </div>
                                                             </div>
                                         <div class="col-lg-12" style="margin-top:10px;">
-                                            <form action="/add/custody_line" method="post" enctype="multipart/form-data">
+                                            <form action="/add_custody_line" method="post" id="FormCustodyLine" enctype="multipart/form-data">
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                                 <input type="hidden" name="get_id" t-att-value="request.params.get('id')"/>
                                                 <input type="hidden" name="get_remaining_amount" t-att-value="request.params.get('custody_remain')"/>
@@ -718,11 +718,11 @@
 
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="description">Description</label>
-                                                                    <input type="text" name="description" t-attf-class="form-control" />
+                                                                    <input id="custody_description" type="text" name="description" t-attf-class="form-control" />
                                                                 </div>
                                                                <div t-attf-class="form-group  col-xl-6">
                                                                     <label class="col-form-label" for="doc_attachment_id">Attachment</label>
-                                                                    <input class="attachment" type="file" name="doc_attachment_id" value=""  required=""/>
+                                                                    <input id="custody_attachment" class="attachment" type="file" name="doc_attachment_id" value=""  required=""/>
                                                                 </div>
 
 
@@ -733,12 +733,12 @@
                                                                 <div t-attf-class="form-group col-xl-3">
                                                                     <label class="col-form-label" for="remaining_amount2">Remaining amount</label>
 <!--                                                                    <input type="text" name="description" t-attf-class="form-control"/>-->
-                                                                    <input type="text" name="remaining_amount2" readonly="readonly" t-attf-class="form-control" t-att-value="request.params.get('custody_remain')"/>
+                                                                    <input id="remain_amount" type="text" name="remaining_amount2" readonly="readonly" t-attf-class="form-control" t-att-value="request.params.get('custody_remain')"/>
                                                                 </div>
                                                             </div>
 
                                                             <div class="clearfix">
-                                                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;'>
+                                                                <button type="submit" class="btn btn-primary float-right" id="add_custody_button" style='margin-right: 30px;'>
                                                                     Create
                                                                 </button>
                                                             </div>
@@ -789,6 +789,8 @@
                 </div>
             </t>
         </t>
+        <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
     </template>
 
     <template id="ess_custody_in_progress" name="ESS Custody In Progress">
@@ -843,7 +845,7 @@
                                                                                             <td><div t-esc="custody['description']"/></td>
                                                                                             <td><div t-esc="custody['state_desc']"/></td>
                                                                                             <td>
-                                                                                                <a t-attf-href="/add/custody_line?id={{custody['id']}}&amp;custody_remain={{custody['remaining_amount']}}">Add Custody Line</a>
+                                                                                                <a t-attf-href="/add_custody_line?id={{custody['id']}}&amp;custody_remain={{custody['remaining_amount']}}">Add Custody Line</a>
 <!--                                                                                                {'params':{'id':{{custody['id']}}}}-->
 <!--                                                                                                {'params':{'id':{{custody['id']}}}}-->
 <!--                                                                                                {"params":{"id":"test"}}-->
@@ -1318,24 +1320,23 @@
                                     <div class="row col-lg-12">
 
                                         <div class="col-lg-12" style="margin-top:10px;">
-                                            <form action="/request/passenger_mandate" method="post"  id="contactForm1" >
+                                            <form action="/request/passenger_mandate" method="post"  id="contactForm2" >
                                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
 
                                                 <div class="row o_portal_expense">
                                                   <div class="row form-group col-lg-12">
 
-                                                            <div t-attf-class="form-group col-xl-6">
+                                                        <div t-attf-class="form-group col-xl-6">
                                                                 <label class="col-form-label " for="type">Type</label>
-                                                                <select name="type" t-attf-class="form-control">
+                                                                <select name="type" t-attf-class="form-control" id="type">
                                                                         <option t-att-value="course" >course</option>
                                                                         <option t-att-value="mandate" >mandate</option>
                                                                         <option t-att-value="work_shop" >work_shop</option>
                                                                 </select>
                                                             </div>
 
-
-                                                            <div t-attf-class="form-group col-xl-6">
+                                                        <div t-attf-class="form-group col-xl-6">
                                                                 <label class="col-form-label" for="course_type">Course Type</label>
                                                                 <select name="course_type" t-attf-class="form-control" id="course_type">
                                                                         <option t-att-value="internal" >internal</option>
@@ -1344,7 +1345,7 @@
                                                                 </select>
                                                             </div>
 
-                                                       <div t-attf-class="form-group col-xl-6">
+                                                        <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_id">Course</label>
                                                             <select name="course_id" t-attf-class="form-control" id="course_id">
                                                                 <t t-foreach="course_obj or []" t-as="cor">
@@ -1354,26 +1355,8 @@
                                                                 </t>
                                                             </select>
                                                         </div>
-<!--                                                      magdy-->
 
-<!--                                                      <div t-attf-class="form-group col-xl-6">-->
-<!--                                                            <label class="col-form-label" for="course_id">Course and place</label>-->
-<!--                                                          <t t-esc="course_obj" />-->
-<!--                                                          <t t-esc="course_and_place_obj" />-->
-<!--&lt;!&ndash;                                                          <t t-esc="course_obj['id']" />&ndash;&gt;-->
-<!--&lt;!&ndash;                                                          <t t-esc="course_obj['course_place_id']" />&ndash;&gt;-->
-<!--                                                            <select name="course_and_place_obj" t-attf-class="form-control" id="course_and_place_id">-->
-<!--                                                                <t t-foreach="course_and_place_obj or []" t-as="cor">-->
-<!--                                                                    <option t-att-value="cor['course']">-->
-<!--&lt;!&ndash;                                                                        <t t-esc="cor['course']" />&ndash;&gt;-->
-<!--                                                                        <t t-esc="cor['place']" />-->
-<!--                                                                    </option>-->
-<!--                                                                </t>-->
-<!--                                                            </select>-->
-<!--                                                        </div>-->
-
-
-                                                      <div t-attf-class="form-group col-xl-6">
+                                                        <div t-attf-class="form-group col-xl-6">
                                                             <label class="col-form-label" for="course_place_id">Course PLace</label>
                                                             <select name="course_place_id" t-attf-class="form-control" id="place_id">
                                                                 <t t-foreach="course_place_obj or []" t-as="place">
@@ -1384,40 +1367,37 @@
                                                             </select>
                                                         </div>
 
+                                                        <div t-attf-class="form-group col-xl-6" id="start_date" style="display:none">
+                                                           <label class="col-form-label" for="start_date">Start Date</label>
+                                                            <input type="date" name="start_date"  id="start_date"  t-attf-class="form-control" required="" />
+                                                        </div>
 
-                                                             <div t-attf-class="form-group col-xl-6" id="start_date" style="display:none">
-                                                            <label class="col-form-label" for="start_date">Start Date</label>
-                                                                <input type="date" name="start_date"  id="start_date"  t-attf-class="form-control" required="" />
-                                                                              </div>
-
-                                                              <div t-attf-class="form-group col-xl-6" id="end_date" style="display:none">
-                                                            <label class="col-form-label" for="end_date">End Date</label>
-                                                                <input type="date" name="end_date"  id="end_date"  t-attf-class="form-control" required="" />
-                                                          </div>
-
+                                                        <div t-attf-class="form-group col-xl-6" id="end_date" style="display:none">
+                                                           <label class="col-form-label" for="end_date">End Date</label>
+                                                            <input type="date" name="end_date"  id="end_date"  t-attf-class="form-control" required="" />
+                                                      </div>
 
                                                         <div t-attf-class="form-group col-xl-6">
-                                                                <label class="col-form-label" for="description">Description</label>
-                                                                <textarea rows="4" cols="50" name="description" t-attf-class="form-control"  ></textarea>
-                                                            </div>
+                                                            <label class="col-form-label" for="description">Description</label>
+                                                            <textarea rows="4" cols="50" name="description" id="description" t-attf-class="form-control"  ></textarea>
+                                                        </div>
 
-                               <div t-attf-class="form-group col-xl-6"  id="error_msg"  style="font-weight:bold;font-size:14px;color:green;">
-                                  </div>
+                                                        <div t-attf-class="form-group col-xl-6"  id="error_msg"  style="font-weight:bold;font-size:14px;color:green;">
+                                                </div>
+
+                                                <div class="clearfix" t-attf-class="form-group col-xl-6">
+                                                    <button type="button" class="btn btn-primary float-right" style='margin-right: 30px;' id="submit_mandate_button_id">
+                                                        Create
+                                                    </button>
+
+                                                    <button type="reset" class="btn btn-primary float-right" style='margin-right: 30px;'  >
+                                                        Reset
+                                                    </button>
+
+                                                </div>
 
 
-                            <div class="clearfix" t-attf-class="form-group col-xl-6">
-                                <button type="submit" class="btn btn-primary float-right" style='margin-right: 30px;' id="submit_button_id">
-                                    Create
-                                </button>
-
-                                <button type="reset" class="btn btn-primary float-right" style='margin-right: 30px;'  >
-                                    Reset
-                                </button>
-
-                            </div>
-
-
-</div>
+                                                </div>
 
 
                                                 </div>
@@ -1433,11 +1413,10 @@
             </t>
         </t>
 
-<!--             <link rel="stylesheet" type="text/scss" href="/ess/static/src/css/style2.css"/>-->
-           <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
-            <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
-
-             <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
+        <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>
+        <script type="text/javascript" src="/ess/static/src/js/change_passenger_mandane.js"></script>
+        <script type="text/javascript" src="/ess/static/src/js/click_mandate_submit_button.js"></script>
 
     </template>
 

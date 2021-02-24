@@ -48,6 +48,8 @@ odoo.define('ess.check_notification_link', function (require) {
                     },
                 }).then(function (result) {
                 $('td').find('#announcement'+result['result']).css({"color":"black"});
+                parent.window.location.href='/my/announcement#by_job_position';
+                $('#by_department2').addClass("active");
                 });
             });
         },
@@ -74,40 +76,62 @@ odoo.define('ess.check_notification_link', function (require) {
                 }).then(function (result) {
 //                $('#announcement'+result['result']).css({"background_color":"black"});
 $('td').find('#announcement'+result['result']).css({"color":"black"});
+$('li').find('#by_department').css({"class":"active"});
+//$('#by_department2').addClass("active");
+parent.window.location.href='/my/announcement#by_job_position';
+//parent.window.location.href='/add/achievement_lines?id='+result['id']+'&'+'work_order='+result['name'];
                 });
             });
         },
     });
 
-//function show_notification(id_notify){
-//alert(id_notify);
-//alert(document.getElementById(id_notify););
-////make an ajax call and get status value using the same 'id'
-////var var1= document.getElementById("status").value;
-////$.ajax({
-////
-////        type:"GET",//or POST
-////        url:'http://localhost:7080/ajaxforjson/Testajax',
-////                           //  (or whatever your url is)
-////        data:{data1:var1},
-////        //can send multipledata like {data1:var1,data2:var2,data3:var3
-////        //can use dataType:'text/html' or 'json' if response type expected
-////        success:function(responsedata){
-////               // process on data
-////               alert("got response as "+"'"+responsedata+"'");
-////
-////        }
-////     })
-//
-//}
+    publicWidget.registry.mandate = publicWidget.Widget.extend({
+        selector: '.mandate_visited',
+        events: {'click .mandate_visited_link': '_MandatePassengerClick',},
 
+        start: function () {
+            var def = this._super.apply(this, arguments);
+            var self = this;
+            return def;
+        },
 
+        _MandatePassengerClick: function () {
+           var self = this;
+           parent.window.location.href='/my/courses_and_mandate';
+        },
+    });
 
-//$(this).click(function(event){
-//function UpdateStatus(Status)
-//event.preventDefault();
-//alert(">>>>>>>>>>>>>>>>>>")
-//});
+    publicWidget.registry.custody = publicWidget.Widget.extend({
+        selector: '.custody_visited',
+        events: {'click .custody_visited_link': '_CustodyClick',},
+
+        start: function () {
+            var def = this._super.apply(this, arguments);
+            var self = this;
+            return def;
+        },
+
+        _CustodyClick: function () {
+           parent.window.location.href='/my/custody';
+        },
+    });
+
+    publicWidget.registry.asset = publicWidget.Widget.extend({
+        selector: '.asset_visited',
+        events: {'click .asset_visited_link': '_AssetAssignationClick',},
+
+        start: function () {
+            var def = this._super.apply(this, arguments);
+            var self = this;
+            return def;
+        },
+
+        _AssetAssignationClick: function () {
+           var self = this;
+           parent.window.location.href='/my/asset_assignation';
+        },
+    });
+
 });
 
 

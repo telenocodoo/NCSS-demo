@@ -8,7 +8,7 @@
     'description': """
     crm_project
     """,
-    'depends': ['base', 'mail', 'hr'],
+    'depends': ['base', 'mail', 'hr', 'hr_attendance'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

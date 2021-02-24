@@ -347,7 +347,7 @@
                            style="color: red; font-weight: bold;" />
                             <field name="remaining_from_budget" readonly="1" force_save="1"
                             attrs="{'invisible':['|',('is_department_manager','=',False),('state','!=','direct_manager_approve')]}"
-                            style="color: red; font-weight: bold;"/>
+                            style="color: green; font-weight: bold;"/>
 
                         </group>
                     </group>

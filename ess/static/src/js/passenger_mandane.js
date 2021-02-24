@@ -32,7 +32,8 @@ if (['internal', 'external'].indexOf(str) >= 0)
  {
 // errmsg.text('Your Request has been Sent Successfully');
  alert('Your Request has been Sent Successfully');
-}else
+}
+else
     {
 //    errmsg.text('تم ارسال طلبكم بنجاح');
     alert('تم ارسال طلبكم بنجاح');
@@ -45,6 +46,37 @@ if (['internal', 'external'].indexOf(str) >= 0)
                 });
 });
 
+$("#add_custody_button").click(function(event){
+   event.preventDefault();
+   var form_data = $("#FormCustodyLine").serialize();
+   var form = this.form;
+   var my_data = new FormData(form);
+  var post_url = window.location.href;
+  $.ajax({
+  url: post_url,
+  type: "post",
+  data: my_data,
+  processData: false,
+  contentType: false,
+})
+.done(function(data) {
+var amount = document.getElementById("amount").value;
+var remain_amount = document.getElementById("remain_amount").value;
+//var custody_attachment = document.getElementById("custody_attachment").value;
+//console.log(">>>>>>>>>>>>::::::::::::"+custody_attachment)
+//if(typeof custody_attachment == 'undefined' || custody_attachment == null || custody_attachment == '') {
+//alert('من فضلك ارفق الملفات');
+//}
+if (amount > remain_amount){
+    alert(' المبلغ يجب ان يكون اقل من او يساوي'+' '+remain_amount);
+}
+else{
+    var payment_id = data.id;
+    alert('تم ارسال طلبكم بنجاح');
+    parent.window.location.href='my/custody/in_progress'
+    }
+})
+});
 
 $("#course_type").change(function(){
  var errmsg = $('#error_msg');
@@ -78,39 +110,3 @@ console.log(end.getTime());
  noDays.val(dif);
  console.log(dif);
 });
-
-
-
-//$("#course_id").change(function(){
-// var errmsg = $('#error_msg');
-//   if($(this).val()=="private" || $(this).val()==  "خاصة")
-//   {
-//       $("div#start_date").show();
-//       $("div#end_date").show();
-//         errmsg.text('');
-//
-//   }
-//    else
-//    {
-//     errmsg.text('');
-//        $("div#start_date").hide();
-//        $("div#end_date").hide();
-//
-//    }
-//});
-//
-//$("#submit_button_id").submit(function(event){
-//	event.preventDefault(); //prevent default action
-//	var post_url = $(this).attr("action"); //get form action url
-//	var request_method = $(this).attr("method"); //get form GET/POST method
-//	var form_data = $(this).serialize(); //Encode form elements for submission
-//
-//	$.ajax({
-//		url : post_url,
-//		type: request_method,
-//		data : form_data
-//	}).done(function(response){ //
-//		$("#server-results").html(response);
-//	});
-//});
-

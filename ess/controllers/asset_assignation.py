@@ -80,17 +80,14 @@ class EssAsset(Controller):
         for rec in asset_assignation_obj:
             print(rec.state)
             if rec['type_of_disclaimer_desc']:
-                assest_list=rec['type_of_disclaimer_desc']
+                assest_list = rec['type_of_disclaimer_desc']
                 print(assest_list)
-
-
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,
             'asset_assignation_obj': asset_assignation_obj,
         })
-        response = request.render("ess.ess_view_asset_assignation", values)
-        response.headers['X-Frame-Options'] = 'DENY'
+        response = request.render("ess.ess_view_asset_assignation2", values)
         return response
 
     @route(['/custody/request'], type='http', auth='user', website=True)
@@ -167,7 +164,7 @@ class EssAsset(Controller):
         response = request.render("ess.custody_warning_message", values)
         return response
 
-    @route(['/add/custody_line'], type='http', auth='user', website=True)
+    @route(['/add_custody_line'], type='http', auth='user', website=True)
     def add_custody_line(self, redirect=None, **post):
         values = {}
         values = ESSPortal.check_modules(self)
@@ -303,7 +300,7 @@ class EssAsset(Controller):
             #          'end_date': private_end_date
             #          })
             print("befor create shaliby ",post)
-            obj_id =request.env['mandate.passenger'].sudo().create(post)
+            # obj_id =request.env['mandate.passenger'].sudo().create(post)
             # emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             # courses_and_mandate_obj = request.env['mandate.passenger'].sudo().search([('employee_id', '=', emb_obj.id)])
             # # print("LLLLLLLLLLLL", courses_and_mandate_obj)
@@ -325,6 +322,106 @@ class EssAsset(Controller):
         print(values)
         response = request.render("ess.ess_passenger_mandate", values)
         return response
+
+    @route(['/course_restriction'], type='json', auth="public", methods=['GET', 'POST'], csrf=False)
+    def course_restriction(self, **args):
+        print(args)
+        print(int(args['course_id']))
+        training_course_obj = request.env['training.course'].sudo().browse(int(args['course_id']))
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        course_obj = request.env['mandate.passenger'].sudo().\
+            search([('employee_id', '=', emb_obj.id),
+                    ('state', '=', 'accounting_approve')], order='id desc')
+        print("course_obj", course_obj)
+        print("course_obj[0]", course_obj[0])
+        values = {}
+        create_course = False
+        if course_obj:
+            print(">>>>>>>>>>>>>>>>.", course_obj[0])
+            start_year = date(training_course_obj.end_date.year, 1, 1)
+            end_year = date(training_course_obj.end_date.year, 12, 31)
+            print("course end_date", training_course_obj.end_date)
+            print("start_year", start_year)
+            print("end_year", end_year)
+            courses_approved_within_year = request.env['mandate.passenger'].search_count([('employee_id', '=', emb_obj.id),
+                                                              ('state', '=', 'accounting_approve'),
+                                                              ('course_id.end_date', '>=', start_year),
+                                                              ('course_id.end_date', '<=', end_year),
+                                                              ('course_id.is_free', '=', training_course_obj.is_free),
+                                                              ])
+            print("training_course_obj.is_free", training_course_obj.is_free)
+            print("courses_approved_within_year", courses_approved_within_year)
+            if training_course_obj.is_free:
+                if courses_approved_within_year >= emb_obj.employee_degree_id.number_of_free_courses_per_year:
+                    create_course = False
+                    values.update({
+                        'val': 'No Extra Free Courses',
+                        'no_of_allowed_free_courses': emb_obj.employee_degree_id.number_of_free_courses_per_year,
+                    })
+            else:
+                if courses_approved_within_year >= emb_obj.employee_degree_id.number_of_paid_courses_per_year:
+                    create_course = False
+                    values.update({
+                        'val': 'No Extra Paid Courses',
+                        'no_of_allowed_paid_courses': emb_obj.employee_degree_id.number_of_paid_courses_per_year,
+                    })
+            date_format = "%Y-%m-%d"
+            last_course_end_date = datetime.strptime(str(course_obj[0].course_id.end_date), date_format)
+            current_course_start_date = datetime.strptime(str(training_course_obj.start_date), date_format)
+            difference_between_last_two_courses = float((current_course_start_date - last_course_end_date).days)
+            print("course_obj[0]", course_obj[0])
+            print("last_course_date", last_course_end_date)
+            print("current_course_date", current_course_start_date)
+            print("difference_between_last_two_courses", difference_between_last_two_courses)
+            print("allowed_period_between_courses", emb_obj.employee_degree_id.allowed_period_between_courses)
+            if difference_between_last_two_courses < emb_obj.employee_degree_id.allowed_period_between_courses:
+                create_course = False
+                values.update({
+                    'val': 'No Extra Course',
+                    'course_end_date': course_obj[0].course_id.end_date,
+                })
+            else:
+                create_course = True
+        if create_course:
+            mandate_obj = request.env['mandate.passenger']
+            if args['type'] == 'دوره':
+                type = 'course'
+            elif args['type'] == 'انتداب':
+                type = 'mandate'
+            elif args['type'] == 'ورشه عمل':
+                type = 'work_shop'
+            else:
+                type = args['type']
+
+            if args['course_type'] == 'داخلي':
+                course_type = 'internal'
+            elif args['course_type'] == 'خارجي':
+                course_type = 'external'
+            elif args['course_type'] == 'خاصة':
+                course_type = 'private'
+            else:
+                course_type = args['course_type']
+
+            mandate_obj.sudo().create({
+                'employee_id': emb_obj.id,
+                'employee_degree_id': emb_obj.employee_degree_id.id,
+                'type': type,
+                'course_type': course_type,
+                'course_id': int(args['course_id']),
+                'price': training_course_obj.price,
+                'start_date': training_course_obj.start_date,
+                'end_date': training_course_obj.end_date,
+                'number_of_days': training_course_obj.number_of_days,
+                'course_place_id': int(args['place_id']),
+                'description': args['description'],
+                'state': 'draft',
+            })
+
+            values.update({
+                'val': 'done',
+            })
+        print("VVVVVVVVVVVVVV", values)
+        return values
 
 
     @route(['/request/passenger_mandate_private'], type='http', auth='user', website=True)
@@ -489,7 +586,7 @@ class EssAsset(Controller):
         return value
 
     @route(['/all/notification'], type='http', auth='user', website=True)
-    def asset_assignation(self, redirect=None, **post):
+    def all_notification(self, redirect=None, **post):
         values = {}
         values = ESSPortal.check_modules(self)
         emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])

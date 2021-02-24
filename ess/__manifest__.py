@@ -6,6 +6,9 @@
     'license': 'OPL-1',
     'category':  'Website',
     'depends': ['base', 'portal', 'website', 'account', 'hr_employee_letter', 'hr_payroll', 'Employee_Training', 'hr_appraisal'],
+    'qweb': [
+        "static/src/xml/website_template.xml",
+     ],
     'data': [
         'views/portal_templates.xml',
         'views/portal_network_directory.xml',
@@ -57,8 +60,7 @@
         'data/access.xml',
 
     ],
-    'qweb': [
-    ],
+
     'installable': True,
     'auto_install': False,
 }

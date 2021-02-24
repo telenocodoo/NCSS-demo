@@ -197,12 +197,9 @@ class MandatePassenger(models.Model):
             for record in self:
                 main_department = self.return_main_department(record.employee_id.department_id)
                 if main_department:
-                    print(">>>>>>>>>>>>>>>>>>", main_department)
                     budget_obj = self.env['budget.allocated.training'].search(
                         [('department_id.id', '=', main_department.id)], limit=1)
-                        # [('department_id.manager_id.id', '=', current_employee_id.id)], limit=1)
                     if budget_obj:
-                        print(">>>>>>>>>>>>>>>>>>11111111111111")
                         # record.department_id = budget_obj.department_id.id
                         record.budget = budget_obj.budget
                         record.expensed_from_budget = budget_obj.expensed_from_budget
@@ -357,14 +354,15 @@ class MandatePassenger(models.Model):
                 record.end_date = record.course_id.end_date
                 record.number_of_days = record.course_id.number_of_days
                 record.description = record.course_id.description
-                course_obj = self.search(
-                    [('employee_id', '=', self.employee_id.id), ('state', '=', 'accounting_approve')])
+                course_obj = self.search([('employee_id', '=', self.employee_id.id),
+                                          ('state', '=', 'accounting_approve')], order='id desc')
+                print("course_obj", course_obj)
+                print("course_obj[0]", course_obj[0])
                 if course_obj:
-                    print(">>>>>>>>>>>>>>>>.", course_obj[-1])
-                    print(">>>>>>>>>>>>>>>>.", course_obj)
+                    print(">>>>>>>>>>>>>>>>.", course_obj[0])
                     start_year = date(self.course_id.end_date.year, 1, 1)
                     end_year = date(self.course_id.end_date.year, 12, 31)
-                    print("start_year", self.course_id.end_date)
+                    print("course end_date", self.course_id.end_date)
                     print("start_year", start_year)
                     print("end_year", end_year)
                     courses_approved_within_year = self.search_count([('employee_id', '=', self.employee_id.id),
@@ -392,17 +390,18 @@ class MandatePassenger(models.Model):
                                               "You Is"
                                               " %s" % self.employee_degree_id.number_of_paid_courses_per_year))
                     date_format = "%Y-%m-%d"
-                    last_course_end_date = datetime.strptime(str(course_obj[-1].course_id.end_date), date_format)
+                    last_course_end_date = datetime.strptime(str(course_obj[0].course_id.end_date), date_format)
                     current_course_start_date = datetime.strptime(str(self.course_id.start_date), date_format)
                     difference_between_last_two_courses = float((current_course_start_date - last_course_end_date).days)
 
+                    print("course_obj[0]", course_obj[0])
                     print("last_course_date", last_course_end_date)
                     print("current_course_date", current_course_start_date)
                     print("difference_between_last_two_courses", difference_between_last_two_courses)
                     print("allowed_period_between_courses", self.employee_degree_id.allowed_period_between_courses)
                     if difference_between_last_two_courses < self.employee_degree_id.allowed_period_between_courses:
                         raise UserError(_("You aren't allowed to Request Extra Course "
-                                          "last course you take at %s" % course_obj[-1].course_id.end_date))
+                                          "last course you take at %s" % course_obj[0].course_id.end_date))
 
     @api.depends('employee_degree_id', 'course_type', 'number_of_days')
     def get_total_value_without_ticket(self):
@@ -529,7 +528,32 @@ class MandatePassenger(models.Model):
                 raise UserError(_("Please Add Flight Ticket"))
         message = 'تمت موافقه مدير الحسابات علي طلب الانتداب والاركاب الخاص بك (%s)' % self.name
         self.make_notification(message)
+        hr_attendance = self.env['hr.attendance']
+        start_date = self.start_date
+        end_date = self.end_date
+        num_of_days = (end_date - start_date).days
+        i = 0
+        string_to_date = start_date.strftime("%Y-%m-%d 08:00:00")
+        string_to_end_date = start_date.strftime("%Y-%m-%d 15:00:00")
+        date_with_time = datetime.strptime(string_to_date, '%Y-%m-%d %H:%M:%S')
+        end_date_with_time = datetime.strptime(string_to_end_date, '%Y-%m-%d %H:%M:%S')
+        for i in range(num_of_days+1):
+            start_date_with_time = date_with_time + timedelta(days=i)
+            end_date_time = end_date_with_time + timedelta(days=i)
+            hr_attendance.sudo().create({
+                'employee_id': self.employee_id.id,
+                'check_in': start_date_with_time,
+                'check_out': end_date_time,
+                'description': self.name or 'حاضر بدوره',
+
+            })
+            i += 1
         self.state = 'accounting_approve'
+        # employee_work_hours = self.employee_id.resource_calendar_id.attendance_ids
+        # print(":::::::::employee_work_hours::::::::::", employee_work_hours[0].hour_from)
+        # raise UserError(_(employee_work_hours[0].hour_from))
+        # dt = datetime.combine(date.today(), datetime.min.time())
+        # print(":::::::::::::::", dt)
 
     def refuse_action(self):
         for record in self:

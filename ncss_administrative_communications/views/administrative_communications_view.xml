@@ -348,7 +348,7 @@
             <form>
                 <header>
                     <button name="assign_to_department_action"
-                            attrs="{'invisible':['|',('treatment_type','!=','in'),('state','!=','draft')]}"
+                            attrs="{'invisible':['|',('treatment_type','not in',['in','internal']),('state','!=','draft')]}"
                             string="Assign To Department" type="object" class="oe_highlight"
                             groups="ncss_administrative_communications.administrative_communication_assign_to_department_button"
                     />
@@ -364,12 +364,12 @@
                             groups="ncss_administrative_communications.administrative_communication_outgoing_button"
                     />
                     <button name="outgoing_barcode_action" string="Print Barcode"
-                            attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','draft')]}"
+                            attrs="{'invisible':['|',('treatment_type','in',['in','internal']),('state','!=','draft')]}"
                             type="object" class="oe_highlight"
                             groups="ncss_administrative_communications.administrative_communication_print_barcode_button"
                     />
                     <button name="outgoing_instrument_action" string="Print Instrument"
-                            attrs="{'invisible':['|',('treatment_type','=','in'),('state','!=','barcode')]}"
+                            attrs="{'invisible':['|',('treatment_type','in',['in','internal']),('state','!=','barcode')]}"
                             groups="ncss_administrative_communications.administrative_communication_print_instrument_button"
                             type="object" class="oe_highlight"/>
                     <button name="action_done" string="Done"
@@ -478,6 +478,7 @@
                             <field name="file_number"
                                    attrs="{'invisible':[('treatment_type','!=','in')],'readonly':[('state','=','done')]}"/>
                             <field name="subject" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="create_uid" readonly='1'/>
 <!--                            <field name="sender_type" />-->
                         </group>
                     </group>
@@ -503,7 +504,8 @@
                         <page string="Attachments" name="Attachments">
                             <field name="transaction_attachment_line_ids" attrs="{'readonly':[('state','=','done')]}">
                                 <tree editable="bottom">
-                                    <field name="attachments"/>
+                                    <field name="attachments" invisible="1"/>
+                                    <field name="attachment_ids"  widget="many2many_binary" required="1"/>
                                     <field name="description"/>
                                 </tree>
                             </field>
@@ -603,17 +605,17 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="administrative_communication_id" string="Name"/>
-                            <field name="subject" />
-                            <field name="user_attached_id" string="Attached By"/>
-                            <field name="user_id" string="Receipt"/>
+                            <field name="administrative_communication_id" string="Name" force_save='1' readonly="1"/>
+                            <field name="subject" force_save='1' readonly="1"/>
+                            <field name="user_attached_id" string="Attached By" force_save='1' readonly="1"/>
+                            <field name="user_id" string="Receipt" force_save='1' readonly="1"/>
 <!--                            <field name="source_id" />-->
                         </group>
                         <group>
 <!--                            <field name="transfer_to_id" />-->
-                            <field name="procedure_id" />
-                            <field name="date_and_time" />
-                            <field name="sender_notes" />
+                            <field name="procedure_id" force_save='1' readonly="1"/>
+                            <field name="date_and_time" force_save='1' readonly="1"/>
+                            <field name="sender_notes" force_save='1' readonly="1"/>
                             <field name="receipt_notes" />
                         </group>
                     </group>

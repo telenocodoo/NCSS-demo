@@ -8,7 +8,6 @@
         </xpath>
     </template>
 
-
     <template id="ess_dashboard" name="ESS Dashboard">
         <t t-call="portal.portal_layout">
             <div id="wrap" class='o_portal_wrap'>
@@ -26,6 +25,7 @@
 <!-- t-if="announcement_list" -->
                                  <t t-if="announcement_list" t-call="ess.employee_announcement"/>
                                  <t t-if="announcement_list_public" t-call="ess.employee_announcement_public"/>
+                                 <t t-if="department_announcement_list" t-call="ess.employee_department_announcement"/>
                                 <t t-call="ess.employee_organization"/>
                                 <t t-if="leave_list" t-call="ess.employee_leaves"/>
                                 <t t-if="leave_allocation_list" t-call="ess.employee_leave_allocation"/>
@@ -540,7 +540,7 @@
                                 <tr>
                                     <th>Code No</th>
                                     <th>Title</th>
-                                    <th>Description</th>
+<!--                                    <th>Description</th>-->
                                     <th>Date Start</th>
                                     <th>Date End</th>
                                      <th><a class="fa fa-tasks"/></th>
@@ -560,12 +560,12 @@
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['title']"/>
                                             </a>
                                         </td>
-                                        <td>
-                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
-                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-raw="ann['announcement']"/>
-                                            </a>
+<!--                                        <td>-->
+<!--                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">-->
+<!--                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-raw="ann['announcement']"/>-->
+<!--                                            </a>-->
 
-                                        </td>
+<!--                                        </td>-->
                                         <td>
                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink">
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['date_start']"/>
@@ -596,12 +596,12 @@
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['title']"/>
                                             </a>
                                         </td>
-                                        <td>
-                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
-                                                <span t-att-id="'announcement%s' % ann['id']"  style="color:red;" t-raw="ann['announcement']"/>
-                                            </a>
+<!--                                        <td>-->
+<!--                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">-->
+<!--                                                <span t-att-id="'announcement%s' % ann['id']"  style="color:red;" t-raw="ann['announcement']"/>-->
+<!--                                            </a>-->
 
-                                        </td>
+<!--                                        </td>-->
                                         <td>
                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink">
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['date_start']"/>
@@ -640,7 +640,7 @@
                                 <tr>
                                     <th>Code No</th>
                                     <th>Title</th>
-                                    <th>Description</th>
+<!--                                    <th>Description</th>-->
                                     <th>Date Start</th>
                                     <th>Date End</th>
                                     <th> <i class="fa fa-tasks"/></th>
@@ -661,12 +661,117 @@
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['title']"/>
                                             </a>
                                         </td>
+<!--                                        <td>-->
+<!--                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">-->
+<!--                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-raw="ann['announcement']"/>-->
+<!--                                            </a>-->
+
+<!--                                        </td>-->
                                         <td>
                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink">
-                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-raw="ann['announcement']"/>
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['date_start']"/>
                                             </a>
 
                                         </td>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['date_end']"/>
+                                            </a>
+
+                                        </td>
+                                        <td  t-if="ann['attachment_id']">
+                                            <a t-att-id="'announcement%s' % ann['id']" style="color:black;" t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/>
+                                        </td>
+
+                                    </tr>
+                                </t>
+
+                                <t t-else="">
+                                    <tr>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['code']"/>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['title']"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-raw="ann['announcement']"/>
+                                            </a>
+
+                                        </td>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['date_start']"/>
+                                            </a>
+
+                                        </td>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['date_end']"/>
+                                            </a>
+
+                                        </td>
+                                        <td  t-if="ann['attachment_id']">
+                                            <a t-att-id="'announcement%s' % ann['id']" style="color:red;" t-att-href="'/attachment/download?attachment_id=%i' % ann['attachment_id'].id" class="fa fa-download"/>
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+			</div>
+		</div>
+    </template>
+
+
+   <template id="employee_department_announcement">
+        <div class="col-lg-4">
+			<div class="ibox carddash">
+				<div class="row iess-title">
+					<h3><span>Department Announcement</span></h3>
+				</div>
+				<div class="ibox-content iess-p20">
+                    <div class="table-responsive">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table announcement_selector">
+                            <thead>
+                                <tr>
+                                    <th>Code No</th>
+                                    <th>Title</th>
+<!--                                    <th>Description</th>-->
+                                    <th>Date Start</th>
+                                    <th>Date End</th>
+                                    <th> <i class="fa fa-tasks"/></th>
+                                </tr>
+                            </thead>
+                            <tbody t-foreach="department_announcement_list" t-as="ann">
+
+                                <t t-if="ann['is_read']">
+                                    <tr>
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['code']"/>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
+                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['title']"/>
+                                            </a>
+                                        </td>
+<!--                                        <td>-->
+<!--                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">-->
+<!--                                                <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-raw="ann['announcement']"/>-->
+<!--                                            </a>-->
+
+<!--                                        </td>-->
                                         <td>
                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink">
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:black;" t-esc="ann['date_start']"/>
@@ -750,8 +855,7 @@
                                 <tr t-if="ann['is_read'] == False">
                                     <t>
                                         <td>
-                                             <a   t-att-href="'#%s' % ann['id']"
-                                                class="visitedlink" >
+                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink" >
                                                     <span t-att-id="'notify%s' % ann['id']" style="color:red;" t-att-data-value="ann['id']" t-esc="ann['title']" class="check_notification"/>
 <!--                                                    <span  t-att-id="'notify%s' % ann['id']" style="color:black;" t-att-data-value="ann['id']" t-esc="ann['title']" class="check_notification"/>-->
                                              </a>
@@ -772,7 +876,6 @@
 			</div>
 		</div>
     </template>
-
 
     <template id="employee_attendance">
         <div class="col-lg-4">
@@ -876,7 +979,7 @@
 				</div>
 				<div class="ibox-content iess-p20">
                     <div class="table-responsive">
-                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table asset_visited">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -888,11 +991,36 @@
                             </thead>
                             <tbody t-foreach="asset_assignation_obj" t-as="ass">
                                 <tr>
-                                    <td><div t-esc="ass['name']"/></td>
-                                    <td><div t-esc="ass['type_desc']"/></td>
-                                    <td><div t-esc="ass['asset_id']"/></td>
-                                    <td><div t-esc="ass['description']"/></td>
-                                    <td><div t-esc="ass['state_desc']"/></td>
+                                    <td>
+<!--                                        <div t-esc="ass['name']"/>-->
+                                        <a t-att-href="'#%s' % ass['id']" class="asset_visited_link">
+                                            <span t-att-id="'asset%s' % ass['id']" style="color:black;" t-esc="ass['name']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="ass['type_desc']"/>-->
+                                        <a t-att-href="'#%s' % ass['id']" class="asset_visited_link">
+                                            <span t-att-id="'asset%s' % ass['id']" style="color:black;" t-esc="ass['type_desc']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="ass['asset_id']"/>-->
+                                        <a t-att-href="'#%s' % ass['id']" class="asset_visited_link">
+                                            <span t-att-id="'asset%s' % ass['id']" style="color:black;" t-esc="ass['asset_id']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="ass['description']"/>-->
+                                        <a t-att-href="'#%s' % ass['id']" class="asset_visited_link">
+                                            <span t-att-id="'asset%s' % ass['id']" style="color:black;" t-esc="ass['description']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="ass['state_desc']"/>-->
+                                        <a t-att-href="'#%s' % ass['id']" class="asset_visited_link">
+                                            <span t-att-id="'asset%s' % ass['id']" style="color:black;" t-esc="ass['state_desc']"/>
+                                        </a>
+                                    </td>
 <!--                                    <td>-->
 <!--                                        <span class="badge badge-primary">-->
 <!--                                        <span t-esc="lea['value']"/> -->
@@ -917,7 +1045,7 @@
 				</div>
 				<div class="ibox-content iess-p20">
                     <div class="table-responsive">
-                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table custody_visited">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -929,11 +1057,36 @@
                             </thead>
                             <tbody t-foreach="custody_obj" t-as="custody">
                                 <tr>
-                                    <td><div t-esc="custody['name']"/></td>
-                                    <td><div t-esc="custody['date']"/></td>
-                                    <td><div t-esc="custody['amount']"/></td>
-                                    <td><div t-esc="custody['remaining_amount']"/></td>
-                                    <td><div t-esc="custody['state_desc']"/></td>
+                                    <td>
+<!--                                        <div t-esc="custody['name']"/>-->
+                                        <a t-att-href="'#%s' % custody['id']" class="custody_visited_link">
+                                            <span t-att-id="'custody%s' % custody['id']" style="color:black;" t-esc="custody['name']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="custody['date']"/>-->
+                                        <a t-att-href="'#%s' % custody['id']" class="custody_visited_link">
+                                            <span t-att-id="'custody%s' % custody['id']" style="color:black;" t-esc="custody['date']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="custody['amount']"/>-->
+                                        <a t-att-href="'#%s' % custody['id']" class="custody_visited_link">
+                                            <span t-att-id="'custody%s' % custody['id']" style="color:black;" t-esc="custody['amount']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="custody['remaining_amount']"/>-->
+                                        <a t-att-href="'#%s' % custody['id']" class="custody_visited_link">
+                                            <span t-att-id="'custody%s' % custody['id']" style="color:black;" t-esc="custody['remaining_amount']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="custody['state_desc']"/>-->
+                                        <a t-att-href="'#%s' % custody['id']" class="custody_visited_link">
+                                            <span t-att-id="'custody%s' % custody['id']" style="color:black;" t-esc="custody['state_desc']"/>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -945,7 +1098,6 @@
     </template>
 
     <template id="employee_mandate">
-
         <div class="col-lg-4">
 			<div class="ibox carddash">
 				<div class="row iess-title">
@@ -953,7 +1105,7 @@
 				</div>
 				<div class="ibox-content iess-p20">
                     <div class="table-responsive">
-                        <table class="table header-border table-hover table-custom spacing5 ess-table">
+                        <table class="table header-border table-hover table-custom spacing5 ess-table mandate_visited">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -966,12 +1118,42 @@
                             </thead>
                             <tbody t-foreach="mandate_obj" t-as="mandate">
                                 <tr>
-                                    <td><div t-esc="mandate['name']"/></td>
-                                    <td><div t-esc="mandate['type_desc']"/></td>
-                                    <td><div t-esc="mandate['course_id']"/></td>
-                                    <td><div t-esc="mandate['course_type_desc']"/></td>
-                                    <td><div t-esc="mandate['number_of_days']"/></td>
-                                    <td><div t-esc="mandate['state_desc']"/></td>
+                                    <td>
+<!--                                        <div t-esc="mandate['name']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['name']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="mandate['type_desc']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['type_desc']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="mandate['course_id']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['course_id']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="mandate['course_type_desc']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['course_type_desc']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="mandate['number_of_days']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['number_of_days']"/>
+                                        </a>
+                                    </td>
+                                    <td>
+<!--                                        <div t-esc="mandate['state_desc']"/>-->
+                                        <a t-att-href="'#%s' % mandate['id']" class="mandate_visited_link">
+                                            <span t-att-id="'mandate%s' % mandate['id']" style="color:black;" t-esc="mandate['state_desc']"/>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

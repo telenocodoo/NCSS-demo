@@ -2,9 +2,20 @@ from odoo.http import request
 from odoo import models, api, fields,_
 
 
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+
+    def website_go_to(self):
+        self.website_id._force()
+        return {
+            'type': 'ir.actions.act_url',
+            'url': 'my/dashboard',
+            'target': 'self',
+        }
+
+
 class ResPartner(models.AbstractModel):
     _inherit = 'res.partner'
-
 
     def get_data(self, partner, from_date, to_date):
         cr = self._cr

@@ -134,13 +134,39 @@ class AssetAccountRequest(models.Model):
     car_employee_have= fields.Many2one('fleet.vehicle',string=_("Employee Car"),readonly=True )
     is_car = fields.Boolean("Car",default=False)
 
+    # def make_cron_activity(self, user_ids, asset_id):
+    #     print("j...", user_ids)
+    #     now = datetime.now()
+    #     date_deadline = now.date()
+    #     values = {
+    #         'res_id': self.id,
+    #         'res_model_id': self.env['ir.model'].search([('model', '=', 'asset.account.request')]).id,
+    #         'user_id': user_ids,
+    #         'summary': 'Asset Assignation',
+    #         'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+    #         'date_deadline': date_deadline
+    #     }
+    #     print(":::::::::::::::::", values)
+    #     self.sudo().env['mail.activity'].create(values)
+
     def make_activity(self, user_ids):
         print("j...", user_ids)
         now = datetime.now()
         date_deadline = now.date()
+        # values = {
+        #     'res_id': self.id,
+        #     'res_model_id': self.env['ir.model'].search([('model', '=', 'asset.account.request')]).id,
+        #     'user_id': user_ids,
+        #     'summary': 'Asset Assignation',
+        #     'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+        #     'date_deadline': date_deadline
+        # }
+        # print(":::::::::::::::::", values)
+        # self.sudo().env['mail.activity'].create(values)
 
+        now = datetime.now()
+        date_deadline = now.date()
         if self:
-
             if user_ids:
                 actv_id = self.sudo().activity_schedule(
                     'mail.mail_activity_data_todo', date_deadline,
@@ -153,7 +179,6 @@ class AssetAccountRequest(models.Model):
 
                     summary=_("Request Approve")
                 )
-                print("active", actv_id)
 
     def make_notification(self, message):
         now = datetime.now()
@@ -303,6 +328,31 @@ class AssetAccountRequest(models.Model):
         message = 'تم اعاده طلب العهده الخاص بك كجديده (%s)' % self.name
         self.make_notification(message)
         self.state = 'draft'
+
+    @api.model
+    def cron_check_asset_request_end_date(self):
+        asset_obj = self.search([])
+        for asset in asset_obj:
+            if asset.type_of_disclaimer == 'at_specific_date':
+                if asset.date_of_asset_delivery < fields.date.today() and asset.state == 'assigned':
+                    print("::::::::::::::", asset.name, asset.date_of_asset_delivery)
+                    user_ids = list(self.get_users("hr_assets_assignation.asset_assignation_clearance_button"))
+                    if user_ids:
+                        for rec in user_ids:
+                            # self.make_cron_activity(rec, asset.id)
+                            print("user_ids...", user_ids)
+                            now = datetime.now()
+                            date_deadline = now.date()
+                            values = {
+                                'res_id': asset.id,
+                                'res_model_id': self.env['ir.model'].search(
+                                    [('model', '=', 'asset.account.request')]).id,
+                                'user_id': rec,
+                                'summary': 'Asset Assignation',
+                                'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                                'date_deadline': date_deadline
+                            }
+                            self.sudo().env['mail.activity'].create(values)
 
 
 class CustodyRequestLine(models.Model):
