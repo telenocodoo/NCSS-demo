@@ -699,12 +699,12 @@
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['title']"/>
                                             </a>
                                         </td>
-                                        <td>
-                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">
-                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-raw="ann['announcement']"/>
-                                            </a>
+<!--                                        <td>-->
+<!--                                            <a t-att-href="'#%s' % ann['id']" class="visitedlink">-->
+<!--                                                <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-raw="ann['announcement']"/>-->
+<!--                                            </a>-->
 
-                                        </td>
+<!--                                        </td>-->
                                         <td>
                                             <a t-att-href="'#%s' % ann['id']" class="visitedlink">
                                                 <span t-att-id="'announcement%s' % ann['id']" style="color:red;" t-esc="ann['date_start']"/>
