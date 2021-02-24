@@ -333,11 +333,9 @@ class EssAsset(Controller):
             search([('employee_id', '=', emb_obj.id),
                     ('state', '=', 'accounting_approve')], order='id desc')
         print("course_obj", course_obj)
-        print("course_obj[0]", course_obj[0])
         values = {}
         create_course = False
         if course_obj:
-            print(">>>>>>>>>>>>>>>>.", course_obj[0])
             start_year = date(training_course_obj.end_date.year, 1, 1)
             end_year = date(training_course_obj.end_date.year, 12, 31)
             print("course end_date", training_course_obj.end_date)
@@ -369,7 +367,6 @@ class EssAsset(Controller):
             last_course_end_date = datetime.strptime(str(course_obj[0].course_id.end_date), date_format)
             current_course_start_date = datetime.strptime(str(training_course_obj.start_date), date_format)
             difference_between_last_two_courses = float((current_course_start_date - last_course_end_date).days)
-            print("course_obj[0]", course_obj[0])
             print("last_course_date", last_course_end_date)
             print("current_course_date", current_course_start_date)
             print("difference_between_last_two_courses", difference_between_last_two_courses)

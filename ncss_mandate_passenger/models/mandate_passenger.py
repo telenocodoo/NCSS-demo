@@ -357,7 +357,6 @@ class MandatePassenger(models.Model):
                 course_obj = self.search([('employee_id', '=', self.employee_id.id),
                                           ('state', '=', 'accounting_approve')], order='id desc')
                 print("course_obj", course_obj)
-                print("course_obj[0]", course_obj[0])
                 if course_obj:
                     print(">>>>>>>>>>>>>>>>.", course_obj[0])
                     start_year = date(self.course_id.end_date.year, 1, 1)
@@ -394,7 +393,6 @@ class MandatePassenger(models.Model):
                     current_course_start_date = datetime.strptime(str(self.course_id.start_date), date_format)
                     difference_between_last_two_courses = float((current_course_start_date - last_course_end_date).days)
 
-                    print("course_obj[0]", course_obj[0])
                     print("last_course_date", last_course_end_date)
                     print("current_course_date", current_course_start_date)
                     print("difference_between_last_two_courses", difference_between_last_two_courses)
