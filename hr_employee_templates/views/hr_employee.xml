@@ -49,7 +49,7 @@
                                             <br/>
                                             4-يلتزم المستشار بإنهاء المهمات والواجبات التي تسند إليه في الوقت المحدد لذلك.
                                                 <br/>
-                                                5. يلتزم المركز بدفع مكافأة شهرية مقطوعة للمستشار وقدره (<span t-esc="o.wage" />) ريال
+                                                5. يلتزم المركز بدفع مكافأة شهرية مقطوعة للمستشار وقدره (<span t-esc="o.net_contract_salary" />) ريال
                                             <br/>
                                             6. يلتزم المستشار بحفظ الأسرار المتعلقة بالعمل وخصوصياته.
                                                                                     <br/>
@@ -394,14 +394,14 @@
                                    <tr>
                                     <td width="359" valign="top" style="width:269.2pt;border:none;padding:0in 5.4pt 0in 5.4pt">
                                     <p class="MsoNormal" dir="RTL" style="margin-right:19.5pt;text-align:justify;&#10;  text-indent:-19.5pt;mso-yfti-cnfc:4;mso-element:frame;mso-element-frame-hspace:&#10;  9.0pt;mso-element-wrap:around;mso-element-anchor-horizontal:margin;&#10;  mso-element-left:center;mso-element-top:42.0pt;mso-height-rule:exactly"><span dir="RTL"/><span dir="RTL"/><b><span lang="AR-SA" style="font-family:&#10;  &quot;Arial&quot;,sans-serif"><span dir="RTL"/><span dir="RTL"/>6-1 يدفع (الطرف
-                                    الأول) (للطرف الثاني) راتباً أساسياً شهرياً مقداره </span></b><span dir="LTR"/><span dir="LTR"/><span dir="RTL"/><b><span lang="AR-SA" style="font-family:&quot;Arial&quot;,sans-serif"><span dir="RTL"/><span dir="RTL"/> </span></b><span dir="LTR"/><span dir="LTR"/><b><span dir="LTR" style="font-family:&quot;Arial&quot;,sans-serif"><span dir="LTR"/><span dir="LTR"/><span t-esc="o.wage" /></span></b><b><span lang="AR-SA" style="font-family:&quot;Arial&quot;,sans-serif">ريال سعودي في نهاية كل شهر
+                                    الأول) (للطرف الثاني) راتباً أساسياً شهرياً مقداره </span></b><span dir="LTR"/><span dir="LTR"/><span dir="RTL"/><b><span lang="AR-SA" style="font-family:&quot;Arial&quot;,sans-serif"><span dir="RTL"/><span dir="RTL"/> </span></b><span dir="LTR"/><span dir="LTR"/><b><span dir="LTR" style="font-family:&quot;Arial&quot;,sans-serif"><span dir="LTR"/><span dir="LTR"/><span t-esc="o.net_contract_salary" /></span></b><b><span lang="AR-SA" style="font-family:&quot;Arial&quot;,sans-serif">ريال سعودي في نهاية كل شهر
                                     ميلادي.<p/></span></b></p>
                                     <p class="MsoNormal" dir="RTL" style="margin-right:19.5pt;text-align:justify;&#10;  text-indent:-19.5pt;mso-yfti-cnfc:4;mso-element:frame;mso-element-frame-hspace:&#10;  9.0pt;mso-element-wrap:around;mso-element-anchor-horizontal:margin;&#10;  mso-element-left:center;mso-element-top:42.0pt;mso-height-rule:exactly"><b><span lang="AR-SA" style="font-family:&quot;Arial&quot;,sans-serif"> </span></b></p>
                                     </td>
                                     <td width="368" valign="top" style="width:276.05pt;border:none;padding:0in 5.4pt 0in 5.4pt">
                                     <p class="MsoNormal" dir="LTR" style="margin-left:19.5pt;text-align:justify;&#10;  text-indent:-19.5pt;direction:ltr;unicode-bidi:embed;mso-element:frame;&#10;  mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-horizontal:&#10;  margin;mso-element-left:center;mso-element-top:42.0pt;mso-height-rule:exactly"><span dir="LTR"/><span dir="LTR"/><span style="font-size:10.0pt;font-family:&#10;  &quot;Arial&quot;,sans-serif"><span dir="LTR"/><span dir="LTR"/>6.1. The first
                                     party shall pay to the second party a monthly basic salary amounting to
-                                    SR <span t-esc="o.wage" /> Saudi Riyals.<p/></span></p>
+                                    SR <span t-esc="o.net_contract_salary" /> Saudi Riyals.<p/></span></p>
                                     <p class="MsoNormal" dir="LTR" style="margin-left:19.5pt;text-align:justify;&#10;  text-indent:-19.5pt;direction:ltr;unicode-bidi:embed;mso-element:frame;&#10;  mso-element-frame-hspace:9.0pt;mso-element-wrap:around;mso-element-anchor-horizontal:&#10;  margin;mso-element-left:center;mso-element-top:42.0pt;mso-height-rule:exactly"><span style="font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif">       at the end of each Gregorian month.<p/></span></p>
                                     </td>
                                    </tr>
@@ -1142,7 +1142,7 @@
                                    (2) الراتــب: <p/></span></p>
 
                                    <p class="MsoBlockText" dir="RTL" style="text-align:justify;margin-top:6.0pt;margin-right:39.35pt;&#10;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-indent:-39.35pt"><span lang="AR-SA" style="font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;">          يحصل الموظف
-                                   على راتب شهري قدره ( <span t-esc="o.wage"/>  )  ريال فقط، يدفع له في نهاية
+                                   على راتب شهري قدره ( <span t-esc="o.net_contract_salary"/>  )  ريال فقط، يدفع له في نهاية
                                    كل شهر ميلادي والراتب على أساس ثمان ساعات عمل يومية فعلية.<p/></span></p>
 
                                    <p class="MsoBlockText" dir="RTL" style="text-align:justify;margin-top:3.0pt;margin-right:39.35pt;&#10;margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-indent:-39.35pt"><span lang="AR-SA" style="font-size:11.5pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;">مـادة
@@ -2008,7 +2008,7 @@
 <span t-esc="o.employee_id.job_id.name" /></b></font></font><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">)
 </font></font></font></font><font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">ولا
 يزال على راس العمل، ويتقاضى راتباً
-إجمالي قدره </font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">(</font></font><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4"><span t-esc="o.wage" /></font></font></font></font><font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">ريال</font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">)
+إجمالي قدره </font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">(</font></font><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4"><span t-esc="o.net_contract_salary" /></font></font></font></font><font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">ريال</font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">)
 </font></font></font></font><font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">برقم
 حساب لديكم  </font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">(</font></font><font face="Arabic Transparent, serif"><font style="font-size: 14pt" size="4"><span t-esc="o.employee_id.iban_number" /></font></font><font face="Simplified Arabic, serif"><font style="font-size: 16pt" size="4">).</font></font></font></font></p>
 <p dir="rtl" class="western" style="margin-right: 0.1in; text-indent: 0.25in; margin-bottom: 0.14in; line-height: 115%"><a name="_GoBack"/>
@@ -2073,7 +2073,6 @@
             </t>
         </t>
     </template>
-
 
 
         <report
@@ -2672,6 +2671,192 @@
         </t>
     </template>
 
+       <report
+        id="service_certificate"
+        string="Service Certificate"
+        model="hr.contract"
+        report_type="qweb-pdf"
+        name="hr_employee_templates.service_certificate_template"
+        file="hr_employee_templates.service_certificate_template"/>
+
+       <template id="service_certificate_template">
+           <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+                   <t t-call="web.external_layout">
+                       <div class="page" dir="ltr">
+                           <div class="oe_structure"/>
+                               <!--شهاده الخدمه-->
+                               <span>
+                                    <p style="margin-bottom: 0in; line-height: 100%;" align="center"><a name="_GoBack"></a> <span style="font-family: Arial;"><span lang="ar-SA"><span style="font-size: large;"><strong>شهادة خدمة</strong></span></span></span></p>
+                                    <p style="margin-bottom: 0in; line-height: 100%;" align="center"><span style="font-size: large;"><strong>Employment certificate </strong></span></p>
+                                    <br/>
+
+
+                                <table style="height: 19px; width: 1028px;">
+                                 <tbody>
+                                 <tr style="height: 24px;">
+                                 <td style="width: 506px; height: 24px;">
+                                 <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">To whom it may concern</span></span></span></p>
+                                 <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">This is to certify that </span></span></span></p>
+                                 </td>
+                                 <td style="width: 506px; height: 24px;">
+                                 <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"> <span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">إلى من يهمة الأمر </span></span></span></span></span></p>
+                                 <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">نحيطكم علماً بأن </span></span></span></span></span></p>
+                                 </td>
+                                 </tr>
+                                 </tbody>
+                                 </table>
+                                <style>
+                                 .bgcolors{
+                                 background-color:#009999 ;}
+                                 table.center {
+                                   margin-left: auto;
+                                   margin-right: auto;
+                                 }
+                                </style>
+                                    <p style="margin-bottom: 0in; line-height: 100%;" align="right"> </p>
+                                    <table style="width: 98.8676%;" cellspacing="0" cellpadding="7">
+                                    <tbody>
+                                    <tr>
+                                    <td class="bgcolors" style="currentcolor #000000 #000000; border-width: 1px medium 1px 1px; padding: 0in 0in 0in 0.08in; width: 53%;"  height="28">
+                                    <p><span background-color="#009999" style="font-family: Arial, serif;"><strong><span t-esc="o.employee_id.name" /></strong></span></p>
+                                    </td>
+                                    <td style="padding: 0in; width: 45.8676%;" bgcolor="#ffffff">
+                                    <p style="margin-left: 0.31in;" align="right"><span style="font-family: Arial;"><span lang="ar-SA"><strong><span t-esc="o.employee_id.name" /></strong></span></span></p>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <p style="margin-bottom: 0in; line-height: 100%;" align="right"> </p>
+                                    <table style="height: 23px; width: 1035px;">
+                                    <tbody>
+                                    <tr style="height: 59.3px;">
+                                    <td style="width: 502px; height: 59.3px;">
+                                    <p style="margin-bottom: 0.14in; text-align: left;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">Work for National Center For Social Studies, Riyadh-Kingdom of Saudi Arabia. <br /></span></span></span></p>
+                                    </td>
+                                    <td style="width: 515px; height: 59.3px;">
+                                    <p style="margin-bottom: 0.14in;" align="right"><a name="__DdeLink__152_403393486"></a> <span style="color: #000000;"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">من العاملين بالمركز الوطني للدراسات والبحوث الاجتماعية الرياض </span></span></span></span><span style="font-size: large;">,</span><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">المملكة العربية السعودية</span></span></span></span><span style="font-size: large;">.</span></span></p>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <p style="margin-bottom: 0.14in; text-align: left;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;"> </span></span></span></p>
+
+                                    <br/>
+
+                                    <table width="724" cellspacing="1" cellpadding="7" class="center">
+                                    <tbody>
+                                    <tr>
+                                    <td class="bgcolors" style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="147" height="13">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: medium;"><strong>Job Title</strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="5">
+                                    <p><span style="font-family: Arial, serif;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td style="border-top: 1px dotted #000000; border-bottom: 1.50pt double #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="2" bgcolor="#ffffff" width="185">
+                                    <p align="center"><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong><span t-esc="o.employee_id.job_id.name" /></strong></span></span></p>
+                                    </td>
+                                    <td style="border-top: 1px dotted #000000; border-bottom: 1.50pt double #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#ffffff" width="185">
+                                    <p align="center"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-size: small;"><strong><span t-esc="o.employee_id.job_id.name" /></strong></span></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="12">
+                                    <p align="right"><span style="font-size: medium;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="96">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad Bold;"><span style="font-size: large;"><strong>بوظيفة </strong></span></span></span></span></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="bgcolors" style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="147" height="17">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: medium;"><strong>From</strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="5">
+                                    <p><strong>:</strong></p>
+                                    </td>
+                                    <td style="border-top: 1.50pt double #000000; border-bottom: 1.50pt double #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="3" bgcolor="#ffffff" width="385">
+                                    <p align="center"><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong><span t-esc="o.date_start" /></strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="12">
+                                    <p align="right"><span style="font-size: medium;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="96">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad Bold;"><span style="font-size: large;"><strong>تاريخ التعيين </strong></span></span></span></span></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="147" height="14">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: medium;"><strong>TO</strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="5">
+                                    <p><strong>:</strong></p>
+                                    </td>
+                                    <td style="border-top: 1.50pt double #000000; border-bottom: 1.50pt double #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="3" bgcolor="#ffffff" width="385">
+                                    <p align="center"><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong><span t-esc="o.date_end" /></strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="12">
+                                    <p align="right"><span style="font-size: medium;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="96">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad Bold;"><span style="font-size: large;"><strong>وينتهي في</strong></span></span></span></span></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="147" height="14">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: medium;"><strong>Monthly Salary</strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="5">
+                                    <p><strong>:</strong></p>
+                                    </td>
+                                    <td style="border-top: 1.50pt double #000000; border-bottom: 1.50pt double #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="3" bgcolor="#ffffff" width="385">
+                                    <p align="center"><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong>SAR</strong></span></span><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-size: small;"><strong>رس</strong></span></span></span><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong>/ <span t-esc="o.net_contract_salary" /></strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="12">
+                                    <p align="right"><span style="font-size: medium;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="96">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad Bold;"><span style="font-size: large;"><strong>براتب شهري</strong></span></span></span></span></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="147" height="14">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: medium;"><strong>Reason for Leaving</strong></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="5">
+                                    <p><strong>:</strong></p>
+                                    </td>
+                                    <td style="border-top: 1.50pt double #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="2" bgcolor="#ffffff" width="185">
+                                    <p align="center"><span style="font-family: Arial, serif;"><span style="font-size: small;"><strong>Resignation</strong></span></span></p>
+                                    </td>
+                                    <td style="border-top: 1.50pt double #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#ffffff" width="185">
+                                    <p align="center"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-size: small;"><strong>استقالة</strong></span></span></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="12">
+                                    <p align="right"><span style="font-size: medium;"><strong>:</strong></span></p>
+                                    </td>
+                                    <td class="bgcolors" style="border-top: 1px solid #000000; border-bottom: 1px dotted #000000; border-left: 1px dotted #000000; border-right: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" bgcolor="#009999" width="96">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad Bold;"><span style="font-size: large;"><strong>الغرض </strong></span></span></span></span></p>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td class="bgcolors" style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="3" bgcolor="#009999" width="364" height="37">
+                                    <p><span style="font-family: Cambria, serif;"><span style="font-size: large;"><strong>This certification is issued to the employee up</strong></span></span><span style="font-family: Cambria, serif;"><span style="font-size: large;"><strong>o</strong></span></span><span style="font-family: Cambria, serif;"><span style="font-size: large;"><strong>n his/her request with no responsibility to the National Center For Social Studies. </strong></span></span></p>
+                                    </td>
+                                    <td style="border: 1px dotted #000000; padding: 0in 0.08in 0in 0.08in;" colspan="4" bgcolor="#ffffff" width="326">
+                                    <p align="right"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;"><strong>وقد تم إصدار هذه الشهادة للمذكور </strong></span></span></span></span><span style="font-size: large;"><strong>/ </strong></span><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;"><strong>المذكورة أعلاه بناءً على طلبه</strong></span></span></span></span><span style="font-size: large;"><strong>/</strong></span><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;"><strong>طلبها وبدون أدنى مسؤولية على المركز الوطني للدراسات والبحوث الاجتماعية</strong></span></span></span></span><span style="font-size: large;"><strong>.</strong></span></p>
+                                    </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <p dir="rtl" style="margin-bottom: 0in; line-height: 100%;" align="right"> </p>
+                               </span>
+                        <!--شهاده الخدمه-->
+                       </div>
+                   </t>
+               </t>
+           </t>
+       </template>
+
+
 
         <report
         id="hr_leave_request_offer"
@@ -3058,13 +3243,6 @@
             </t>
         </t>
     </template>
-
-
-
-
-
-
-
 
 
 

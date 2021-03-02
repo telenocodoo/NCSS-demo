@@ -25,7 +25,7 @@ class ResCompany(models.Model):
     deserve_first_period = fields.Float(default=21)
     second_period = fields.Float()
     deserve_second_period = fields.Float(default=30)
-    next_call = fields.Datetime(fields.datetime.now())
+    next_call = fields.Datetime()
 
 
 class AllocationConfigSettings(models.TransientModel):
@@ -41,14 +41,14 @@ class AllocationConfigSettings(models.TransientModel):
                                         ('Monthly', 'Monthly'),
                                         ('Yearly', 'Yearly'), ],
                                        default=lambda self: self.env.user.company_id.allocation_type)
-    leave_type_id = fields.Many2one('hr.leave.type',
+    leave_type_id = fields.Many2one('hr.leave.type', string='Annual Leave',
                                     default=lambda self: self.env.user.company_id.leave_type_id,
                                     domain=[('allocation_type', '=', 'fixed')])
     unpaid_type = fields.Selection([('Add', 'Add'),
                                     ('Ignore', 'Ignore')],
                                    default=lambda self: self.env.user.company_id.unpaid_type
                                    )
-    leave_id = fields.Many2one('hr.leave.type',
+    leave_id = fields.Many2one('hr.leave.type', string='Unpaid Leave',
                                default=lambda self: self.env.user.company_id.leave_id)
     first_period = fields.Float(default=lambda self: self.env.user.company_id.first_period)
     deserve_first_period = fields.Float(default=lambda self: self.env.user.company_id.deserve_first_period)
@@ -92,7 +92,7 @@ class AllocationConfigSettings(models.TransientModel):
                     'leave_id': vals['leave_id'],
                     'next_call': vals['next_call'],
                  })
-            cron.write({
+            cron.sudo().write({
                 'nextcall': vals['next_call'],
             })
             #print "in comp",self.env.user.company_id.sale_customer_rel
