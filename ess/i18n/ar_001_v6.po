@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 11:31+0000\n"
-"PO-Revision-Date: 2021-03-21 11:31+0000\n"
+"POT-Creation-Date: 2021-03-18 07:59+0000\n"
+"PO-Revision-Date: 2021-03-18 07:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -45,14 +45,6 @@ msgstr ""
 "<i class=\"fa fa-diamond\"/> <span class=\"nav-label\">الاعلانات &amp; "
 "الاحداث </span> <span class=\"fa arrow\"/>"
 
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.side_menu
-msgid ""
-"<i class=\"fa fa-diamond\"/> <span class=\"nav-label\">Hr Employee "
-"Reports</span> <span class=\"fa arrow\"/>"
-msgstr ""
-"<i class=\"fa fa-diamond\"/> <span class=\"nav-label\">تقارير الموظف"
-"</span> <span class=\"fa arrow\"/>"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid ""
@@ -238,11 +230,6 @@ msgstr "<span> الاشعارات </span>"
 #: model_terms:ir.ui.view,arch_db:ess.ess_all_notification
 msgid "<span>All Notifications</span>"
 msgstr "<span>الاشعارات</span>"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_my_reports
-msgid "<span>All Reports</span>"
-msgstr "<span>التقارير</span>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_leaves
@@ -535,7 +522,7 @@ msgstr "<span>طلب تدريب</span>"
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_document
 msgid "<span>Upload Document</span>"
-msgstr "\"<span>رفع مستندات</span>\""
+msgstr "<span>رفع مستندات</span>"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_view_docs
@@ -1161,11 +1148,6 @@ msgid "Direct Manager Approved"
 msgstr "تمت موافقه المدير المباشر"
 
 #. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_my_reports
-msgid "Direction Needed"
-msgstr "الجهه الطالبه للتقرير"
-
-#. module: ess
 #: model:ir.model.fields,field_description:ess.field_report_de_partner_statement_de_partner_ledger_pdf_report__display_name
 msgid "Display Name"
 msgstr "الاسم المعروض"
@@ -1600,11 +1582,6 @@ msgstr "مسيرات الرواتب"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu
-msgid "My Reports"
-msgstr "تقاريري"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.side_menu
 msgid "My Requests"
 msgstr "طلباتي"
 
@@ -1847,11 +1824,6 @@ msgid "Print"
 msgstr "طباعة"
 
 #. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_my_reports
-msgid "Print Report"
-msgstr "طباعه التقرير"
-
-#. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.ess_myorofile
 msgid "Private Contact"
 msgstr "جهة اتصال خاصة"
@@ -1941,11 +1913,6 @@ msgstr "المبلغ المتبقي"
 #: model_terms:ir.ui.view,arch_db:ess.ess_add_custody_line
 msgid "Remaining amount"
 msgstr "المبلغ المتبقي"
-
-#. module: ess
-#: model_terms:ir.ui.view,arch_db:ess.ess_my_reports
-msgid "Report Needed"
-msgstr "التقرير المطلوب"
 
 #. module: ess
 #: model_terms:ir.ui.view,arch_db:ess.side_menu

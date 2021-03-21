@@ -12,6 +12,10 @@
                 </button>
             </xpath>
 
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <field name="appraisal_type_id" required="1"/>
+            </xpath>
+
             <xpath expr="//field[@name='company_id']/../.." position="after">
                 <group>
                     <field name="total_deserve_appraisal" />

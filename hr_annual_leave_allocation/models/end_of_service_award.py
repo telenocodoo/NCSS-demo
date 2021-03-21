@@ -43,10 +43,52 @@ class EndOfServiceAward(models.Model):
     total_deserved_per_contract_end_type = fields.Float(compute='_compute_final_deserving')
     final_deserving = fields.Float(string="Final Deserving", compute='_compute_final_deserving')
     eos_computation_dependency = fields.Html()
+    holiday_days = fields.Float(compute='_compute_holiday_days', tracking=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('approved', 'Approved')
     ], string='Status', readonly=True, tracking=True, copy=False, default='draft')
+
+    def _compute_holiday_days(self):
+        company = self.env['res.company'].search([('id', '=', self.env.user.company_id.id)])
+        leave_type_id = company.leave_type_id
+        if leave_type_id:
+            hr_leave_allocation = self.env['hr.leave.allocation'].sudo()\
+                .search([('employee_id.id', '=', self.employee_id.id),
+                         ('state', '=', 'validate'),
+                         ('holiday_status_id.id', '=', leave_type_id.id)])
+            hr_leave = self.env['hr.leave'].sudo()\
+                .search([('employee_id.id', '=', self.employee_id.id),
+                         ('state', '=', 'validate'),
+                         ('holiday_status_id.id', '=', leave_type_id.id)])
+            total_leaves = 0.0
+            total_allocations = 0.0
+            if hr_leave:
+                total_leaves = sum([line.number_of_days for line in hr_leave])
+            if hr_leave_allocation:
+                total_allocations = sum([allocate.number_of_days_display for allocate in hr_leave_allocation])
+            if total_allocations > 0.0:
+                remaining_days = total_allocations - total_leaves
+                self.holiday_days = remaining_days * self.contract_id.wage
+            else:
+                self.holiday_days = 0.0
+        else:
+            self.holiday_days = 0.0
+
+        # hr_leave = self.env['hr.leave.type'].search([], limit=1)
+        # if hr_leave:
+        #     lv = hr_leave.get_days(self.employee_id.id)
+        #     print("::::::lvlvlv::::::::", lv)
+        #     print("::::::lvlvlv::::::::", lv[1]['leaves_taken'])
+        #     x = 0.0
+        #     for i in hr_leave:
+        #         x += int(i.name_get()[0][0])
+        #         print("::::::::::::::", i.name_get())
+        #         print("::::::::::::::", i.virtual_remaining_leaves)
+        #         print("::::::::::::::", i.max_leaves)
+        #     self.holiday_days = lv[1]['remaining_leaves'] * self.contract_id.wage
+        # else:
+        #     self.holiday_days = 0.0
 
     def get_employee_end_of_service(self, employee_id, last_work_date, contact_end_type):
         employee_id = employee_id

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="ess_my_reports" name="ESS Statement">
+        <t t-call="portal.portal_layout">
+            <t>
+                <div class="row justify-content-between mt-4">
+
+                    <nav class="navbar-default navbar-static-side" role="navigation" style="z-index: 1;position: initial;">
+                        <t t-call="ess.side_menu"/>
+                    </nav>
+
+                    <div class="row col-10 col-md col-lg-10"> 
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="row iess-title" style="text-align:left;margin-right: 20px;margin-left: 20px;">
+                                    <h3><span>All Reports</span></h3>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="margin-top:10px;">
+                                            <form action="/my/reports" method="post" id="ReportForm">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                
+                                                <div class="row o_portal_statment">
+                                                    <div class="col-lg-12">
+
+                                                            <div class="col-lg-12">
+                                                                <div t-if="error_message" class="alert alert-danger" role="alert">
+                                                                    <t t-foreach="error_message" t-as="err"><t t-esc="err"/><br /></t>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row form-group col-lg-12">
+                                                                <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="report_id">Report Needed</label>
+                                                                    <select name="report_id" id="report_id" t-attf-class="form-control">
+                                                                        <t t-foreach="report_obj or []" t-as="report">
+                                                                            <option t-att-value="report.id" >
+                                                                                <t t-esc="report.name" />
+                                                                            </option>
+                                                                        </t>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div t-attf-class="form-group col-xl-6">
+                                                                    <label class="col-form-label" for="direction_id">Direction Needed</label>
+                                                                    <select name="direction_id" id="direction_id" t-attf-class="form-control">
+                                                                        <t t-foreach="direction_obj or []" t-as="direction">
+                                                                            <option t-att-value="direction.id" >
+                                                                                <t t-esc="direction.name" />
+                                                                            </option>
+                                                                        </t>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-xl-4">
+                                                                    <button id="print_salary_button" type="submit" class="btn btn-primary float-right" style='margin-right: 30px;'>
+                                                                        Print Report
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+<!--                                                            <span  id="date_from" t-esc="date_from" class="hide"/>-->
+<!--                                                            <span  id="date_to" t-esc="date_to" class="hide"/>-->
+<!--                                                            <span  id="partner" t-esc="partner.id" class="hide"/>-->
+                                                            
+
+                                                            
+<!--                                                            <div class="float-right" style='margin-right: 30px;'>-->
+<!--                                                                <a id="print_salary_button2" class="btn border-primary ">-->
+<!--                                                                    <i class="fa fa-print float-sm-none float-md-right">Print Report</i>-->
+<!--                                                                </a>-->
+<!--                                                            </div>-->
+
+<!--                                                            <script>-->
+<!--                                                                var report_id = document.getElementById('report_id').innerHTML;-->
+<!--                                                                var direction_id = document.getElementById('direction_id').innerHTML;-->
+<!--&lt;!&ndash;                                                                var partner = document.getElementById('partner').innerHTML;&ndash;&gt;-->
+<!--                                                                var print_salary_button = document.getElementById('print_salary_button2');-->
+<!--                                                                print_salary_button.href = "/salary/information?report_id=" + report_id +"&amp;direction_id="+direction_id";-->
+
+<!--                                                            </script>-->
+
+                                                            
+                                                        </div>
+                                                        
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            
+                    </div>
+                </div>
+            </t>
+        </t>
+<!--        <script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>-->
+<!--        <script type="text/javascript" src="/ess/static/src/js/print_employee_report.js"></script>-->
+    </template>
+
+
+</odoo>

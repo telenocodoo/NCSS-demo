@@ -89,7 +89,7 @@ class HrLeaveAllocation(models.Model):
                     years = ex_date + timedelta(days=no_of_days_per_year)
                 else:
                     years = ex_date + timedelta(days=2 * no_of_days_per_year)
-        return years
+                return years
 
     @api.onchange('employee_id')
     def get_expiry_date(self):

@@ -1,13 +1,14 @@
 <odoo>
         <record id="hr_contract_view_form_inherit" model="ir.ui.view" >
-            <field name="name">hr.contract</field>
-            <field name="model">hr.contract</field>
-            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='department_id']" position="after">
-                    <field name="contract_type" />
-                </xpath>
-            </field>
+        <field name="name">hr.contract</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="after">
+                <field name="direction_id" />
+                <field name="contract_type" />
+            </xpath>
+        </field>
         </record>
 
 
@@ -16,10 +17,10 @@
         string="Print Contract"
         model="hr.contract"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_contract_report"
-        file="hr_employee_templates.hr_contract_report"/>
+        name="hr_employee_templates.hr_contract_report_template"
+        file="hr_employee_templates.hr_report"/>
 
-    <template id="hr_contract_report">
+    <template id="hr_contract_report_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -1404,10 +1405,10 @@
         string="Employee Information"
         model="hr.contract"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_contract_custom_report"
-        file="hr_employee_templates.hr_contract_custom_report"/>
+        name="hr_employee_templates.hr_cont_report_template"
+        file="hr_employee_templates.hr_cont_report"/>
 
-        <template id="hr_contract_custom_report">
+        <template id="hr_cont_report_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -1872,20 +1873,26 @@
         string="Salary Information"
         model="hr.contract"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_salary_report"
+        name="hr_employee_templates.hr_salary_report_template"
         file="hr_employee_templates.hr_salary_report"/>
 
-        <template id="hr_salary_report">
+        <template id="hr_salary_report_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
-                    <div class="page" dir="rtl">
+                    <div class="page" dir="RTL" style="text-align:right;">
                         <div class="oe_structure"/>
 
                             <span><p class="MsoNormal" dir="RTL" style="margin-left:-27.0pt;tab-stops:441.0pt"><b><span lang="AR-SA" style="font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;"><p> </p></span></b></p>
 
                                 <p class="MsoNormal" dir="RTL" style="margin-left:-27.0pt;tab-stops:441.0pt"><b><span lang="AR-SA" style="font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;">السادة
-                                .................................                                           <p/></span></b></p>
+                                  <t t-if="o.direction_id">
+                                   <span t-esc="o.direction_id.name" />
+                                  </t>
+                                  <t t-else="">
+                                   ..................................
+                                  </t>
+                                 <p/></span></b></p>
 
                                 <p class="MsoNormal" dir="RTL" style="margin-left:-10.0pt;tab-stops:441.0pt"><b><span lang="AR-SA" style="font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;">السلام
                                 عليكم ورحمة الله وبركاته                                   وبعــــــد:</span></b><span lang="AR-SA" style="font-size:18.0pt;line-height:115%;font-family:AL-Mohanad"><p/></span></p>
@@ -1964,10 +1971,10 @@
         string="salary proof"
         model="hr.contract"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_salary_proof"
+        name="hr_employee_templates.hr_salary_proof_template"
         file="hr_employee_templates.hr_salary_proof"/>
 
-        <template id="hr_salary_proof">
+        <template id="hr_salary_proof_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -1989,7 +1996,14 @@
 
 <p dir="rtl" class="western" style="margin-bottom: 0.14in; line-height: 100%">
 <font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad Bold"><font style="font-size: 17pt" size="5"><b>السادة
-</b></font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font style="font-size: 17pt" size="5"><b>.....................
+</b></font></font></span></font></font><font face="Calibri, serif"><font style="font-size: 11pt" size="2"><font style="font-size: 17pt" size="5"><b>
+ <t t-if="o.direction_id">
+  <span t-esc="o.direction_id.name" />
+ </t>
+ <t t-else="">
+  ..................................
+ </t>
+
 	  							</b></font></font></font><font face="Arial"><font style="font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad Bold"><font style="font-size: 17pt" size="5"><b>المحترمين</b></font></font></span></font></font></p>
 <p dir="rtl" class="western" style="text-indent: -0.36in; margin-bottom: 0.14in; line-height: 100%" align="justify">
     <font face="Arial"><font style="margin-right: 15pt;font-size: 11pt" size="2"><span lang="ar-SA"><font face="AL-Mohanad Bold"><font style="font-size: 17pt" size="5"><b>السلام
@@ -2080,10 +2094,10 @@
         string="tammed"
         model="hr.contract"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_tammed"
-        file="hr_employee_templates.hr_tammed"/>
+        name="hr_employee_templates.hr_salary_tammed_template"
+        file="hr_employee_templates.hr_salary_tammed"/>
 
-        <template id="hr_tammed">
+        <template id="hr_salary_tammed_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -2098,7 +2112,7 @@
 
 <p dir="rtl" style="margin-right: -0.1in; margin-bottom: 0.14in" align="center">
 <font face="Arial"><span lang="ar-SA"><u><font face="AL-Mohanad"><font style="font-size: 18pt" size="5"><b>تعميد
-</b></font></font></u></span></font><u><font face="Simplified Arabic, serif"><font style="font-size: 18pt" size="5"><b>0.............................
+</b></font></font></u></span></font><u><font face="Simplified Arabic, serif"><font style="font-size: 18pt" size="5"><b>
 </b></font></font></u>
 </p>
 <p dir="rtl" style="margin-bottom: 0.14in"><br/>
@@ -2107,7 +2121,13 @@
 </p>
 <p dir="rtl" style="margin-right: 0.2in; text-indent: -0.02in; margin-bottom: 0.14in" align="justify">
 <font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>السادة</b></font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4"><b>:
-..................................				 		        		    </b></font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>المحترمين</b></font></font></span></font></p>
+<t t-if="o.direction_id">
+  <span t-esc="o.direction_id.name" />
+ </t>
+ <t t-else="">
+  ..................................
+ </t>
+</b></font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>المحترمين</b></font></font></span></font></p>
 <p dir="rtl" style="margin-right: 0.2in; text-indent: -0.02in; margin-bottom: 0.14in" align="justify">
 <font face="Arial, serif"><font style="font-size: 16pt" size="4"><b>	</b></font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>السلام</b></font></font><font face="AL-Mohanad"><b>
 </b></font><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>عليكم</b></font></font><font face="AL-Mohanad"><b>
@@ -2191,11 +2211,11 @@
                 string="job offer"
                 model="hr.contract"
                 report_type="qweb-pdf"
-                name="hr_employee_templates.hr_job_offer"
-                file="hr_employee_templates.hr_job_offer"
+                name="hr_employee_templates.hr_b_offer_template"
+                file="hr_employee_templates.hr_b_offer"
         />
 
-        <template id="hr_job_offer">
+        <template id="hr_b_offer_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -2677,7 +2697,7 @@
         model="hr.contract"
         report_type="qweb-pdf"
         name="hr_employee_templates.service_certificate_template"
-        file="hr_employee_templates.service_certificate_template"/>
+        file="hr_employee_templates.service_certificate"/>
 
        <template id="service_certificate_template">
            <t t-call="web.html_container">
@@ -2695,14 +2715,25 @@
                                 <table style="height: 19px; width: 1028px;">
                                  <tbody>
                                  <tr style="height: 24px;">
-                                 <td style="width: 506px; height: 24px;">
-                                 <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">To whom it may concern</span></span></span></p>
-                                 <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">This is to certify that </span></span></span></p>
-                                 </td>
-                                 <td style="width: 506px; height: 24px;">
-                                 <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"> <span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">إلى من يهمة الأمر </span></span></span></span></span></p>
-                                 <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">نحيطكم علماً بأن </span></span></span></span></span></p>
-                                 </td>
+                                   <td>
+                                      <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">To whom it may concern</span></span></span></p>
+                                      <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;"><span style="font-size: large;">This is to certify that </span></span></span></p>
+                                   </td>
+                                   <td>
+                                      <p style="margin-bottom: 0.14in;"><span style="color: #000000;"><span style="font-family: Cambria, serif;">
+                                       <span style="font-size: large;">
+                                             <t t-if="o.direction_id">
+                                              <span t-esc="o.direction_id.name" />
+                                             </t>
+                                             <t t-else="">
+
+                                             </t>
+                                      </span></span></span></p>
+                                   </td>
+                                   <td>
+                                      <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"> <span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">إلى من يهمة الأمر </span></span></span></span></span></p>
+                                      <p style="margin-bottom: 0.14in;" align="right"><span style="color: #000000;"><span style="font-family: Arial;"><span lang="ar-SA"><span style="font-family: AL-Mohanad;"><span style="font-size: large;">نحيطكم علماً بأن </span></span></span></span></span></p>
+                                   </td>
                                  </tr>
                                  </tbody>
                                  </table>
@@ -2863,10 +2894,10 @@
         string="Leave Request"
         model="hr.leave"
         report_type="qweb-pdf"
-        name="hr_employee_templates.hr_leave_request"
-        file="hr_employee_templates.hr_leave_request"/>
+        name="hr_employee_templates.hr_leave_request_offer_template"
+        file="hr_employee_templates.hr_leave_request_offer"/>
 
-        <template id="hr_leave_request">
+        <template id="hr_leave_request_offer_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">

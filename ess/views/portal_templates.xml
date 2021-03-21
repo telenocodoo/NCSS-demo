@@ -33,14 +33,10 @@
                                 <t t-if="appraisal_list" t-call="ess.employee_appraisal"/>
                                 <t t-if="attendance_list" t-call="ess.employee_attendance"/>
 <!--                                <t t-if="announcement_list" t-call="ess.employee_announcement"/>-->
-
                                 <t t-if="douc_exp_obj" t-call="ess.employee_important_date"/>
                                 <t t-if="asset_assignation_obj" t-call="ess.employee_asset_assignation"/>
                                 <t t-if="custody_obj" t-call="ess.employee_custody"/>
                                 <t t-if="mandate_obj" t-call="ess.employee_mandate"/>
-
-
-
                             </div>
 
 
@@ -305,6 +301,13 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Hr Employee Reports</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/my/reports">My Reports</a></li>
+                        </ul>
+                    </li>
+
 
 
 <!--magdy-->
@@ -526,7 +529,6 @@
 		</div>
     </template>
 
-
     <template id="employee_announcement">
         <div class="col-lg-4">
 			<div class="ibox carddash">
@@ -730,7 +732,6 @@
 			</div>
 		</div>
     </template>
-
 
    <template id="employee_department_announcement">
         <div class="col-lg-4">

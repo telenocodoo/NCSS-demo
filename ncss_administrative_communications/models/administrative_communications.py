@@ -173,11 +173,11 @@ class AdministrativeCommunication(models.Model):
             values['sequence'] = self.env['ir.sequence'].next_by_code('administrative.communication.internal')
         res = super(AdministrativeCommunication, self).create(values)
 
-        user_ids = res.get_users("ncss_administrative_communications.administrative_communication_assign_to_department_button")
-        message = 'معامله رقم %s ' % res['sequence']
-        if user_ids:
-            for rec in user_ids:
-                res.create_activity(rec, message)
+        # user_ids = res.get_users("ncss_administrative_communications.administrative_communication_assign_to_department_button")
+        # message = 'معامله رقم %s ' % res['sequence']
+        # if user_ids:
+        #     for rec in user_ids:
+        #         res.create_activity(rec, message)
         return res
 
     @api.onchange('transfer_to_id')

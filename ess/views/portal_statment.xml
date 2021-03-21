@@ -97,13 +97,13 @@
                                                                 </div>
                                                             </div>
 
-                                                            
-
-                                                            
                                                             <div class="float-right" style='margin-right: 30px;'>
                                                             <a id="print_button" title="Clear" aria-label="Clear" class="btn border-primary ">
                                                                 <i class="fa fa-print float-sm-none float-md-right"> Print</i>
                                                             </a>
+<!--                                                            <a id="print_salary_button" class="btn border-primary ">-->
+<!--                                                                <i class="fa fa-print float-sm-none float-md-right">Print Salary Information</i>-->
+<!--                                                            </a>-->
                                                             </div>
 
                                                             <script>
@@ -113,6 +113,10 @@
                                                                 
                                                                 var print_button = document.getElementById('print_button');
                                                                 print_button.href = "/print/statment/?partner_id=" + partner +"&amp;from_date="+date_from+"&amp;to_date="+date_to;
+
+<!--                                                                var print_salary_button = document.getElementById('print_salary_button');-->
+<!--                                                                print_salary_button.href = "/salary/information";-->
+
                                                             </script>
 
                                                             

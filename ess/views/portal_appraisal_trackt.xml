@@ -31,15 +31,23 @@
                                                                     <thead>
                                                                         <tr>
                                                                             <th>Date</th>
+                                                                            <th>Managers</th>
                                                                             <th>Subordinates</th>
                                                                             <th>Colleagues</th>
-                                                                            <th>Final Evaluation</th>
+<!--                                                                            <th>Final Evaluation</th>-->
+<!--                                                                            <th>Deserved Degree</th>-->
+                                                                            <th>Appraisal Level</th>
                                                                             <th>Status</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody t-foreach="appraisal_obj" t-as="app">
                                                                         <tr>
                                                                             <td><div t-esc="app['date_close']"/></td>
+                                                                            <td>
+                                                                                <t t-foreach="app['manager_ids']" t-as="manager">
+                                                                                    <div t-esc="manager.name"/>
+                                                                                </t>
+                                                                            </td>
                                                                             <td>
                                                                                 <t t-foreach="app['collaborators_ids']" t-as="em">
                                                                                     <div t-esc="em.name"/>
@@ -50,7 +58,9 @@
                                                                                     <div t-esc="em.name"/>
                                                                                 </t>
                                                                             </td>
-                                                                            <td><div t-esc="app['action_plan']"/></td>
+<!--                                                                            <td><div t-esc="app['action_plan']"/></td>-->
+<!--                                                                            <td><div t-esc="app['total_deserve_appraisal']"/></td>-->
+                                                                            <td><div t-esc="app['appraisal_level']"/></td>
                                                                             <td><div t-esc="app['state']"/></td>
                                                                         </tr>
                                                                     </tbody>

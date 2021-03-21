@@ -79,6 +79,10 @@
                             </div>
 
                         </group>
+
+                        <group>
+                            <field name="holiday_days" />
+                        </group>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

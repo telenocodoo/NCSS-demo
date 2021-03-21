@@ -198,14 +198,54 @@ class ESSPortalPayRoll(Controller):
    
     @route('/print/payslip', methods=['POST', 'GET'], csrf=False, type='http', auth="user", website=True)
     def print_payslip(self, **post):
-
         pdf = request.env.ref('hr_payroll.action_report_payslip').sudo().render_qweb_pdf([int(post['id'])])[0]
-
-
         pdfhttpheaders = [
             ('Content-Type', 'application/pdf'),
             ('Content-Length', len(pdf)),
         ]
         return request.make_response(pdf, headers=pdfhttpheaders)
 
-    
+    @http.route('/my/reports', methods=['POST', 'GET'], csrf=False, type='http', auth="user", website=True)
+    def my_reports(self, **kw):
+        partner = request.env.user.partner_id
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        report_obj = request.env['ir.actions.report'].sudo().search([('model', '=', 'hr.contract')])
+        direction_obj = request.env['hr.direction'].sudo().search([])
+        values = mainController.ESSPortal.check_modules(self)
+        values.update({
+            'error': {},
+            'error_message': [],
+        })
+        if kw and request.httprequest.method == 'POST':
+            print(":::::::::::::", kw)
+            return request.redirect(
+                '/salary/information?report_id=%s&direction_id=%s' % (int(kw['report_id']), int(kw['direction_id'])))
+
+        values.update({
+            'partner': partner,
+            'employee': emb_obj,
+            'report_obj': report_obj,
+            'direction_obj': direction_obj,
+        })
+
+        response = request.render("ess.ess_my_reports", values)
+        response.headers['X-Frame-Options'] = 'DENY'
+        return response
+
+    @http.route('/salary/information', methods=['POST', 'GET'], csrf=False, type='http', auth="user", website=True)
+    def print_salary_information(self, **kw):
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        hr_contract_obj = request.env['hr.contract'].sudo().\
+            search([('employee_id', '=', emb_obj.id), ('state', '=', 'open')], limit=1)
+        print("AAAAAAAAAAAAAAA", kw)
+        if hr_contract_obj:
+            print("LLLLLLLLLLLL", kw)
+            # if kw['direction_id']:
+            hr_contract_obj.direction_id = int(kw['direction_id'])
+            report_obj = request.env['ir.actions.report'].sudo().search([('id', '=', int(kw['report_id']))])
+            pdf = request.env.ref('%s' % report_obj.report_file).sudo().render_qweb_pdf([hr_contract_obj.id])[0]
+            pdfhttpheaders = [
+                ('Content-Type', 'application/pdf'),
+                ('Content-Length', len(pdf)),
+            ]
+            return request.make_response(pdf, headers=pdfhttpheaders)

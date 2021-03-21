@@ -1,0 +1,3919 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_employee_templates
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-21 11:15+0000\n"
+"PO-Revision-Date: 2021-03-21 11:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"(And<span dir=\"RTL\"/><span dir=\"RTL\"/><span lang=\"AR-SA\" "
+"dir=\"RTL\"><span dir=\"RTL\"/><span dir=\"RTL\"/>(</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+")  ريال فقط، يدفع له في نهاية\n"
+"                                   كل شهر ميلادي والراتب على أساس ثمان ساعات عمل يومية فعلية."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") Riyadh ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+") months commences from the effective date and ends\n"
+"                                    on"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") الرمـز بريدي ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") بتاريخ ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+") ريال\n"
+"                                            <br/>\n"
+"                                            6. يلتزم المستشار بحفظ الأسرار المتعلقة بالعمل وخصوصياته.\n"
+"                                                                                    <br/>\n"
+"                                            7. لا يترتب على هذا العقد أي حقوق أو التزامات مالية بخلاف ما ذكر في البند رقم 5.\n"
+"                                                                                    <br/>\n"
+"                                            8.  يسري مفعول هذا العقد لمدة (00 شهر) اعتباراً من تاريخ التوقيع، ويمكن تجديده لفترة مماثلة في حال اتفاق الطرفين على التمديد.\n"
+"                                           <br/>\n"
+"                                            9. يحق للمركز إنهاء هذه الاتفاقية خلال فترة سريانها بعد إخطار المستشار خطياً.\n"
+"                                             <br/>\n"
+"                                               تم الاتفاق على ذلك بتراضي الطرفين وحرر هذا العقد من نسختين.\n"
+"\n"
+"                                            <br/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") شهر تبدأ من تاريخ سريان العقد وتنتهي في"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+") فاكس (0114960900)،\n"
+"                                  ويمثله في هذا العقد/ مدير عام المركز الأستاذ الدكتور سامي بن عبد العزيز الدامغ،\n"
+"                                  بناءً على الصلاحيات الممنوحة له حسب الأنظمة الداخلية للمركز. ويشار إليه فيما\n"
+"                                  بعد \"الطرف الأول\""
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") هاتف ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ") هـاتف"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+") يعمل لدينا\n"
+"                                بوظيفة ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "), Email:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "), Tel:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+")<span dir=\"RTL\"/><span dir=\"RTL\"/><span dir=\"RTL\"><span dir=\"RTL\"/><span dir=\"RTL\"/> </span>Saudi Riyals per month. Such housing allowance shall\n"
+"                                    be paid monthly along with the salary."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ")، الرمز البريـدي ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+")، والمقيم\n"
+"                                   في مدينة الرياض والمشار إليه فيما بعد بـ (الموظف) ويُعمل به اعتباراً من تاريخ\n"
+"                                   التحاق الموظف بالعمل."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+",\n"
+"                                            الاتفاق بين كل من المركز الوطني للدراسات والبحوث الاجتماعية\n"
+"                                            ويمثله مدير عام المركز الأستاذ الدكتور /سامي بن عبد العزيز الدامغ ويشار إليه فيما بعد بـ (المركز)،<br/>\n"
+"                                            وبين الدكتور/"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ", P.O. Box No. ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ", address:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+", to perform all work assigned to him, in\n"
+"                                    accordance with the job title specified in attachment (1) .and to perform any\n"
+"                                    other work suits its scientific ,practical and technical qualifications."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ",Address"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ",Email:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ",Fax:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "0000000"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "00000000"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "000000000"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "12"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "2- المتعاون الأستاذ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "24"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "<b> </b>) منذ تاريخ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\"> </span></b><span dir=\"RTL\"/><span dir=\"RTL\"/><b><span "
+"lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span "
+"dir=\"RTL\"/><span dir=\"RTL\"/> ويشار إليه فيما بعد (بالعامل) الطرف "
+"الثاني.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<b><span dir=\"LTR\" style=\"font-size:14.0pt\">PLEASE\n"
+"  RETURN COMPLETED FORM TO HR DEPARTMENT FOR \n"
+"  PROCESSING</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span dir=\"LTR\" style=\"font-size:14.0pt;font-"
+"family:&quot;Calibri&quot;,sans-serif;mso-bidi-font-"
+"family:&#10;&quot;mohammad bold art 1&quot;\">EMPLOYMENT CONTRACT</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">((وبين))</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">        النص العربي هو النص المعتمد.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">        وجود أي اختلاف بين النص العربي والنص\n"
+"                                    الإنجليزي فإن</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">،\n"
+"                                    وعنوانها</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">اتفق\n"
+"                                    الطـــرفان على اعتبار التمهيـــــد أعلاه جزء لا يتجزأ ومتمم لهذا العقـــــد.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">السيدة/ </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">الوصف الوظيفي:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">حرر\n"
+"                                    هذا الاتفاق من نسختين أصليتين وقد تسلم كل طرف نسخة أصلية للعمل بمقتضاها</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">يدفع\n"
+"                                    (الطرف الأول) (للطرف الثاني) مبلغ</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><span dir=\"RTL\"/><span dir=\"RTL\"/><span dir=\"LTR\"/><span dir=\"LTR\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:&#10;14.0pt;font-family:AL-"
+"Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:&#10;Arial\">   "
+"المتعاون</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:11.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif\">التوقيع:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:12.0pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;\">\n"
+"                                    , بطاقة أحوال </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:12.0pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;\">التاريخ\n"
+"                                   :                                                التاريخ:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:12.0pt;font-"
+"family:&quot;Simplified Arabic&quot;,serif;mso-ascii-font-"
+"family:&#10;&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times "
+"New Roman&quot;\">ب - الاستاذ / </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:14.0pt;&#10;  font-family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:Calibri;mso-ascii-theme-font:&#10;  minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin\">الرجاء\n"
+"  إعادة النموذج بعد استكماله لإدارة الموارد البشرية لاستكمال الإجراءات</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:14.0pt;font-family:&quot;Segoe "
+"UI&quot;,sans-serif\">عقـد عمـل</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:150%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">     أ. 0000000000000000                                                                 سامي\n"
+"                                  بن عبد العزيز الدامغ</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;\">                  فراس بن\n"
+"                                عبد الرزاق الهاشم      </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;\">                  فراس بن\n"
+"                                عبد الرزاق الهاشم        </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"<b><span lang=\"AR-SA\" style=\"font-size:18.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;\">السلام\n"
+"                                عليكم ورحمة الله وبركاته                                   وبعــــــد:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span style=\"font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-"
+"family:Arial\">4-1<span style=\"font-variant-numeric: normal; font-variant-"
+"east-asian: normal; font-weight: normal; font-stretch: normal; font-size: "
+"7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">  "
+"</span></span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><span style=\"font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-"
+"family:Arial\">4-2<span style=\"font-variant-numeric: normal; font-variant-"
+"east-asian: normal; font-weight: normal; font-stretch: normal; font-size: "
+"7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">  "
+"</span></span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<b><span style=\"font-size:12.0pt\"> </span></b><span dir=\"RTL\"/><span "
+"dir=\"RTL\"/><b><span lang=\"AR-SA\" dir=\"RTL\" style=\"font-"
+"size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-ascii-font-"
+"family:&#10;  Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-"
+"family:Calibri;&#10;  mso-hansi-theme-font:minor-latin;mso-bidi-font-"
+"family:Arial;mso-bidi-theme-font:&#10;  minor-bidi\"><span "
+"dir=\"RTL\"/><span dir=\"RTL\"/>     4. معلومات السكن  :</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span dir=\"LTR\" style=\"font-size:10.0pt;&#10;  font-"
+"family:&quot;Arial&quot;,sans-serif\">Article (2): Job Title and Place of "
+"Work:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span dir=\"LTR\" style=\"font-size:10.0pt;&#10;  font-"
+"family:&quot;Arial&quot;,sans-serif\">Recitals: </span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (1) استهلال:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البند (10) انتهاء العقـد أو\n"
+"                                    إنهاؤه:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (11) تعديل العقـد:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (12) الإخطارات:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (13) أحكام عامة:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البند (2) الوظيفة ومقر\n"
+"                                    العمل:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (3) مدة العقد:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (4) الفترة التجريبية:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (5) ساعات العمل:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البند (6) الأجر ومكافأة\n"
+"                                    نهاية الخدمة:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البند (7) امتيازات (الطرف\n"
+"                                    الثاني):</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البند (8) التزامات (الطرف\n"
+"                                    الثاني):</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">البند (9) مبدأ السرية:</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\">تمهيــد</span></u></b><b><span lang=\"AR-SA\" style=\"font-"
+"family:&quot;Arial&quot;,sans-serif\">: -</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<b><u><span lang=\"AR-SA\" style=\"font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif\">الملحق رقم\n"
+"                                    \"1\"</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<br/>\n"
+"                                            4-يلتزم المستشار بإنهاء المهمات والواجبات التي تسند إليه في الوقت المحدد لذلك.\n"
+"                                                <br/>\n"
+"                                                5. يلتزم المركز بدفع مكافأة شهرية مقطوعة للمستشار وقدره ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<br/>\n"
+"                                            4-يلتزم المستشار بإنهاء المهمات والواجبات التي تسند إليه في الوقت المحدد لذلك.\n"
+"                                                <br/>\n"
+"                                                5. يلتزم المركز بدفع مكافأة شهرية مقطوعة للمستشار وقدره (000.) ريال 000000000000000 ريال.\n"
+"                                            <br/>\n"
+"                                            6. يلتزم المستشار بحفظ الأسرار المتعلقة بالعمل وخصوصياته.\n"
+"                                                                                    <br/>\n"
+"                                            7. لا يترتب على هذا العقد أي حقوق أو التزامات مالية بخلاف ما ذكر في البند رقم 5.\n"
+"                                                                                    <br/>\n"
+"                                            8.  يسري مفعول هذا العقد لمدة (00 شهر) اعتباراً من تاريخ التوقيع، ويمكن تجديده لفترة مماثلة في حال اتفاق الطرفين على التمديد.\n"
+"                                           <br/>\n"
+"                                            9. يحق للمركز إنهاء هذه الاتفاقية خلال فترة سريانها بعد إخطار المستشار خطياً.\n"
+"                                             <br/>\n"
+"                                               تم الاتفاق على ذلك بتراضي الطرفين وحرر هذا العقد من نسختين.\n"
+"\n"
+"                                            <br/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad Bold\"><font style=\"font-size: 17pt\" size=\"5\"><b>السادة\n"
+"</b></font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span "
+"lang=\"ar-SA\"><font face=\"AL-Mohanad Bold\"><font style=\"font-size: "
+"17pt\" size=\"5\"><b>المحترمين</b></font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad Bold\"><font style=\"font-size: 18pt\" size=\"5\">وتقبلوا\n"
+"وافر التحية والتقدير      </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">،\n"
+"بطاقة أحوال رقم</font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">،\n"
+"يعمل لدينا من تاريخ </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">ريال</font></font></span></font></font><font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font face=\"Simplified Arabic, serif\"><font style=\"font-size: 16pt\" size=\"4\">)\n"
+"</font></font></font></font><font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">برقم\n"
+"حساب لديكم  </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">م\n"
+"، بوظيفة </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">م،\n"
+"ونتعهد بعدم التحويل لأي جهة أخرى او وقف\n"
+"هذا التحويل إلا بموافقتكم الخطية، ويعتبر\n"
+"هذا التحويل قائما ومستمراً طالما أن\n"
+"المذكور على رأس عمله ما لم يردنا اي\n"
+"اقتطاعات قضائية، وفي حال انتهاء عمله\n"
+"لدى المركز لأي سبب كان فإننا سنقوم بتحويل\n"
+"كامل مستحقاته المالية إن وجدت لصالحكم،\n"
+"دون أدنى مسؤولية تقع علينا تجاهكم</font></font></span></font></font><font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font face=\"Simplified Arabic, serif\"><font style=\"font-size: 16pt\" size=\"4\">.\n"
+"</font></font></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">نشهد\n"
+"نحن المركز الوطني للدراسات والبحوث\n"
+"الاجتماعية بأن الأستاذ</font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">ولا\n"
+"يزال على راس العمل، ويتقاضى راتباً\n"
+"إجمالي قدره </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">ونود\n"
+"إعلامكم بأننا نتعهد باستمرارية تحويل\n"
+"راتبه شهرياً لكم من تاريخ </font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 17pt\" size=\"5\"><b>فراس\n"
+"بن عبد الرزاق الهاشم</b></font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 18pt\" size=\"5\"><b>رئيس\n"
+"وحدة الموارد البشرية </b></font></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Arial\"><font style=\"margin-right: 15pt;font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad Bold\"><font style=\"font-size: 17pt\" size=\"5\"><b>السلام\n"
+"عليكم ورحمة الله وبركاته</b></font></font></span></font></font><font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font style=\"font-size: 17pt\" size=\"5\"><b>.</b></font></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>السادة</b></font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\"><b>:\n"
+"..................................\t\t\t\t \t\t        \t\t    </b></font></font><font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>المحترمين</b></font></font></span></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>المركز\n"
+"الوطني للدراسات والبحوث الاجتماعية</b></font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\"><b>\t</b></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>سامي\n"
+"بن عبد العزيز الدامغ  </b></font></font></span></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>مدير\n"
+"عام </b></font></font></span></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>وتقبلوا</b></font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>وافر</b></font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>التحية</b></font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>والتقدير</b></font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\"><b>.</b></font></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\"><b>\n"
+"                                                               </b></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">إشارة</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">إلى</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">العرض\n"
+"المقدم بتاريخ </font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\">22/04/2018</font></font><font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">م،\n"
+"بخصوص </font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\">..........................................\n"
+"</font></font><font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">للمركز\n"
+"الوطني للدراسات والبحوث الاجتماعية\n"
+"بتكلفة اجمالية</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">قدرها\n"
+"</font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\">(\n"
+"00,000) ........................................ </font></font><font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">ريال\n"
+"شاملة قيمة الضريبة المضافة </font></font></span></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"margin-right: 30pt;font-size: 16pt\" size=\"4\">نعمدكم</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">بهذا</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">الخطاب</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">على</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">كافة</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">ما</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">تضمنه</font></font><font face=\"AL-Mohanad\">\n"
+"</font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\">العرض</font></font></span></font><font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\">.</font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial\"><span lang=\"ar-SA\"><u><font face=\"AL-Mohanad\"><font style=\"font-size: 18pt\" size=\"5\"><b>تعميد\n"
+"</b></font></font></u></span></font><u><font face=\"Simplified Arabic, serif\"><font style=\"font-size: 18pt\" size=\"5\"><b>0.............................\n"
+"</b></font></font></u>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_tammed_template
+msgid ""
+"<font face=\"Arial, serif\"><font style=\"font-size: 16pt\" size=\"4\"><b>\t</b></font></font><font face=\"Arial\"><span lang=\"ar-SA\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>السلام</b></font></font><font face=\"AL-Mohanad\"><b>\n"
+"</b></font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>عليكم</b></font></font><font face=\"AL-Mohanad\"><b>\n"
+"</b></font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>ورحمة</b></font></font><font face=\"AL-Mohanad\"><b>\n"
+"</b></font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>الله</b></font></font><font face=\"AL-Mohanad\"><b>\n"
+"</b></font><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><b>وبركاته،</b></font></font></span></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font style=\"font-size: 8pt\" size=\"1\"><b>*\n"
+"</b></font></font></font><font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font style=\"font-size: 8pt\" size=\"1\"><b>صورة\n"
+"للشؤون المالية</b></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font style=\"font-size: 8pt\" size=\"1\"><b>*\n"
+"</b></font></font></font><font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font style=\"font-size: 8pt\" size=\"1\"><b>صورة\n"
+"للموارد البشرية</b></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Calibri, serif\"><font style=\"font-size: 11pt\" size=\"2\"><font style=\"font-size: 8pt\" size=\"1\"><b>*\n"
+"</b></font></font></font><font face=\"Arial\"><font style=\"font-size: 11pt\" size=\"2\"><span lang=\"ar-SA\"><font style=\"font-size: 8pt\" size=\"1\"><b>صورة\n"
+"لملف الموظف </b></font></span></font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_proof_template
+msgid ""
+"<font face=\"Times New Roman\"><span lang=\"ar-JO\"><font face=\"AL-Mohanad\"><font style=\"font-size: 16pt\" size=\"4\"><span lang=\"ar-SA\">تم\n"
+"\tإصدار هذا الخطاب بناءً على طلب الموظف\n"
+"\tوبموافقته</span></font></font></span></font><font face=\"Simplified Arabic, serif\"><font style=\"font-size: 16pt\" size=\"4\">.</font></font>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif\"> </span><span dir=\"LTR\" style=\"font-size:&#10;    11.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif\">5b</span><span dir=\"RTL\"/><span "
+"dir=\"RTL\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>10.1. The specified term contract shall be terminated upon the\n"
+"                                    expiry of its term or a written agreement between the parties"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>10.2. First\n"
+"                                    part shall be entitled to terminate this contract, without notice, end of\n"
+"                                    service benefit or incurring any liability, if he gives the employee an\n"
+"                                    opportunity to protest against the termination decision pursuant to article\n"
+"                                    (80) from labor law."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.1. Second\n"
+"                                    party shall be subjected to all regulations, instructions, laws which is in\n"
+"                                    force in Saudi Arabia either in the time of signing this contract or after\n"
+"                                    signing it and he declares that he is fully aware by the provisions of the\n"
+"                                    Saudi labor law and its amendments."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.2 The contract shall be deemed to be canceled if the first\n"
+"                                    party discovers that the employee has misled him about any of his personal\n"
+"                                    information’s which was the mean reason to sign this contract, in this case\n"
+"                                    second party is not entitled to claim by any compensations, end of service\n"
+"                                    benefit, allowance  under this\n"
+"                                    contract."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.3 Second\n"
+"                                    party ensures that it is fully aware of the provisions of the Saudi labor law\n"
+"                                    and its implementing regulations and the approved bylaws of the first party"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.4 labor law shall be complementary to any matter of which\n"
+"                                    the contract is silent."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.5 Any\n"
+"                                    previous obligations, terms, which is not included in this contract shall not\n"
+"                                    be valid unless accepted in a written form."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>13.6.this contact subjects to labor law and its implementary\n"
+"                                    regulations and it shall not by varied by any prior or oral agreements\n"
+"                                    because all there agreements have been consolidated in this contract and if\n"
+"                                    Any dispute arise under this contract shall be settled by competent authority\n"
+"                                    in  Saudi Arabia(labor bureau)"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>3.3 The term of this contract may be renewed for similar term\n"
+"                                    or different term, unless one party notify in writing the other his intention\n"
+"                                    not to renew within (60) days, before the end of the original or renewed\n"
+"                                    term."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>4.1 The second party shall be subjected\n"
+"                                    to a (90) business days as probation period \n"
+"                                    commencing from the date where the second party initiates the  actual work \n"
+"                                    such period shall not include the national holidays or sickens day\n"
+"                                    off, the first party is entitled to terminate the contract without recovery  within the probation period with no need to\n"
+"                                    state a reason or notifies the second party<span dir=\"RTL\"/><span dir=\"RTL\"/><span dir=\"RTL\"><span dir=\"RTL\"/><span dir=\"RTL\"/> </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>4.2\n"
+"                                    The probation period may be extended for a period or      several periods provided that such\n"
+"                                    extension shall be made in a written way at every time, eventually, the\n"
+"                                    probation periods shall not exceed 180 days"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>5.1 Working days shall be (5) days per week and Working hours\n"
+"                                    shall be (48) hours per day. However, the First Party may require from the\n"
+"                                    Second Party to work for additional hours subject to the requirements of\n"
+"                                    Second Party’s post or nature of work."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>5.2 The First\n"
+"                                    Party may require the Second Party to work     on shifts basis depending on nature of\n"
+"                                    work and requirements."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>6.1. The first\n"
+"                                    party shall pay to the second party a monthly basic salary amounting to\n"
+"                                    SR"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>6.2. The first party shall pay to the second party the leaving\n"
+"                                    indemnity in its due date in accordance with labor law"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "<span dir=\"LTR\"/><span dir=\"LTR\"/>7.1. Housing Allowance:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "<span dir=\"LTR\"/><span dir=\"LTR\"/>7.2. Transport Allowance:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "<span dir=\"LTR\"/><span dir=\"LTR\"/>7.3. Annual Leave:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "<span dir=\"LTR\"/><span dir=\"LTR\"/>7.4. Medical Insurance:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.1 Second\n"
+"                                    party shall carry out his duties under this contract efficiently and honestly\n"
+"                                    under condition that such duties don’t violate contract term and public\n"
+"                                    morals and polices."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.2. Second party shall be responsible for maintaining, all\n"
+"                                    equipment, materials belonging to the first party and in the event the\n"
+"                                    contractual relationship is terminated he accepts to return them in the\n"
+"                                    condition it was received."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.3.Second\n"
+"                                    party shall make all effort and carry out additional duties without claim any\n"
+"                                    additional fee if there is a force majeure."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.4. Second party agrees to be deducted from his monthly\n"
+"                                    salary, in order to pay the social insurance contributions."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.5 Second\n"
+"                                    party shall subject to any medical examination either after being hired or\n"
+"                                    before being hired to be sure that he is medically fit for the job."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.6 Second party shall be restricted by good behavior either\n"
+"                                    during the working hours or after it and shall not perpetrate any action\n"
+"                                    which may interpreted as illegal action."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.7 Second\n"
+"                                    party shall undertake to comply with all laws, customs and rules prevailing\n"
+"                                    in the kingdom of Saudi Arabia and by the regulations and the bylaws of the\n"
+"                                    first party and he is liable for any violation from his side to these laws."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>8.8 Second party shall have no right to work in any way with\n"
+"                                    or without consideration, during the continuation of this contract for the\n"
+"                                    account of any third party or for his own account."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>9.2. For the purposes of this contract, the\n"
+"                                    confidential information is the information which the second  party shall maintain and not disclose to\n"
+"                                    any third party which includes but not limited to ( records of the first\n"
+"                                    party , briefs, meetings, information plans, correspondences , employees)"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>9.3. For the purposes of\n"
+"                                    this contract, confidential information shall include information, which has\n"
+"                                    been, or may be, communicated orally, in writing or in any other recorded or\n"
+"                                    tangible form, including computer documents and information storage\n"
+"                                    technologies. Data and information shall be considered confidential\n"
+"                                    information if, due to its character, nature or the manner in which it is\n"
+"                                    conveyed, a reasonable person in a similar position and under similar\n"
+"                                    circumstances as the Employee would treat it as secret and confidential."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><b><span dir=\"LTR\" style=\"font-"
+"family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span "
+"dir=\"LTR\"/>/</span></b><span dir=\"RTL\"/><span dir=\"RTL\"/><b><span "
+"style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span "
+"dir=\"RTL\"/> <span lang=\"AR-SA\">011496900 البريد "
+"الإلكتروني</span></span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span "
+"lang=\"AR-SA\" dir=\"LTR\" style=\"mso-bidi-font-size:10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>"
+" </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span dir=\"LTR\" style=\"font-size:10.0pt;&#10;  font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>13.7.\n"
+"                                    The Arabic language is the main language of the</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span style=\"font-size:10.0pt;font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>2.1. Both\n"
+"                                    parties mutually agreed to appoint second party to work, under supervision of\n"
+"                                    the first party in the post of  </span><b><u><span style=\"mso-ascii-font-family:&quot;Times New Roman&quot;;mso-ascii-theme-font:major-bidi;&#10;  mso-hansi-font-family:&quot;Times New Roman&quot;;mso-hansi-theme-font:major-bidi;&#10;  mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:major-bidi;&#10;  letter-spacing:-.4pt\">( Consultant )</span></u></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span style=\"font-size:10.0pt;font-"
+"family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span "
+"dir=\"LTR\"/>3-2 </span>The"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span style=\"font-size:10.0pt;font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>6.3.The leaving\n"
+"                                    indemnity doesn’t include the changeable allowances which may increase or\n"
+"                                    decrease throughout the contract term  </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span style=\"font-size:10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span "
+"dir=\"LTR\"/>3-1 </span>The"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/><span style=\"font-size:11.5pt;font-"
+"family:&quot;Calibri&quot;,sans-serif;mso-bidi-font-family:&#10;  "
+"&quot;mohammad bold art 1&quot;\"><span dir=\"LTR\"/><span dir=\"LTR\"/>9.1."
+" </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/> 2.2.The second party\n"
+"                                    place of work shall be in the city of Riyadh; however, first party shall have\n"
+"                                    the right to assign the second party to work at any other place within or\n"
+"                                    outside the kingdom of Saudi Arabia in accordance with work requirements."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/> 3.4. The contract ended by the end of its\n"
+"                                    term unless the parties renewed it by a new written and signed contract,\n"
+"                                    pursuant to article (37) from labor law"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/> And if the first party fails to extract the\n"
+"                                    resident identity of the second party this contract shall be deemed canceled"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span dir=\"LTR\"/>         contract if any conflict arises in\n"
+"                                    interpreting any of the"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"LTR\"/><span style=\"font-size:&#10;  10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif\">Mrs.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">يخضع\n"
+"                                    (الطرف الثاني) لفترة تجربة مدتها تسعون يوماً تبدأ من تاريخ مباشرة (الطرف\n"
+"                                    الثاني) للعمل بموجب هذا العقد ولا يدخل في حسابها إجازة عيدي الفطر والأضحى\n"
+"                                    والإجازة المرضية، ويكون للطرف الأول في أثناء الفترة التجريبية إنهاء العقد دون\n"
+"                                    الحاجة لإبداء الأسباب أو لإنذار (الطرف الثاني) ودون أي تعويض للطرف الثاني).</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/> .\n"
+"  معلومات إضافية : (أشخاص بالإمكان الرجوع لهم عند الحاجة في مدينة الرياض )"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/> ريال شهرياً عبارة عن بدل السكن، ويتم\n"
+"                                    سداده مع الراتب الشهري."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>\"، وكذلك مباشرة أي مهام أخرى أو أي أعمال\n"
+"                                    يكلف بها بما يتناسب مع قدراته العملية والعلمية والفنية وفقاً لاحتياجات العمل."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>13-3 يقر الطرف\n"
+"                                    الثاني بأنه أطلع على نظام العمل السعودي وكافة قراراته ولوائحه، وكذلك يقر\n"
+"                                    الطرف الثاني بأنه اطلع على لوائح العمل الداخلية المعتمدة لدى الطرف الأول."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>13-4 يقر الطرف\n"
+"                                    الثاني باطلاعه على الوصف الوظيفي المحدد في الملحق \"1\"."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>13-5 أي\n"
+"                                    التزامات أو وعود أو شروط سابقة غير مدرجة في هذا العقد لا يعتد بها وتعتبر\n"
+"                                    كأنها لم تكن، ما لم يوافق الطرفين على تلك الشروط كتابة."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>13-6 يخضع هذا\n"
+"                                    العقد لنظام العمل ولائحته التنفيذية والقرارات الصادرة تنفيذاً له في كل ما لم\n"
+"                                    يرد به نص في هذا العقد ويحل هذا العقد محل كافة الاتفاقيات والعقود السابقة\n"
+"                                    الشفيهة منها أو الكتابية إن وجدت. وفي حال نشوء خلاف بين الطرفين حول هذا العقد\n"
+"                                    فإن الاختصاص القضائي ينعقد للجهة المختصة بنظر القضايا العمالية في المملكة\n"
+"                                    العربية السعودية."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>3-3 يتجدد العقد\n"
+"                                    لمـدة مماثلة، أو أي مدة أخرى يتفق عليها الطرفين كتابياً، ما لم يخطر أحد\n"
+"                                    الطرفين الطرف الآخر كتابياً بعدم رغبته في تجديـد العقـد قبل (60) ستين يوماً\n"
+"                                    من تاريخ انتهاء المدة الأصلية أو المجددة."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>3-4 ينتهي العقد\n"
+"                                    المحدد المدة بنهاية مدته ما لم يستمـر الطرفـان في تنفيذه على أن يكون التجديد\n"
+"                                    مكتوباً وموقعاً عليه من قبل طرفي العقد وفقا لنص المــــادة (37) من نظام العمل\n"
+"                                    السعودي."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>5-1 تحدد أيام العمل العادية بـ 5 أيام في الأسبوع،\n"
+"                                    وتحدد ساعات العمل بـ 48 يومياً. على أنه يحق (للطرف الأول) أن يكلف (الطرف\n"
+"                                    الثاني) بالعمل لساعات إضافية بحسب ما تتطلبه وظيفته أو طبيعة العمل."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>5-2 يحق (للطرف\n"
+"                                    الأول) تكليف (الطرف الثاني) بالعمل بنظام المناوبات بحسب طبيعة العمل\n"
+"                                    ومتطلباته."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>6-3 لا يدخل في\n"
+"                                    حساب مكافأة نهاية الخدمة المكافآت والحوافز والتي تكون بطبيعتها قابلة للزيادة\n"
+"                                    أو النقصان ."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "<span dir=\"RTL\"/><span dir=\"RTL\"/>7-1 بدل السكن:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>8-8 يلتزم الطرف\n"
+"                                    الثاني بعدم ممارسة أي عمل آخر سواء لدى الغير أو لحسابه الخاص بطريقة مباشرة أو\n"
+"                                    غير مباشرة باجر أو بدون أجر."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>9-1 يقر (الطرف الثاني) بأن جميع المعلومات التي\n"
+"                                    سبق أن أفضى بها أو يمكن أن يفضي بها (الطرف الأول) أو من يمثله (للطرف الثاني)\n"
+"                                    فيما يتعلق بأعمال (الطرف الأول) معلومات في غاية السرية والخصوصية وبالتالي فإن\n"
+"                                    (الطرف الثاني) يتعهد ويلتزم بالمحافظة على هذه المعلومات في غاية السرية\n"
+"                                    والخصوصية وألا يقوم بنشرها أو إفشائها بأي طريقة كانت وسواء كان النشر جزئياً\n"
+"                                    أو كلياً أو إطلاع أي شخص عليها لأي غرض من الأغراض دون موافقة كتابية من الطرف\n"
+"                                    الأول ويسري هذا التعهد طيلة سريان هذا العقد وبعد انتهائه أو إنهائه لأي سبب."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>9-2 لأغراض هذا العقد تعتبر المعلومات التالية على\n"
+"                                    سبيل المثال لا الحصر معلومات في غاية السرية ولا يجوز إفشائها وتشمل تلك\n"
+"                                    المعلومات، سجلات الطرف الأول والمذكرات والاجتماعات والمعلومات والخطط والاتصالات\n"
+"                                    والموظفين وشئون الموظفين."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>9-3 لأغراض هذا العقد تعتبر معلومات سرية كل\n"
+"                                    المعلومات التي يتم الحصول عليها أو يمكن الحصول عليها شفهياً أو كتابة أو بأي\n"
+"                                    وسيلة تسجيل ويشمل ذلك الوثائق المحفوظة على الحاسب الآلي ووسائل حفظ المعلومات\n"
+"                                    الأخرى. وكذلك تعتبر المعلومات في غاية السرية إذا كانت المعلومة بطبيعتها أو\n"
+"                                    بالطريقة التي يمكن أن تنقل بها بحيث يمكن للرجل العادي في وضع مماثل (للطرف\n"
+"                                    الثاني) أو في ظروف مماثلة لوضع (الطرف الثاني) أن يعتبرها معلومات سرية."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>10-1: ينتهي\n"
+"                                    العقد المحدد المدة بانتهاء مدته في العقد محدد المدة أو باتفاق الطرفين على\n"
+"                                    إنهائه</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/> </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>10-2 يحق للطرف\n"
+"                                    الأول فسخ العقد دون مكافأة أو إشعار للطرف الثاني أو تعويضه شريطة إتاحة الفرصة\n"
+"                                    للطرف الثاني في إبداء أسباب معارضته للفسخ وذلك طبقاً للحالات الواردة في المادة\n"
+"                                    (80) من نظام العمل</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>13-1: يخضع\n"
+"                                    (الطرف الثاني) طوال فترة عمله لدى الطرف الأول للقرارات واللوائح والنظم\n"
+"                                    والتعليمات السارية المفعول في المملكة العربية السعودية وقت توقيع هذا العقد أو\n"
+"                                    تلك التي تصدر فيما بعد، ولا يجوز له الدفع بعدم علمه بتلك اللوائح والأنظمة\n"
+"                                    وتعديلاتها اللاحقة.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>13-2: يعتـبر</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">هذا</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">العقـد</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">كأن</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">لم</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">يكن</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">في</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">حـالة</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">ثبـوت</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">عدم</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">صحـة</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">أي</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">من</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">البيانات</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">المقدمة</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">من</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">قبل</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">الطرف</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">الثاني</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">والتي</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">تم</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">على</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">أساسها</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">إبرام</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">هذا</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">العقد،\n"
+"                                    وعلى ذلك ليس</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/> </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">للطــرف</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">الثاني</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">الحق في\n"
+"                                    المطالبة</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/> </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">بأي</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">من</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">المستحقات</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">المنصوص</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">عليها</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">فـــي</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">العقد.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>13-7 إن اللغة\n"
+"                                    العربية هي اللغة المعتمدة في هذا العقد وفي حال </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>2-1 اتفق\n"
+"                                    الطرفان على أن يعمل الطرف الثاني لدى الطرف الأول تحت إدارته أو إشرافه بوظيفة\n"
+"                                    (<u>مستشار</u>) لمباشرة مهام الوظيفة وفق الوصف الوظيفي المحدد بالملحق رقم </span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>1</span></b><span dir=\"RTL\"/><span dir=\"RTL\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>2-2 يكون مكان\n"
+"                                    عمل الطرف الثاني في مدينة الرياض على أنه يحق للطرف الأول تكليف الطرف الثاني\n"
+"                                    بالعمل في أي مكان آخر داخل أو خارج المملكة العربية السعودية</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\">يقتضي\n"
+"                                    تغيير محل إقامته وذلك حسب متطلبات العمل، ووافق الطرف الثاني على ذلك</span></b><b><span lang=\"AR-SA\" style=\"font-family:&quot;Segoe UI&quot;,sans-serif\">.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>3-1</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/>\n"
+"                                    </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>3-2 يبدأ سريان\n"
+"                                    هذا العقد من تاريخ</span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><b><span lang=\"AR-SA\" dir=\"LTR\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"LTR\"/><span dir=\"LTR\"/> </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>6-1 يدفع (الطرف\n"
+"                                    الأول) (للطرف الثاني) راتباً أساسياً شهرياً مقداره </span></b><span dir=\"LTR\"/><span dir=\"LTR\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/> </span></b><span dir=\"LTR\"/><span dir=\"LTR\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>6-2 يدفع الطرف\n"
+"                                    الأول للطرف الثاني مكافأة نهاية الخدمة عند استحقاقها وفق نظام العمل السعودي.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>7-2 بدل\n"
+"                                    المواصلات:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>7-3 الإجازة\n"
+"                                    السنوية:</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-"
+"family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span "
+"dir=\"RTL\"/>7-4 التأمين الصحي وبدل العلاج: </span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-1 أن ينجز\n"
+"                                    العمل الموكل إليه وفقاً لأصول المهنة ووفق تعليمات الطرف الأول إذا لم يكن في\n"
+"                                    هذه التعليمات ما يخالف العقد أو النظام أو الآداب العامة ولم يكن في تنفيذها ما\n"
+"                                    يعرضه للخطر.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-2 أن يعتني\n"
+"                                    عناية كافية بالأدوات والمهمات المسلمة إليه والعهد المملوكة للطرف الأول\n"
+"                                    والموضوعة تحت تصرفه أو التي تكون في عهدته وأن يعيدها إلى الطرف الأول عند\n"
+"                                    انتهاء العلاقة التعاقدية.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-3 أن يقدم كل\n"
+"                                    عون ومساعدة دون أن يشترط في ذلك أجر إضافي في حالات الكوارث والأخطار التي تهدد\n"
+"                                    سلامة ومكان العمل أو الأشخاص العاملين فيه.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-4 الموافقة\n"
+"                                    على استقطاع الطرف الأول للنسبة المقررة عليه من الأجر الشهري للاشتراك في\n"
+"                                    المؤسسة العامة للتأمينات الاجتماعية.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-5 أن يخضع وفقاً\n"
+"                                    لطلب الطرف الأول للفحوص الطبية التي يرغب في إجرائها عليه قبل الالتحاق بالعمل\n"
+"                                    أو أثناءه بغية التحقق من خلوه من الأمراض المهنية أو السارية.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-6 أن يسلك\n"
+"                                    سلوكا حميدا أثناء العمل وخارجه وعدم ارتكاب أي فعل سواء أثناء ساعات العمل أو\n"
+"                                    بعدها قد يسئ إلى سمعته أو سمعة الطرف الأول بطريقة مباشرة أو غير مباشرة.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-family:&#10;  &quot;Arial&quot;,sans-serif\"><span dir=\"RTL\"/><span dir=\"RTL\"/>8-7 يلتزم الطرف\n"
+"                                    الثاني بحسن السلوك والأخلاق أثناء العمل وفي جميع الأوقات يلتزم بالأنظمة\n"
+"                                    والأعراف والعادات والآداب المرعية في المملكة العربية السعودية وكذلك بالقواعد\n"
+"                                    واللوائح والتعليمات المعمول بها لدى الطرف الأول ويتحمل كافة الغرامات المالية\n"
+"                                    الناتجة عليه عن مخالفته لتلك الأنظمة.</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-size:&#10;  12.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:Calibri;&#10;  mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:&#10;  minor-latin;mso-bidi-font-family:Arial;mso-bidi-theme-font:minor-bidi\"><span dir=\"RTL\"/><span dir=\"RTL\"/>  7.\n"
+"  اعتماد الموارد البشرية : ( للاستخدام الرسمي )</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><b><span lang=\"AR-SA\" style=\"font-size:&#10;  12.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:Calibri;&#10;  mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:&#10;  minor-latin;mso-bidi-font-family:Arial;mso-bidi-theme-font:minor-bidi\"><span dir=\"RTL\"/><span dir=\"RTL\"/>  \n"
+"  6. التأكيد على صحة البيانات :</span></b>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;&#10;line-height:115%;font-family:AL-Mohanad;mso-ascii-font-family:&quot;Sakkal Majalla&quot;;&#10;mso-hansi-font-family:&quot;Sakkal Majalla&quot;\"><span dir=\"RTL\"/><span dir=\"RTL\"/>)\n"
+"                                  وجوال رقم (</span><span dir=\"LTR\"/><span dir=\"LTR\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;&#10;line-height:115%;font-family:AL-Mohanad;mso-ascii-font-family:&quot;Sakkal Majalla&quot;;&#10;mso-hansi-font-family:&quot;Sakkal Majalla&quot;\"><span dir=\"RTL\"/><span dir=\"RTL\"/>)،\n"
+"                                  وبريد إلكتروني </span><span dir=\"LTR\"/><span dir=\"LTR\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "<span dir=\"RTL\"/><span dir=\"RTL\"/> ( نـمــوذج معلومات موظف )"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span dir=\"RTL\"/>  ويُشار إليه فيما بعد\n"
+"                                  \"المتعاون\""
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;\">يحق لصاحب العمل إنهاء العقد دون سابق إنذار أو مكافأة أو\n"
+"                                   تعويض في أي وقت وطيلة فترة الاختبار أو لأي سبب من الأسباب المبينة في المـادة\n"
+"                                   (80) من نظام العمل.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;\">يدرك الموظف تماماً أنه في حالة إخلالها بمضمون الفقرة (11-أ)\n"
+"                                   فلصاحب العمل كامل الحق في إنهاء خدماته دون مكافأة أو تعويض استناداً لأحكام\n"
+"                                   المـادة (80) من نظام العمل. </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">أن\n"
+"                                  يخصص الوقت المتفق عليه لتنفيذ المهمة في تأدية العمل المطلوب، بحيث تنتهي المهمة\n"
+"                                  في الوقت المحدد لها، وفقاً لمقتضيات العقد.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">أن\n"
+"                                  يقوم بنفسه بتنفيذ المهمة ولا يكلف فرداً أو جهة أخرى بتنفيذها جزئياً أو كلياً\n"
+"                                  بمقابل أو بدون مقابل.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">التمهيد\n"
+"                                  أعلاه جزء مكمل للعقد ومتمم لما فيه.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">لا\n"
+"                                  يترتب على هذا العقد أي حقوق أو التزامات مالية بخلاف ما ذكر في البند رقم 5.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">لا\n"
+"                                  يتم صرف المبلغ الا بعد اعتماد التقرير من قبل الإدارة المعنية. </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">مدة\n"
+"                                  العمل تبلغ </span><span dir=\"LTR\"/><span dir=\"LTR\"/><span dir=\"LTR\" style=\"font-size:14.0pt;line-height:115%;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-bidi-font-family:&quot;Sakkal Majalla&quot;\"><span dir=\"LTR\"/><span dir=\"LTR\"/>000</span><span dir=\"RTL\"/><span dir=\"RTL\"/><span style=\"font-size:14.0pt;line-height:&#10;115%;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:&#10;Arial\"><span dir=\"RTL\"/><span dir=\"RTL\"/> <span lang=\"AR-SA\">أيام / </span></span><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;font-family:&quot;Sakkal Majalla&quot;;&#10;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">00000</span><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\"> ساعة، تسليم المشروع في\n"
+"                                  يوم 000 الموافق  </span><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;font-family:&quot;Sakkal Majalla&quot;;&#10;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">00/00/0000م،</span><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\"> </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">يتعهد\n"
+"                                  المتعاون بالالتزام التام اتفاقية عدم الإفصاح</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">يقوم\n"
+"                                  المتعاون بكامل الواجبات والمهام التي تسند إليه تحت إشراف إدارة </span><span dir=\"LTR\"/><span dir=\"LTR\"/><span dir=\"LTR\" style=\"font-size:14.0pt;&#10;line-height:115%;font-family:&quot;Arial&quot;,sans-serif;mso-bidi-font-family:AL-Mohanad\"><span dir=\"LTR\"/><span dir=\"LTR\"/>00000000000</span><span dir=\"RTL\"/><span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\"><span dir=\"RTL\"/><span dir=\"RTL\"/> والمتمثلة بما يلي:</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span dir=\"RTL\"/><span lang=\"AR-SA\" style=\"font-size:14.0pt;line-height:115%;&#10;font-family:AL-Mohanad;mso-ascii-font-family:Arial;mso-hansi-font-family:Arial\">يلتزم\n"
+"                                  المركز بدفع مبلغ مقطوع للمتعاون مبلغ وقدره ( 0000 ريال ) 0000000000000 ريال.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" dir=\"RTL\" style=\"font-family:&quot;Arial&quot;,sans-"
+"serif;mso-ascii-font-family:&#10;  Calibri;mso-ascii-theme-font:minor-"
+"latin;mso-hansi-font-family:Calibri;&#10;  mso-hansi-theme-font:minor-"
+"latin;mso-bidi-font-family:Arial;mso-bidi-theme-font:&#10;  minor-"
+"bidi\">القرابة</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" dir=\"RTL\" style=\"font-size:10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif;&#10;  mso-ascii-font-"
+"family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:&#10;"
+"  Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:Arial;&#10;"
+"  mso-bidi-theme-font:minor-bidi\">رقم الحساب (الآيبان)</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif;&#10;"
+"  mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-"
+"font-family:&#10;  Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-"
+"family:Arial;&#10;  mso-bidi-theme-font:minor-bidi\">أسم البنك</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif;&#10;"
+"  mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-"
+"font-family:&#10;  Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-"
+"family:Arial;&#10;  mso-bidi-theme-font:minor-bidi\">الاسم</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-family:&quot;Arial&quot;,sans-serif;&#10;"
+"  mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-"
+"font-family:&#10;  Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-"
+"family:Arial;&#10;  mso-bidi-theme-font:minor-bidi\">التوقيع</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;\">\n"
+"                                   وأن يطالبه أمام الجهات الرسمية حسب تقديره بالتعويض عن الأضرار والخسائر التي\n"
+"                                   تلحق بصاحب العمل في هذا الشأن.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;\">          قبل الموظف\n"
+"                                   العمل لدى صاحب العمل وفق لائحة تنظيم العمل ونظام العمل السعودي ووفق شروط هذا\n"
+"                                   العقد بوظيفة ( </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size: 11.5pt; font-family: &quot;Simplified Arabic&quot;, serif;\">ج- الفصل لأسباب صحية: في حالة مرض الموظف وفقدانه القدرة على\n"
+"                                   مزاولة العمل المناط به، أو في حالة مرضه بما نجم عنه انقطاعه عن العمل فترة 120\n"
+"                                   يوماً متتالية أو متقطعة أثناء سنة خدمة واحدة, فإن خدمة الموظف بموجب هذا العقد\n"
+"                                   تكون منتهية. وفقاً للمـادة (79) من نظام العمل</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size: 12pt; font-family: &quot;Simplified Arabic&quot;, serif;\">يمنح\n"
+"                                   الموظف الذي لا يوفر له المركز سـكناً عينياً، بدلاً نقدياً سنوياً يعادل الراتب\n"
+"                                   الأساسي لثلاثة أشهر</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:10.0pt;&#10;  font-"
+"family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:Calibri;mso-ascii-"
+"theme-font:&#10;  minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-"
+"font:minor-latin;&#10;  mso-bidi-font-family:Arial;mso-bidi-theme-"
+"font:minor-bidi\">التخصص</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:&#10;  "
+"Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;&#10;"
+"  mso-hansi-theme-font:minor-latin;mso-bidi-font-family:Arial;mso-bidi-"
+"theme-font:&#10;  minor-bidi\">الهاتف</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:10.0pt;font-"
+"family:&quot;Arial&quot;,sans-serif;mso-ascii-font-family:&#10;  "
+"Calibri;mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;&#10;"
+"  mso-hansi-theme-font:minor-latin;mso-bidi-font-family:Arial;mso-bidi-"
+"theme-font:&#10;  minor-bidi\">رقم الهوية</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:11.5pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;\">مـادة\n"
+"                                   (13):</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:11.5pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;\">مـادة\n"
+"                                   (14):</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:11.5pt;font-family:&quot;Simplified Arabic&quot;,serif;&#10;mso-ascii-font-family:&quot;Times New Roman&quot;;mso-hansi-font-family:&quot;Times New Roman&quot;\">مـادة\n"
+"                                   (5) بدل طبيعة العمل / بدل ندرة:</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"<span lang=\"AR-SA\" style=\"font-size:16.0pt;line-height:115%;font-family:AL-Mohanad;&#10;mso-ascii-font-family:&quot;Simplified Arabic&quot;;mso-hansi-font-family:&quot;Simplified Arabic&quot;\">وتفضلوا\n"
+"                                بقبول فائق التحية والتقدير</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"> <span style=\"font-family: Arial;\"><span "
+"lang=\"ar-SA\"><span style=\"font-family: AL-Mohanad;\"><span style=\"font-"
+"size: large;\">إلى من يهمة الأمر </span></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"><span style=\"font-family: Arial;\"><span "
+"lang=\"ar-SA\"><span style=\"font-family: AL-Mohanad;\"><span style=\"font-"
+"size: large;\">من العاملين بالمركز الوطني للدراسات والبحوث الاجتماعية الرياض"
+" </span></span></span></span><span style=\"font-size: large;\">,</span><span"
+" style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad;\"><span style=\"font-size: large;\">المملكة العربية "
+"السعودية</span></span></span></span><span style=\"font-size: "
+"large;\">.</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"><span style=\"font-family: Arial;\"><span "
+"lang=\"ar-SA\"><span style=\"font-family: AL-Mohanad;\"><span style=\"font-"
+"size: large;\">نحيطكم علماً بأن </span></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"><span style=\"font-family: Cambria, "
+"serif;\"><span style=\"font-size: large;\">This is to certify that "
+"</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"><span style=\"font-family: Cambria, "
+"serif;\"><span style=\"font-size: large;\">To whom it may "
+"concern</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"color: #000000;\"><span style=\"font-family: Cambria, "
+"serif;\"><span style=\"font-size: large;\">Work for National Center For "
+"Social Studies, Riyadh-Kingdom of Saudi Arabia. <br/></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"medium;\"><strong>1. </strong></span></span><span style=\"font-family: "
+"Arial;\"><span lang=\"ar-SA\"><span style=\"font-size: "
+"medium;\"><strong>بيانات</strong></span></span></span><span style=\"font-"
+"family: Arial, serif;\"><span style=\"font-size: medium;\"><strong>: "
+"</strong></span></span><span style=\"font-family: Arial;\"><span lang=\"ar-"
+"SA\"><span style=\"font-size: "
+"medium;\"><strong>الموظف</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"medium;\"><strong>H.R</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\"><strong>CONCERNED DEPARTMENT</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\"><strong>Employee Details</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\"><strong>Recruitment</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\"><strong>Resignation</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\"><strong>SAR</strong></span></span><span style=\"font-family: "
+"Arial;\"><span lang=\"ar-SA\"><span style=\"font-size: "
+"small;\"><strong>رس</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Authorized Employee</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Confirm. Emp. Joining Date</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Contract Type</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Date</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Department</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Direct Manager</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Employment No.</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Job Title</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Name</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">START OF WORK</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Signature / Date</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: "
+"small;\">Signature</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><span style=\"font-size: xx-"
+"small;\"><strong>Form No. HRD-009 - 11-11-1436.</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><strong>APPROVAL:</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><strong>EMPLOYEE "
+"DETAILS:</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><strong>Emp. Details Confirmation"
+" :</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial, serif;\"><strong>PLEASE RETURN COMPLETED "
+"FORM TO HR DEPARTMENT FOR PROCESSING</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad Bold;\"><span style=\"font-size: large;\"><strong>الغرض "
+"</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad Bold;\"><span style=\"font-size: large;\"><strong>براتب "
+"شهري</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad Bold;\"><span style=\"font-size: large;\"><strong>بوظيفة "
+"</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad Bold;\"><span style=\"font-size: large;\"><strong>تاريخ "
+"التعيين </strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad Bold;\"><span style=\"font-size: large;\"><strong>وينتهي "
+"في</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: AL-Mohanad;\"><span style=\"font-size: large;\"><strong>وقد تم إصدار"
+" هذه الشهادة للمذكور </strong></span></span></span></span><span "
+"style=\"font-size: large;\"><strong>/ </strong></span><span style=\"font-"
+"family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-family: AL-"
+"Mohanad;\"><span style=\"font-size: large;\"><strong>المذكورة أعلاه بناءً "
+"على طلبه</strong></span></span></span></span><span style=\"font-size: "
+"large;\"><strong>/</strong></span><span style=\"font-family: Arial;\"><span "
+"lang=\"ar-SA\"><span style=\"font-family: AL-Mohanad;\"><span style=\"font-"
+"size: large;\"><strong>طلبها وبدون أدنى مسؤولية على المركز الوطني للدراسات "
+"والبحوث الاجتماعية</strong></span></span></span></span><span style=\"font-"
+"size: large;\"><strong>.</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"family: Arial;\"><span style=\"font-size: large;\"><strong>الرجاء إعادة "
+"النموذج بعد استكماله لإدارة الموارد البشرية لاستكمال "
+"الإجراءات</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>الموارد البشرية</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>الموافقات</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>بيانات الموظف</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>تفاصيل الإجازة</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>شهادة خدمة</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>نـمــوذج طـلـب إجازة "
+"</strong></span></span></span><span style=\"font-size: "
+"large;\"><strong>Leave Request Form</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: large;\"><strong>نموذج مباشرة العمل </strong></span><span "
+"style=\"font-size: large;\"><strong>بعد الإجازة</strong></span> "
+"</span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><span lang=\"ar-"
+"EG\"><strong>التوظيف</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><span lang=\"ar-EG\"><strong>بيانات "
+"الموظف</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><span lang=\"ar-EG\"><strong>شؤون "
+"الموظفين</strong></span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><strong>الإدارة المعنية</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><strong>الموارد البشرية</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><strong>بيانات الموظف</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><strong>تأكيد بيانات الموظف</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: medium;\"><strong>موافقة المدير المباشر</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><span lang=\"ar-EG\">اسم الموظف "
+"المختص</span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><span lang=\"ar-EG\">التوقيع "
+"</span></span></span></span><span style=\"font-family: Arial, serif;\"><span"
+" style=\"font-size: small;\">/ </span></span><span style=\"font-family: "
+"Arial;\"><span lang=\"ar-SA\"><span style=\"font-size: small;\"><span "
+"lang=\"ar-EG\">التاريخ</span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><span lang=\"ar-EG\">الرقم "
+"الوظيفي</span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><span lang=\"ar-EG\">نوعية التعاقد "
+"</span></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><strong>استقالة</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\"><strong>فراس بن عبد الرزاق "
+"الهاشم</strong></span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">آخر يوم عمل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الإدارة </span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الإدارة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الإسم</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الاسم</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">التاريخ</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">التوقيع </span></span></span><span style=\"font-size: "
+"small;\">/ </span><span style=\"font-family: Arial;\"><span lang=\"ar-"
+"SA\"><span style=\"font-size: small;\">التاريخ</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">التوقيع</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الرصيد المتبقي بعد الإجازة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الرقم الوظيفي</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">المدير المباشر</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">المسمى الوظيفي</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الموظف البديل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">الموظف المختص</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">بداية الإجازة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">تأكيد تاريخ مباشرة العمل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">تاريخ العودة للعمل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">تاريخ مباشرة العمل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">تاريخ</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">توقيع الموظف </span></span></span><span style=\"font-family: "
+"Arial, serif;\"><span style=\"font-size: small;\">/ </span></span><span "
+"style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-size: "
+"small;\">التاريخ</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">عدد أيام الإجازة المستحقة </span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">عدد أيام الإجازة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">عمل</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">نهاية الإجازة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">نهايه</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><span style=\"font-"
+"size: small;\">نوع الإجازة</span></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><strong>اعتماد مدير"
+" الإدارة</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_b_offer_template
+msgid ""
+"<span style=\"font-family: Arial;\"><span lang=\"ar-SA\"><strong>الرجاء "
+"إعادة النموذج بعد استكماله لإدارة الموارد البشرية لاستكمال "
+"الإجراءات</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"large;\"><strong>This certification is issued to the employee "
+"up</strong></span></span><span style=\"font-family: Cambria, serif;\"><span "
+"style=\"font-size: large;\"><strong>o</strong></span></span><span "
+"style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"large;\"><strong>n his/her request with no responsibility to the National "
+"Center For Social Studies. </strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"medium;\"><strong>From</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"medium;\"><strong>Job Title</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"medium;\"><strong>Monthly Salary</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"medium;\"><strong>Reason for Leaving</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-family: Cambria, serif;\"><span style=\"font-size: "
+"medium;\"><strong>TO</strong></span></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-size: large;\"><strong>2. Human Recourse</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: large;\"><strong>APPROVAL</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: large;\"><strong>Employee Details</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.service_certificate_template
+msgid ""
+"<span style=\"font-size: large;\"><strong>Employment certificate "
+"</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: large;\"><strong>H.R.</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: large;\"><strong>Leave Details</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-size: large;\"><strong>PLEASE RETURN COMPLETED FORM TO HR"
+" DEPARTMENT FOR PROCESSING</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: medium;\"><strong>APPROVAL</strong></span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">999</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Concerned Employee</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Date</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Department</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Employment No.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Job Title</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Name</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid ""
+"<span style=\"font-size: small;\">No. of Days </span> <span style=\"font-"
+"size: small;\">Entitlement</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Return to Work</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Signature \\ Date</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Signature</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Start Of Work</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Type of Leave</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_leave_request_offer_template
+msgid "<span style=\"font-size: small;\">Vacation Balance After This Leave</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span style=\"mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif\">Both parties\n"
+"                                    agreed that the above recitals are considered an integral part of this contract.\n"
+"                                    </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span style=\"mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif\">The (First\n"
+"                                    Party) shall provide medical insurance to the (Second Party) in accordance\n"
+"                                    with the regulations of the center. </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"<span style=\"mso-bidi-font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif\">Whereas, the\n"
+"                                    Second Party apply to work with the First Party and he declares that he is\n"
+"                                    not working with another employer. The First Party offered to the Second\n"
+"                                    Party who accepted to work with the First Party in the post of (</span><b><u><span style=\"mso-ascii-font-family:&quot;Times New Roman&quot;;mso-ascii-theme-font:major-bidi;&#10;  mso-hansi-font-family:&quot;Times New Roman&quot;;mso-hansi-theme-font:major-bidi;&#10;  mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:major-bidi;&#10;  letter-spacing:-.4pt\">Consultant</span></u></b><span style=\"mso-bidi-font-size:&#10;  10.0pt;font-family:&quot;Arial&quot;,sans-serif\">) in Riyadh City, the Kingdom of Saudi\n"
+"                                    Arabia. The Parties in consideration of the above, agreed as follows</span><span style=\"mso-bidi-font-size:10.0pt;font-family:&quot;Calibri&quot;,sans-serif;mso-ascii-theme-font:&#10;  minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;  mso-bidi-theme-font:major-bidi\">.</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "<span style=\"text-decoration-line: none;\">فراس الهاشم</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"AD\n"
+"                                    by and between: -"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields.selection,name:hr_employee_templates.selection__hr_contract__contract_type__advisor_contract
+msgid "Advisor Contract"
+msgstr "عقد مستشار"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Appendix 1"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (1): Introduction:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Article (10)\n"
+"                                    Termination:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (11) Modifications:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (12) Notices:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (13) miscellaneous: -"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Article (3):\n"
+"                                    Term of Contract:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (4): Probation Period:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Article (5)\n"
+"                                    Working Hours:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Article (6): Salary &amp; End of Service\n"
+"                                    Benefit:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (7): Second Party’s Benefits:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Article (8): Obligations of the Second Party:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Article (9)\n"
+"                                    Non- Competition &amp; Non-Disclosure:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Both parties\n"
+"                                    agree that notice, messages shall be sent to the parties each to his address\n"
+"                                    stated herein above by register mail, e-mail for every party."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "By Mr. <span dir=\"RTL\"/><span dir=\"RTL\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_contract__contract_type
+msgid "Contract Type"
+msgstr "نوع العقد"
+
+#. module: hr_employee_templates
+#: model:ir.model.fields.selection,name:hr_employee_templates.selection__hr_contract__contract_type__cooperation_contract
+msgid "Cooperation Contract"
+msgstr "عقد متعاون"
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_contract__direction_id
+msgid "Direction needed"
+msgstr "الجهه الطالبه للتقرير"
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model,name:hr_employee_templates.model_hr_contract
+msgid "Employee Contract"
+msgstr "عقد الموظف"
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_cont_report
+msgid "Employee Information"
+msgstr "معلومات الموظف"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "First Party:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"First party\n"
+"                                    has the right, to determine the time during which the second party will have\n"
+"                                    his annual leave, according to the work requirements."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"First party has the right, to delay second\n"
+"                                    party annual leave for a period does not exceed (90) days beginning from the\n"
+"                                    end of year in which the annual leave has been earned."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields.selection,name:hr_employee_templates.selection__hr_contract__contract_type__foreign_saudi_contract
+msgid "Foreign Saudi Contract"
+msgstr "عقد عمل للاجانب"
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__id
+msgid "ID"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"IN WITNESS\n"
+"                                    WHEREOF, this agreement is signed by the two parties."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"In addition to that he can also delay the second\n"
+"                                    party annual leave to the end of the next year, after obtains a prior written\n"
+"                                    approval from the second party."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"In case of\n"
+"                                    changing   any of the parties to his\n"
+"                                    address which is mentioned in the contract, he shall notify the other party\n"
+"                                    in writing by the new address or the old address will consider the effective\n"
+"                                    address."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Job\n"
+"                                    Description:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_leave_request_offer
+msgid "Leave Request"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Mobile\n"
+"                                    No: ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields,field_description:hr_employee_templates.field_hr_direction__name
+msgid "Name"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Name:<span dir=\"RTL\"/><span dir=\"RTL\"/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Name:<span dir=\"RTL\"/><span dir=\"RTL\"/><span lang=\"AR-SA\" dir=\"RTL\"><span dir=\"RTL\"/><span dir=\"RTL\"/>\n"
+"                                    --------------------------------</span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"National,\n"
+"                                    passport"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_report
+msgid "Print Contract"
+msgstr "طباعه العقد"
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_salary_report
+msgid "Salary Information"
+msgstr "معلومات الراتب"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Saudi\n"
+"                                    Riyals monthly along with the salary."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model.fields.selection,name:hr_employee_templates.selection__hr_contract__contract_type__saudi_contract
+msgid "Saudi Contract"
+msgstr "عقد عمل سعودى"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Saudi Riyals."
+msgstr "ريال سعودى"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Second\n"
+"                                    Party:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Second Party:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"Second party\n"
+"                                    is entitled to 30 calendar days annual leave (including weekends) fully paid\n"
+"                                    annual, leave to be taken during the year in which the annual leave is\n"
+"                                    earned."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.service_certificate
+msgid "Service Certificate"
+msgstr "شهاده الخدمه"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "Sign:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The (First\n"
+"                                    Party) agreed to provide the (Second Party) according to the rules and\n"
+"                                    regulations applicable by the (First Party) and job description of the\n"
+"                                    (Second Party) with the following benefits:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The (Second\n"
+"                                    Party) shall be entitled to housing allowance equal to ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The (Second\n"
+"                                    Party) shall be entitled to transport allowance equal to"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The (Second Party) admits that all the\n"
+"                                    information released or may be released to the (Second Party) by the (First\n"
+"                                    Party) or representative of the (First Party) in relation to the First\n"
+"                                    Party’s business are non-public, confidential or proprietary in nature.  Therefore, the (Second Party) shall\n"
+"                                    undertake and agree to keep this information confidential and shall not for\n"
+"                                    the whole period of this contract and after the expiration thereof, without\n"
+"                                    the prior written consent of the (First Party) disclose in any manner\n"
+"                                    whatsoever, in whole or in part any information to Third Party.<span dir=\"RTL\"/><span dir=\"RTL\"/><span dir=\"RTL\"><span dir=\"RTL\"/><span dir=\"RTL\"/> </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The Employer\n"
+"                                    shall cover the costs of business class a round trip ticket for the Employee\n"
+"                                    to the round-trip travel from Riyadh to Australia, Annual leave ticket cannot\n"
+"                                    be transferred from one individual to another, and cash shall not be paid in\n"
+"                                    lieu of travel. The Employer has the right to determine the time during which\n"
+"                                    the Employee will have his annual leave according to work requirements."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"The second party shall perform the\n"
+"                                    following duties"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"This\n"
+"                                    contract is made this day Tuesday 23/11/1441H corresponding to"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"This\n"
+"                                    contract shall not be amended, altered or modified, and no waiver or consent\n"
+"                                    with respect to any of its provisions shall be binding upon either party,\n"
+"                                    unless in writing, executed and agreed by both parties."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"This agreement\n"
+"                                    is concluded in duplicate of which each party received one copy to act\n"
+"                                    accordingly."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "at the end of each Gregorian month."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "contract articles."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"duration of this\n"
+"                                    contract commences from the date of the issuance of the resident identity of\n"
+"                                    the second party ( THE Effective  date)"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"duration of this contract is<span dir=\"RTL\"/><span dir=\"RTL\"/><span "
+"lang=\"AR-SA\" dir=\"RTL\"><span dir=\"RTL\"/><span "
+"dir=\"RTL\"/>)</span><span dir=\"LTR\"/><span dir=\"LTR\"/><span lang=\"AR-"
+"SA\"><span dir=\"LTR\"/><span dir=\"LTR\"/> </span>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "hereinafter referred to as (The Employee), Second Party."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.model,name:hr_employee_templates.model_hr_direction
+msgid "hr.direction"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_b_offer
+msgid "job offer"
+msgstr "العرض الوظيفى"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"represented in this contract by Prof Sami Aldamigh hereinafter referred to as\n"
+"                                    the (General Manager), First Party."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_salary_proof
+msgid "salary proof"
+msgstr "تثبيت بالراتب"
+
+#. module: hr_employee_templates
+#: model:ir.actions.report,name:hr_employee_templates.hr_salary_tammed
+msgid "tammed"
+msgstr "تعميد"
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"،\n"
+"                                            بطاقة أحوال رقم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "آخر مؤهل علمي"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"أ – المركز الوطني\n"
+"                                   للدراسات والبحوث الاجتماعية – المملكة العربية السعودية – الرياض والمشار إليها\n"
+"                                   فيما بعد بـ (صاحب العمل) ويمثله مدير عام المركز الاستاذ الدكتور سامي بن عبد\n"
+"                                   العزيز الدامغ."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"أ. 0000000000000000000000.<br/>\n"
+"                                                    ب. 0000000000000000000000.<br/>\n"
+"                                            ت. 00000000000000000000000."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "أ. د. سامي بن عبدالعزيز  الدامغ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "أسم الشخص (1)"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "أسم الشخص (2)"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "أنه في يوم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"أي تعديل أو تغيير أو إضافة\n"
+"                                    لبنود هذا العقد أو أي تنازل عن أي من شروطه لا يعتد به إلا إذا كان مكتوباً\n"
+"                                    وباتفاق الطرفين."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "اتفاقية تعاون"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "اتفاقية مستشار غير متفرغ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"اتفق\n"
+"                                    الطرفان على أن تمم الإخطارات والإشعارات بين الطرفين كتابة على العنوان الموضح\n"
+"                                    بصدر هذا العقد عن طريق البريد المسجل أو البريد الممتاز أو البريد الإلكتروني\n"
+"                                    لكل من الطرفين ويلتزم كل طرف بإشعار الطرف الآخر خطياً في حال تغييره للعنوان\n"
+"                                    الخاص به أو تغيير البريد الإلكتروني وإلا اعتبر العنوان أو البريد الإلكتروني\n"
+"                                    المدونان أعلاه هما المعمول بهما نظاماً."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "اتفق الطرفان على الآتي:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الاسم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "الاسم:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الاسم:\n"
+"                                    ------------------."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الاسم:\n"
+"                                   المركز الوطني للدراسات والبحوث الاجتماعية"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"البريد\n"
+"                                    الإلكتروني"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "البيان"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "التوقيع"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "التوقيع:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"التوقيع:\n"
+"                                                                                    التوقيع:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الجنسية"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الجنسية، بموجب جواز\n"
+"                                    السفر رقم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الحالة الاجتماعية"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الحي"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "الراتب الأساسي"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "السادة"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"السادة\n"
+"                                ................................."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الشارع"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الطرف\n"
+"                                    الأول:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الطرف\n"
+"                                    الثاني:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "الطرف الأول"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "الطرف الثاني"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "المبلغ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "المدينة"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"المركز\n"
+"                                    الوطني للدراسات والبحوث الاجتماعية، وعنوانه:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"المركز\n"
+"                                  الوطني للدراسات والبحوث"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"المركز الوطني للدراسات والبحوث الاجتماعية بمركزه الرئيسي في\n"
+"                                  مدينة الرياض، ص. ب ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "المستشار"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "المعلومات الأكاديمية :"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "المعلومات المالية :"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "الموافق"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"الموظف                                                         صاحب العمل"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "الهاتف"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"انتهاء\n"
+"                                   المدة المحددة للعقد."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "بتاريخ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "بدل سكن"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "بدل نقل"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"بطاقة أحوال\n"
+"                                رقم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "بطاقة أحوال رقم ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "بعون الله وتوفيقه إنه في يوم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"بواسطة الأستاذ\n"
+"                                    /"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "بواقع"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "تاريخ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "تاريخ الانتهاء"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "تاريخ السريان)."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"تم إبرام\n"
+"                                    هذا العقد يوم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"تم الاتفاق على ذلك بتراضي الطرفين، والله\n"
+"                                  الموفق ،،"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "تم في يوم"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"تم في يوم الثلاثاء الموافق 00/00/2020,\n"
+"                                            الاتفاق بين كل من المركز الوطني للدراسات والبحوث الاجتماعية\n"
+"                                            ويمثله مدير عام المركز الأستاذ الدكتور /سامي بن عبد العزيز الدامغ ويشار إليه فيما بعد بـ (المركز)،\n"
+"                                            وبين الدكتور/ 000000000000،\n"
+"                                            بطاقة أحوال رقم 000000 صادرة من 00000 بتاريخ   00/00/0000 والمقيم في مدينة الرياض،\n"
+"                                            ويشار إليه بـ (المستشار).\n"
+"                                            على أن يقوم المستشار بتقديم الخدمات الاستشارية والبحثية للمركز وفق البنود التالية:\n"
+"                                             <br/>\n"
+"                                             <br/>   1. التمهيد أعلاه جزء مكمل للعقد ومتمم لما فيه.\n"
+"                                             <br/>2. يتعهد المستشار بالالتزام التام بالأخلاق والقيم والتعليمات المتبعة بالمملكة العربية السعودية إضافة إلى ما يصدره المركز من تعاميم وتعليمات.\n"
+"                                             <br/> 3. يقوم المستشار بكامل الواجبات والمهام التي تسند إليه تحت إشراف إدارة 000000000، والمتمثلة بما يلي:\n"
+"                                              <br/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"د -  إذا أصبح الموظف\n"
+"                                   غير قادرة على أداء العمل بسبب فعل رسمي صادر عن الحكومة السعودية أو بسبب إنهاء\n"
+"                                   خدمتها بناء على طلب السلطات الرسمية السعودية أو إذا انشغل الموظف بأداء أي عمل\n"
+"                                   يعود عليه بدخل شخصي أو عائد أو وعد بعائد ليست له علاقة مباشرة بصاحب العمل بدون\n"
+"                                   إذن مسبق من صاحب العمل ومجاز من قبل موظفي الدولة المختصين، فإنه يجوز لصاحب\n"
+"                                   العمل أن ينهي خدمة الموظف ويكون تاريخ الفصل الرسمي أو الطلب الصادر عن السلطات\n"
+"                                   الرسمية هو آخر يوم عمل للموظف وفي جميع هذه الحالات لا يكون صاحب العمل ملزماً\n"
+"                                   بإصدار إخطار مسبق."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "د. 000000000000000"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"رئيس\n"
+"                                وحدة الموارد البشرية"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "رقم المبنى"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "ريال"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ريال\n"
+"                                   ريالاً مع الراتب الأساسي شهرياً, ويحصل على العلاج طبقاً للنظام\n"
+"                                   المحدد لذلك."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ريال ) حسب النظام المعمول به\n"
+"                                   شهرياً."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "ريال سعودي شهرياً عبارة عن بدل مواصلات ويتم سداده مع الراتب الشهري."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ريال سعودي في نهاية كل شهر\n"
+"                                    ميلادي."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "ريال، حسب البيان التالي :"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ص.ب\n"
+"                                    ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "صادرة من"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid "صادرة من ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid ""
+"صادرة من ..............، يعمل لدينا\n"
+"                                بوظيفة ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"صدور\n"
+"                                    إقامة نظامية للطرف الثاني هوية مقيم ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "عدد الأفراد"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "عقــد عمــل للسعوديين"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"على أن يلتزم المتعاون بالمهام المذكورة في العقد وفق البنود\n"
+"                                  التالية:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "فاكس"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "كتابه."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"لا يحق\n"
+"                                   للموظف مطالبة صاحب العمل بأي أجر عن ساعات العمل الإضافية إلا إذا كان ذلك بتكليف\n"
+"                                   خطي من صاحب العمل أو من يمثله."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"لما\n"
+"                                    كان الطرف الثاني قدم طلباً للعمل لدي الطرف الأول وصرح بأنه غير مرتبط بعمل آخر\n"
+"                                    ولما كان الطرف الأول يرغب في توظيف الطرف الثاني في وظيفة (مستشار) بمدينة (الرياض)\n"
+"                                    المملكة العربية السعودية، لذا تم الاتفاق والتراضي بين الطرفين على ما يلي"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"م , براتب اجمالي\n"
+"                                قدرة"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "م بين كل من: -"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"م,\n"
+"                                   قد تم الاتفاق بين كل من:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "م،  في مدينة الرياض تم الاتفاق بين كل من:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مدة هذا\n"
+"                                        العقد ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مدة هذا\n"
+"                                   العقد سنة واحدة يتجدد لمدة مماثلة باتفاق الطرفين مالم يخطر أحد الطرفين الآخر\n"
+"                                   بعدم       رغبته في تحديد العقد قبل إنتهاء\n"
+"                                   مدته بشهر على الأقل."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "مدير عام"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "مدير عام المركز الوطني للدراسات والبحوث الاجتماعية"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+msgid "معلومات الموظف :"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (1) تصنيف الوظيفة:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (10) مدة العقد:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (11) إفشاء المعلومات:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (12) انتهاء الخدمة:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (2) الراتــب:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (3) الإسكان والعلاج:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (4) المواصــلات:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (6) العمل الإضافي:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (7) الإجــــازة:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (8) مقر العمل:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"مـادة\n"
+"                                   (9) فترة الاختبار:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"نفيدكم\n"
+"                                أن الأستاذ:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "هاتف جوال:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"وإشهاداً\n"
+"                                    على ما تقدم جرى التوقيع والله خير الشاهدين."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"وافق\n"
+"                                    (الطرف الأول) وفقاً للوائح والنظم التي يطبقها (الطرف الأول) والوصف الوظيفي\n"
+"                                    (للطرف الثاني) على منح (الطرف الثاني) الامتيازات التالية: -"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "والله الموفق،"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"والمقيم في مدينة الرياض،\n"
+"                                            ويشار إليه بـ (المستشار).\n"
+"                                            على أن يقوم المستشار بتقديم الخدمات الاستشارية والبحثية للمركز وفق البنود التالية:\n"
+"                                             <br/>\n"
+"                                             <br/>   1. التمهيد أعلاه جزء مكمل للعقد ومتمم لما فيه.\n"
+"                                             <br/>2. يتعهد المستشار بالالتزام التام بالأخلاق والقيم والتعليمات المتبعة بالمملكة العربية السعودية إضافة إلى ما يصدره المركز من تعاميم وتعليمات.\n"
+"                                             <br/> 3. يقوم المستشار بكامل الواجبات والمهام التي تسند إليه تحت إشراف إدارة 000000000، والمتمثلة بما يلي:\n"
+"                                              <br/>"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"وفي حال فشل الطرف الأول في إصدار إقامة الطرف\n"
+"                                    الثاني لأي سبب من الأسباب فيعتبر هذا العقد كأن لم يكن."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_cont_report_template
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_salary_report_template
+msgid ""
+"ولطلبه أعطي هذا\n"
+"                                التعريف، دون أدنى مسؤولية على المركز."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ويمثلها في التوقيع على هذا العقد الأستاذ الدكتور سامي بن عبد العزيز\n"
+"                                    الدامغ بصفته مدير عام المركز، ويشار إليها فيما بعد (صاحب العمل -الطرف الأول)."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يتعهد الموظف بعدم القيام بتصوير أية مسندات أو إفشاء أو\n"
+"                                   تسريب أو استخدام أية معلومات بشكل مباشر أو غير مباشر لأي شخص أو مؤسسة أو أي جهة\n"
+"                                   أخرى أياً كان نوعها وعدم التعرض للمركز في وسائل التواصل الاجتماعي أو الإدلاء\n"
+"                                   بأية تصاريح اعلامية لأي جهة سواء تتعلق بشؤون أو ممتلكات صاحب العمل أو عمل خاص\n"
+"                                   به أو الأفراد العاملين فيه أو تتعلق بصاحب العمل عدا تلك التي تعطى للموظفين ذوي\n"
+"                                   العلاقة في نفس العمل الذين يحق لهم معرفتها ويحتاجونها في إطار عملهم الرسمي,\n"
+"                                   طيلة فترة سريان عقد العمل وفي أي وقت بعده إلا بموافقة خطية مسبقة ومحددة من صاحب\n"
+"                                   العمل."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يجوز\n"
+"                                    أثناء سريان فترة التجربة الاتفاق على تمديد فترة التجربة لمدة أو لمدد متعددة\n"
+"                                    على أن يكون ذلك بموجب اتفاق كتابي مستقل في كل مرة، وفي جميع الأحوال يجب ألا\n"
+"                                    تزيد فترة التجربة الأصلية مع مدة أو مدد التمديد على مائة وثمانون يوماً."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يحصل الموظف\n"
+"                                   على راتب شهري قدره ("
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid "يدفع (الطرف الأول) (للطرف الثاني) مبلغ"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يدفع صاحب العمل\n"
+"                                   بدل طبيعة عمل و/ أو بدل ندرة للموظف بحسب الوظيفة التي يحددها صاحب العمل\n"
+"                                   وبموافقته ممثلاً بمدير عام المركز في المركز وفق النظام المعمول به في المركز."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يستحق\n"
+"                                    الطرف الثاني عن كل عام، إجازة سنوية مدتها (30)  يوم تقويمي، تشمل إجازة نهاية الأسبوع مدفوعة\n"
+"                                    الأجر يتــم الاستمتاع بها في خلال السنــــــة التي تستحق فيها.  ويحدد الطرف الأول تاريخها خلال سنة الاستحقاق\n"
+"                                    وفقاً لظروف العمل على أن يتم دفع أجر الإجازة مقدماً عند استحقاقها وللطرف\n"
+"                                    الأول تأجيل الإجازة بعد نهاية سنة استحقاقها لمدة لا تزيد عن (90 يوماً) كما له\n"
+"                                    بموافقة الطرف الثاني كتابة تأجيلها إلى نهاية السنة التالية لسنة الاستحقاق\n"
+"                                    وذلك حسب مقتضيات العمل، ويقوم (الطرف الأول) بتوفير تذكرة سفر ذهاب وعودة\n"
+"                                    (للطرف الثاني) من مدينة الرياض لعاصمة دولة أستراليا على درجة الأعمال ولا يحق\n"
+"                                    (للطرف الثاني) تحويل هذه التذكرة أو المطالبة بقيمتها أو استرداد قيمتها في\n"
+"                                    حالة عدم استخدامها."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يسري نظام العمل السعودي على كل ما لم يرد بشأنه نص محدد في\n"
+"                                   هذا الاتفاق."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يظل الموظف\n"
+"                                   في فترة اختبار تجريبية لمدة ثلاثة أشهر, ويحق لصاحب العمل إنهاء هذا العقد في أي وقت\n"
+"                                   أثناء هذه الفترة إذا قرر صاحب العمل وحسب رأيه المطلق أن الموظف لا يصلح للعمل\n"
+"                                   لديه وذلك دون إعطاء إنذار مسبق أو مكافأة ولا يحق للطرف الثاني المطالبة بأية\n"
+"                                   تعويضات عدا الراتب المستحق عن أيام الدوام الفعلية."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يعطي صاحب\n"
+"                                   العمل إجازة مقدارها ( 30 ) يوماً مقابل كل سنة خدمة عملها الموظف, وتحسب هذه\n"
+"                                   الإجازة على أساس الراتب الأساسي الشهري وفق لائحة الاجازات."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يقر الموظف بأنه قد قرأ وفهم كل ما هو مدون في هذا العقد ولا\n"
+"                                   يحق أن تطبق على هذا العقد أية شروط أو تعديلات أخرى سواء أكانت شفهية أم كتابية وسواء\n"
+"                                   أكانت سابقة أم لاحقة."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يكون مقر العمل\n"
+"                                   الرئيسي في مدينة الرياض على أنه يحق لصاحب العمل أن ينقل الموظف إلى أي فرع من\n"
+"                                   فروعه داخل المملكة دون أن يضر ذلك بالفوائد المكتسبة للموظف."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يلتزم الطرف الثاني بأداء\n"
+"                                    المهام التالية:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"ينتهي خدمة\n"
+"                                   الموظف لأي من الأسباب التالية:"
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يوفر (الطرف الأول) (للطرف الثاني)\n"
+"                                    تأميناً صحياً له بحسب اللوائح المعمول بها في المركز."
+msgstr ""
+
+#. module: hr_employee_templates
+#: model_terms:ir.ui.view,arch_db:hr_employee_templates.hr_contract_report_template
+msgid ""
+"يوفر صاحب\n"
+"                                   العمل للموظف وسيلة انتقال فردية / جماعية للانتقال ما بين سكنه ومقر عمله، وفي\n"
+"                                   حال تعذر ذلك يدفع صاحب العمل بدل نقل قدره ("
+msgstr ""

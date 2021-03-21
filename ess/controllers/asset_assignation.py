@@ -19,7 +19,36 @@ from odoo.tools import formataddr
 
 from .main import ESSPortal
 # from odoo.addons.ess.controllers.main import ESSPortal
+from odoo.addons.website.controllers.main import Website
 
+
+class WebsiteController(Website):
+
+    @http.route('/', type='http', auth="public", website=True)
+    def index(self, **kw):
+        homepage = request.website.homepage_id
+        if homepage and (
+                homepage.sudo().is_visible or request.env.user.has_group('base.group_user')) and homepage.url != '/':
+            # return request.env['ir.http'].reroute(homepage.url)
+            return request.redirect("/my/dashboard")
+        website_page = request.env['ir.http']._serve_page()
+        if website_page:
+            # return website_page
+            return request.redirect("/my/dashboard")
+        else:
+            top_menu = request.website.menu_id
+            first_menu = top_menu and top_menu.child_id and top_menu.child_id.filtered(lambda menu: menu.is_visible)
+            if first_menu and first_menu[0].url not in ('/', '', '#') and (
+            not (first_menu[0].url.startswith(('/?', '/#', ' ')))):
+                # return request.redirect(first_menu[0].url)
+                return request.redirect("/my/dashboard")
+        raise request.not_found()
+
+    # @http.route('/sales/sale_quotation_onboarding_panel', auth='user', type='json')
+    # def sale_quotation_onboarding(self):
+    #     res = super(WebsiteController, self).sale_quotation_onboarding()
+    #     # Your code goes here
+    #     return res
 
 class EssAsset(Controller):
 
@@ -55,14 +84,14 @@ class EssAsset(Controller):
 
             emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
             asset_assignation_obj = request.env['asset.account.request'].sudo().search(
-                [('employee_id', '=', emb_obj.id)])
+                [('employee_id', '=', emb_obj.id)], order='id desc')
 
             values.update({
                 'partner': request.env.user.partner_id,
                 'employee': emb_obj,
                 'asset_assignation_obj': asset_assignation_obj,
             })
-            return request.render("ess.ess_view_asset_assignation", values)
+            return request.render("ess.ess_view_asset_assignation2", values)
         values.update({
             'partner': request.env.user.partner_id,
             'employee': emb_obj,

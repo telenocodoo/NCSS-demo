@@ -32,6 +32,7 @@
                 <script type="text/javascript" src="/ess/static/src/js/slimscroll/jquery.slimscroll.min.js"></script>
                 <script type="text/javascript" src="/ess/static/src/js/metisMenu/jquery.metisMenu.js"></script>
                 <script type="text/javascript" src="/ess/static/src/js/click_mandate_submit_button.js"></script>
+<!--                <script type="text/javascript" src="/ess/static/src/js/print_employee_report.js"></script>-->
             </xpath>
     </template>
 

@@ -66,7 +66,7 @@
 														</div>
 
 
-                             <script type="text/javascript" src="/ess/static/src/js/myleaves.js"></script>
+
 
 
 													</div>
@@ -121,6 +121,10 @@
                 </div>
             </t>  
         </t>
+<!--		<script type="text/javascript"   src="/ess/static/src/js/jquery.min.js"></script>-->
+		<script type="text/javascript" src="/ess/static/src/js/myleaves.js"></script>
+
+<!--   		<script type="text/javascript" src="/ess/static/src/js/passenger_mandane.js"></script>-->
     </template>
 
 

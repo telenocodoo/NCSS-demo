@@ -2,7 +2,7 @@
 <odoo>
 
 
-    <!--    Administration Form-->
+    <!--    employee appraisal Form-->
     <record id="hr_employee_appraisal_form" model="ir.ui.view">
         <field name="name">hr.employee.appraisal.form</field>
         <field name="model">hr.employee.appraisal</field>
@@ -17,41 +17,69 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="employee_id" />
+                            <field name="employee_id" attrs="{'readonly':[('state','=','completed')]}"/>
                             <field name="manager_id" readonly="1"/>
 <!--                            <field name="appraisal_id" readonly="1"/>-->
                         </group>
                         <group>
                             <field name="total_deserve_appraisal" />
+                            <field name="total_maximum_limit" />
+                            <field name="appraisal_level" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Treatment Information" name="Treatment Information" >
-                            <field name="appraisal_item_ids">
+                            <field name="appraisal_item_ids" attrs="{'readonly':[('state','=','completed')]}">
                                 <tree editable="bottom" >
-                                    <field name="appraisal_criteria_id"/>
-                                    <field name="max_limit" sum="total"/>
-                                    <field name="deserved_degree" sum="total"/>
-                                    <field name="appraisal_level"/>
+                                    <field name="appraisal_criteria_id" force_save="1"/>
+                                    <field name="max_limit" sum="total" force_save="1"/>
+                                    <field name="deserved_degree" sum="total" force_save="1"/>
+                                    <field name="appraisal_level" force_save="1"/>
 <!--                                    <field name="appraisal_level_id"/>-->
                                 </tree>
+                                <form>
+                                    <group>
+                                        <field name="appraisal_criteria_id"/>
+                                        <field name="max_limit"/>
+                                        <field name="deserved_degree"/>
+                                        <field name="appraisal_level"/>
+                                    </group>
+                                </form>
                             </field>
                         </page>
                         <page string="Strong And Weak Points" name="Strong And Weak Points">
-                            <field name="strong_weak_point_ids">
+                            <field name="strong_weak_point_ids" attrs="{'readonly':[('state','=','completed')]}">
                                 <tree editable="bottom">
-                                    <field name="strong_points"/>
-                                    <field name="weak_points"/>
+                                    <field name="strong_points" force_save="1"/>
+                                    <field name="weak_points" force_save="1"/>
                                 </tree>
+                                <form>
+                                    <group>
+                                        <field name="strong_points"/>
+                                        <field name="weak_points"/>
+                                    </group>
+                                </form>
                             </field>
                         </page>
                         <page string="Appraisal Manager Recommendations" name="Appraisal Manager Recommendations">
-                            <field name="appraisal_manager_recommendations_ids">
+                            <field name="appraisal_manager_recommendations_ids" attrs="{'readonly':[('state','=','completed')]}">
                                 <tree editable="bottom">
-                                    <field name="appraisal_recommendation_id"/>
-                                    <field name="approve_recommendation"/>
-                                    <field name="disagree_recommendation"/>
+                                    <field name="appraisal_recommendation_id" force_save="1"/>
+                                    <field name="approve_recommendation" force_save="1"
+                                           attrs="{'readonly':[('disagree_recommendation','=',True)]}"/>
+                                    <field name="disagree_recommendation" force_save="1"
+                                           attrs="{'readonly':[('approve_recommendation','=',True)]}"/>
                                 </tree>
+                                <form>
+                                    <group>
+                                        <field name="appraisal_recommendation_id"/>
+                                        <field name="approve_recommendation"
+                                               attrs="{'readonly':[('disagree_recommendation','=',True)]}"/>
+                                        <field name="disagree_recommendation"
+                                               attrs="{'readonly':[('approve_recommendation','=',True)]}"/>
+                                    </group>
+
+                                </form>
                             </field>
                         </page>
 
@@ -86,7 +114,142 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!--    Administration Form-->
+    <!--    employee appraisal Form-->
+
+    <!--    employee appraisal criteria Form-->
+    <record id="hr_employee_appraisal_criteria_form" model="ir.ui.view">
+        <field name="name">appraisal.criteria.form</field>
+        <field name="model">appraisal.criteria</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="max_limit" />
+                        </group>
+                        <group>
+                            <field name="is_default" />
+                            <field name="appraisal_type_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_criteria_tree" model="ir.ui.view">
+        <field name="name">appraisal.criteria.tree</field>
+        <field name="model">appraisal.criteria</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="max_limit" />
+                <field name="is_default" />
+                <field name="appraisal_type_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_criteria_action" model="ir.actions.act_window">
+        <field name="name">Employee Appraisal Criteria</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">appraisal.criteria</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    employee appraisal criteria Form-->
+
+    <!--    employee appraisal recommendations Form-->
+    <record id="hr_employee_appraisal_recommendations_form" model="ir.ui.view">
+        <field name="name">appraisal.recommendations.form</field>
+        <field name="model">appraisal.recommendations</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="is_default" />
+                            <field name="appraisal_type_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_recommendations_tree" model="ir.ui.view">
+        <field name="name">appraisal.recommendations.tree</field>
+        <field name="model">appraisal.recommendations</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="is_default" />
+                <field name="appraisal_type_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_recommendations_action" model="ir.actions.act_window">
+        <field name="name">Employee Appraisal Recommendations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">appraisal.recommendations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    employee appraisal recommendations Form-->
+
+    <!--    employee appraisal type Form-->
+    <record id="hr_employee_appraisal_type_form" model="ir.ui.view">
+        <field name="name">hr.employee.appraisal.type.form</field>
+        <field name="model">hr.employee.appraisal.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_type_tree" model="ir.ui.view">
+        <field name="name">hr.employee.appraisal.type.tree</field>
+        <field name="model">hr.employee.appraisal.type</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_appraisal_type_action" model="ir.actions.act_window">
+        <field name="name">Employee Appraisal Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.appraisal.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    employee appraisal type Form-->
 
     <menuitem id="hr_employee_appraisal_root_menu"
               name="Employee Appraisal Main Menu"
@@ -99,6 +262,26 @@
               action="hr_employee_appraisal_action"
               parent="hr_employee_appraisal_root_menu"
               sequence="2"
+    />
+
+    <menuitem id="hr_employee_appraisal_criteria_menu"
+              name="Employee Appraisal Criteria Menu"
+              action="hr_employee_appraisal_criteria_action"
+              parent="hr_employee_appraisal_root_menu"
+              sequence="4"
+    />
+    <menuitem id="hr_employee_appraisal_recommendations_menu"
+              name="Employee Appraisal Recommendations Menu"
+              action="hr_employee_appraisal_recommendations_action"
+              parent="hr_employee_appraisal_root_menu"
+              sequence="6"
+    />
+
+    <menuitem id="hr_employee_appraisal_type_menu"
+              name="Employee Appraisal Types Menu"
+              action="hr_employee_appraisal_type_action"
+              parent="hr_employee_appraisal_root_menu"
+              sequence="3"
     />
 
 </odoo>

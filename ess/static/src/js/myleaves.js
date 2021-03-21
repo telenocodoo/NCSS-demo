@@ -1,4 +1,4 @@
-// Capture the form submit button$("#end_date_leave").change(function(){
+$("#end_date_leave").change(function(){
  var errmsg = $('#error_msg');
  var end=new Date($(this).val());
  var start= new Date($("#start_date_leave").val());

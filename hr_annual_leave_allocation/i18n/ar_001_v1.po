@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 07:45+0000\n"
-"PO-Revision-Date: 2021-03-18 07:45+0000\n"
+"POT-Creation-Date: 2021-02-28 08:26+0000\n"
+"PO-Revision-Date: 2021-02-28 08:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. module: hr_annual_leave_allocation
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.allocation_config_settings_form_view
 msgid "<span class=\"o_form_label\">Annual Allocation</span>"
-msgstr "<span class=\"o_form_label\">مخصصات الاجازه</span>"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.view_end_of_service_award_form
@@ -74,19 +74,19 @@ msgstr "اضافه"
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_hr_leave_allocation__allocated_until
 msgid "Allocated Until"
-msgstr "اجازه الي"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_hr_employee__allocation_ids
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.allocation_config_settings_form_view
 msgid "Allocation"
-msgstr "تخصيص اجازه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_company__allocation_type
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_config_settings__allocation_type
 msgid "Allocation Type"
-msgstr "نوع مخصص الاجازه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.actions.server,name:hr_annual_leave_allocation.employee_annual_allocation_ir_actions_server
@@ -94,12 +94,12 @@ msgstr "نوع مخصص الاجازه"
 #: model:ir.cron,name:hr_annual_leave_allocation.employee_annual_allocation
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.view_employee_form_inherit
 msgid "Annual Allocation"
-msgstr "تخصيص الاجازه السنويه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_config_settings__leave_type_id
 msgid "Annual Leave"
-msgstr "الاجازه السنويه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.view_end_of_service_award_form
@@ -169,13 +169,13 @@ msgstr ""
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,help:hr_annual_leave_allocation.field_end_of_service_award__contract_id
 msgid "Current contract of the employee"
-msgstr "العقد الحالي للموظف"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__res_company__allocation_type__daily
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__res_config_settings__allocation_type__daily
 msgid "Daily"
-msgstr "يوميا"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__net_period_before_5year
@@ -196,7 +196,7 @@ msgstr "مستحق الفتره الثانيه"
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_hr_contract__deserved_leave
 msgid "Deserved Leave"
-msgstr "مستحق الاجازه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__display_name
@@ -217,7 +217,7 @@ msgstr "الموظف"
 #. module: hr_annual_leave_allocation
 #: model:ir.model,name:hr_annual_leave_allocation.model_hr_contract
 msgid "Employee Contract"
-msgstr "عقد الموظف"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__end_of_service_award__contact_end_type__end_period
@@ -281,11 +281,6 @@ msgid "Followers (Partners)"
 msgstr ""
 
 #. module: hr_annual_leave_allocation
-#: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__holiday_days
-msgid "Holiday Days"
-msgstr "مستحقات بدل اجازه"
-
-#. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__id
 msgid "ID"
 msgstr ""
@@ -340,7 +335,7 @@ msgstr "تاريخ الانضمام للعمل"
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_hr_employee__last_allocation_date
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_hr_leave_allocation__last_allocation_date
 msgid "Last Allocation Date"
-msgstr "تاريخ اخر تخصيص"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award____last_update
@@ -384,12 +379,12 @@ msgstr "قانون 80"
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_company__leave_id
 msgid "Leave"
-msgstr "اجازه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_company__leave_type_id
 msgid "Leave Type"
-msgstr "نوع الاجازه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__message_main_attachment_id
@@ -410,7 +405,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__res_company__allocation_type__monthly
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__res_config_settings__allocation_type__monthly
 msgid "Monthly"
-msgstr "شهريا"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__net_first_period
@@ -460,7 +455,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_company__no_of_days_per_year
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_config_settings__no_of_days_per_year
 msgid "No Of Days Per Year"
-msgstr "عدد الايام في السنه"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__message_needaction_counter
@@ -502,7 +497,7 @@ msgstr "عام"
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__hr_contract__state__partial_stop
 msgid "Partial Stop"
-msgstr "ايقاف مؤقت"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.actions.report,name:hr_annual_leave_allocation.eos_report
@@ -523,7 +518,7 @@ msgstr "استقاله بعد شهر"
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__activity_user_id
 msgid "Responsible User"
-msgstr "الشخص المسؤول"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields.selection,name:hr_annual_leave_allocation.selection__hr_contract__state__open
@@ -642,7 +637,7 @@ msgstr "اجازات غير مدفوعه"
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_company__unpaid_type
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_res_config_settings__unpaid_type
 msgid "Unpaid Type"
-msgstr "غيرمدفوع"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model:ir.model.fields,field_description:hr_annual_leave_allocation.field_end_of_service_award__message_unread
@@ -675,19 +670,19 @@ msgstr "سنويا"
 #: code:addons/hr_annual_leave_allocation/models/hr_employee.py:0
 #, python-format
 msgid "You Aren't Allowed To Make This Leave You Can Make Between %s and %s"
-msgstr "لايمكنك عمل الاجازه في هذه الفتره يمكنك عملها من %s الي %s"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: code:addons/hr_annual_leave_allocation/models/end_of_service_award.py:0
 #, python-format
 msgid "You Can Not Delete a Request Which Is Not Draft."
-msgstr "لايمكنك حذف الطلب الا في حاله مسوده"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: code:addons/hr_annual_leave_allocation/models/hr_employee.py:0
 #, python-format
 msgid "You are not allowed to delete This record!!"
-msgstr "لايمكنك حذف هذا"
+msgstr ""
 
 #. module: hr_annual_leave_allocation
 #: model_terms:ir.ui.view,arch_db:hr_annual_leave_allocation.eos_report_template

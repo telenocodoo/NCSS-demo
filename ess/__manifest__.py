@@ -5,7 +5,7 @@
     'images': ['static/description/app_logo.jpg'],
     'license': 'OPL-1',
     'category':  'Website',
-    'depends': ['base', 'portal', 'website', 'account', 'hr_employee_letter', 'hr_payroll', 'Employee_Training', 'hr_appraisal'],
+    'depends': ['base', 'portal', 'website', 'account', 'hr_employee_letter', 'hr_payroll', 'Employee_Training', 'hr_appraisal', 'hr_employee_templates'],
     'qweb': [
         "static/src/xml/website_template.xml",
      ],
@@ -54,6 +54,7 @@
         'views/portal_profile_contract.xml',
         'views/portal.xml',
         'views/portal_asset_assignation.xml',
+        'views/portal_hr_reports.xml',
 
         'report/partner_ledger_report.xml',
         'report/partner_ledger_report_template.xml',

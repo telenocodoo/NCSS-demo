@@ -224,7 +224,7 @@ class ESSPortal(Controller):
                         })
         
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_appraisal')]).state == 'installed':
-            appraisal_obj = request.env['hr.appraisal'].sudo().search([('employee_id','=',emb_obj.id)])
+            appraisal_obj = request.env['hr.appraisal'].sudo().search([('employee_id','=',emb_obj.id)], order='id desc')
             for app in appraisal_obj:
                 appraisal_list.append({
                     'date': app.date_close,
@@ -429,7 +429,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state_desc,
+                'state_desc': leave.state,
                 'number_of_days': leave.number_of_days,
             })
 
@@ -468,6 +468,9 @@ class ESSPortal(Controller):
             post.update({
                 'employee_id': emb_obj.id,
                 'holiday_status_id': int(post['holiday_status_id']),
+                'request_date_from': post['date_from'],
+                'request_date_to': post['date_to'],
+                'name': post['name'],
             })
 
             print(post)
@@ -485,20 +488,31 @@ class ESSPortal(Controller):
             #         'error_message': ['خطأ فى أدخال  البيانات'],
             #         'message': []
             #     })
-            try:
-                if post['date_to'] > post['date_from']:
-                    request.env['hr.leave'].sudo().create(post)
-                else:
-                    return request.redirect("/my/wleaves")
-                values.update({
-                        'error': {},
-                        'error_message': [],
-                        'message':['تم تسجيل طلبكم بنجاح']
-                    })
-            except:
-                print("Ya rab")
+            # try:
 
+
+            if post['date_to'] > post['date_from']:
+                print("inside create leave")
+                request.env['hr.leave'].sudo().create({
+                    'employee_id': emb_obj.id,
+                    'holiday_status_id': int(post['holiday_status_id']),
+                    'request_date_from': post['date_from'],
+                    'request_date_to': post['date_to'],
+                    'number_of_days': float(post['number_of_days_display']),
+                    'name': post['name'],
+                })
+            else:
+                print("inside redirect leave")
                 return request.redirect("/my/wleaves")
+            values.update({
+                    'error': {},
+                    'error_message': [],
+                    'message':['تم تسجيل طلبكم بنجاح']
+                })
+            # except:
+            #     print("Ya rab")
+            # else:
+                # return request.redirect("/my/wleaves")
                 # response = wsgi_server.xmlrpc_handle_exception_string(error)
 
                 # request.render("ess.ess_leaves" ,values)
@@ -510,7 +524,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state_desc,
+                'state_desc': leave.state,
                 'number_of_days':leave.number_of_days,
             })
 
@@ -586,7 +600,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state_desc,
+                'state_desc': leave.state,
                 'number_of_days':leave.number_of_days,
             })
 
@@ -1776,29 +1790,21 @@ class ESSPortal(Controller):
     def appraisal(self, redirect=None, **post):
         values = {}
         appraisal_list = []
-
         partner = request.env.user.partner_id
-        emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-        
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
         values = self.check_modules()
-
-
         values.update({
             'error': {},
             'error_message': [],
         })
-
-
-        
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_appraisal')]).state == 'installed':
-            appraisal_obj = request.env['hr.appraisal'].sudo().search([('employee_id','=',emb_obj.id)])
+            appraisal_obj = request.env['hr.appraisal'].sudo().\
+                search([('employee_id', '=', emb_obj.id)], order='id desc')
             for app in appraisal_obj:
                 appraisal_list.append({
                     'date': app.date_close,
                     'state': app.state,
                 })
-
-
         values.update({
             'partner': partner,
             'employee': emb_obj,
@@ -1818,28 +1824,19 @@ class ESSPortal(Controller):
 
         partner = request.env.user.partner_id
         emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-        
         values = self.check_modules()
-
-
         values.update({
             'error': {},
             'error_message': [],
         })
-
-
-        
         if request.env['ir.module.module'].sudo().search([('name', '=', 'hr_appraisal')]).state == 'installed':
-            appraisal_obj = request.env['hr.appraisal'].sudo().search([('employee_id','=',emb_obj.id), ('state', '=', 'done')])
-
-
+            appraisal_obj = request.env['hr.appraisal'].sudo().\
+                search([('employee_id','=',emb_obj.id), ('state', '=', 'done')], order='id desc')
         values.update({
             'partner': partner,
             'employee': emb_obj,
             'appraisal_obj': appraisal_obj,
         })
-        
-
         response = request.render("ess.ess_track_appraisal", values)
         response.headers['X-Frame-Options'] = 'DENY'
         return response
@@ -1847,27 +1844,22 @@ class ESSPortal(Controller):
     @route(['/my/request_appraisal'], type='http', auth='user', website=True)
     def request_appraisal(self, redirect=None, **post):
         values = {}
-
-
         partner = request.env.user.partner_id
-        emb_obj = request.env['hr.employee'].sudo().search([('user_id','=',request.env.user.id)])
-        
-
+        emb_obj = request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])
+        appraisal_type_obj = request.env['hr.employee.appraisal.type'].sudo().search([])
         values = self.check_modules()
-
-        values.update({
-            'error': {},
-            'error_message': [],
-        })
-
-
+        values.update({'error': {},
+                       'error_message': []
+                       })
         if post and request.httprequest.method == 'POST':
-
+            # print("::::::::::::::::", post['appraisal_type'])
+            # print("::::::::::::::::", int(post['appraisal_type']))
             if 'employee_id' in post:
                 post.update({
                     'employee_id': int(post['employee_id']),
+                    'appraisal_type_id': int(post['appraisal_type_id']),
                 })
-            
+
             emp_part = request.env['hr.employee'].browse(int(post['employee_id'])).user_id.partner_id
 
             subject = post['subject']
@@ -1897,12 +1889,13 @@ class ESSPortal(Controller):
             body = template.render(template_ctx, engine='ir.qweb', minimal_qcontext=True)
             mail_values['body_html'] = request.env['mail.thread']._replace_local_links(body)
 
-            request.env['mail.mail'].sudo().create(mail_values)
+            # request.env['mail.mail'].sudo().create(mail_values)
 
         
         values.update({
             'partner': partner,
             'employee': emb_obj,
+            'appraisal_type': appraisal_type_obj,
         })
         response = request.render("ess.ess_request_appraisal", values)
         response.headers['X-Frame-Options'] = 'DENY'
