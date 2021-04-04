@@ -7,7 +7,8 @@ class HrAppraisal(models.Model):
     _inherit = 'hr.appraisal'
 
     appraisal_count = fields.Float(compute='compute_appraisal_count')
-    total_deserve_appraisal = fields.Float(compute='compute_total_deserve_appraisal')
+    total_deserve_appraisal = fields.Float(compute='compute_total_deserve_appraisal',
+                                           string="Total Deserve Appraisal Percentage")
     appraisal_level = fields.Char(compute='compute_appraisal_level')
     appraisal_type_id = fields.Many2one('hr.employee.appraisal.type')
 

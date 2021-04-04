@@ -24,4 +24,19 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_root">
+      <field name="groups_id" eval="[(6,0,[ref('ncss_appraisal.appraisal_main_menu_group')])]"/>
+    </record>
+
+    <record model="ir.ui.menu" id="hr.menu_hr_root">
+      <field name="groups_id" eval="[(6,0,[ref('ncss_appraisal.employee_main_menu_group')])]"/>
+    </record>
+    <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_root">
+      <field name="groups_id" eval="[(6,0,[ref('ncss_appraisal.expenses_main_menu_group')])]"/>
+    </record>
+    <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_root">
+      <field name="groups_id" eval="[(6,0,[ref('ncss_appraisal.leaves_main_menu_group')])]"/>
+    </record>
+
 </odoo>

@@ -155,7 +155,7 @@ class AdministrativeCommunication(models.Model):
         date_deadline = now.date()
         values = {
             'res_id': self.id,
-            'res_model_id': self.env['ir.model'].search([('model', '=', 'administrative.communication')]).id,
+            'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'administrative.communication')]).id,
             'user_id': user_id,
             'summary': message,
             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
@@ -234,13 +234,13 @@ class AdministrativeCommunication(models.Model):
             raise UserError(_('Please Add The Department.'))
         if self.user_id:
             message = 'معامله رقم %s ' % self.sequence
-            self.create_activity(self.user_id.id, message)
-        self.state = 'reviewed'
+            self.sudo().create_activity(self.user_id.id, message)
+        self.sudo().state = 'reviewed'
 
     def assign_to_employee_action(self):
         if not self.user_id:
             raise UserError(_('Please Add The Specialized Employee.'))
-        self.state = 'assigned'
+        self.sudo().state = 'assigned'
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
@@ -248,7 +248,7 @@ class AdministrativeCommunication(models.Model):
         return super(AdministrativeCommunication, self).copy(default)
 
     def outgoing_treatment_action(self):
-        self.state = 'outgoing'
+        self.sudo().state = 'outgoing'
         default = {}
         default['treatment_type'] = 'out'
         # default['destination_id'] = self.source_id.id
@@ -256,15 +256,15 @@ class AdministrativeCommunication(models.Model):
         # default['source_id'] = self.env.ref('ncss_administrative_communications.demo_contact_ncss').id
         default['source_id'] = self.env.ref('ncss_administrative_communications.demo_source_direction').id
         default['assign_to_id'] = self.source_id.id
-        y = self.copy(default)
-        y.administrative_communication_in_id = self.id
-        self.administrative_communication_out_id = y.id
+        y = self.sudo().copy(default)
+        y.sudo().administrative_communication_in_id = self.id
+        self.sudo().administrative_communication_out_id = y.id
 
         user_ids = self.get_users("ncss_administrative_communications.administrative_communication_done_button")
         message = 'معامله صادره رقم %s ' % y.sequence
         if user_ids:
             for rec in user_ids:
-                self.create_activity(rec, message)
+                self.sudo().create_activity(rec, message)
 
         barcode_user_ids = self.get_users("ncss_administrative_communications.administrative_communication_print_barcode_button")
         barcode_message = 'معامله صادره رقم %s يمكنك طباعه الباركود الان' % y.sequence
@@ -275,7 +275,7 @@ class AdministrativeCommunication(models.Model):
                 date_deadline = now.date()
                 values = {
                     'res_id': y.id,
-                    'res_model_id': self.env['ir.model'].search([('model', '=', 'administrative.communication')]).id,
+                    'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'administrative.communication')]).id,
                     'user_id': code,
                     'summary': barcode_message,
                     'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
@@ -309,30 +309,30 @@ class AdministrativeCommunication(models.Model):
         }
 
     def outgoing_barcode_action(self):
-        self.state = 'barcode'
+        self.sudo().state = 'barcode'
         user_ids = self.get_users("ncss_administrative_communications.administrative_communication_print_instrument_button")
         message = 'معامله صادره رقم %s يمكنك طباعه السند الان' % self.sequence
         if user_ids:
             for rec in user_ids:
-                self.create_activity(rec, message)
-        return self.env.ref('ncss_administrative_communications.barcode_report').report_action(self)
+                self.sudo().create_activity(rec, message)
+        return self.sudo().env.ref('ncss_administrative_communications.barcode_report').sudo().report_action(self)
 
     def outgoing_instrument_action(self):
-        self.state = 'instrument'
+        self.sudo().state = 'instrument'
         user_ids = self.get_users(
             "ncss_administrative_communications.administrative_communication_done_button")
         message = 'معامله صادره رقم %s يمكنك اكمالها الان' % self.sequence
         if user_ids:
             for rec in user_ids:
-                self.create_activity(rec, message)
+                self.sudo().create_activity(rec, message)
         return self.env.ref('ncss_administrative_communications.report_administrative_communication').\
             report_action(self)
 
     def action_done(self):
-        self.state = 'done'
+        self.sudo().state = 'done'
 
     def set_to_draft(self):
-        self.state = 'draft'
+        self.sudo().state = 'draft'
 
 
 class AdministrativeCommunicationWizard(models.TransientModel):
@@ -419,7 +419,7 @@ class AdministrativeCommunicationWizard(models.TransientModel):
         date_deadline = now.date()
         values = {
             'res_id': self.env.context.get('active_ids')[0],
-            'res_model_id': self.env['ir.model'].search([('model', '=', 'administrative.communication')]).id,
+            'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'administrative.communication')]).id,
             'user_id': user_id,
             'summary': message,
             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
@@ -430,7 +430,7 @@ class AdministrativeCommunicationWizard(models.TransientModel):
     def action_assign_to(self):
         print(self.env.context.get('active_ids')[0])
         communication_id = self.env['administrative.communication'].sudo().browse(self.env.context.get('active_ids')[0])
-        communication_lines = self.env['administrative.communication.line']
+        communication_lines = self.sudo().env['administrative.communication.line']
         communication_line_obj = communication_lines.sudo().create({
             'administrative_communication_id': self.env.context.get('active_ids')[0],
             'user_attached_id': self.env.user.id,
@@ -439,28 +439,34 @@ class AdministrativeCommunicationWizard(models.TransientModel):
             'due_date': self.due_date,
             'sender_notes': self.sender_notes,
         })
+        print("111111111111111111")
 
         user_ids = self.get_users("ncss_administrative_communications.administrative_communication_outgoing_button")
         message = 'معامله رقم %s ' % communication_id.sequence
         if user_ids:
             for rec in user_ids:
-                self.create_activity(rec, message)
+                self.sudo().create_activity(rec, message)
 
+        print("222222222222222")
         if self.user_id:
             # communication_lines.make_activity(self.user_id.id)
             now = datetime.now()
             date_deadline = now.date()
+            print("55555555555")
             values = {
                 'res_id': communication_line_obj.id,
-                'res_model_id': self.env['ir.model'].search([('model', '=', 'administrative.communication.line')]).id,
+                'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'administrative.communication.line')]).id,
                 'user_id': self.user_id.id,
                 'summary': 'معامله محاله اليك',
-                'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
+                'activity_type_id': self.sudo().env.ref('mail.mail_activity_data_todo').id,
                 'date_deadline': date_deadline
             }
-            self.env['mail.activity'].create(values)
+            print("666666666666")
+            self.env['mail.activity'].sudo().create(values)
+            print("77777777777777")
+        print("3333333333333")
         if communication_id.state == 'reviewed':
-            communication_id.state = 'assigned'
+            communication_id.sudo().state = 'assigned'
 
 
 class AdministrativeCommunicationLine(models.Model):

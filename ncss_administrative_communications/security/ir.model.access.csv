@@ -29,3 +29,4 @@ administrative_communication_contact_line,administrative_communication_contact_l
 administrative_communication_attachments,administrative_communication_attachments,model_administrative_communication_attachments,,1,1,1,1
 
 ir_server_object_lines,ir_server_object_lines,base.model_ir_server_object_lines,,1,1,1,1
+report_paperformat,report_paperformat,base.model_report_paperformat,,1,1,1,1

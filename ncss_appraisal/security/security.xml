@@ -2,6 +2,18 @@
 <odoo>
     <data>
 
+        <record id="appraisal_main_menu_group" model="res.groups">
+            <field name="name">Appraisal Main Menu</field>
+        </record>
+        <record id="employee_main_menu_group" model="res.groups">
+            <field name="name">Employee Main Menu</field>
+        </record>
+        <record id="expenses_main_menu_group" model="res.groups">
+            <field name="name">Expenses Main Menu</field>
+        </record>
+        <record id="leaves_main_menu_group" model="res.groups">
+            <field name="name">Leaves Main Menu</field>
+        </record>
 
     </data>
 </odoo>

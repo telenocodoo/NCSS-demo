@@ -13,7 +13,7 @@
         'demo/demo.xml'
     ],
     'data': [
-        # 'security/security.xml',
+        'security/security.xml',
         'security/ir.model.access.csv',
         # 'views/sequence.xml',
         'views/hr_employee_appraisal.xml',
