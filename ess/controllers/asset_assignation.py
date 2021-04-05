@@ -408,6 +408,8 @@ class EssAsset(Controller):
                 })
             else:
                 create_course = True
+        else:
+            create_course = True
         if create_course:
             mandate_obj = request.env['mandate.passenger']
             if args['type'] == 'دوره':
@@ -446,6 +448,7 @@ class EssAsset(Controller):
             values.update({
                 'val': 'done',
             })
+
         print("VVVVVVVVVVVVVV", values)
         return values
 

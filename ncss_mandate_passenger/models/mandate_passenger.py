@@ -129,11 +129,12 @@ class MandatePassenger(models.Model):
                                        ('vip', 'VIP'),
                                        ])
     reason = fields.Text()
-    attach_file = fields.Many2many('ir.attachment', 'mandate_attach_rel', 'doc_id', 'attach_id4',
+    attach_file = fields.Many2many('ir.attachment', 'ir_attach_rel', 'mandate_passenger_rel',
                                    string=_('Attachment File'),
+                                   help='You can attach the copy of your document', copy=False)
+    attach_file_ticket = fields.Many2many('ir.attachment', 'ir_attach_rel2', 'mandate_passenger_rel',
+                                          string=_('Attachment ticket'),
                                           help='You can attach the copy of your document', copy=False)
-    attach_file_ticket = fields.Many2many('ir.attachment', 'mandate_attach_rel', 'doc_id', 'attach_id4', string=_('Attachment ticket'),
-                                      help='You can attach the copy of your document', copy=False)
 
     def _expand_states(self, states, domain, order):
         return [key for key, val in type(self).state.selection]

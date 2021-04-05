@@ -74,7 +74,7 @@
                                                                                         <td class="td"><div t-esc="loa['loan_amount']"/></td>
                                                                                         <td class="td"><div t-esc="loa['total_paid_amount']"/></td>
                                                                                         <td class="td"><div t-esc="loa['balance_amount']"/></td>
-                                                                                        <td class="td"><div t-esc="loa['state_desc']"/></td>
+                                                                                        <td class="td"><div t-esc="loa['state']"/></td>
                                                                                 </tr>
                                                                                 </tbody>
                                                                             </table>

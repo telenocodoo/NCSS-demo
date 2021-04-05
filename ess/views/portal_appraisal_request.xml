@@ -46,7 +46,7 @@
                                                                 <div t-attf-class="form-group #{error.get('letter_employee_idtype_id') and 'o_has_error' or ''} col-xl-4">
                                                                     <label class="col-form-label" for="employee_id">Employee</label>
                                                                     <select name="employee_id" t-attf-class="form-control #{error.get('employee_id') and 'is-invalid' or ''}" required="">
-                                                                        <t t-foreach="employee.child_ids or []" t-as="child">
+                                                                        <t t-foreach="employee.child_ids or employee" t-as="child">
                                                                             <option t-att-value="child.id" >
                                                                                 <t t-esc="child.name" />
                                                                             </option>
