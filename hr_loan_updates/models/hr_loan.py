@@ -12,6 +12,15 @@ class HrLoan(models.Model):
                                             ('hr_approve', 'Hr Approve'),
                                             ])
     is_direct_manager = fields.Boolean(compute='get_direct_manager')
+    state_desc = fields.Char(compute="_get_state_desc")
+
+    def _get_state_desc(self):
+        value = dict(self.env['hr.loan'].fields_get(allfields=['state'])['state']['selection'])
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
 
     def get_direct_manager(self):
         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
