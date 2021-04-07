@@ -429,7 +429,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state,
+                'state_desc': leave.state_desc,
                 'number_of_days': leave.number_of_days,
             })
 
@@ -524,7 +524,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state,
+                'state_desc': leave.state_desc,
                 'number_of_days':leave.number_of_days,
             })
 
@@ -600,7 +600,7 @@ class ESSPortal(Controller):
             leave_list.append({
                 'name': leave.holiday_status_id.name,
                 'state': leave.state,
-                'state_desc': leave.state,
+                'state_desc': leave.state_desc,
                 'number_of_days':leave.number_of_days,
             })
 

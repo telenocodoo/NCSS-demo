@@ -5,7 +5,9 @@
     'images': ['static/description/app_logo.jpg'],
     'license': 'OPL-1',
     'category':  'Website',
-    'depends': ['base', 'portal', 'website', 'account', 'hr_employee_letter', 'hr_payroll', 'Employee_Training', 'hr_appraisal', 'hr_employee_templates'],
+    'depends': ['base', 'portal', 'website', 'account',
+                'hr_employee_letter', 'hr_payroll', 'Employee_Training',
+                'hr_appraisal', 'hr_employee_templates', 'hr_employee_info_updation'],
     'qweb': [
         "static/src/xml/website_template.xml",
      ],

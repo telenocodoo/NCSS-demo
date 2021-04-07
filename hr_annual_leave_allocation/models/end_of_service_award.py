@@ -157,9 +157,8 @@ class EndOfServiceAward(models.Model):
         else:
             total = 0.0
         final_deserving = total
-
         total_involved_items = 0.0
-        contract = self.env['hr.contract'].sudo().browse(self.contract_id.id)
+        contract = self.env['hr.contract'].sudo().browse(employee_id.contract_id.id)
         for i in self.env.user.company_id.eos_involved_item_id:
             total_involved_items += contract[i.field_name]
         deserving = (final_deserving * total_involved_items) / 30

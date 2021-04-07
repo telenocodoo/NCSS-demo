@@ -9,6 +9,6 @@ $("#end_date_leave").change(function(){
 console.log(end.getTime());
   console.log(start.getTime());
 
- noDays.val(dif);
+ noDays.val(dif+1);
  console.log(dif);
 });

@@ -40,6 +40,15 @@ class HrLeave(models.Model):
     vacation_code = fields.Char()
     decision_number = fields.Char()
     decision_date = fields.Date()
+    state_desc = fields.Char(compute="_get_state_desc")
+
+    def _get_state_desc(self):
+        value = dict(self.env['hr.leave'].fields_get(allfields=['state'])['state']['selection'])
+        for record in self:
+            if record.state:
+                record.state_desc = value[record.state]
+            else:
+                record.state_desc = ''
 
     @api.onchange('employee_id')
     def _onchange_employee_id(self):
