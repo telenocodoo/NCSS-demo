@@ -6,21 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-08 14:01+0000\n"
-"PO-Revision-Date: 2021-04-08 14:01+0000\n"
+"POT-Creation-Date: 2020-10-13 06:46+0000\n"
+"PO-Revision-Date: 2020-10-13 06:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: ncss_administrative_communications
-#: code:addons/ncss_administrative_communications/models/administrative_communications.py:0
-#: code:addons/ncss_administrative_communications/models/administrative_communications.py:0
-#, python-format
-msgid "<a href=\"#\" data-oe-model=\"%s\" data-oe-id=\"%s\">Task </a> for %s'Review"
-msgstr ""
 
 #. module: ncss_administrative_communications
 #: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_report
@@ -208,7 +201,7 @@ msgstr "الاتصالات الاداريه"
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_category_action
 msgid "Administrative Communication Category"
-msgstr "الجهه المحال اليها بالاتصالات الاداريه"
+msgstr "الجهه المحال اليها"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_contact_action
@@ -223,38 +216,27 @@ msgstr "الاحالات"
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_management_action
 msgid "Administrative Communication Management"
-msgstr "الاقسام بالاتصالات الاداريه"
+msgstr "الاقسام"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_procedures_action
 msgid "Administrative Communication Procedures"
-msgstr "الاجراءات بالاتصالات الاداريه"
-
-#. module: ncss_administrative_communications
-#: model:ir.actions.act_window,name:ncss_administrative_communications.secret_administrative_communication_action
-#: model:ir.ui.menu,name:ncss_administrative_communications.administrative_communication_secret_child
-msgid "Administrative Communication Secret"
-msgstr "الاتصالات الاداريه السريه"
+msgstr "الاجراءات"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_sender_action
 msgid "Administrative Communication Sender"
-msgstr "المرسل بالاتصالات الاداريه"
+msgstr "المرسل"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_source_action
 msgid "Administrative Communication Source"
-msgstr "مصدر المعامله بالاتصالات الاداريه"
+msgstr "المصدر"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_years_action
 msgid "Administrative Communication Years"
 msgstr "السنوات"
-
-#. module: ncss_administrative_communications
-#: model:res.groups,name:ncss_administrative_communications.group_administrative_communications_secret
-msgid "Administrative Communications Secret Menu"
-msgstr "قائمه الاتصالات الاداريه السريه"
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_line_action
@@ -275,27 +257,27 @@ msgstr "الاتصالات الاداريه"
 #. module: ncss_administrative_communications
 #: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_category_category
 msgid "Administrative communication Category"
-msgstr "الجهات المحال اليها بالاتصالات الاداريه"
+msgstr "الجهات المحال اليها"
 
 #. module: ncss_administrative_communications
 #: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_management_category
 msgid "Administrative communication Management"
-msgstr "الاقسام بالاتصالات الاداريه"
+msgstr "الاقسام"
 
 #. module: ncss_administrative_communications
 #: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_procedures_category
 msgid "Administrative communication Procedures"
-msgstr "الاجراءات بالاتصالات الاداريه"
+msgstr "الاجراءات"
 
 #. module: ncss_administrative_communications
 #: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_sender_category
 msgid "Administrative communication Sender"
-msgstr "المرسل بالاتصالات الاداريه"
+msgstr "المرسل"
 
 #. module: ncss_administrative_communications
 #: model:ir.module.category,name:ncss_administrative_communications.administrative_communication_source_category
 msgid "Administrative communication Source"
-msgstr "مصدر المعامله بالاتصالات الاداريه"
+msgstr "المصدر"
 
 #. module: ncss_administrative_communications
 #: model:ir.ui.menu,name:ncss_administrative_communications.all_administrative_communication_line
@@ -384,13 +366,6 @@ msgstr "احيلت بواسطه"
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_years__message_attachment_count
 msgid "Attachment Count"
 msgstr "عدد المرفقات"
-
-#. module: ncss_administrative_communications
-#: code:addons/ncss_administrative_communications/models/administrative_communications.py:0
-#: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_attachments__attachment_ids
-#, python-format
-msgid "Attachment ticket"
-msgstr ""
 
 #. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__attachments
@@ -1161,13 +1136,6 @@ msgid "Regular"
 msgstr "عادى"
 
 #. module: ncss_administrative_communications
-#: code:addons/ncss_administrative_communications/models/administrative_communications.py:0
-#: code:addons/ncss_administrative_communications/models/administrative_communications.py:0
-#, python-format
-msgid "Request Approve"
-msgstr ""
-
-#. module: ncss_administrative_communications
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication__activity_user_id
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_category__activity_user_id
 #: model:ir.model.fields,field_description:ncss_administrative_communications.field_administrative_communication_contact__activity_user_id
@@ -1400,11 +1368,6 @@ msgid "Years"
 msgstr "السنه"
 
 #. module: ncss_administrative_communications
-#: model:ir.model.fields,help:ncss_administrative_communications.field_administrative_communication_attachments__attachment_ids
-msgid "You can attach the copy of your document"
-msgstr ""
-
-#. module: ncss_administrative_communications
 #: model:ir.model,name:ncss_administrative_communications.model_administrative_communication
 msgid "administrative.communication"
 msgstr "المعاملات"
@@ -1432,7 +1395,7 @@ msgstr "عملاء المعاملات"
 #. module: ncss_administrative_communications
 #: model:ir.model,name:ncss_administrative_communications.model_administrative_communication_line
 msgid "administrative.communication.line"
-msgstr "احالات الاتصالات الاداريه"
+msgstr ""
 
 #. module: ncss_administrative_communications
 #: model:ir.model,name:ncss_administrative_communications.model_administrative_communication_management
@@ -1489,11 +1452,6 @@ msgstr "بريد ممتاز"
 #: model:ir.model.fields.selection,name:ncss_administrative_communications.selection__administrative_communication__state__reviewed
 msgid "sent to department"
 msgstr "احيلت الي القسم"
-
-#. module: ncss_administrative_communications
-#: model_terms:ir.ui.view,arch_db:ncss_administrative_communications.administrative_communication_form
-msgid "المرفقات"
-msgstr ""
 
 #. module: ncss_administrative_communications
 #: model:ir.actions.act_window,name:ncss_administrative_communications.administrative_communication_out_action

@@ -40,6 +40,36 @@
         </record>
         <!--        custody request form-->
 
+        <!--        custody rules-->
+        <record id="custody_request_employee_rule" model="ir.rule">
+            <field name="name">Employee View Own custody</field>
+            <field name="model_id" ref="model_custody_request"/>
+            <field name="domain_force">['|',('create_uid', '=', user.id),
+                ('employee_id', '=', user.employee_id.id)]</field>
+            <field name="groups" eval="[(4, ref('custody_employee'))]"/>
+        </record>
+        <record id="custody_request_direct_manager_rule" model="ir.rule">
+            <field name="name">Custody Request Direct Manager Rule</field>
+            <field name="model_id" ref="model_custody_request"/>
+            <field name="domain_force">['|','|',('employee_id', '=', user.employee_id.id),
+                                                ('employee_id.parent_id', '=', user.employee_id.id),
+                                                ('create_uid.id', '=', user.id)]
+            </field>
+            <field name="groups" eval="[(4, ref('custody_direct_manager'))]"/>
+        </record>
+
+        <record id="custody_request_accounting_manager_rule" model="ir.rule">
+            <field name="name">Custody Request Accounting Manager Manager Rule</field>
+            <field name="model_id" ref="model_custody_request"/>
+            <field name="domain_force">['|','|','|',('employee_id', '=', user.employee_id.id),
+                ('employee_id.parent_id', '=', user.employee_id.id),
+                ('create_uid.id', '=', user.id),
+                ('state', 'in', ['center_manager_approve', 'accounting_approve','paid', 'in_progress', 'liquidated', 'refuse', 'done'])]
+            </field>
+            <field name="groups" eval="[(4, ref('custody_accounting_manager'))]"/>
+        </record>
+
+
 
         <!--        custody request buttons-->
 

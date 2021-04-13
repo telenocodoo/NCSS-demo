@@ -34,6 +34,24 @@
 
         <!--        Asset Assignation form-->
 
+        <!--        custody rules-->
+        <record id="asset_assignation_employee_rule" model="ir.rule">
+            <field name="name">Employee View Own assets</field>
+            <field name="model_id" ref="model_asset_account_request"/>
+            <field name="domain_force">['|',('create_uid', '=', user.id),
+                ('employee_id', '=', user.employee_id.id)]</field>
+            <field name="groups" eval="[(4, ref('asset_assignation_user'))]"/>
+        </record>
+        <record id="asset_assignation_direct_manager_rule" model="ir.rule">
+            <field name="name">Asset Assignation Direct Manager Rule</field>
+            <field name="model_id" ref="model_asset_account_request"/>
+            <field name="domain_force">['|','|',('employee_id', '=', user.employee_id.id),
+                                                ('employee_id.parent_id', '=', user.employee_id.id),
+                                                ('create_uid.id', '=', user.id)]
+            </field>
+            <field name="groups" eval="[(4, ref('asset_assignation_direct_manager'))]"/>
+        </record>
+
         <!--        asset_assignation buttons-->
 
         <record id="asset_assignation_approve_button" model="res.groups">
@@ -135,6 +153,24 @@
         </record>
 
         <!--        Asset Assignation form-->
+
+        <!--        Employee Assets Rules-->
+        <record id="employee_assets_employee_rule" model="ir.rule">
+            <field name="name">Employee View Own assets</field>
+            <field name="model_id" ref="model_employee_assets"/>
+            <field name="domain_force">['|',('create_uid', '=', user.id),
+                ('employee_id', '=', user.employee_id.id)]</field>
+            <field name="groups" eval="[(4, ref('employee_asset_user'))]"/>
+        </record>
+        <record id="employee_assets_direct_manager_rule" model="ir.rule">
+            <field name="name">Asset Assignation Direct Manager Rule</field>
+            <field name="model_id" ref="model_employee_assets"/>
+            <field name="domain_force">['|','|',('employee_id', '=', user.employee_id.id),
+                                                ('employee_id.parent_id', '=', user.employee_id.id),
+                                                ('create_uid.id', '=', user.id)]
+            </field>
+            <field name="groups" eval="[(4, ref('employee_asset_direct_manager'))]"/>
+        </record>
 
 
         <!--        asset_assignation buttons-->

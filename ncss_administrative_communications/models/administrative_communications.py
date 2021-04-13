@@ -121,23 +121,23 @@ class AdministrativeCommunication(models.Model):
     state_in = fields.Selection(related='state')
     state_out = fields.Selection(related='state')
 
-    # @api.model
-    # def search(self, args, offset=0, limit=None, order=None, count=False):
-    #     employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
-    #     department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
-    #     center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
-    #
-    #     if employee:
-    #         args += ['|', ('user_id', '=', self.env.user.id), ('create_uid', '=', self.env.user.id)]
-    #     if department_manager:
-    #         args += ['|', '|', '|', ('user_id', '=', self.env.user.id),
-    #                  ('create_uid.id', '=', self.env.user.id),
-    #                  ('transfer_to_id.id', '=', self.env.user.ncss_department_id.id),
-    #                  ('transfer_to_id.user_id.id', '=', self.env.user.id),
-    #                  ]
-    #     if center_manager:
-    #         args += []
-    #     return super(AdministrativeCommunication, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
+        department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
+        center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
+
+        if employee:
+            args += ['|', ('user_id', '=', self.env.user.id), ('create_uid', '=', self.env.user.id)]
+        # if department_manager:
+        #     args += ['|', '|', '|', ('user_id', '=', self.env.user.id),
+        #              ('create_uid.id', '=', self.env.user.id),
+        #              ('transfer_to_id.id', '=', self.env.user.ncss_department_id.id),
+        #              ('transfer_to_id.user_id.id', '=', self.env.user.id),
+        #              ]
+        # if center_manager:
+        #     args += []
+        return super(AdministrativeCommunication, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     def get_users(self, group_id):
         user_list = []
@@ -264,8 +264,10 @@ class AdministrativeCommunication(models.Model):
         message = 'معامله صادره رقم %s ' % y.sequence
         if user_ids:
             for rec in user_ids:
-                self.sudo().create_activity(rec, message)
-
+                try:
+                    self.sudo().create_activity(rec, message)
+                except:
+                    print("that user don't have access to that communication")
         barcode_user_ids = self.get_users("ncss_administrative_communications.administrative_communication_print_barcode_button")
         barcode_message = 'معامله صادره رقم %s يمكنك طباعه الباركود الان' % y.sequence
         if barcode_user_ids:
@@ -281,7 +283,10 @@ class AdministrativeCommunication(models.Model):
                     'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
                     'date_deadline': date_deadline
                 }
-                self.env['mail.activity'].sudo().create(values)
+                try:
+                    self.env['mail.activity'].sudo().create(values)
+                except:
+                    print("that user don't have access to that communication")
 
         return {
             'type': 'ir.actions.act_window',
@@ -425,7 +430,10 @@ class AdministrativeCommunicationWizard(models.TransientModel):
             'activity_type_id': self.env.ref('mail.mail_activity_data_todo').id,
             'date_deadline': date_deadline
         }
-        self.env['mail.activity'].sudo().create(values)
+        try:
+            self.env['mail.activity'].sudo().create(values)
+        except:
+            print("that user don't have access to that communication")
 
     def action_assign_to(self):
         print(self.env.context.get('active_ids')[0])
@@ -490,27 +498,27 @@ class AdministrativeCommunicationLine(models.Model):
     due_date = fields.Date()
     subject = fields.Text(related="administrative_communication_id.subject")
 
-    # @api.model
-    # def search(self, args, offset=0, limit=None, order=None, count=False):
-    #     employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
-    #     department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
-    #     center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
-    #
-    #     if employee:
-    #         args += ['|', ('user_id', '=', self.env.user.id), '|',
-    #                  ('create_uid', '=', self.env.user.id),
-    #                  ('user_attached_id', '=', self.env.user.id),
-    #                  ]
-    #     # if department_manager:
-    #     #     args += ['|', '|','|', '|', ('user_id', '=', self.env.user.id),
-    #     #              ('create_uid', '=', self.env.user.id),
-    #     #              ('user_attached_id', '=', self.env.user.id),
-    #     #              ('user_id', '=', self.env.user.id),
-    #     #              ('user_id.ncss_department_id.id', '=', self.env.user.ncss_department_id.id),
-    #     #              ]
-    #     # if center_manager:
-    #     #     args += []
-    #     return super(AdministrativeCommunicationLine, self).search(args=args, offset=offset, limit=limit, order=order,count=count)
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        employee = self.env.user.has_group('ncss_administrative_communications.administrative_communication_employee')
+        department_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_department_manager')
+        center_manager = self.env.user.has_group('ncss_administrative_communications.administrative_communication_center_manager')
+
+        if employee:
+            args += ['|', ('user_id', '=', self.env.user.id), '|',
+                     ('create_uid', '=', self.env.user.id),
+                     ('user_attached_id', '=', self.env.user.id),
+                     ]
+        # if department_manager:
+        #     args += ['|', '|','|', '|', ('user_id', '=', self.env.user.id),
+        #              ('create_uid', '=', self.env.user.id),
+        #              ('user_attached_id', '=', self.env.user.id),
+        #              ('user_id', '=', self.env.user.id),
+        #              ('user_id.ncss_department_id.id', '=', self.env.user.ncss_department_id.id),
+        #              ]
+        # if center_manager:
+        #     args += []
+        return super(AdministrativeCommunicationLine, self).search(args=args, offset=offset, limit=limit, order=order,count=count)
 
     @api.onchange('source_id', 'transfer_to_id')
     def onchange_source_id(self):

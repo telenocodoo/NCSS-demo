@@ -211,30 +211,30 @@ class AssetAccountRequest(models.Model):
             self.car_employee_have=False
             self.log_id_employee=False
 
-    @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
-        employee = self.env.user.has_group('hr_assets_assignation.asset_assignation_user')
-        direct_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_direct_manager')
-        department_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_department_manager')
-        center_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_center_manager')
-        current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-
-        if employee:
-            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
-
-        elif direct_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id),
-                     ('employee_id.parent_id.id', '=', current_user_id),
-                     ('create_uid.id', '=', self.env.user.id)]
-        # elif department_manager:
-        #     args += ['|', '|', '|', ('employee_id', '=', current_user_id),
-        #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
-        #              ('employee_id.parent_id.id', '=', current_user_id),
-        #              ('create_uid.id', '=', self.env.user.id)]
-        # if center_manager:
-        else:
-            args += []
-        return super(AssetAccountRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+    # @api.model
+    # def search(self, args, offset=0, limit=None, order=None, count=False):
+    #     employee = self.env.user.has_group('hr_assets_assignation.asset_assignation_user')
+    #     direct_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_direct_manager')
+    #     department_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_department_manager')
+    #     center_manager = self.env.user.has_group('hr_assets_assignation.asset_assignation_center_manager')
+    #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #
+    #     if employee:
+    #         args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
+    #
+    #     elif direct_manager:
+    #         args += ['|', '|', ('employee_id', '=', current_user_id),
+    #                  ('employee_id.parent_id.id', '=', current_user_id),
+    #                  ('create_uid.id', '=', self.env.user.id)]
+    #     # elif department_manager:
+    #     #     args += ['|', '|', '|', ('employee_id', '=', current_user_id),
+    #     #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
+    #     #              ('employee_id.parent_id.id', '=', current_user_id),
+    #     #              ('create_uid.id', '=', self.env.user.id)]
+    #     # if center_manager:
+    #     else:
+    #         args += []
+    #     return super(AssetAccountRequest, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
     def compute_color(self):
@@ -375,27 +375,27 @@ class CustodyRequestLine(models.Model):
     # ('done', 'Done'),
     color = fields.Integer(compute="compute_color")
 
-    @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
-        employee = self.env.user.has_group('hr_assets_assignation.employee_asset_user')
-        direct_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_direct_manager')
-        department_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_department_manager')
-        center_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_center_manager')
-        current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-
-        if employee:
-            args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
-        if direct_manager:
-            args += ['|', '|', ('employee_id', '=', current_user_id),
-                     ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        # if department_manager:
-        #     args += ['|', '|', ('employee_id', '=', current_user_id),
-        #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
-        #              ('create_uid.id', '=', self.env.user.id)]
-        # if center_manager:
-        else:
-            args += []
-        return super(CustodyRequestLine, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+    # @api.model
+    # def search(self, args, offset=0, limit=None, order=None, count=False):
+    #     employee = self.env.user.has_group('hr_assets_assignation.employee_asset_user')
+    #     direct_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_direct_manager')
+    #     department_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_department_manager')
+    #     center_manager = self.env.user.has_group('hr_assets_assignation.employee_asset_center_manager')
+    #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #
+    #     if employee:
+    #         args += ['|', ('employee_id', '=', current_user_id), ('create_uid', '=', self.env.user.id)]
+    #     if direct_manager:
+    #         args += ['|', '|', ('employee_id', '=', current_user_id),
+    #                  ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
+    #     # if department_manager:
+    #     #     args += ['|', '|', ('employee_id', '=', current_user_id),
+    #     #              ('employee_id.department_id.manager_id.id', '=', current_user_id),
+    #     #              ('create_uid.id', '=', self.env.user.id)]
+    #     # if center_manager:
+    #     else:
+    #         args += []
+    #     return super(CustodyRequestLine, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.depends('state')
     def compute_color(self):

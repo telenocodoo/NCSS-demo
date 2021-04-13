@@ -44,6 +44,36 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
+        <!--        Mandate and Passenger rules-->
+        <record id="rule_view_personal_customers" model="ir.rule">
+            <field name="name">Employee View Own Mandate Passenger</field>
+            <field name="model_id" ref="model_mandate_passenger"/>
+            <field name="domain_force">['|',('create_uid', '=', user.id),('employee_id', '=', user.employee_id.id)]</field>
+            <field name="groups" eval="[(4, ref('mandate_passenger_employee'))]"/>
+        </record>
+        <record id="mandate_passenger_direct_manager_rule" model="ir.rule">
+            <field name="name">Mandate Passenger Direct Manager Rule</field>
+            <field name="model_id" ref="model_mandate_passenger"/>
+            <field name="domain_force">['|','|',('employee_id', '=', user.employee_id.id),
+                                                ('employee_id.parent_id', '=', user.employee_id.id),
+                                                ('create_uid.id', '=', user.id)]
+            </field>
+            <field name="groups" eval="[(4, ref('mandate_passenger_direct_manager'))]"/>
+        </record>
+
+        <record id="mandate_passenger_accounting_manager_rule" model="ir.rule">
+            <field name="name">Mandate Passenger Accounting Manager Manager Rule</field>
+            <field name="model_id" ref="model_mandate_passenger"/>
+            <field name="domain_force">['|','|','|',('employee_id', '=', user.employee_id.id),
+                ('employee_id.parent_id', '=', user.employee_id.id),
+                ('create_uid.id', '=', user.id),
+                ('state', 'in', ['refuse', 'hr_approve', 'accounting_approve'])]
+            </field>
+            <field name="groups" eval="[(4, ref('mandate_passenger_accounting_manager'))]"/>
+        </record>
+
+
+
 <!--        Mandate and Passenger buttons-->
         <record id="mandate_passenger_direct_manager_button" model="res.groups">
             <field name="name">Direct Manager Button</field>

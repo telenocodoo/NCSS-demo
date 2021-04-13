@@ -2092,7 +2092,7 @@
         <report
         id="hr_salary_tammed"
         string="tammed"
-        model="hr.contract"
+        model="purchase.order"
         report_type="qweb-pdf"
         name="hr_employee_templates.hr_salary_tammed_template"
         file="hr_employee_templates.hr_salary_tammed"/>
@@ -2121,8 +2121,8 @@
 </p>
 <p dir="rtl" style="margin-right: 0.2in; text-indent: -0.02in; margin-bottom: 0.14in" align="justify">
 <font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4"><b>السادة</b></font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4"><b>:
-<t t-if="o.direction_id">
-  <span t-esc="o.direction_id.name" />
+<t t-if="o.partner_id">
+  <span t-esc="o.partner_id.name" />
  </t>
  <t t-else="">
   ..................................
@@ -2138,14 +2138,15 @@
 <font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">إشارة</font></font><font face="AL-Mohanad">
 </font><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">إلى</font></font><font face="AL-Mohanad">
 </font><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">العرض
-المقدم بتاريخ </font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4">22/04/2018</font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">م،
-بخصوص </font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4">..........................................
+المقدم بتاريخ </font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4"><span t-esc="o.date_approve" /> </font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">،
+بخصوص </font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4">.................
 </font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">للمركز
 الوطني للدراسات والبحوث الاجتماعية
 بتكلفة اجمالية</font></font><font face="AL-Mohanad">
 </font><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">قدرها
-</font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4">(
-00,000) ........................................ </font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">ريال
+</font></font></span></font><font face="Arial, serif"><font style="font-size: 16pt" size="4">
+ <span t-esc="o.amount_total" />
+</font></font><font face="Arial"><span lang="ar-SA"><font face="AL-Mohanad"><font style="font-size: 16pt" size="4">ريال
 شاملة قيمة الضريبة المضافة </font></font></span></font>
 </p>
 <p dir="rtl" style="margin-right: -0.39in; margin-top: 0.01in; margin-bottom: 0in">

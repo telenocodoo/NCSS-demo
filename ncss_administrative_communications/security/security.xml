@@ -27,7 +27,29 @@
 
         <!--                Administrative communication Form-->
 
+        <!--        Employee Assets Rules-->
+<!--        <record id="administrative_communication_employee_rule" model="ir.rule">-->
+<!--            <field name="name">Employee View Own Administrative Communication</field>-->
+<!--            <field name="model_id" ref="model_administrative_communication"/>-->
+<!--            <field name="domain_force">['|',('create_uid', '=', user.id),-->
+<!--                ('user_id', '=', user.id)]</field>-->
+<!--            <field name="groups" eval="[(4, ref('administrative_communication_employee'))]"/>-->
+<!--        </record>-->
+
+<!--        <record id="administrative_communication_out_going_rule" model="ir.rule">-->
+<!--            <field name="name">Administrative Communication out going user</field>-->
+<!--            <field name="model_id" ref="model_administrative_communication"/>-->
+<!--            <field name="domain_force">[]</field>-->
+<!--            <field name="groups" eval="[(4, ref('administrative_communication_outgoing_button'))]"/>-->
+<!--        </record>-->
+
         <!--                Administrative communication fields-->
+        <record id="group_administrative_communications_secret" model="res.groups">
+            <field name="name">Administrative Communications Secret Menu</field>
+            <field name="category_id" ref="administrative_communication_security_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
         <record id="ncss_allow_edit_transaction_date" model="res.groups">
             <field name="name">Allow To Edit Date</field>
             <field name="category_id" ref="administrative_communication_security_category"/>

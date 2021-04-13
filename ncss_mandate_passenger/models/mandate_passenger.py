@@ -218,58 +218,59 @@ class MandatePassenger(models.Model):
             self.expensed_from_budget = 0.0
             self.remaining_from_budget = 0.0
 
-    @api.model
-    def search(self, args, offset=0, limit=None, order=None, count=False):
-        employee = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_employee')
-        direct_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_direct_manager')
-        department_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_department_manager')
-        accounting_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_accounting_manager')
-        center_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_center_manager')
-        hr_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_hr_manager')
-        order = "create_date desc"
-        if center_manager or hr_manager:
-            # current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            # passenger_mandate_obj = self.search([])
-            # for mandate in passenger_mandate_obj:
-            #     lst.append(mandate.id)
-            args += []
-        if accounting_manager:
-            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            # passenger_mandate_obj = self.search([('state', '=', 'department_manager_approve')])
-            # for mandate in passenger_mandate_obj:
-            #     lst.append(mandate.id)
-            # print(self.create_uid)
-            # print(":::LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", self.is_department_manager)
-            # main_department = self.return_main_department(self.employee_id.department_id)
-            # print(":::::::::::::::::::", main_department)
-            # print(":::::::::::::::::::", self.employee_id.department_id.name)
-            # print(":::::::::::::::::::", self.employee_id.name)
-            args += ['|', '|', ('create_uid.id', '=', self.env.user.id),
-                     ('employee_id.parent_id.id', '=', current_user_id),
-                     ('state', 'in', ['refuse', 'hr_approve', 'accounting_approve'])]
-
-        # if department_manager:
-        #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-        #     # passenger_mandate_obj = self.search(['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
-        #     #                                      ('create_uid', '=', current_user_id)])
-        #     # for mandate in passenger_mandate_obj:
-        #     #     lst.append(mandate.id)
-        #     args += ['|', '|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
-        #              ('employee_id.parent_id.id', '=', current_user_id),
-        #              ('create_uid.id', '=', self.env.user.id)]
-
-        if direct_manager:
-            current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
-            # passenger_mandate_obj = self.search(['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid', '=', current_user_id)])
-            # for mandate in passenger_mandate_obj:
-            #     lst.append(mandate.id)
-            # args += [('id', 'in', lst)]
-            args += ['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid.id', '=', self.env.user.id)]
-        # else:
-        if employee:
-            args += [('create_uid', '=', self.env.user.id)]
-
-        return super(MandatePassenger, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
+    # @api.model
+    # def search(self, args, offset=0, limit=None, order=None, count=False):
+    #     employee = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_employee')
+    #     direct_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_direct_manager')
+    #     department_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_department_manager')
+    #     accounting_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_accounting_manager')
+    #     center_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_center_manager')
+    #     hr_manager = self.env.user.has_group('ncss_mandate_passenger.mandate_passenger_hr_manager')
+    #     order = "create_date desc"
+    #     if center_manager or hr_manager:
+    #         # current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #         # passenger_mandate_obj = self.search([])
+    #         # for mandate in passenger_mandate_obj:
+    #         #     lst.append(mandate.id)
+    #         args += []
+    #     if accounting_manager:
+    #         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #         # passenger_mandate_obj = self.search([('state', '=', 'department_manager_approve')])
+    #         # for mandate in passenger_mandate_obj:
+    #         #     lst.append(mandate.id)
+    #         # print(self.create_uid)
+    #         # print(":::LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL", self.is_department_manager)
+    #         # main_department = self.return_main_department(self.employee_id.department_id)
+    #         # print(":::::::::::::::::::", main_department)
+    #         # print(":::::::::::::::::::", self.employee_id.department_id.name)
+    #         # print(":::::::::::::::::::", self.employee_id.name)
+    #         args += ['|', '|', ('create_uid.id', '=', self.env.user.id),
+    #                  ('employee_id.parent_id.id', '=', current_user_id),
+    #                  ('state', 'in', ['refuse', 'hr_approve', 'accounting_approve'])]
+    #
+    #     # if department_manager:
+    #     #     current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #     #     # passenger_mandate_obj = self.search(['|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+    #     #     #                                      ('create_uid', '=', current_user_id)])
+    #     #     # for mandate in passenger_mandate_obj:
+    #     #     #     lst.append(mandate.id)
+    #     #     args += ['|', '|', ('employee_id.department_id.manager_id.id', '=', current_user_id),
+    #     #              ('employee_id.parent_id.id', '=', current_user_id),
+    #     #              ('create_uid.id', '=', self.env.user.id)]
+    #
+    #     if direct_manager:
+    #         current_user_id = self.env['hr.employee'].search([('user_id', '=', self.env.user.id)]).id
+    #         # passenger_mandate_obj = self.search(['|', ('employee_id.parent_id.id', '=', current_user_id), ('create_uid', '=', current_user_id)])
+    #         # for mandate in passenger_mandate_obj:
+    #         #     lst.append(mandate.id)
+    #         # args += [('id', 'in', lst)]
+    #         args += ['|', ('employee_id.parent_id.id', '=', current_user_id),
+    #                  ('create_uid.id', '=', self.env.user.id)]
+    #     # else:
+    #     if employee:
+    #         args += [('create_uid', '=', self.env.user.id)]
+    #
+    #     return super(MandatePassenger, self).search(args=args, offset=offset, limit=limit, order=order, count=count)
 
     @api.model
     def create(self, values):
@@ -500,7 +501,7 @@ class MandatePassenger(models.Model):
                 budget_obj.expensed_from_budget += record.total
 
             user_ids = list(self.get_users("ncss_mandate_passenger.mandate_passenger_hr_manager"))
-            print (user_ids)
+            print(user_ids)
             if user_ids:
                 for rec in user_ids:
                     self.make_activity(rec)

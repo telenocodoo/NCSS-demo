@@ -561,8 +561,18 @@
         <field name="name">Administrative Communication</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">administrative.communication</field>
+        <field name="domain">[('nature_of_transaction','!=','secret')]</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="secret_administrative_communication_action" model="ir.actions.act_window">
+        <field name="name">Administrative Communication Secret</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">administrative.communication</field>
+        <field name="domain">[('nature_of_transaction','=','secret')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <record id="administrative_communication_in_action" model="ir.actions.act_window">
         <field name="name">IN</field>
         <field name="type">ir.actions.act_window</field>
@@ -571,6 +581,7 @@
         <field name="context">{'default_treatment_type':'in'}</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="administrative_communication_out_action" model="ir.actions.act_window">
         <field name="name">ِOUT</field>
         <field name="type">ir.actions.act_window</field>
@@ -579,6 +590,7 @@
         <field name="context">{'default_treatment_type':'out'}</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="administrative_communication_internal_action" model="ir.actions.act_window">
         <field name="name">Internal</field>
         <field name="type">ir.actions.act_window</field>
@@ -587,6 +599,7 @@
         <field name="context">{'default_treatment_type':'internal'}</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="administrative_communication_server_action" model="ir.actions.server">
         <field name="name">Administrative Server Action</field>
         <field name="model_id" ref="ncss_administrative_communications.model_administrative_communication"/>
@@ -706,6 +719,13 @@
               name="Administrative Communication"
               action="administrative_communication_action"
               parent="administrative_communication_menu"
+    />
+
+    <menuitem id="administrative_communication_secret_child"
+              name="Administrative Communication Secret"
+              action="secret_administrative_communication_action"
+              parent="administrative_communication_menu"
+              groups="ncss_administrative_communications.group_administrative_communications_secret"
     />
 
     <menuitem id="administrative_communication_in_child"
