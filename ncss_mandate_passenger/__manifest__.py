@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ncss_mandate_passenger',
+    'name': 'ncss_mandate_passenger2',
     'version': '13.0.1',
     'summary': 'ncss_mandate_passenger',
     'category': 'ncss_mandate_passenger',
